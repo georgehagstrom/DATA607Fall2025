@@ -1,0 +1,21 @@
+
+---
+title: "Lab 1: Airbnbs in NYC"
+format: html
+editor: source
+---
+
+
+---
+title: "Acknowledgements"
+format: html
+editor: source
+---
+
+We acknowledge the wonderful resources made available on the open-source course [Data Science in a Box](https://datasciencebox.org/), from which we adapted some course materials
+and homework assignments. This material is shared under a [CC BY-SA 4.0 Creative Commons Share Alike License](https://creativecommons.org/licenses/by-sa/4.0/)
+
+This website would not be possible without the [quarto](https://quarto.org/) package. 
+
+
+

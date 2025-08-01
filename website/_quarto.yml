@@ -1,0 +1,145 @@
+project:
+  type: website
+  output-dir: "../docs/"
+
+website:
+  page-navigation: true
+  title: "DATA 607 Fall 2024"
+  description: "DATA 607 - Data Acquisition and Management - CUNY School of Professional Studies"
+  site-url: "https://georgehagstrom.github.io/DATA607/"
+
+  repo-url: https://github.com/georgehagstrom/DATA607
+  repo-actions: [edit, issue]
+
+  open-graph: true
+ 
+  page-footer:
+    right: 
+    - text: "Some content on this page was derived from and inspired by the open source Data Science in a Box course materials developed by Mine Çetinkaya-Rundel"
+      href: https://datasciencebox.org/  
+    left:
+    - text: "License"
+      href: license.qmd    
+    background: "#A3C9FF"
+
+  sidebar:
+    background: "#A3C9FF"
+    logo: "images/course_logo.png"
+    pinned: true
+    align: center
+    # List of available icons: https://icons.getbootstrap.com
+    tools:
+      #  - icon: calendar-check
+      #  href: course/schedule.qmd
+      #  text: "Schedule"
+      - icon: github
+        href: https://github.com/georgehagstrom/DATA607
+        text: "Github"
+        target: _blank
+      - icon: slack
+        href: https://data607fall2024.slack.com
+        text: "Slack"
+        target: _blank
+      - icon: link-45deg
+        text: "CUNY"
+        menu:
+          - text: Brightspace LMS
+            url: https://brightspace.cuny.edu
+            target: _blank
+          - text: MSDS Program Page
+            url: https://sps.cuny.edu/academics/graduate/master-science-data-science-ms
+            target: _blank
+          - text: CUNYfirst
+            url: https://cunyfirst.cuny.edu
+            target: _blank
+      - icon: envelope
+        text: "Email"
+        url: mailto:george.hagstrom@cuny.edu?subject=DATA607
+
+    style: "docked"
+    search: true
+    collapse-level: 2
+    contents:
+      - href: "index.qmd"
+        text: "Announcements"
+      - section: "Course information"
+        contents:
+          - href: course/overview.qmd
+            text: Overview
+          - href: course/syllabus.qmd
+            text: Syllabus
+          - href: course/instructors.qmd
+            text: Instructors
+          - href: course/schedule.qmd
+            text: Schedule
+          - href: course/textbooks.qmd
+            text: Textbooks
+          - href: course/software.qmd
+            text: Software
+          # - href: course/materials.qmd
+          # text: Materials
+          - href: course/calendar.qmd
+            text: Calendar
+      - section: "Assignments"
+        contents:
+          - href: assignments/participation.qmd
+            text: "Participation"
+          - href: assignments/labs.qmd
+            text: "Labs"
+          - href: assignments/project.qmd
+            text: "Project"
+          - href: assignments/tidygit.qmd
+            text: "GitHub/Tidyverse Recipes"
+      - section: "Topics"
+        contents:
+          - href: modules/module1.qmd
+            text: "1 - Data Science Workflow and Toolkit"
+          - href: modules/module2.qmd
+            text: "2 - Visualizing Data"
+          - href: modules/module3.qmd
+            text: "3 - Data Tidying"
+          - href: modules/module4.qmd
+            text: "4 - Advanced Visualizations and EDA"
+          - href: modules/module5.qmd
+            text: "5 - Data Transformations"
+          - href: modules/module6.qmd
+            text: "6 - Processing Strings and Text"
+          - href: modules/module7.qmd
+            text: "7 - Working with Databases and SQL"
+          - href: modules/module8.qmd
+            text: "8 - Advanced R Programming"
+          - href: modules/module9.qmd
+            text: "9 - Web Scraping and APIs"
+          - href: modules/module10.qmd
+            text: "10 - GIT and Collaboration"
+          - href: modules/module11.qmd
+            text: "11 - Tidy Text and NLP"
+          - href: modules/module12.qmd
+            text: "12 - Graphs and Graph Data"
+          - href: modules/module13.qmd
+            text: "13 - Big Data and Cloud Computing"
+      - href: "acknowledgements.qmd"
+        text: "Acknowledgements"
+
+
+format:
+  html:
+    embed-resources: true
+    self-contained-math: true  
+    theme:
+      light: [cosmo, theme.scss]
+      dark: [cosmo, theme-dark.scss]
+    mainfont: "Atkinson Hyperlegible"
+    code-copy: true
+    code-overflow: wrap
+    toc: false
+    include-in-header:
+      text: |
+        <link href="/fullcalendar-lib/main.css" rel="stylesheet" />
+        <script type="text/javascript" src="/fullcalendar-lib/main.js"></script>
+
+freeze: false
+
+editor: source
+
+
