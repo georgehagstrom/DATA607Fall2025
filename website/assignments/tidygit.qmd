@@ -1,0 +1,13 @@
+---
+title: "GitHub/TidyVerse Create and Extend"
+---
+
+The primary homework assignments in this course are lab assignments where you will use R and occassionally other software to acquire, explore, wrangle, and manage different
+data sets. **Please submit a PDF (preferred) or HTML file along with your Rmarkdown file.** Be sure to answer all questions in lab, not just the *on your own section.* Labs should be submitted on Blackboard.
+
+<ol start='1'>
+<li value='1'> <a href='https://htmlpreview.github.io/?https://georgehagstrom.github.io/DATA607Fall2025/assignments/tidygit/tidycreate.html'>Tidyverse Create</a> (<a href='https://github.com/georgehagstrom/DATA607Fall2025/blob/main/website/assignments/tidygit/tidycreate.qmd?raw=true'>Template</a>)</li>
+
+<li value='2'> <a href='https://htmlpreview.github.io/?https://georgehagstrom.github.io/DATA607Fall2025/assignments/tidygit/tidyextend.html'>Tidyverse Extend</a> (<a href='https://github.com/georgehagstrom/DATA607Fall2025/blob/master/inst/tidygit/tidyextend.qmd?raw=true'>Template</a>)</li>
+
+</ol>
