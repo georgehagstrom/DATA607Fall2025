@@ -1,0 +1,33 @@
+---
+title: "Welcome to DATA 607"
+author: "George I. Hagstrom"
+date: 2024-08-17
+draft: false
+description: "Important information on how to get started with this course. Click this post now for instructions on getting started."
+image: "2024-08-28-Welcome.png"
+image-height: "300px"
+
+---
+
+
+Welcome to DATA 607, Data Acquisition and Management.
+
+Click this post now to get started!
+
+Here are the first steps:
+
+* Read the [syllabus](course/syllabus).
+* Go through the course overview materials, and complete the [week 1 readings](modules/module1).
+* [Download, install, and configure R, then RStudio.](course/software)
+* Sign up for a (free) [GitHub](https://github.com/) account.
+* Introduce yourself on the course discussion forum on Brightspace.
+* [Join our Slack channel:](https://join.slack.com/t/cuny-9ef1531/shared_invite/zt-2oohj108n-JGQEmbt5kpuUXnuZztl0UQ)    
+* Attend our first meetup on Wednesday at 6:45 p.m. ET on [Zoom](https://us02web.zoom.us/j/81858708616?pwd=eE9ZGJFco9iicq3BsmANIfWUVLwy0x.1)
+* Use the [google doodle poll](https://doodle.com/sign-up-sheet/participate/73d10cce-87fd-48eb-9e20-760138efedfb/select) to sign up for your [Data Science in Context presentation](assignments/dsincontext)
+
+I recorded a short video which introduces me and gives you more background on the course:
+
+{{< video    https://youtu.be/rhHit0cO4wg
+    title='Intro to DATA 607' 
+>}}
+
