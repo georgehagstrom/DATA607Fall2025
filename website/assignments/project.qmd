@@ -1,0 +1,134 @@
+---
+title: "Data Project"
+format: html
+---
+
+# Explore your interests
+
+The idea of this project is for you to find data and do something interesting with it that relates to the skills you have developed in this course.
+
+The project is intentionally open ended- this is an opportunity for you to explore your interests, through using techniques or technologies that branch off those 
+that were introduced in this class, datasets related to problems you face in your career or that you are curious about, or both. 
+
+A great project will demonstrate a complete "Data Science Workflow", such as the one introduced at the beginning of the textbook, starting from multiple distinct datasets from public sources (if you have a private dataset that you want to use you may discuss that with me), data tidying, exploratory data analysis, cleaning, hypothesis generation, and lastly modeling. This
+course has not focused on modeling and the mathematical sophistication of your model will not factor heavily in your evaluation, but by this point in the semester you will have been exposed
+to enough modeling techniques in other courses to incorporate models within your project.
+
+The output of your project should software that allows me to reproduce your work and a research report which describes what you did with the data and your findings, which could be contained
+within a github repository. You will also present your project in a short presentation in the final week of the semester.
+
+### Project Proposal
+
+The first step of your project is to submit an initial proposal, which will help to ensure that your project is both worthwhile and feasible in the time frame of the last half of the 
+semester. Your proposal should describe the area that you are interested in (and if you have a specific question already you can describe that too), the datasets you are going to use,
+and your data analysis plan. Your proposal should be a maximum of 2 pages (excluding figures and references), and should include three sections (each with target length 1-2 paragraphs):
+
+- **Section 1 - Introduction:** The introduction should describe the motivation for your project, the subject matter area of your dataset, and any general research questions you may
+already have.
+
+
+-   **Section 2 - Data:**  At the time of submitting the proposal you should have already identified some datasets that you plan to use in your analysis. Give a quick description of those
+datasets here, describe where the data can be found, the number of variables and observations, and/or the output of the glimpse() or skim() functions on the data.
+
+-   **Section 3 - Data analysis plan:** Describe your initial approach to analyzing your data. How will your datasets need to be processed in for your to make use of all of them in 
+the analysis? Which sort of comparisons do you plan to make in your exploratory data analysis (you can share early visualizations of this is you have them)? What statistical methods
+do you think are appropriate to address the questions that motivated your interest? 
+
+The proposal is preliminary, and you can include additional data or a different analysis as needs require. 
+
+
+
+
+## Heilmeier\'s Questions
+
+When writing proposals, I've found the following set of considerations, called "Heilmeier\'s Questions", to be helpful to consider. Although this is just a short project, you might
+find them helpful as well, and useful for formulating future projects and proposals that you might have to complete. These questions were developed by Dr. George Heilmeier, who
+was the director of DARPA from 1975-1977. Heilmeier said that every proposal to DARPA needed to answer these questions clearly and completely in order to receive funding:
+
+
+1. What are you trying to do? Articulate your objectives using absolutely no jargon. What is the problem?  Why is it hard?
+2. How is it done today, and what are the limits of current practice?
+3. What is new in your approach, and why do you think it will be successful?
+4. Who cares?
+5. If you’re successful, what difference will it make? What applications are enabled as a result?
+6. What are the risks?
+7. How much will it cost?
+8. How long will it take?
+9. What are the midterm and final “exams” to check for success? How will progress be measured? 
+
+
+
+
+## Data
+
+The emphasis of class has been working with datasets that have different types of variables and which are messy or often heterogeneous. For this project you need to
+select data that comes from multiple sources (there should be at least two datasets). You should be able to access the data and it should be large enough and contain enough variables
+so that multiple interesting relationships can be explored. A good starting point is that across your dataset, there should be at least 50 observations and more than 10 variables
+(exceptions can be made but you must speak with me first). The dataset's variables should include categorical variables, discrete numerical variables, and continuous numerical variables.
+
+**Note on reusing datasets from class:** Do not reuse datasets used in examples, homework assignments, or labs in the class. Also do not use datasets exclusively from Kaggle or other
+sources of curated data for data science competitions (these have been made clean and tidy already). 
+
+Below are a list of data repositories that might be of interest to browse.
+You\'re not limited to these resources, and in fact you\'re encouraged to venture beyond them.
+But you might find something interesting there:
+
+
+* [New York City Open Data](https://opendata.cityofnewyork.us/)
+* FiveThirtyEight [https://github.com/fivethirtyeight/data](https://github.com/fivethirtyeight/data)
+* RStudio data sources [http://blog.rstudio.org/2014/07/23/new-data-packages/](http://blog.rstudio.org/2014/07/23/new-data-packages/)
+* Analyze Survey Data for Free (ASDFree) has many open data sources that can be used [http://www.asdfree.com/](http://www.asdfree.com/)
+* The World Bank Data Catalog [http://datacatalog.worldbank.org/](http://datacatalog.worldbank.org/)
+* Google Public Data search engine [http://www.google.com/publicdata/directory](http://www.google.com/publicdata/directory)
+* Vanderbilt data sources [http://biostat.mc.vanderbilt.edu/wiki/Main/DataSets](http://biostat.mc.vanderbilt.edu/wiki/Main/DataSets)
+* Programme of International Student Assessment (PISA) [http://www.oecd.org/pisa/](http://www.oecd.org/pisa/)
+* Behavioral Risk Factor Surveillance System (BRFSS) [http://www.cdc.gov/brfss/](http://www.cdc.gov/brfss/)
+* World Values Survey [http://www.worldvaluessurvey.org/wvs.jsp](http://www.worldvaluessurvey.org/wvs.jsp)
+* American National Election Survey (ANES) [http://www.electionstudies.org/](http://www.electionstudies.org/)
+* General Social Survey (GSS) [http://www3.norc.org/GSS+Website/](http://www3.norc.org/GSS+Website/)
+* Integrated Postsecondary Education Data System (IPEDS) [https://nces.ed.gov/ipeds/](https://nces.ed.gov/ipeds/)
+* U.S. Census and American Community Survey [https://cran.r-project.org/web/packages/acs/index.html](https://cran.r-project.org/web/packages/acs/index.html)
+* [10 Standard Datasets for Practicing Applied Machine Learning](https://machinelearningmastery.com/standard-machine-learning-datasets/)
+* [Awesome Public Datasets](https://github.com/awesomedata/awesome-public-datasets)
+* [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php) - See also this R package: https://github.com/tyluRp/ucimlr
+* [OpenML](https://www.openml.org/search?type=data&sort=runs&status=active)
+*   [Bikeshare data portal](https://www.bikeshare.com/data/)
+*   [UK Gov Data](https://data.gov.uk/)
+*   [Youth Risk Behavior Surveillance System (YRBSS)](https://chronicdata.cdc.gov/Youth-Risk-Behaviors/DASH-Youth-Risk-Behavior-Surveillance-System-YRBSS/q6p7-56au)
+*   [PRISM Data Archive Project](https://www.icpsr.umich.edu/icpsrweb/content/ICPSR/fenway.html)
+*   [Harvard Dataverse](https://dataverse.harvard.edu/)
+
+## Project Report and Code Repository
+
+The project report should include an Abstract which gives a summary of your project in under 300 words, and Introduction, a section on the Data which describes the cleaning, tidying,
+and exploratory data analysis steps you took and what hypotheses you generated, a section on the Data Analysis, and a Conclusion section. All of the code you used to perform your 
+cleaning and analysis should be included either in a github repository or in your report (if you submit in a quarto format for example). You will be evaluated using the following
+rubric:
+
+
+## Presentation
+
+You will record a short video presentation with a slide-deck presenting your project. It should cover the motivation for your project, describe the data and analysis, and show 
+visualizations of your main conclusions. Each student is required to watch two of the uploaded presentations and provided anonymous feedback on the presentations.
+
+## Overall Grading Rubric
+
+
+
+|Domain               |Accomplished  (100%)                                                                                                                              |Proficient    (80%)                                                                                                                      |Needs  Improvement    (60%)                                                                                        |
+|:--------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------|
+| Proposal (20 pts)   | Motivation explained well, data science workflow clearly present, datasets and proposed analysis appropriate     |  Description of motivation, workflow, datasets, and analysis present but a few are not appropriate or unclear    |  Several of motivation, workflow, datasets, and analysis are missing or inappropriate
+Abstract  (5 pts)           |Abstract is less than 300 words, free of grammatical errors, summarizes the project analysis, conclusions, and implications           |NA                                                                                                                                  |NA                                                                                                           |
+|Introduction (20 pts)        | Clear explanation of motivation for the project, choice of data, and analysis methods/workflow.                     | Rationale for the project, analysis/workflow, or choice of data is present but unclear.                                                                  | Rationale is unstated.                                                      |
+|Datasets and Wrangling  (30 pts)       | Multiple datasets used with different data types, data is properly tidied, reproducible code for tidying      | One of the previous criteria is missing.                                                                                | Several criteria not met: insufficient datasets and types, incorrect tidying, non-reproducible code             |
+Exploratory Data Analysis (30 pts) | Appropriate summary statistics and visualization of distributions/covariance, hypotheses, and treatment of missing values/outliers, code reproducible | EDA completed but some of summary statistics, visualizations, hypotheses, and missing data treatment not appropriate | EDA substantially inappropriate or has several aspects missing
+|Data Display (20 pts)        |Includes appropriate, well-labeled, accurate displays (graphs and tables) of the data.                                                      |Includes appropriate, accurate displays of the data.                                                                                |Includes appropriate but no accurate displays of the data.                                                   |
+| Statistical Model   (5 pts)    |  statistical test(s) was used for the data and interpretation was clear.                                                     |The appropriate statistical test(s) was used but interpretation was not fully clear or well articulated.                            |The incorrect statistical test was used an/or not justified for the data as presented.                       |
+|Conclusion   (20 pts)        | Conclusion includes a clear description of results consistent with the EDA and statistical modeling and discusses limitations of analysis and how to go further. | Conclusion describes results, limitations, and potential future steps but some descriptions inappropriate or unclear   | Description of results, limitations, and future steps missing and/or unclear |
+|Overall Presentation (20 pts) |Attractive, well-organized, well-written presentation                                                                                       |Presentation has two of the three qualities: attractive, well-organized, well-written.                                              |Presentation is not attractive, organized, or written. There are numerous errors throughout.                 |
+
+
+
+
+
+
