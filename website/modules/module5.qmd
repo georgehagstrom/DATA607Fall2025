@@ -1,0 +1,53 @@
+---
+title: "Module 5 - Data Transformations"
+editor: source
+---
+
+<!-- 
+See issue with underscores in MathJax equations here: https://gohugo.io/content-management/formats/#issues-with-markdown
+The solution, put backticks (`) around the LaTeX equation
+-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+### Learning Objectives
+
+* Working with boolean data, basic logical operations, conditionals, and logical subsetting
+* Transformations and summaries of numeric data
+* Using `dplyr` window functions
+
+
+### Readings
+
+* __RDS__ (R for Data Science): [Chapters 12, 13, 17](https://r4ds.hadley.nz/whole-game)
+
+### Additional Resources:
+
+* [Feature Engineering and Selection, Chapter 1](http://www.feat.engineering/) Feature engineering is a natural extension of data transformation that is commonly used prior to the 
+application of machine learning or statistical analyses. 
+
+* forcats package [reference index](https://forcats.tidyverse.org/reference/index.html) . This is the reference for a very useful package for handling categorical data
+* [Wrangling Categorical Data in R](https://peerj.com/preprints/3163/). A. McNamara and N. Horton. _The American Statistician_ (2018) Vol 72. 
+
+This paper discusses both tidyverse and base R approaches to categorical data.
+
+
+
+
+

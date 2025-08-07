@@ -1,0 +1,76 @@
+---
+title: "Module 3 - Data Tidying"
+editor: source
+---
+
+<!-- 
+See issue with underscores in MathJax equations here: https://gohugo.io/content-management/formats/#issues-with-markdown
+The solution, put backticks (`) around the LaTeX equation
+-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+### Learning Objectives
+
+* Converting between wide and long data formats with _tidyr_
+* Changing the shape of your data with _dplyr_
+* Importing data into R
+
+
+
+### Readings
+
+* __RDS__ (R for Data Science): [Chapters 5-7](https://r4ds.hadley.nz/workflow-style)
+
+### Additional Resources:
+
+* [tidyr pivot vignette](https://tidyr.tidyverse.org/articles/pivot.html) 
+
+This vignette has some even more in depth discussion than the textbook.
+
+
+* [Tidy Data](https://vita.had.co.nz/papers/tidy-data.pdf). Hadley Wickham. _Journal of statistical software_ 59 (2014): 1-23.
+* [tidyr vignette](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) 
+
+The original Tidy Data paper is one of the most influential papers on data processing. It relates Tidy Data to database normalization, which might be familiar to you if you are an 
+expert in SQL. The accompanying vignette has code used to generate the results in the paper. If you do read the paper, note that the definition of tidy data is different than the one
+in your textbook. The original definition is close to a relational database style of organization, while the current definition is more of a flat file approach that resembles a
+data matrix and which is more readily analyzed.
+
+* [Tutorial on Cleveland Dot Plots](https://uc-r.github.io/cleveland-dot-plots)
+
+This is a classic data visualization tool that we will use in this week's homework
+
+* [widyr package](https://rdrr.io/cran/widyr/f/README.md)
+
+A useful package that gets a little bit more at the trade-offs between different data organization schemes.
+
+
+
+
+
+### Videos
+
+There are some excellent optional video lectures that discuss tidy data and data wrangling:
+
+* [Data Science Box Intro to Tidy Data](https://www.youtube.com/watch?v=Ux85eR3h9hw)
+* [Data Science Box Data Wranglig](https://youtu.be/ZCaYBES_VEk)
+* [Data Science Box Data Transformations](https://youtu.be/0229Uq2hkJo)
+* [Data Science Box Exploration of Tidy Data](https://www.youtube.com/watch?v=x3KM5uxaFdI)
+

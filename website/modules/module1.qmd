@@ -1,0 +1,98 @@
+---
+title: "Module 1 - Introduction to R and the Data Science Workflow"
+editor: source
+---
+
+<!-- 
+See issue with underscores in MathJax equations here: https://gohugo.io/content-management/formats/#issues-with-markdown
+The solution, put backticks (`) around the LaTeX equation
+-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+# Overview and Deliverables
+
+This week is about meeting the other students, making sure you get a good start with required course software, and taking a bird's eye view at data science workflows and
+the material that we will cover in the rest of the course. As such, the only official required assignments that you must turn in are to 
+make a post on course Brightspace page introducing yourself, and to complete the [meetup reflection](../assignments/participation) (this is the same thing as the 1 minute papers of Data 606
+if you are also taking that course). Howeer, you should also read the introduction
+posts of your classmates, perform the readings, and make sure to follow the tutorials and install the required software. Start early if you can with the software so we can sort
+out any issues asap. I'll be monitoring the course slack page, which is the place where we will have most of our asynchronous communication during the course.
+
+* 08/28: Attend the initial course meetup at 6:45PM Eastern
+* Due 9/01: Introduction Post in Brightspace Discussions
+* Sign up for [GitHub](https://github.com) and the course [Slack channel](https://join.slack.com/t/fall2024data607/shared_invite/zt-2oohj108n-JGQEmbt5kpuUXnuZztl0UQ)
+* Complete the readings of RDS (Intro and 28), the quarto tutorial, and up to section 15 in the happygitwithr tutorial
+* Install R, RStudio, git, etc (see the [software page](../software) for more details
+* Sign up using the [doodle poll](https://doodle.com/sign-up-sheet/participate/73d10cce-87fd-48eb-9e20-760138efedfb/select) for your [data science in context](../assignments/dsincontext)
+presentation.
+
+### Learning Objectives
+
+* Data Science Workflow
+* Course Toolkit: R, RStudio, tidyverse, Quarto, git
+
+
+
+### Readings
+
+* __RDS__ (R for Data Science): [Introduction](https://r4ds.hadley.nz/intro), [Chapter 28](https://r4ds.hadley.nz/quarto)
+
+The Introduction chapter will describe the workflow of a typical data science project and pave the road for the rest of the material we are covering in this course.
+Chapter 28 describes the quarto markdown language, which a flexible system for authoring projects and presentations that produces well typeset documents in a variety of
+file formats and integrates with a large number of different programming languages, so that computations and their results can be directly embedded and visualized in your documents.
+I suggest that you use quarto to create your homework assignments.
+
+* [Quarto tutorial](https://quarto.org/docs/get-started/hello/rstudio.html)
+
+This is an official quarto tutorial. 
+
+* __Happy Git and GitHub for the R User__: [Tutorial up through Section 15](https://happygitwithr.com/) 
+
+Git is a tool that allows a group of people to work together on a software project, enabling version control that allows differences to be more easily resolved. GitHub is a repository for
+software projects that integrates well with Git. Git is a commonly used tool, and is almost a requirement for teams with large codebases and more than a few people working on them. 
+GitHub has almost been like the "LinkedIn" for Data Scientists and Software Developers. One of the goals of this degree program is to help you build a portfolio of work on GitHub that
+you can use to demonstrate your coding proficiency to potential employers. These tools can be intimidating because they have a steep learning curve, so I think it is important to start
+introducing them slowly, at the very start. There are many ways to interact with Git and GitHub, but this excellent book by Jenny Bryant focuses on the specific case of a Data Scientist
+working in R and RStudio. If you already know Git and have a good system, you aren't required to follow this tutorial, but for those of you who are new to these tools this I recommend
+taking some time this week to get Git up and running and integrated with your RStudio installation.
+
+* __Data Visualization: A Practical Introduction__ [Appendix A1: How to Read an R Help File](https://socviz.co/appendix.html#a-little-more-about-r)
+
+This is another excellent resource on learning R, but the reading I've suggested here is an appendix which discusses the structure of help files. Being able to use help files
+successfully is a skill that separates novice and intermediate programmers from experienced ones, as help files often have a very formal structure that doesn't read like 
+a normal text document or piece of writing. This section can you know what to expect and how to get what you need from them instead of feeling frustrated.
+
+### Videos
+
+
+[Hadley Wickham Introduces the Tidyverse](https://posit.co/resources/videos/data-science-in-the-tidyverse-hadley-wickham/)
+
+This course uses something called the `tidyverse`. The tidyverse is a series of packages that replaces much of the functionality of base R while at the same
+time giving the resulting R code a very different flavor. This course, and many of the courses in this program, start by jumping right into the tidyverse. This
+video provides an introduction to the tidyverse from one of its main creators. However, while this decision has some initial benefits, it isn't without tradeoffs, so
+it is important for you to keep in mind that there are other, different ways to do things in R. We will explore some of these later in the class in the Big Data module
+and the Advanced R programming module. 
+
+If you want to read a little bit more about the trade offs of the different R ecosystems this is a short link:
+
+[R Comparisons](https://mgimond.github.io/rug_2019_12/Index.html)
+
+Speaking with colleagues, the choice to use base R versus the tidyverse is quite polarizing, especially as you work in more complex projects.
+
+

@@ -1,0 +1,55 @@
+---
+title: "Module 11 - Tidy Text and NLP"
+editor: source
+---
+
+<!-- 
+See issue with underscores in MathJax equations here: https://gohugo.io/content-management/formats/#issues-with-markdown
+The solution, put backticks (`) around the LaTeX equation
+-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+Text data is unlike other data formats which naturally have a rectangular or tabular form, necessitating a different type of analysis. The field 
+known as Natural Language Processing, or NLP for short, has developed tools and techniques for deriving insight from textual data. In this module
+we will learn some of the basics of NLP and practice using them in a tidyverse context using the `tidytext` package.
+
+In particular, we will learn about tokenization and how to tokenize text into a tidy format. Then we will explore some sentiment lexicons, which classify words according
+to whether they convey negative or positive emotions (either categorically or numerically), or as exemplars of some other emotional category. Sentiment analysis is 
+an important part of many commercial applications of data science, but is challenging due to the nuance and complexities of language (e.g. sarcasm, satire). We will also study
+how to interpret the frequency of words in a text, using the underlying frequency distribution in a corpus as a base rate to normalize against. This can allow us to learn the topic
+or infer the most important context from a body of text automatically. Finally, we will study groupings of words, i.e. n-grams, using them to understand correlations between
+terms or when the presence of two words together alters meaning. 
+
+
+### Learning Objectives
+
+* The tidy text format
+* Lexicons and sentiment analysis
+* Word frequency analysis and Zipf's Law
+* n-grams and correlations
+
+
+### Readings
+
+* __Text Mining with R__: [Chapters 1-4](https://www.tidytextmining.com/)
+
+### Videos
+
+* [Video Intro to Sentiment Analysis](http://www.youtube.com/watch?v=ytUHvMNnzZk)
+

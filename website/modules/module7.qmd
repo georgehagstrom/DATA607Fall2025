@@ -1,0 +1,58 @@
+---
+title: "Module 7 - Working with Databases and SQL"
+editor: source
+---
+
+<!-- 
+See issue with underscores in MathJax equations here: https://gohugo.io/content-management/formats/#issues-with-markdown
+The solution, put backticks (`) around the LaTeX equation
+-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+### Learning Objectives
+
+* Working with multiple dataframes, Joins and Keys
+* Relational Database basics: design and tradeoffs
+* Working with R and SQL
+* Basic database normalization
+
+
+
+### Readings
+
+* __RDS__ (R for Data Science): [Chapters 18-21](https://r4ds.hadley.nz/whole-game)
+
+
+### Additional Resources:
+
+* [SQL Cheat Sheet](http://www.sql-tutorial.net/sql-cheat-sheet.pdf)
+* [Practical SQL: A Beginner's Guide to Storytelling with Data](https://amzn.to/3w37ewk). Anthony DeBarros. No Start Press (2022)
+* [SQL for Data Scientists](https://sqlfordatascientists.com/). Renee Teate. Wiley.
+* [duckdb page and SQL intro](https://duckdb.org/docs/sql/introduction.html)
+
+
+
+
+
+### Videos
+
+[Mother Duck tutorial](https://www.youtube.com/watch?v=ZX5FdqzGT1E)
+
+

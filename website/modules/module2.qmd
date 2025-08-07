@@ -1,0 +1,76 @@
+---
+title: "Module 2 - Data Vizualization and Basic Transformations"
+editor: source
+---
+
+<!-- 
+See issue with underscores in MathJax equations here: https://gohugo.io/content-management/formats/#issues-with-markdown
+The solution, put backticks (`) around the LaTeX equation
+-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+### Overview and Deliverables
+
+This module focuses on visualization, which is not only one of the first things you when faced with a new dataset but also the primary way that communicate
+quantitative information with other people. We will discuss principles of good visualizations and how to use `ggplot2` for combinations of numerical and categorical
+data. ggplot2 is based on something called the grammar of graphics, which you will become familiar with as we build plots. Your first homework assignment, Lab 1, will
+be due at the end of this week. Your reading will also cover some of the basics of using R which might be a review if you already are an experienced user. Here are your
+deliverables:
+
+* 9/04: Attend the class meetup (finish the reading first if you can)
+* 9/06: Submit meetup reflections
+* 9/08: Submit [Lab 1](../assignments/labs/Lab1) on the Brightspace page for the course
+
+### Learning Objectives
+
+* Data Visualization for Numerical and Categorical Variables with `ggplot2`
+* Learn principles of good visualizations
+* tidyverse code conventions 
+* Basic Data Transofrmations with `dplyr`
+
+
+### Readings
+
+* __RDS__ (R for Data Science): [Chapters 1-4](https://r4ds.hadley.nz/whole-game)
+
+### Additional Resources:
+
+
+* [_Calling BS_: Principle of Proportional Ink](https://callingbullshit.org/tools/tools_proportional_ink.html)
+* [_Calling BS_: Misleading Axes](https://callingbullshit.org/tools/tools_misleading_axes.html)
+
+Two good articles on making honest visualizations and identifying dishonest ones.
+
+* [_Fundamentals of Data Visualization_](https://clauswilke.com/dataviz/). Claus O. Wilkey. (2019). O'Reilly. 
+
+This is my favorite modern book on data visualization, and it also uses ggplot2 as the primary tool. If you are uncertain about what visualizations might be appropriate for a given
+problem, this is a good place to check for inspiration. The intended audience is scientists but it is equally relevant for people working in other industries. Chapters 1-5 and Chapter 29
+would be good additional readings if you wanted to go a little more in depth. 
+
+* [Data Visualization: A Practical Introduction](https://socviz.co/lookatdata.html). Kieran Healey. 
+
+Well written book on R and data visualization. This is a good place to turn if you are struggling with the style of the main course textbook.
+
+
+* [_A Layered Grammar of Graphics_](https://vita.had.co.nz/papers/layered-grammar.pdf). Hadley Wickham. _Journal of computational and graphical statistics_ 19.1 (2010): 3-28.
+
+This paper explains the concepts and thinking behind ggplot2.
+
+* [ggplot2 website](https://ggplot2.tidyverse.org/). This is another excellent source of resources and information on ggplot2
+

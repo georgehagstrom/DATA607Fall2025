@@ -1,0 +1,50 @@
+---
+title: "Module 10 - Git and Collaboration"
+editor: source
+---
+
+<!-- 
+See issue with underscores in MathJax equations here: https://gohugo.io/content-management/formats/#issues-with-markdown
+The solution, put backticks (`) around the LaTeX equation
+-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+### Learning Objectives
+
+* Basic github commands
+* Github workflows and Branching
+
+
+
+### Readings
+
+* __Happy Git and GitHub for the useR__ : [Sections 15-25, 28 and 29 if you need](https://happygitwithr.com/usage-intro)
+* [httr2 API package](https://httr2.r-lib.org/)
+
+
+
+### Additional Resources:
+
+Software Carpentries [git tutorial](https://swcarpentry.github.io/git-novice/index.html)
+[Learn Git Branching interactive tutorial](https://learngitbranching.js.org/)
+[usethis package](https://usethis.r-lib.org/index.html)
+[Web APIs Book Club Page](https://dslc-io.github.io/club-wapir/) I recommend the intro slides and the httr2 specific slides.
+
+

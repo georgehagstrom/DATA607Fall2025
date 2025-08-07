@@ -1,0 +1,52 @@
+---
+title: "Module 12 - Graphs and Graph Data"
+editor: source
+---
+
+<!-- 
+See issue with underscores in MathJax equations here: https://gohugo.io/content-management/formats/#issues-with-markdown
+The solution, put backticks (`) around the LaTeX equation
+-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+### Learning Objectives
+
+* Basic Graph Theory
+* Calculate and interpret basic graph statistics
+* Construct Graphs from Data
+* Visualize graphs
+* Social Network Analysis 
+* Graph Databases
+
+
+### Readings
+
+* [Math is Fun on Graphs](https://www.mathsisfun.com/sets/graph-theory.html) 
+* [Chapter 4 and 8 from Text Mining with R](https://www.tidytextmining.com/nasa)
+* [Vignette on Train Networks in France](https://www.r-bloggers.com/2019/03/graph-analysis-using-the-tidyverse/)
+* [tidygraph tutorial](https://schochastics.github.io/tidynetAnaR/)
+
+### Optional Readings
+
+* [More Advanced tidygraph tutorial](https://data-imaginist.com/posts/2017-07-07-introducing-tidygraph/)
+* [Advanced R for Networks tutorial](https://kateto.net/wp-content/uploads/2018/03/R%20for%20Networks%20Workshop%20-%20Ognyanova%20-%202018.pdf)
+* [igraph tutorial](https://schochastics.github.io/netAnaR/)
+
+

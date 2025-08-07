@@ -1,0 +1,62 @@
+---
+title: "Module 4 - Exploratory Data Analysis"
+editor: source
+---
+
+<!-- 
+See issue with underscores in MathJax equations here: https://gohugo.io/content-management/formats/#issues-with-markdown
+The solution, put backticks (`) around the LaTeX equation
+-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+### Learning Objectives
+
+* Understand how Exploratory Data Analysis (EDA) informs Data Preparation and Modeling
+* Visualizing variation and covariation for categorical and numerical data
+* Data checks, data cleaning, outliers, missing data summary statistics 
+* Layers and Stats in ggplot
+* Reproducible Examples
+
+### Readings
+
+* __RDS__ (R for Data Science): [Chapters 8-11](https://r4ds.hadley.nz/workflow-help) (Chapter 10 is the most substantial part of the reading assignment)
+
+### Additional Reading:
+
+There are several classic texts on Exploratory Data Analysis. These are somewhat dated but contain important insights:
+
+* _Exploratory Data Analysis._ J. W. Tukey. (1977).
+* _Visualizing Data._ W. S. Cleveland. (1993). Hobart press.
+* _Exploratory data mining and data cleaning._ T. Dasu and T. Johnson. (2003). John Wiley & Sons.
+
+Here is an example of a newer book which is also excellent:
+
+* _Exploratory Data Analysis Using R_. Roland Pearson. CRC Press. (2015).
+
+
+### Videos
+
+* [Whole Game](https://www.youtube.com/watch?v=go5Au01Jrvs) Live demo of an Exploratory Data Analysis by Hadley Wickham. This isn't a super polished video but its really nice to see
+examples of experts going through their process. The code he typed and data that he used can be found on [github](https://github.com/hadley/building-permits). This video has more of a
+focus on exploring and finding patterns rather than finding problems in a poor dataset.
+
+
+
+
+

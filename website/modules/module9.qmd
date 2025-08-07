@@ -1,0 +1,49 @@
+---
+title: "Module 9 - Web Scraping and APIs"
+editor: source
+---
+
+<!-- 
+See issue with underscores in MathJax equations here: https://gohugo.io/content-management/formats/#issues-with-markdown
+The solution, put backticks (`) around the LaTeX equation
+-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+### Learning Objectives
+
+* Understand and manipulate hierarchical/web Data Structures: JSON, HTML
+* Scraping websites with R
+* Ethics: Data Privacy Issues
+
+
+### Readings
+
+* __RDS__ (R for Data Science): [Chapters 23-24](https://r4ds.hadley.nz/whole-game)
+* [OK Cupid Case Study](https://www.wired.com/2016/05/okcupid-study-reveals-perils-big-data-science)
+
+
+### Videos
+
+* [Cambridge Analytica Whistleblower](https://www.youtube.com/watch?v=FXdYSQ6nu-M)
+* [Extracting Data from the Web Part I](https://rstudio.com/resources/webinars/part-1-easy-ways-to-collect-different-types-of-data-from-the-web-with-r/)
+* [Extracting Data from the Web Part II](https://posit.co/resources/videos/part-2-easy-ways-to-collect-different-types-of-data-from-the-web-with-r/)
+
+
+

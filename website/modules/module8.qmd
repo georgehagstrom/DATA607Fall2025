@@ -1,0 +1,53 @@
+---
+title: "Module 8 - Advanced R Programming"
+editor: source
+---
+
+<!-- 
+See issue with underscores in MathJax equations here: https://gohugo.io/content-management/formats/#issues-with-markdown
+The solution, put backticks (`) around the LaTeX equation
+-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+### Learning Objectives
+
+* Different function types and reusing code
+* Iteration and flow control with _purrr_
+* Applications of iteration to data processing
+* Learn important concepts from base R
+
+
+
+### Readings
+
+* __RDS__ (R for Data Science): [Chapters 25-27](https://r4ds.hadley.nz/whole-game)
+
+The most important R package we will introduce this week is called `purrr`, which you can read more about by [clicking here](https://purrr.tidyverse.org/)
+
+### Additional Resources:
+
+* [Advanced R Programming Chapter on Functional Programming](https://adv-r.hadley.nz/functionals.html)
+
+
+
+
+
+
+

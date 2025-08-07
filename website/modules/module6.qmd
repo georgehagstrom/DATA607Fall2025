@@ -1,0 +1,66 @@
+---
+title: "Module 6 - Processing Strings and Text"
+editor: source
+---
+
+<!-- 
+See issue with underscores in MathJax equations here: https://gohugo.io/content-management/formats/#issues-with-markdown
+The solution, put backticks (`) around the LaTeX equation
+-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+### Learning Objectives
+
+* Learn to use regular expressions (regex) to find text
+* Process and transform strings in R
+* Working with factors for Categorical data
+
+
+### Readings
+
+* __RDS__ (R for Data Science): [Chapters 14, 15, 16](https://r4ds.hadley.nz/strings)
+
+### Additional Resources:
+
+
+* [Regex Buddy](https://www.regular-expressions.info/tutorial.html) 
+* [Regex Crossword](https://regexcrossword.com/challenges/beginner)
+
+Regular expressions are useful in a large number of applications. The first website provides an advanced tutorial, the second one provides fun exercises. If you are unsatisfied and want to learn even more, regular expressions are equivalent to a computer science concept known as "finite state automata". You can dive way deeper by reading these lecture notes:
+
+* [Finite State Automata](https://www.cl.cam.ac.uk/teaching/1011/RLFA/LectureNotes.pdf)
+
+
+
+* stringr package: [reference index](https://stringr.tidyverse.org/index.html). This is the tidyverse package for processing strings. If you are stuck on a string problem the solution
+is probably somewhere here
+* forcats package [reference index](https://forcats.tidyverse.org/reference/index.html) . This is the reference for a very useful package for handling categorical data
+* [Wrangling Categorical Data in R](https://peerj.com/preprints/3163/). A. McNamara and N. Horton. _The American Statistician_ (2018) Vol 72. 
+
+This paper discusses both tidyverse and base R approaches to categorical data.
+
+
+
+
+
+
+
+
+
