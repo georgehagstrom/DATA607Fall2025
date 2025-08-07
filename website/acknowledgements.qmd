@@ -1,11 +1,3 @@
-
----
-title: "Lab 1: Airbnbs in NYC"
-format: html
-editor: source
----
-
-
 ---
 title: "Acknowledgements"
 format: html

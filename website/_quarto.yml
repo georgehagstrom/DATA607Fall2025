@@ -4,11 +4,12 @@ project:
 
 website:
   page-navigation: true
-  title: "DATA 607 Fall 2024"
+  title: "DATA 607 Fall 2025"
   description: "DATA 607 - Data Acquisition and Management - CUNY School of Professional Studies"
-  site-url: "https://georgehagstrom.github.io/DATA607/"
+  site-url: "https://georgehagstrom.github.io/DATA607Fall2025/"
 
-  repo-url: https://github.com/georgehagstrom/DATA607
+  repo-url: https://github.com/georgehagstrom/DATA607Fall2025
+
   repo-actions: [edit, issue]
 
   open-graph: true
@@ -33,11 +34,11 @@ website:
       #  href: course/schedule.qmd
       #  text: "Schedule"
       - icon: github
-        href: https://github.com/georgehagstrom/DATA607
+        href: https://github.com/georgehagstrom/DATA607Fall2025 
         text: "Github"
         target: _blank
       - icon: slack
-        href: https://data607fall2024.slack.com
+        href: https://cuny-msds.slack.com/archives/C08U8QRGKQ8
         text: "Slack"
         target: _blank
       - icon: link-45deg
@@ -138,7 +139,7 @@ format:
         <link href="/fullcalendar-lib/main.css" rel="stylesheet" />
         <script type="text/javascript" src="/fullcalendar-lib/main.js"></script>
 
-freeze: false
+freeze: auto
 
 editor: source
 
