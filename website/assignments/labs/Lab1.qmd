@@ -90,7 +90,9 @@ You can read the data into R using the command:
 #| include: true
 
 
-nycbnb = read_csv("/home/georgehagstrom/work/Teaching/DATA607/website/data/nycbnb.csv")
+nycbnb = read_csv("/home/georgehagstrom/work/Teaching/DATA608/DataStory4/nyc_airbnb_listings.csv")
+
+
 ```
 
 
@@ -126,8 +128,137 @@ you can find online at the inside airbnb [data dictionary](https://docs.google.c
                                                                                                
 **Problem 3.**  Pick one of the five boroughs of NYC (Manhattan, Queens, Brooklyn, the Bronx, or Staten Island), and create a faceted histogram where each facet represents a neighborhood in your chosen borough and displays the distribution of Airbnb prices in that neighborhood. Think critically about whether it makes more sense to stack the facets on top of each other in a column, lay them out in a row, or wrap them around. Along with your visualization, include your reasoning for the layout you chose for your facets.
 
+R
+
+```{r}
+#| label: manhattan-price-histogram
+#| fig-width: 10
+#| fig-height: 8
+
+library(tidyverse)
+# Make sure the nyc_airbnb dataset is loaded first
+
+nyc_airbnb = nycbnb
+
+nyc_airbnb |>
+  filter(borough == "Manhattan", price < 1000) |>
+  ggplot(aes(x = price)) +
+  geom_histogram(binwidth = 50, fill = "#FF5A5F", color = "white") +
+  facet_wrap(~ neighborhood) +
+  labs(
+    title = "Distribution of Airbnb Prices by Neighborhood in Manhattan",
+    subtitle = "For listings with a nightly price under $1000",
+    x = "Price per Night ($)",
+    y = "Number of Listings"
+  ) +
+  theme_bw()
+```
+
+```{r}
+#| label: manhattan-price-histogram-improved
+#| fig-width: 10
+#| fig-height: 12
+
+nyc_airbnb |>
+  filter(borough == "Manhattan", price < 1000) |>
+  ggplot(aes(x = price)) +
+  geom_histogram(aes(y = after_stat(density)),binwidth = 50, fill = "#FF5A5F", color = "white") +
+  # 1. Control the layout with fewer columns
+  facet_wrap(~ neighborhood, ncol = 5) +
+  labs(
+    title = "Distribution of Airbnb Prices by Neighborhood in Manhattan",
+    subtitle = "For listings with a nightly price under $1000",
+    x = "Price per Night ($)",
+    y = "Number of Listings"
+  ) +
+  theme_bw() +
+  # 2. Adjust text sizes to be less obtrusive
+  theme(
+    strip.text = element_text(size = 8),      # Smaller neighborhood labels
+    axis.title = element_text(size = 10),     # Slightly smaller axis titles
+    axis.text = element_text(size = 7)        # Smaller numbers on the axes
+  )
+
+```
+
 **Problem 4.**  Use a single pipeline to identity the neighborhoods city-wide with the top five median listing prices
 that have a minimum of 50 listings. Then, in another pipeline filter the data for these five neighborhoods and make ridge plots of the distributions of listing prices in these five neighborhoods. In a third pipeline calculate the minimum, mean, median, standard deviation, IQR, and maximum listing price in each of these neighborhoods. Use the visualization and the summary statistics to describe the distribution of listing prices in the neighborhoods. (Your answer will include three pipelines, one of which ends in a visualization, and a narrative.)
+
+```{r}
+
+#| label: find-top-5-neighborhoods
+
+library(tidyverse)
+# Ensure the nyc_airbnb dataset is loaded
+# nyc_airbnb <- read_csv("nyc_airbnb_listings.csv")
+
+# Create a vector of the top 5 neighborhood names
+top_5_neighbourhoods <- nyc_airbnb |>
+  group_by(neighborhood) |>
+  summarise(
+    median_price = median(price, na.rm = TRUE),
+    listing_count = n()
+  ) |>
+  filter(listing_count >= 50) |>
+  arrange(desc(median_price)) |>
+  slice_head(n = 5) |>
+  pull(neighborhood)
+
+# Print the names to see which they are
+top_5_neighbourhoods
+
+
+
+```
+
+
+```{r}
+#| label: ridge-plot-top-5
+#| fig-width: 8
+#| fig-height: 6
+
+library(ggridges)
+
+# Filter for the top 5 neighborhoods and prices < $1500, then plot
+nyc_airbnb |>
+  filter(neighborhood %in% top_5_neighbourhoods, price < 1500) |>
+  ggplot(aes(x = price,
+             y = fct_reorder(neighborhood, price, .fun = median),
+             fill = neighborhood)) +
+  geom_density_ridges(alpha = 0.8, scale = 0.9) +
+  labs(
+    title = "Price Distribution in NYC's Most Expensive Neighborhoods",
+    subtitle = "For neighborhoods with at least 50 listings",
+    x = "Price per Night ($)",
+    y = "Neighborhood"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+
+
+
+```
+
+```{r}
+#| label: summary-stats-top-5
+
+nyc_airbnb |>
+  filter(neighborhood %in% top_5_neighbourhoods) |>
+  group_by(neighborhood) |>
+  summarise(
+    min_price = min(price, na.rm = TRUE),
+    mean_price = mean(price, na.rm = TRUE),
+    median_price = median(price, na.rm = TRUE),
+    st_dev = sd(price, na.rm = TRUE),
+    iqr = IQR(price, na.rm = TRUE),
+    max_price = max(price, na.rm = TRUE)
+  ) |>
+  arrange(desc(median_price))
+
+
+
+```
 
 
 

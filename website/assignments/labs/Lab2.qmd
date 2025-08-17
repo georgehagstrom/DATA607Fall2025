@@ -1,6 +1,6 @@
 ---
 title: "Lab 2: Data Tidying"
-format: pdf
+format: html
 editor: source
 ---
 
