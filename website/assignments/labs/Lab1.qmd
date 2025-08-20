@@ -50,7 +50,7 @@ library(ggridges)
 
 ## Data
 
-*The data for this assignment can be found on my github page [by clicking here and downloading nycbnb.csv](https://github.com/georgehagstrom/DATA607Fall2025/tree/main/website/data/nycbnb.csv)*
+*The data for this assignment can be found on my github page [by clicking here and downloading nycbnb.csv](https://github.com/georgehagstrom/DATA607Fall2025/blob/master/data/nyc_airbnb_listings_short.csv)*
 
 You can read the data into R using the command:
 
@@ -60,12 +60,13 @@ You can read the data into R using the command:
 #| include: true
 
 
-nycbnb = read_csv("/home/georgehagstrom/work/Teaching/DATA608/DataStory4/nyc_airbnb_listings.csv")
+nycbnb = read_csv("https://github.com/georgehagstrom/DATA607Fall2025/blob/master/data/nyc_airbnb_listings_short.csv")
 
 
 ```
 
-where you should replace `/home/georgehagstrom/work/Teaching/DATA607/website/data/nycbnb.csv"nycbnb.csv` with the local path to your file. 
+This will download it from my site and read it directly, but you may want to download it into a local directory and load it from there as well. In that case you can use `read_csv(where your file is located)` to laod it.
+
 
 You can view the dataset as a spreadsheet using the `View()` function.
 Note that you should not put this function in your R Markdown document, but instead type it directly in the Console, as it pops open a new window (and the concept of popping open a window in a static document doesn't really make sense...).

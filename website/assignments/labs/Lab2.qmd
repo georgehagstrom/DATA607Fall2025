@@ -68,7 +68,14 @@ the original recipe, i.e. it should look like this:
 
 where the data-type of `Ingredient_Rank` is an integer. Hint: Use the `parse_number()` function in mutate after your initial pivot. 
 
-**Problem 4:** Some of the ingredients in the ingredient list have different names, but are nearly the same thing. An example of such a pair is `Lemon Juice` and `Juice of a lemon`, which are considered different ingredients in this dataset, but which perhaps should be treated as the same depending on the analysis you are doing. Make a list of the ingredients appearing in the ingredient list ranked by how commonly they occur along with the number of occurrences, and print the first 10 elements of the list here. Then check more ingredients (I suggest looking at more ingredients and even sorting them alphabetically using `arrange(asc(ingredient)))` and see if you can spot pairs of ingredients that are similar but have different names. Use `if_else`( [click here for if_else](https://dplyr.tidyverse.org/reference/if_else.html) ) or `case_when` in combination with `mutate` to make it so that the pairs of ingredients you found have the same name. You don't have to find all pairs, but find at least 5 pairs of ingredients to rename. Because the purpose of this renaming is to facilitate a hypothetical future analysis, you can choose your own criteria for similarity as long as it is somewhat justifiable. 
+**Problem 4:** Some of the ingredients in the ingredient list have different names, but are nearly the same thing. An example of such a pair is `Lemon Juice` and `Juice of a lemon`, which are considered different ingredients in this dataset, but which perhaps should be treated as the same depending on the analysis you are doing. 
+
+- Make a list of the ingredients appearing in the ingredient list ranked by how commonly they occur along with the number of occurrences, and print the first 10 elements of the list here. Then check more ingredients (I suggest looking at more ingredients and even sorting them alphabetically using `arrange(asc(ingredient)))` and see if you can spot pairs of ingredients that are similar but have different names. Use `if_else`( [click here for if_else](https://dplyr.tidyverse.org/reference/if_else.html) ) or `case_when` in combination with `mutate` to make it so that the pairs of ingredients you found have the same name. You don't have to find all pairs, but find at least 5 pairs of ingredients to rename. Because the purpose of this renaming is to facilitate a hypothetical future analysis, you can choose your own criteria for similarity as long as it is somewhat justifiable. 
+
+- This type of fuzzy text matching is a tedious problem to do by hand and is the sort of problem where an LLM can be very effective. 
+Pick two different LLMs and prompt them to analyze the list of ingredients to identify groups of ingredients with multiple names. Investigate the lists that you found using the LLMs and
+compare them to each-other and the ingredients you identified by hand. How much overlap is there between the two LLM solutions? Do you agree with all the ingredient names that were
+paired together?
 
 Notice that there are some ingredients that appear to be two or more ingredients strung together with commas. These would be candidates for more cleaning though this exercise doesn't ask you to fix them.
 
@@ -81,57 +88,3 @@ Note: You may be interested to read about the `widyr` package here: [widyr page]
 
 
 
-```{r setup3, echo=TRUE, include=TRUE, message= FALSE}
-library(tidyverse)
-library(ggplot2)
-
-flights = read_csv("labData/flightdelays.csv")
-knitr::opts_chunk$set(echo = TRUE)
-flights_clean <- flights %>%
-  rename(Airline = ...1, Status = ...2) %>%
-  fill(Airline) %>%
-  pivot_longer(cols = Los_Angeles:Seattle,
-               names_to = "City",
-               values_to = "Flights") %>%
-  pivot_wider(names_from = Status, values_from = Flights, names_prefix = "Flights_") %>%
-  group_by(Airline, City) %>%
-  summarise(
-    On_Time_Flights = sum(Flights_On_Time, na.rm = TRUE),
-    Delayed_Flights = sum(Flights_Delayed, na.rm = TRUE)
-  ) %>%
-  mutate(
-    Total_Flights = On_Time_Flights + Delayed_Flights,
-    Fraction_On_Time = On_Time_Flights / Total_Flights,
-    Fraction_Delayed = Delayed_Flights / Total_Flights
-  ) %>%
-  ungroup()
-
- long_flights_clean <- flights_clean %>%
-  pivot_longer(
-    cols = c(Fraction_On_Time, Fraction_Delayed),
-    names_to = "Flight_Type",
-    values_to = "Fraction"
-  )
-ggplot(long_flights_clean, aes(x = Fraction,
-                               y = City, color = Flight_Type, shape = Flight_Type)) +
-  geom_point(size = 3) +                         
-  geom_line(aes(group = City), color = "grey", size = .8, linetype = "dotted") + 
-  facet_wrap(~Airline, scales = "free_x") +                        
-  labs(
-    x = "Fraction of Flights",
-    y = "City",
-    title = "Flight Delay Comparison by Airline and City"
-  ) +
-  theme_minimal() +
-  theme(
-    axis.title.x = element_text(size = 10),      
-    axis.title.y = element_text(size = 10),      
-    axis.text.x = element_text(size = 8),       
-    axis.text.y = element_text(size = 8),       
-    plot.title = element_text(size = 12, face = "bold"),  
-    strip.text = element_text(size = 10),        
-    legend.text = element_text(size = 10),       
-    legend.title = element_text(size = 10)       
-  )
-
-```
