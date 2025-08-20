@@ -4,22 +4,22 @@ format: revealjs
 logo: CUNY_SPS_Logo_Wide.png 
 footer: "DATA 607"
 author: "George I. Hagstrom"
-date: "08/28/2024"
+date: "08/26/2025"
 ---
 
 ## What is Data Science?
 
 . . .
 
-* Data science is a "discipline that allows you to transform raw data into understanding, insight, and knowledge"
+-   Data science is a "discipline that allows you to transform raw data into understanding, insight, and knowledge"
 
 . . .
 
-* I hear often: "Data Science is just statistics with a clever brand name"
+-   I hear often: "Data Science is just statistics with a clever brand name"
 
 . . .
- 
-* Is this a misconception?
+
+-   Is this a misconception?
 
 ## Data Science Workflow
 
@@ -93,7 +93,7 @@ Please forgive the Pie Chart
 
 ## Intro/Case Study
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ![Trait Correlations in Marine Bacteria](TraitFigure.png){width="80%"}
 :::
@@ -103,7 +103,7 @@ Please forgive the Pie Chart
 -   Getting data for this plot took months.....
 -   Many sources, data formats, quality issues, processing
 :::
-:::
+:::::
 
 ## Learning objectives
 
@@ -115,6 +115,7 @@ By the end of the course, you will have a foundation of skills in the Data Scien
 -   Collaborate with Git and GitHub
 -   Introduce you to distributed computing and other tools for large datasets
 -   Improve your programming ability
+-   Know how to use LLMs to serve your goals
 
 ## Vignette: Electricity and CO2
 
@@ -134,25 +135,29 @@ By the end of the course, you will have a foundation of skills in the Data Scien
 
 ## Link to the Vignette
 
-You can download the vignette from my github by [clicking here](https://github.com/georgehagstrom/DATA607/tree/main/website/modules/module1files/ElectricityVignette.qmd)
+You can download the vignette from my github by [clicking here](https://github.com/georgehagstrom/DATA607Fall2025/tree/main/website/modules/module1files/ElectricityVignette.qmd)
 
 Remember to [download the data](https://github.com/owid/energy-data/blob/master/owid-energy-data.csv) if you want to render the file.
 
 ## Syllabus and Course Site
 
-* Full Syllabus on the course website:
-  - [https://georgehagstrom.github.io/DATA607/](https://georgehagstrom.github.io/DATA607/course/syllabus.html)
-  - Course website contains links to weekly reading and homework assignments, meetup videos, course schedule, and other course materials
-
-* Use the Brightspace page to submit assignments, either in `pdf` format or a link to an `html` on some site I can access (ie `github` or `rpubs`)
+-   Full Syllabus on the course website:
+    -   [https://georgehagstrom.github.io/DATA607Fall2025/](https://georgehagstrom.github.io/DATA607Fall2025/course/syllabus.html)
+    -   Course website contains links to weekly reading and homework assignments, meetup videos, course schedule, and other course materials
+-   Use the Brightspace page to submit assignments, either in `pdf` format or a link to an `html` on some site I can access (ie `github` or `rpubs`)
 
 ## Meetups
 
-* 6:45-7:45 on Wednesday evening. Attending live preferred, watch video after if you can't
+-   6:45-7:45 on Monday evening (except today). Attending live preferred, watch video after if you can't
 
-* Office Hours: On Zoom by appointment
+-   Office Hours: On Zoom by appointment
 
-* Communication and collaboration: <https://fall2024data607.slack.com>
+-   Might try one "live coding" session per week
+
+-   Communication and collaboration: <https://cuny-msds.slack.com/archives/C08U8QRGKQ8>
+    - Program workspace invite: <https://join.slack.com/t/cuny-msds/shared_invite/zt-3ans1b3dz-5HhIols06wNraCMUhZ~jXw>
+
+
 
 ## Assignments
 
@@ -164,6 +169,8 @@ Remember to [download the data](https://github.com/owid/energy-data/blob/master/
 -   Data Science in Context Presentation (5%)
     -   One 5 minute presentation, sign up for your presentation slot asap!
 -   Meetup Reflections and Introduction (10%)
+
+## How to do your homework
 
 ## Schedule
 
@@ -181,7 +188,7 @@ Remember to [download the data](https://github.com/owid/energy-data/blob/master/
 
 ## Tidyverse: Opinionated Ecosystem
 
-::: columns
+::::: columns
 ::: {.column width="35%"}
 ![](TidyVerse.png)
 :::
@@ -192,7 +199,7 @@ Remember to [download the data](https://github.com/owid/energy-data/blob/master/
 -   Strong Core, Many Extensions
 -   Advantages and Disadvantages
 :::
-:::
+:::::
 
 ## What to do this week? {.scrollable .smaller}
 
@@ -203,16 +210,31 @@ Remember to [download the data](https://github.com/owid/energy-data/blob/master/
     iv) Appendix on R Help Files
 2.  Get software installed and configured:
 
-```{=html}
 <!-- -->
-```
-i)  R, RStudio, git, latex
 
-```{=html}
+i)  R, RStudio/Positron, git, latex
+
 <!-- -->
-```
+
 3.  Write a post introducing yourself on Brightspace Discussions
 4.  Sign up for your Data Science in Context Presentation
+
+
+## RStudio versus Positron
+
+- Until recently *RStudio* was the most common R IDE
+- Now community cautiously switching to *Positron*
+- Use Positron if:
+    - You have used VS Code before/have programming experience
+    - Want to future proof yourself
+- Use RStudio if:
+    - You like it more than positron
+
+
+## Community Building/Networking
+
+- ![](August_2025_Meetup_Card.png)
+- Once per month [nyhackr.org](nyhackr.org)
 
 ## Image References
 

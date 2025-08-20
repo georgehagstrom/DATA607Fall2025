@@ -28,7 +28,7 @@ Here are the first steps:
 
 I recorded a short video which introduces me and gives you more background on the course:
 
-{{< video    https://youtu.be/rhHit0cO4wg
+{{< video    https://youtu.be/jn1w5rc6YbY
     title='Intro to DATA 607' 
 >}}
 
