@@ -13,8 +13,10 @@ The most important book chapters which cover the techniques you will practice he
 Also helpful are the [`tidyr` vignette on pivoting](https://tidyr.tidyverse.org/articles/pivot.html) and the
 ggplot help page on the [geom_dotplot](https://ggplot2.tidyverse.org/reference/geom_dotplot.html).
 
+## Instructions
+
 Submit your completed assignment on the course brightspace page by uploading your `.qmd` file and a compiled
-`pdf` or link to a compiled `html`, which you could host on your `github` or `rpubs` page as you wish. 
+`pdf` to brightspace. 
 
 
 ## Part 1: Airplane flight delays
@@ -75,12 +77,16 @@ where the data-type of `Ingredient_Rank` is an integer. Hint: Use the `parse_num
 - This type of fuzzy text matching is a tedious problem to do by hand and is the sort of problem where an LLM can be very effective. 
 Pick two different LLMs and prompt them to analyze the list of ingredients to identify groups of ingredients with multiple names. Investigate the lists that you found using the LLMs and
 compare them to each-other and the ingredients you identified by hand. How much overlap is there between the two LLM solutions? Do you agree with all the ingredient names that were
-paired together?
+paired together? For this problem report the prompts that you used in addition to the output- put some thought into the formatting of you show this output, you can also submit csv files
+that show which values go together instead.
 
-Notice that there are some ingredients that appear to be two or more ingredients strung together with commas. These would be candidates for more cleaning though this exercise doesn't ask you to fix them.
+The class has not yet covered how to automate the replacement you did "by hand" in the first part of this question, but in Module 7 you will learn about a tool called
+`left_join` that when combined with `if_else` lets you rename everything based on the LLM output in two lines of code. 
+
+Also Notice that there are some ingredients that appear to be two or more ingredients strung together with commas. These would be candidates for more cleaning though this exercise doesn't ask you to fix them.
 
 **Problem 5:** Some operations are easier to do on `wide` data rather than `tall` data.
-Find the 10 most common pairs of ingredients occurring in the top 2 ingredients in a recipe. It is much
+Find the 10 most common pairs of ingredients occurring in the top 2 ingredients in a recipe (using the renamed data). It is much
 easier to do this with a `wide` dataset, so use `pivot_wider` to change the data so that each row contains all of the ingredients of a single cocktail, just like in the format of the original data-set. Then use `count`
 on the `1` and `2` columns to determine the most common pairs (see chapter 3 for a refresher on `count`).
 
