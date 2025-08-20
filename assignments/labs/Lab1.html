@@ -5040,12 +5040,12 @@ vertical-align: -.125em;
 </section>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
-<p><em>The data for this assignment can be found on my github page <a href="https://github.com/georgehagstrom/DATA607Fall2025/tree/main/website/data/nycbnb.csv">by clicking here and downloading nycbnb.csv</a></em></p>
+<p><em>The data for this assignment can be found on my github page <a href="https://github.com/georgehagstrom/DATA607Fall2025/blob/master/data/nyc_airbnb_listings_short.csv">by clicking here and downloading nycbnb.csv</a></em></p>
 <p>You can read the data into R using the command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>nycbnb <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">&quot;/home/georgehagstrom/work/Teaching/DATA608/DataStory4/nyc_airbnb_listings.csv&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>nycbnb <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://github.com/georgehagstrom/DATA607Fall2025/blob/master/data/nyc_airbnb_listings_short.csv&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>where you should replace <code>/home/georgehagstrom/work/Teaching/DATA607/website/data/nycbnb.csv&quot;nycbnb.csv</code> with the local path to your file.</p>
+<p>This will download it from my site and read it directly, but you may want to download it into a local directory and load it from there as well. In that case you can use <code>read_csv(where your file is located)</code> to laod it.</p>
 <p>You can view the dataset as a spreadsheet using the <code>View()</code> function. Note that you should not put this function in your R Markdown document, but instead type it directly in the Console, as it pops open a new window (and the concept of popping open a window in a static document doesn’t really make sense…). When you run this in the console, you’ll see the following <strong>data viewer</strong> window pop up.</p>
 </section>
 <section id="exercises" class="level1">
