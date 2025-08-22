@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.54">
 
   <meta name="author" content="George I. Hagstrom">
-  <meta name="dcterms.date" content="2025-08-26">
+  <meta name="dcterms.date" content="2025-08-25">
   <title>DATA 607 Fall 2025 – Meetup 1: Data Science Workflow and Toolkit</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -339,7 +404,7 @@ George I. Hagstrom
 </div>
 </div>
 
-  <p class="date">2025-08-26</p>
+  <p class="date">2025-08-25</p>
 </section>
 <section id="what-is-data-science" class="slide level2">
 <h2>What is Data Science?</h2>
@@ -478,7 +543,7 @@ George I. Hagstrom
 <section id="meetups" class="slide level2">
 <h2>Meetups</h2>
 <ul>
-<li><p>6:45-7:45 on Monday evening (except today). Attending live preferred, watch video after if you can’t</p></li>
+<li><p>6:45-7:45 on Monday evening. Attending live preferred, watch video after if you can’t</p></li>
 <li><p>Office Hours: On Zoom by appointment</p></li>
 <li><p>Might try one “live coding” session per week</p></li>
 <li><p>Communication and collaboration: <a href="https://cuny-msds.slack.com/archives/C08U8QRGKQ8" class="uri">https://cuny-msds.slack.com/archives/C08U8QRGKQ8</a></p>
@@ -506,6 +571,86 @@ George I. Hagstrom
 </section>
 <section id="how-to-do-your-homework" class="slide level2">
 <h2>How to do your homework</h2>
+<ul>
+<li>Quarto Markdown Format
+<ul>
+<li>Contains both code and content</li>
+</ul></li>
+<li>Templates on the website</li>
+<li>Submit a <code>pdf</code> and <code>qmd</code> file</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="sc">---</span></span>
+<span id="cb1-2"><a></a>title<span class="sc">:</span> <span class="st">"Lab 7: Rectangling and Webscraping"</span></span>
+<span id="cb1-3"><a></a>format<span class="sc">:</span> pdf</span>
+<span id="cb1-4"><a></a>editor<span class="sc">:</span> source</span>
+<span id="cb1-5"><a></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>html</code> files do not contain figures, so I won’t be able to see them if you submit an html!</li>
+</ul>
+</section>
+<section id="using-llms" class="slide level2">
+<h2>Using LLMs</h2>
+<ul>
+<li>LLMs have changed the world</li>
+<li>We want you to be experts in them</li>
+<li>Best practices for education are not known</li>
+</ul>
+
+<img data-src="chatGPT.png" class="r-stretch"></section>
+<section id="research-on-llms-in-education" class="slide level2">
+<h2>Research on LLMs in Education</h2>
+<ul>
+<li>Early days, but mixed results</li>
+<li>Opinions range from ‘LLMs stop you from being able to think for yourself’ to ‘Concern over LLMs is just another moral panic’</li>
+<li><a href="https://www.media.mit.edu/publications/your-brain-on-chatgpt/">Your Brain on ChatGPT</a> (I’m skeptical)</li>
+<li><a href="https://arxiv.org/abs/2506.11015">Why knowledge is important in the age of AI</a> (makes excellent points)</li>
+</ul>
+</section>
+<section id="research-on-llms-in-education-1" class="slide level2">
+<h2>Research on LLMs in Education</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Abstract</strong></p>
+</div>
+<div class="callout-content">
+<p>In the age of generative AI and ubiquitous digital tools, human cognition faces a structural paradox: as external aids become more capable, internal memory systems risk atrophy. Drawing on neuroscience and cognitive psychology, this paper examines how heavy reliance on AI systems and discovery-based pedagogies may impair the consolidation of declarative and procedural memory – systems essential for expertise, critical thinking, and long-term retention. We review how tools like ChatGPT and calculators can short-circuit the retrieval, error correction, and schema-building processes necessary for robust neural encoding. Notably, we highlight striking parallels between deep learning phenomena such as “grokking” and the neuroscience of overlearning and intuition. Empirical studies are discussed showing how premature reliance on AI during learning inhibits proceduralization and intuitive mastery. We argue that effective human-AI interaction depends on strong internal models – biological “schemata” and neural manifolds – that enable users to evaluate, refine, and guide AI output. The paper concludes with policy implications for education and workforce training in the age of large language models.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="what-i-have-seen" class="slide level2">
+<h2>What I have Seen</h2>
+
+<img data-src="vibecodingmeme.png" class="r-stretch"><ul>
+<li>Do not let yourself become reliant on LLMs</li>
+</ul>
+</section>
+<section id="my-recommendations" class="slide level2">
+<h2>My Recommendations</h2>
+<ul>
+<li>Ask LLMs how something works</li>
+<li>Use LLMs for things you can easily check that are low stakes</li>
+<li>Use LLMs to check for grammar issues, to reword a sentence you struggle with</li>
+<li>Understand model differences and use professional tools (You can get 1 year free of google AI Pro…)</li>
+<li>Experiment!</li>
+</ul>
+</section>
+<section id="my-recommendations-1" class="slide level2">
+<h2>My recommendations</h2>
+<ul>
+<li>Don’t copy and paste
+<ul>
+<li>Type by hand LLM generated code, understand how it works, maybe even delete it and try to recreate it</li>
+</ul></li>
+<li>Don’t use it to write or analyze for you
+<ul>
+<li>Writing is thinking</li>
+</ul></li>
+<li>Don’t turn in something you don’t understand</li>
+</ul>
 </section>
 <section id="schedule" class="slide level2">
 <h2>Schedule</h2>
@@ -540,7 +685,6 @@ George I. Hagstrom
 <li>Readings:
 <ol type="i">
 <li>Intro and Chapter 28 of R4DS</li>
-<li>Sections 1-15 of Happy Git</li>
 <li>Quarto Tutorial</li>
 <li>Appendix on R Help Files</li>
 </ol></li>
@@ -552,8 +696,8 @@ George I. Hagstrom
 </ol>
 <!-- -->
 <ol start="3" type="1">
-<li>Write a post introducing yourself on Brightspace Discussions</li>
-<li>Sign up for your Data Science in Context Presentation</li>
+<li>Write a post introducing yourself in the course slack channel</li>
+<li><a href="https://doodle.com/sign-up-sheet/participate/744da90f-8f9a-4f64-9924-67838dd9c5a4/select">Sign up for your Data Science in Context Presentation</a></li>
 </ol>
 </section>
 <section id="rstudio-versus-positron" class="slide level2">
@@ -806,6 +950,44 @@ George I. Hagstrom
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
