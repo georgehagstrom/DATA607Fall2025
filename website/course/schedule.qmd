@@ -1,0 +1,35 @@
+---
+title: "DATA607 - Data Acquisition and Management"
+tbl-colwidths: [10,10,20,5,5,5,5,5,5,5]
+editor_options: 
+  chunk_output_type: console
+---
+
+## Meetup Link:
+
+[Click Here to Join the Meetups on Zoom](https://us02web.zoom.us/j/81858708616?pwd=eE9ZGJFco9iicq3BsmANIfWUVLwy0x.1#success)
+
+
+
+| Date  | Start Time  | Module    | Slides |  Video  | Main Deliverables |
+|--------|--------|------|------|------|
+| Aug 25 | 06:45PM | [Data Science Workflows and Toolkit](../modules/module1) | [Meetup 1 Slides](../meetups/Meetup1/Meetup1.qmd)  | [Meetup 1 Video](https://youtu.be/kHq4tzLh0R8)  |    |
+| Sep 1 | 06:45PM | [Visualizing Data ](../modules/module2) | [Meetup 2 Slides](../meetups/Meetup2/Meetup2.qmd)   | [Meetup 2 Video](https://youtu.be/qDcND5-X9NA)  | Sep 7	[Lab 1](../assignments/labs/Lab1)   |
+| Sep 8 | 06:45PM | [Data Tidying and Wrangling](../modules/module3) | [Meetup 3 Slides](../meetups/Meetup3/Meetup3.qmd)  | [Meetup 3 Vide](https://youtu.be/YkfFxYUIt2o)  |Sep 14 [Lab 2](../assignments/labs/Lab2.qmd)  |
+| Sep 15 | 06:45PM | [Exploratory Data Analysis ](../modules/module4) | [Meetup 4 Slides](../meetups/Meetup4/Meetup4.qmd)  | [Meetup 4 Video](https://youtu.be/56tRC__S3Lk)  | Sep 21	[Lab 3](../assignments/labs/Lab3.qmd)  |
+| Sep 22 | 06:45PM | [Data Transformations ](../modules/module5) | [Meetup 5 Slides](../meetups/Meetup5/Meetup5.qmd) | [Meetup 5 Video](https://youtu.be/h1dxQhkbXm8)  | Sep 28	[Lab 4](../assignments/labs/Lab4.qmd)   |
+| Sep 29 | 06:45PM | [Text and Strings ](../modules/module6) | [Meetup 6 Slides](../meetups/Meetup6/Meetup6.qmd )  | [Meetup 6 Video](https://youtu.be/1A9ZpfJ055g)  | Oct 5	[Lab 5](../assignments/labs/Lab5.qmd)  |
+| Oct 6 | 06:45PM | [Databases and SQL](../modules/module7) | [Meetup 7 Slides](../meetups/Meetup7/Meetup7.qmd)   | [Meetup 7 Video](https://youtu.be/Z8yLzUgf12g)   | Oct 12	[Lab 6](../assignments/labs/Lab6)  |
+| Oct 13 | 06:45PM | [Advanced R Programming ](../modules/module8) | [Meetup 8 Slides](../meetups/Meetup8/Meetup8.qmd)  | [Meetup 8 Video](https://youtu.be/LJj-53xr9_U)  | Oct 19 [Proj. Proposal](../assignments/proposal)  |
+| Oct 20 | 06:45PM | [Webscraping and APIs](../modules/module9) | [Meetup 9 Slides](../meetups/Meetup9/Meetup9.qmd)  | [Meetup 9 Video]( https://youtu.be/XbqkGugs2eY)  | Oct 26 [Lab 7](../assignments/labs/Lab7)   |
+| Oct 27 | 06:45PM | [Git and Collaboration ](../modules/module10) | [Meetup 10 Slides](../meetups/Meetup10/Meetup10.qmd)  | [Meetup 10 Video](https://youtu.be/SVHubCKESYk)  | Nov 2 [TV Create](../assignments/tidygit/tidycreate) |
+| Nov 3 | 06:45PM | [Tidy Text and NLP](../modules/module11) | [Meetup 11 Slides](../meetups/Meetup11/Meetup11.qmd) | [Meetup 11 Video](https://youtu.be/52hArpEfLUk ) | Nov 9 	[Lab 8](../assignments/labs/Lab8) |
+| Nov 10 | 06:45PM | [Graphs and Graph Data ](../modules/module12) | [Meetup 12 Slides](../meetups/Meetup12/Meetup12.qmd)   | [Meetup 12 Video](https://youtu.be/KZ1lU7w-bfI)  | Nov 16 	[Lab 9](../assignments/labs/Lab9)   |
+| Nov 17 | 06:45PM | [Big Data ](../modules/module13) | [Meetup 13 Slides](../meetup/Meetup13/Meetup13.qmd)  | [Meetup 13 Video](https://youtu.be/b0kRhh5naEQ)  | Nov 23 [TV Extend](../assignments/tidygit/tidyextend)  |
+| Nov 24 |         | No Meetup (Thanksgiving) | | | |
+| Dec 1  | 06:45PM | [Cloud Computing ](../modules/module14) | [Meetup 14 Slides](../meetup/Meetup14/Meetup14.qmd)  | [Meetup 14 Video](https://youtu.be/jWIIJTSWpoI)   | Dec 7 [Lab 10](../assignments/labs/Lab10)  |
+| Dec 8  | 06:45PM | | | | Dec 14 [Final Project](../assignments/project)  | 
+
+: Course Schedule {.striped .hover}
+
+
