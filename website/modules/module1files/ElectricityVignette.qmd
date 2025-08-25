@@ -1,6 +1,6 @@
 ---
 title: "Carbon Intensity and Power Generation"
-format: pdf
+format: html
 author: "George I. Hagstrom"
 ---
 
@@ -189,7 +189,7 @@ the [Data Science in a Box Course](https://github.com/tidyverse/datascience-box/
 
 
 
-### Appendix (#appendix)
+### Appendix 
 
 Below is a partial list of countries in the dataset:
 
