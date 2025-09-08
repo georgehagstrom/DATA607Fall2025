@@ -1359,13 +1359,6 @@
     "text": "Meetup Reflection/One Minute Paper\nPlease fill out the following google form after the meeting or watching the video:\nClick Here"
   },
   {
-    "objectID": "meetups/Meetup3/Meetup3.html#lab-1-and-tidyverse",
-    "href": "meetups/Meetup3/Meetup3.html#lab-1-and-tidyverse",
-    "title": "Meetup 3: Tidy Data",
-    "section": "Lab 1 and Tidyverse",
-    "text": "Lab 1 and Tidyverse\n\nGraded most of Lab 1\nCheck the feedback even if your score was great\nBiggest challenge was faceted histogram\nTidyverse vs. Base R"
-  },
-  {
     "objectID": "meetups/Meetup3/Meetup3.html#unstructured-data",
     "href": "meetups/Meetup3/Meetup3.html#unstructured-data",
     "title": "Meetup 3: Tidy Data",
@@ -1987,14 +1980,14 @@
     "href": "assignments/labs/Lab2.html",
     "title": "Lab 2: Data Tidying",
     "section": "",
-    "text": "In this assignment you will work to tidy, clean, and analyze two different datasets, the first is a small dataset contained in a csv file called flightdelays.csv, and the second called MixedDrinkRecipes-Prep.csv.\nThe most important book chapters which cover the techniques you will practice here are R4DS Chapters 5 and 7. Also helpful are the tidyr vignette on pivoting and the ggplot help page on the geom_dotplot."
+    "text": "In this assignment you will work to tidy, clean, and analyze two different datasets, the first is a small dataset contained in a csv file called flightdelays.csv, and the second called MixedDrinkRecipes-Prep.csv.\nThe most important book chapters which cover the techniques you will practice here are R4DS Chapters 5 and 7. You may find this tutorial page for a description for how to make multiway dot-plots"
   },
   {
     "objectID": "assignments/labs/Lab2.html#overview",
     "href": "assignments/labs/Lab2.html#overview",
     "title": "Lab 2: Data Tidying",
     "section": "",
-    "text": "In this assignment you will work to tidy, clean, and analyze two different datasets, the first is a small dataset contained in a csv file called flightdelays.csv, and the second called MixedDrinkRecipes-Prep.csv.\nThe most important book chapters which cover the techniques you will practice here are R4DS Chapters 5 and 7. Also helpful are the tidyr vignette on pivoting and the ggplot help page on the geom_dotplot."
+    "text": "In this assignment you will work to tidy, clean, and analyze two different datasets, the first is a small dataset contained in a csv file called flightdelays.csv, and the second called MixedDrinkRecipes-Prep.csv.\nThe most important book chapters which cover the techniques you will practice here are R4DS Chapters 5 and 7. You may find this tutorial page for a description for how to make multiway dot-plots"
   },
   {
     "objectID": "assignments/labs/Lab2.html#instructions",
