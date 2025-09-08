@@ -10,8 +10,7 @@ In this assignment you will work to tidy, clean, and analyze two different datas
 dataset contained in a csv file called [flightdelays.csv](https://github.com/georgehagstrom/DATA607Fall2025/blob/main/website/assignments/labs/labData/flightdelays.csv), and the second called [MixedDrinkRecipes-Prep.csv](https://github.com/georgehagstrom/DATA607Fall2025/tree/main/website/assignments/labs/labData/MixedDrinkRecipes-Prep.csv).
 
 The most important book chapters which cover the techniques you will practice here are R4DS Chapters 5 and 7. 
-Also helpful are the [`tidyr` vignette on pivoting](https://tidyr.tidyverse.org/articles/pivot.html) and the
-ggplot help page on the [geom_dotplot](https://ggplot2.tidyverse.org/reference/geom_dotplot.html).
+You may find helpful [this tutorial page for a description for how to make multiway dot-plots](https://uc-r.github.io/cleveland-dot-plots)
 
 ## Instructions
 
