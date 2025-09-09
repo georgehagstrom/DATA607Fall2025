@@ -1541,18 +1541,18 @@
     "text": "When to use each pivot\n\npivot_wider tidies data where measurements are spread across multiple rows\n\n\n\n\n\n\nstation\ndate\nmeasure\nvalue\n\n\n\n\n1\n2024/09/01\ntemp\n25.0 C\n\n\n1\n2024/09/01\npressure\n700mmHg\n\n\n1\n2024/09/01\nhumidity\n60%\n\n\n1\n2024/09/01\nrain\n.2in\n\n\n1\n2024/09/02\ntemp\n22.0 C\n\n\n1\n2024/09/02\npressure\n800mmHg\n\n\n1\n2024/09/02\nhumidity\n40%"
   },
   {
+    "objectID": "meetups/Meetup3/Meetup3.html#tidy-data-defined-based-on-your-goals",
+    "href": "meetups/Meetup3/Meetup3.html#tidy-data-defined-based-on-your-goals",
+    "title": "Meetup 3: Tidy Data",
+    "section": "Tidy Data Defined Based on Your Goals",
+    "text": "Tidy Data Defined Based on Your Goals\n\n“variable” and “measurement” is partially up to you!\nPick the definitions that are best suited for you analysis"
+  },
+  {
     "objectID": "meetups/Meetup3/Meetup3.html#weather-station-vignette",
     "href": "meetups/Meetup3/Meetup3.html#weather-station-vignette",
     "title": "Meetup 3: Tidy Data",
     "section": "Weather Station Vignette",
     "text": "Weather Station Vignette\nFollow along:\n\nDownload the data\nDownload the code"
-  },
-  {
-    "objectID": "meetups/Meetup3/Meetup3.html#tidy-data-defined-based-on-your-goals",
-    "href": "meetups/Meetup3/Meetup3.html#tidy-data-defined-based-on-your-goals",
-    "title": "Meetup 3: Tidy Data",
-    "section": "Tidy Data Defined Based on Your Goals",
-    "text": "Tidy Data Defined Based on Your Goals\n\nDefinition of “variable” and “measurement” is partially up to you!\nPick the definitions that are best suited for you analysis"
   },
   {
     "objectID": "meetups/Meetup3/Meetup3.html#data-science-in-context-presentation",
@@ -4150,7 +4150,7 @@
     "href": "course/schedule.html",
     "title": "DATA607 - Data Acquisition and Management",
     "section": "",
-    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\n\n\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\n\n\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\n\n\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\n\n\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\n\n\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\n\n\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\n\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
+    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\n\n\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\n\n\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\n\n\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\n\n\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\n\n\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\n\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -4161,7 +4161,7 @@
     "href": "course/schedule.html#meetup-link",
     "title": "DATA607 - Data Acquisition and Management",
     "section": "",
-    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\n\n\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\n\n\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\n\n\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\n\n\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\n\n\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\n\n\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\n\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
+    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\n\n\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\n\n\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\n\n\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\n\n\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\n\n\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\n\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
     "crumbs": [
       "Course information",
       "Schedule"
