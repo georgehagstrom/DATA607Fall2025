@@ -675,6 +675,14 @@ George Hagstrom
 <li>Can also use boxplots, look at your data, or compute summary statistics</li>
 </ul>
 </section>
+<section id="check-for-inliers-1" class="slide level2">
+<h2>Check for Inliers</h2>
+<ul>
+<li>Flat regions of your QQ-Plot</li>
+<li>Look for outliers of your count data:</li>
+</ul>
+
+<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-13-1.png" width="768" class="r-stretch"></section>
 <section id="visualizing-covariation" class="slide level2">
 <h2>Visualizing Covariation</h2>
 <ul>
@@ -700,7 +708,7 @@ George Hagstrom
 <li>Median, IQR, potential outliers</li>
 </ul>
 
-<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
+<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
 <section id="tukey-box-plot-1" class="slide level2">
 <h2>Tukey Box Plot</h2>
 <ul>
@@ -708,7 +716,7 @@ George Hagstrom
 <li>Median, IQR, potential outliers</li>
 </ul>
 
-<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
+<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section>
 <section id="tukey-box-plot-2" class="slide level2">
 <h2>Tukey Box Plot</h2>
 <ul>
@@ -729,35 +737,35 @@ George Hagstrom
 <li>Shouldn’t high quality cost more?</li>
 </ul>
 
-<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section>
+<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section>
 <section id="look-at-other-variables" class="slide level2">
 <h2>Look at other variables</h2>
 <ul>
 <li>Clearer diamonds aren’t more expensive</li>
 </ul>
 
-<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section>
+<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"></section>
 <section id="look-at-other-variables-1" class="slide level2">
 <h2>Look at other variables</h2>
 <ul>
 <li>Bigger diamonds <strong>are</strong> very pricey</li>
 </ul>
 
-<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"></section>
+<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section>
 <section id="how-does-size-covary-with-cutclarity" class="slide level2">
 <h2>How does size covary with cut/clarity?</h2>
 <ul>
 <li>Big diamonds have worse clarity</li>
 </ul>
 
-<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section>
+<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section>
 <section id="how-does-size-covary-with-cutclarity-1" class="slide level2">
 <h2>How does size covary with cut/clarity?</h2>
 <ul>
 <li>Big diamonds have slightly worse clarity</li>
 </ul>
 
-<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section>
+<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section>
 <section id="simpsons-paradox" class="slide level2">
 <h2>Simpson’s Paradox</h2>
 <ul>
@@ -765,14 +773,14 @@ George Hagstrom
 <li>Size is a common cause of price and quality</li>
 </ul>
 
-<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section>
+<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section>
 <section id="density-plots" class="slide level2">
 <h2>Density Plots</h2>
 <ul>
 <li>When there are lots of points, density plots are better than scatter plots</li>
 </ul>
 
-<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section>
+<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-23-1.png" width="960" class="r-stretch"></section>
 <section id="density-plots-1" class="slide level2">
 <h2>Density Plots</h2>
 <ul>
@@ -790,21 +798,21 @@ George Hagstrom
 <li><code>GGally</code> package <code>ggpairs</code> function</li>
 </ul>
 
-<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section>
+<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-25-1.png" width="960" class="r-stretch"></section>
 <section id="pair-plots-to-visualize-all-combos-1" class="slide level2">
 <h2>Pair Plots to Visualize All Combos</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">ggpairs</span>(<span class="at">columns=</span><span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-25-1.png" width="960" class="r-stretch"></section>
+<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-26-1.png" width="960" class="r-stretch"></section>
 <section id="fancy-pairs" class="slide level2">
 <h2>Fancy Pairs</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">ggpairs</span>(<span class="at">columns=</span><span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>,ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">colour =</span> species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-26-1.png" width="960" class="r-stretch"></section>
+<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-27-1.png" width="960" class="r-stretch"></section>
 <section id="multiway-visualizations-dot-plots" class="slide level2 nostretch smaller">
 <h2>Multiway Visualizations: Dot Plots</h2>
 <ul>
@@ -820,7 +828,7 @@ George Hagstrom
 <section id="dot-plots" class="slide level2">
 <h2>Dot Plots</h2>
 
-<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-27-1.png" style="width:80.0%" class="r-stretch"></section>
+<img data-src="Meetup4_files/figure-revealjs/unnamed-chunk-28-1.png" style="width:80.0%" class="r-stretch"></section>
 <section id="dot-plots-1" class="slide level2">
 <h2>Dot Plots</h2>
 <div class="cell">
