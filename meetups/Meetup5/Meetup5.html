@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.54">
 
   <meta name="author" content="George I. Hagstrom">
-  <meta name="dcterms.date" content="2024-09-25">
+  <meta name="dcterms.date" content="2025-09-22">
   <title>DATA 607 Fall 2025 – Meetup 5: Data Transformation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -404,17 +404,13 @@ George I. Hagstrom
 </div>
 </div>
 
-  <p class="date">2024-09-25</p>
+  <p class="date">2025-09-22</p>
 </section>
-<section id="lab-3-summary" class="slide level2">
-<h2>Lab 3 Summary</h2>
+<section id="week-summary" class="slide level2">
+<h2>Week Summary</h2>
 <ul>
-<li>Graded almost every lab 3 that has been turned in.</li>
-<li>Comments:
-<ul>
-<li>No getting rid of data without a reason that comes from domain info!</li>
-<li>Stats don’t work the same on “circular” variables like time of day</li>
-</ul></li>
+<li>Reading: Chapters 12, 13, 17 of R4DS</li>
+<li>Lab 4 on Data Transformations Due Sunday at Midnight</li>
 </ul>
 </section>
 <section id="data-transformation" class="slide level2">
@@ -500,8 +496,8 @@ George I. Hagstrom
 </div>
 </div>
 </section>
-<section id="use-boolean-to-create-new-variable-for-comparison" class="slide level2 smaller">
-<h2>Use Boolean to Create New Variable for Comparison</h2>
+<section id="boolean-variables-for-comparison" class="slide level2 smaller">
+<h2>Boolean Variables for Comparison</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(kableExtra)</span>
 <span id="cb9-2"><a></a>nycflights13<span class="sc">::</span>flights <span class="sc">|&gt;</span> <span class="fu">select</span>(year,month,day,arr_delay,carrier,origin,dest) <span class="sc">|&gt;</span>  <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -617,7 +613,7 @@ George I. Hagstrom
 <section id="compare-dl-ua-aa-to-others" class="slide level2">
 <h2>Compare DL, UA, AA to others</h2>
 <ul>
-<li>Create a logical variable that is <code>TRUE</code> when airline is in the group</li>
+<li>Create variable that is <code>TRUE</code> when airline is in the group</li>
 <li><code>FALSE</code> otherwise</li>
 </ul>
 <div class="cell">
@@ -722,14 +718,35 @@ George I. Hagstrom
 </ul></li>
 </ul>
 </section>
+<section id="defining-functions" class="slide level2">
+<h2>Defining Functions</h2>
+<ul>
+<li>For complicated data transformations, define a function</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>my_transformation <span class="ot">=</span> <span class="cf">function</span>(var1,var2,<span class="at">kfact =</span> <span class="dv">1</span>){</span>
+<span id="cb17-2"><a></a>  </span>
+<span id="cb17-3"><a></a>  mean_var1 <span class="ot">=</span> <span class="fu">mean</span>(var1)</span>
+<span id="cb17-4"><a></a>  sd_var1 <span class="ot">=</span> <span class="fu">sd</span>(var1)</span>
+<span id="cb17-5"><a></a>  mean_var2 <span class="ot">=</span> <span class="fu">mean</span>(var2)</span>
+<span id="cb17-6"><a></a>  sd_var2 <span class="ot">=</span> <span class="fu">sd</span>(var2)</span>
+<span id="cb17-7"><a></a>  <span class="fu">return</span>(<span class="fu">exp</span>(<span class="sc">-</span>kfact<span class="sc">*</span><span class="fu">abs</span>((var1<span class="sc">-</span>mean_var1)<span class="sc">*</span>(var2<span class="sc">-</span>mean_var2))<span class="sc">/</span>(sd_var1<span class="sc">*</span>sd_var2)))</span>
+<span id="cb17-8"><a></a>  </span>
+<span id="cb17-9"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Functions make code easier to read</li>
+<li>Write function when code reused 3 times</li>
+</ul>
+</section>
 <section id="recycling-rules-for-aggregates" class="slide level2">
 <h2>Recycling Rules for Aggregates</h2>
 <ul>
-<li>R adjusts “boosts” numbers/vectors so that calculations work</li>
+<li>R “boosts” numbers/vectors so that calculations work</li>
 <li>Behavior is <em>very</em> different from other languages:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">10</span>)<span class="sc">/</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">9</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">10</span>)<span class="sc">/</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">9</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  5.0000000  0.2222222  3.0000000 10.0000000</code></pre>
 </div>
@@ -745,8 +762,8 @@ George I. Hagstrom
 <li>Source of silent bugs</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb19-2"><a></a>  <span class="fu">filter</span>(month <span class="sc">==</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(year, month, flight) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a></a>  <span class="fu">filter</span>(month <span class="sc">==</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(year, month, flight) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 3
    year month flight
@@ -757,8 +774,8 @@ George I. Hagstrom
 4  2013     1    507
 5  2013     1     79</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb21-2"><a></a>  <span class="fu">filter</span>(month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(year, month, flight) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb22-2"><a></a>  <span class="fu">filter</span>(month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(year, month, flight) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 3
    year month flight
@@ -774,7 +791,7 @@ George I. Hagstrom
 <section id="logarithms" class="slide level2">
 <h2>logarithms</h2>
 
-<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"><ul>
+<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"><ul>
 <li><span class="math inline">\(\log(e^x) = x\)</span></li>
 <li><span class="math inline">\(\log(x_1 \cdot x_2 \cdot \dots \cdot x_n) = \log(x_1) + \log(x_2) + \dots + \log(x_n)\)</span></li>
 <li><span class="math inline">\(\log_{10}\)</span> counts the digits of a number</li>
@@ -822,19 +839,19 @@ George I. Hagstrom
 <li><code>lag</code> Previous value(s)</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">lead</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">lead</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  2  3  4  5  6  7  8  9 10 NA</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">lead</span>(<span class="at">n=</span><span class="dv">3</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">lead</span>(<span class="at">n=</span><span class="dv">3</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  4  5  6  7  8  9 10 NA NA NA</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">lag</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">lag</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] NA  1  2  3  4  5  6  7  8  9</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">lag</span>(<span class="at">n=</span><span class="dv">3</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">lag</span>(<span class="at">n=</span><span class="dv">3</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] NA NA NA  1  2  3  4  5  6  7</code></pre>
 </div>
@@ -852,16 +869,16 @@ George I. Hagstrom
 <li><code>ntile()</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">percent_rank</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">percent_rank</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 0.0000000 0.1111111 0.2222222 0.3333333 0.4444444 0.5555556 0.6666667
  [8] 0.7777778 0.8888889 1.0000000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">rank</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">rank</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">ntile</span>(<span class="dv">4</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">ntile</span>(<span class="dv">4</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 1 1 1 2 2 2 3 3 4 4</code></pre>
 </div>
@@ -874,20 +891,20 @@ George I. Hagstrom
 <li>Rolling window (several libraries including <code>RcppRoll</code>, <code>TTR</code>, <code>slider</code>)</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">library</span>(TTR)</span>
-<span id="cb37-2"><a></a><span class="fu">library</span>(cranlogs)</span>
-<span id="cb37-3"><a></a>pkgs <span class="ot">=</span> <span class="fu">c</span>(</span>
-<span id="cb37-4"><a></a>    <span class="st">"tidyr"</span>, <span class="st">"lubridate"</span>, <span class="st">"dplyr"</span>, </span>
-<span id="cb37-5"><a></a>    <span class="st">"ggplot2"</span>, <span class="st">"purrr"</span>, </span>
-<span id="cb37-6"><a></a>    <span class="st">"stringr"</span>, <span class="st">"knitr"</span></span>
-<span id="cb37-7"><a></a>    )</span>
-<span id="cb37-8"><a></a></span>
-<span id="cb37-9"><a></a>tidyverse_downloads <span class="ot">=</span> <span class="fu">cran_downloads</span>(</span>
-<span id="cb37-10"><a></a>    <span class="at">packages =</span> pkgs, </span>
-<span id="cb37-11"><a></a>    <span class="at">from     =</span> <span class="st">"2024-01-01"</span>, </span>
-<span id="cb37-12"><a></a>    <span class="at">to       =</span> <span class="st">"2024-08-31"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb37-13"><a></a>    tibble<span class="sc">::</span><span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb37-14"><a></a>    <span class="fu">group_by</span>(package)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">library</span>(TTR)</span>
+<span id="cb38-2"><a></a><span class="fu">library</span>(cranlogs)</span>
+<span id="cb38-3"><a></a>pkgs <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb38-4"><a></a>    <span class="st">"tidyr"</span>, <span class="st">"lubridate"</span>, <span class="st">"dplyr"</span>, </span>
+<span id="cb38-5"><a></a>    <span class="st">"ggplot2"</span>, <span class="st">"purrr"</span>, </span>
+<span id="cb38-6"><a></a>    <span class="st">"stringr"</span>, <span class="st">"knitr"</span></span>
+<span id="cb38-7"><a></a>    )</span>
+<span id="cb38-8"><a></a></span>
+<span id="cb38-9"><a></a>tidyverse_downloads <span class="ot">=</span> <span class="fu">cran_downloads</span>(</span>
+<span id="cb38-10"><a></a>    <span class="at">packages =</span> pkgs, </span>
+<span id="cb38-11"><a></a>    <span class="at">from     =</span> <span class="st">"2024-01-01"</span>, </span>
+<span id="cb38-12"><a></a>    <span class="at">to       =</span> <span class="st">"2024-08-31"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb38-13"><a></a>    tibble<span class="sc">::</span><span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb38-14"><a></a>    <span class="fu">group_by</span>(package)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="cumulative-and-rolling-aggregates-1" class="slide level2">
@@ -897,9 +914,9 @@ George I. Hagstrom
 <li>Rolling window (several libraries including <code>RcppRoll</code>, <code>TTR</code>, <code>slider</code>)</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>tidyverse_downloads <span class="sc">|&gt;</span> <span class="fu">filter</span>(package <span class="sc">==</span> <span class="st">"lubridate"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb38-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>date,<span class="at">y=</span>count)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb38-3"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>tidyverse_downloads <span class="sc">|&gt;</span> <span class="fu">filter</span>(package <span class="sc">==</span> <span class="st">"lubridate"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb39-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>date,<span class="at">y=</span>count)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb39-3"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="cumulative-and-rolling-aggregates-2" class="slide level2">
@@ -908,32 +925,35 @@ George I. Hagstrom
 <li>Rolling window TTR:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>tidyverse_downloads <span class="sc">|&gt;</span> <span class="fu">filter</span>(package <span class="sc">==</span> <span class="st">"lubridate"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb39-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>date,<span class="at">y=</span>count)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb39-3"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"></section>
-<section id="cumulative-and-rolling-aggregates-3" class="slide level2">
-<h2>Cumulative and Rolling Aggregates</h2>
-<div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>tidyverse_downloads <span class="sc">|&gt;</span> <span class="fu">filter</span>(package <span class="sc">==</span> <span class="st">"lubridate"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb40-2"><a></a>  <span class="fu">mutate</span>(<span class="at">rolling_count =</span> <span class="fu">runMean</span>(count,<span class="at">n=</span><span class="dv">7</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb40-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>date,<span class="at">y=</span>count)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>rolling_count)) <span class="sc">+</span></span>
-<span id="cb40-4"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>date,<span class="at">y=</span>count)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb40-3"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section>
-<section id="caution-about-group-boundaries" class="slide level2">
-<h2>Caution About Group Boundaries</h2>
+<section id="cumulative-and-rolling-aggregates-3" class="slide level2">
+<h2>Cumulative and Rolling Aggregates</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>tidyverse_downloads <span class="sc">|&gt;</span>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb41-2"><a></a>  <span class="fu">mutate</span>(<span class="at">rolling_count =</span> <span class="fu">runMean</span>(count,<span class="at">n=</span><span class="dv">7</span>)) <span class="sc">|&gt;</span> <span class="fu">filter</span>(package <span class="sc">==</span> <span class="st">"lubridate"</span>) <span class="sc">|&gt;</span> </span>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>tidyverse_downloads <span class="sc">|&gt;</span> <span class="fu">filter</span>(package <span class="sc">==</span> <span class="st">"lubridate"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb41-2"><a></a>  <span class="fu">mutate</span>(<span class="at">rolling_count =</span> <span class="fu">runMean</span>(count,<span class="at">n=</span><span class="dv">7</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb41-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>date,<span class="at">y=</span>count)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>rolling_count)) <span class="sc">+</span></span>
 <span id="cb41-4"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section>
+<section id="caution-about-group-boundaries" class="slide level2">
+<h2>Caution About Group Boundaries</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>tidyverse_downloads <span class="sc">|&gt;</span>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb42-2"><a></a>  <span class="fu">mutate</span>(<span class="at">rolling_count =</span> <span class="fu">runMean</span>(count,<span class="at">n=</span><span class="dv">7</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb42-3"><a></a>  <span class="fu">filter</span>(package <span class="sc">==</span> <span class="st">"lubridate"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb42-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>date,<span class="at">y=</span>count)) <span class="sc">+</span> </span>
+<span id="cb42-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb42-6"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>rolling_count)) <span class="sc">+</span></span>
+<span id="cb42-7"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section>
 <section id="data-science-in-context-presentation" class="slide level2">
 <h2>Data Science in Context Presentation</h2>
 </section>
@@ -943,32 +963,32 @@ George I. Hagstrom
 <li><code>rank</code> transforms data from values to numerical rank:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>randVec <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb42-2"><a></a><span class="fu">print</span>(randVec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>randVec <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb43-2"><a></a><span class="fu">print</span>(randVec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  0.007727397  1.988026189  0.224158225 -0.820914737 -0.262576533
- [6]  1.245982092  1.326724224 -0.512259520 -0.020115925 -0.084694565</code></pre>
+<pre><code> [1]  1.80885413 -0.86717732 -2.59640371  0.09798562  0.90096916  0.13532205
+ [7] -0.37290373 -1.39668532  0.05124097 -0.58603415</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a><span class="fu">print</span>(randVec <span class="sc">|&gt;</span> <span class="fu">rank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">print</span>(randVec <span class="sc">|&gt;</span> <span class="fu">rank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  6 10  7  1  3  8  9  2  5  4</code></pre>
+<pre><code> [1] 10  3  1  7  9  8  5  2  6  4</code></pre>
 </div>
 </div>
 <ul>
 <li>Rank preserved by all monotone transformations</li>
 </ul>
 </section>
-<section id="rank-correlation-and-correlation-trick" class="slide level2">
-<h2>Rank Correlation and Correlation Trick</h2>
+<section id="rank-and-correlation-trick" class="slide level2">
+<h2>Rank and Correlation Trick</h2>
 <ul>
 <li><em>Spearman Correlation</em> is correlation between ranks of two variables</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>Animals  <span class="sc">|&gt;</span> </span>
-<span id="cb46-2"><a></a>           <span class="fu">summarise</span>(</span>
-<span id="cb46-3"><a></a>  <span class="at">rank_corr =</span> <span class="fu">cor</span>(body,brain,<span class="at">method=</span><span class="st">'spearman'</span>),</span>
-<span id="cb46-4"><a></a>  <span class="at">corr =</span> <span class="fu">cor</span>(body,brain)</span>
-<span id="cb46-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a>Animals  <span class="sc">|&gt;</span> </span>
+<span id="cb47-2"><a></a>           <span class="fu">summarise</span>(</span>
+<span id="cb47-3"><a></a>  <span class="at">rank_corr =</span> <span class="fu">cor</span>(body,brain,<span class="at">method=</span><span class="st">'spearman'</span>),</span>
+<span id="cb47-4"><a></a>  <span class="at">corr =</span> <span class="fu">cor</span>(body,brain)</span>
+<span id="cb47-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  rank_corr         corr
 1 0.7162994 -0.005341163</code></pre>
@@ -981,7 +1001,7 @@ George I. Hagstrom
 <section id="rank-correlation-graphical-version" class="slide level2">
 <h2>Rank Correlation Graphical Version</h2>
 
-<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-23-1.png" width="960" class="r-stretch"></section>
+<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section>
 <section id="what-didnt-we-cover" class="slide level2">
 <h2>What didn’t we cover?</h2>
 <ul>
