@@ -413,6 +413,63 @@ George I. Hagstrom
 <li>Lab 4 on Data Transformations Due Sunday at Midnight</li>
 </ul>
 </section>
+<section id="common-questions-what-graph" class="slide level2">
+<h2>Common Questions: What Graph?</h2>
+<ul>
+<li>One Continuous variable</li>
+<li>Density plot, histogram, frequency polygon (<code>geom_density</code>, <code>geom_histogram</code>, <code>geom_freqpoly</code>)</li>
+</ul>
+
+<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
+<section id="common-questions-what-graph-1" class="slide level2">
+<h2>Common Questions: What Graph?</h2>
+<ul>
+<li>One Categorical variable</li>
+<li>Bar Plot, dot plot (<code>geom_bar</code>, <code>geom_point</code> with <code>stat="count"</code>)</li>
+</ul>
+
+<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<section id="common-questions-what-plot" class="slide level2">
+<h2>Common Questions: What Plot?</h2>
+<ul>
+<li>Two Numerical variables</li>
+<li><code>geom_point</code>, <code>geom_hex</code>, <code>geom_contour</code></li>
+</ul>
+
+<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section id="common-questions-what-plot-1" class="slide level2">
+<h2>Common Questions: What Plot?</h2>
+<ul>
+<li>Numerical and Categorical</li>
+<li><code>geom_density_ridges</code>, <code>geom_boplot</code>, <code>geom_violin</code></li>
+<li>Use other aesthetics (<code>fill</code>), use facets</li>
+</ul>
+
+<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<section id="common-questions-what-plot-2" class="slide level2">
+<h2>Common Questions: What Plot?</h2>
+<ul>
+<li>Two numerical and one categorical</li>
+<li>Faceted Scatterplot or other aesthetics</li>
+</ul>
+
+<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<section id="common-questions-what-plot-3" class="slide level2">
+<h2>Common Questions: What Plot?</h2>
+<ul>
+<li>One Numerical and multiple categorical</li>
+<li>Multiway dot plot</li>
+</ul>
+
+<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
+<section id="common-questions-what-plot-4" class="slide level2">
+<h2>Common Questions: What Plot?</h2>
+<ul>
+<li>You can keep going in this direction, but gets harder to understand</li>
+<li>Multiple categorical and numerical, can use facets, aesthetics, do a scatterplot etc</li>
+</ul>
+
+<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
 <section id="data-transformation" class="slide level2">
 <h2>Data Transformation</h2>
 <ul>
@@ -425,7 +482,7 @@ George I. Hagstrom
 <section id="case-study-brain-and-body-size" class="slide level2">
 <h2>Case Study: Brain and Body Size</h2>
 
-<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-1-1.png" width="768" class="r-stretch"></section>
+<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-8-1.png" width="768" class="r-stretch"></section>
 <section id="no-correlation" class="slide level2">
 <h2>No Correlation?</h2>
 <ul>
@@ -467,7 +524,7 @@ George I. Hagstrom
 <section id="log-transformation-different-story" class="slide level2">
 <h2>Log Transformation: Different Story</h2>
 
-<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-3-1.png" width="768" class="r-stretch"><div class="cell">
+<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-10-1.png" width="768" class="r-stretch"><div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>Animals <span class="sc">|&gt;</span> </span>
 <span id="cb3-2"><a></a>  <span class="fu">summarize</span>(<span class="at">Correlation =</span> <span class="fu">cor</span>(<span class="fu">log</span>(body),<span class="fu">log</span>(brain)) ) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -791,7 +848,7 @@ George I. Hagstrom
 <section id="logarithms" class="slide level2">
 <h2>logarithms</h2>
 
-<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"><ul>
+<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"><ul>
 <li><span class="math inline">\(\log(e^x) = x\)</span></li>
 <li><span class="math inline">\(\log(x_1 \cdot x_2 \cdot \dots \cdot x_n) = \log(x_1) + \log(x_2) + \dots + \log(x_n)\)</span></li>
 <li><span class="math inline">\(\log_{10}\)</span> counts the digits of a number</li>
@@ -930,7 +987,7 @@ George I. Hagstrom
 <span id="cb40-3"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section>
+<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-26-1.png" width="960" class="r-stretch"></section>
 <section id="cumulative-and-rolling-aggregates-3" class="slide level2">
 <h2>Cumulative and Rolling Aggregates</h2>
 <div class="cell">
@@ -940,7 +997,7 @@ George I. Hagstrom
 <span id="cb41-4"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section>
+<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-27-1.png" width="960" class="r-stretch"></section>
 <section id="caution-about-group-boundaries" class="slide level2">
 <h2>Caution About Group Boundaries</h2>
 <div class="cell">
@@ -953,7 +1010,7 @@ George I. Hagstrom
 <span id="cb42-7"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section>
+<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-28-1.png" width="960" class="r-stretch"></section>
 <section id="data-science-in-context-presentation" class="slide level2">
 <h2>Data Science in Context Presentation</h2>
 </section>
@@ -966,12 +1023,12 @@ George I. Hagstrom
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>randVec <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
 <span id="cb43-2"><a></a><span class="fu">print</span>(randVec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] -0.4717825 -1.0360375 -0.5117992 -0.6887009  2.2496058  2.4012365
- [7]  0.3348581  0.7182985  0.8721338  0.2821424</code></pre>
+<pre><code> [1]  0.4202919  1.9131393 -0.4850207  1.0532903  3.0029031 -0.6965587
+ [7]  1.5257006 -0.7655857  0.5886890 -0.5855226</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">print</span>(randVec <span class="sc">|&gt;</span> <span class="fu">rank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  4  1  3  2  9 10  6  7  8  5</code></pre>
+<pre><code> [1]  5  9  4  7 10  2  8  1  6  3</code></pre>
 </div>
 </div>
 <ul>
@@ -1001,7 +1058,7 @@ George I. Hagstrom
 <section id="rank-correlation-graphical-version" class="slide level2">
 <h2>Rank Correlation Graphical Version</h2>
 
-<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section>
+<img data-src="Meetup5_files/figure-revealjs/unnamed-chunk-31-1.png" width="960" class="r-stretch"></section>
 <section id="what-didnt-we-cover" class="slide level2">
 <h2>What didn’t we cover?</h2>
 <ul>

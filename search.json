@@ -1800,6 +1800,55 @@
     "text": "Week Summary\n\nReading: Chapters 12, 13, 17 of R4DS\nLab 4 on Data Transformations Due Sunday at Midnight"
   },
   {
+    "objectID": "meetups/Meetup5/Meetup5.html#common-questions-what-graph",
+    "href": "meetups/Meetup5/Meetup5.html#common-questions-what-graph",
+    "title": "Meetup 5: Data Transformation",
+    "section": "Common Questions: What Graph?",
+    "text": "Common Questions: What Graph?\n\nOne Continuous variable\nDensity plot, histogram, frequency polygon (geom_density, geom_histogram, geom_freqpoly)"
+  },
+  {
+    "objectID": "meetups/Meetup5/Meetup5.html#common-questions-what-graph-1",
+    "href": "meetups/Meetup5/Meetup5.html#common-questions-what-graph-1",
+    "title": "Meetup 5: Data Transformation",
+    "section": "Common Questions: What Graph?",
+    "text": "Common Questions: What Graph?\n\nOne Categorical variable\nBar Plot, dot plot (geom_bar, geom_point with stat=\"count\")"
+  },
+  {
+    "objectID": "meetups/Meetup5/Meetup5.html#common-questions-what-plot",
+    "href": "meetups/Meetup5/Meetup5.html#common-questions-what-plot",
+    "title": "Meetup 5: Data Transformation",
+    "section": "Common Questions: What Plot?",
+    "text": "Common Questions: What Plot?\n\nTwo Numerical variables\ngeom_point, geom_hex, geom_contour"
+  },
+  {
+    "objectID": "meetups/Meetup5/Meetup5.html#common-questions-what-plot-1",
+    "href": "meetups/Meetup5/Meetup5.html#common-questions-what-plot-1",
+    "title": "Meetup 5: Data Transformation",
+    "section": "Common Questions: What Plot?",
+    "text": "Common Questions: What Plot?\n\nNumerical and Categorical\ngeom_density_ridges, geom_boplot, geom_violin\nUse other aesthetics (fill), use facets"
+  },
+  {
+    "objectID": "meetups/Meetup5/Meetup5.html#common-questions-what-plot-2",
+    "href": "meetups/Meetup5/Meetup5.html#common-questions-what-plot-2",
+    "title": "Meetup 5: Data Transformation",
+    "section": "Common Questions: What Plot?",
+    "text": "Common Questions: What Plot?\n\nTwo numerical and one categorical\nFaceted Scatterplot or other aesthetics"
+  },
+  {
+    "objectID": "meetups/Meetup5/Meetup5.html#common-questions-what-plot-3",
+    "href": "meetups/Meetup5/Meetup5.html#common-questions-what-plot-3",
+    "title": "Meetup 5: Data Transformation",
+    "section": "Common Questions: What Plot?",
+    "text": "Common Questions: What Plot?\n\nOne Numerical and multiple categorical\nMultiway dot plot"
+  },
+  {
+    "objectID": "meetups/Meetup5/Meetup5.html#common-questions-what-plot-4",
+    "href": "meetups/Meetup5/Meetup5.html#common-questions-what-plot-4",
+    "title": "Meetup 5: Data Transformation",
+    "section": "Common Questions: What Plot?",
+    "text": "Common Questions: What Plot?\n\nYou can keep going in this direction, but gets harder to understand\nMultiple categorical and numerical, can use facets, aesthetics, do a scatterplot etc"
+  },
+  {
     "objectID": "meetups/Meetup5/Meetup5.html#data-transformation",
     "href": "meetups/Meetup5/Meetup5.html#data-transformation",
     "title": "Meetup 5: Data Transformation",
@@ -1986,7 +2035,7 @@
     "href": "meetups/Meetup5/Meetup5.html#rank",
     "title": "Meetup 5: Data Transformation",
     "section": "Rank",
-    "text": "Rank\n\nrank transforms data from values to numerical rank:\n\n\nrandVec = rnorm(10)\nprint(randVec)\n\n [1] -0.4717825 -1.0360375 -0.5117992 -0.6887009  2.2496058  2.4012365\n [7]  0.3348581  0.7182985  0.8721338  0.2821424\n\nprint(randVec |&gt; rank())\n\n [1]  4  1  3  2  9 10  6  7  8  5\n\n\n\nRank preserved by all monotone transformations"
+    "text": "Rank\n\nrank transforms data from values to numerical rank:\n\n\nrandVec = rnorm(10)\nprint(randVec)\n\n [1]  0.4202919  1.9131393 -0.4850207  1.0532903  3.0029031 -0.6965587\n [7]  1.5257006 -0.7655857  0.5886890 -0.5855226\n\nprint(randVec |&gt; rank())\n\n [1]  5  9  4  7 10  2  8  1  6  3\n\n\n\nRank preserved by all monotone transformations"
   },
   {
     "objectID": "meetups/Meetup5/Meetup5.html#rank-and-correlation-trick",
@@ -4241,7 +4290,7 @@
     "href": "course/schedule.html",
     "title": "DATA607 - Data Acquisition and Management",
     "section": "",
-    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\n\n\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\n\n\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\n\n\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\n\n\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\n\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
+    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\n\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\n\n\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\n\n\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\n\n\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\n\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -4252,7 +4301,7 @@
     "href": "course/schedule.html#meetup-link",
     "title": "DATA607 - Data Acquisition and Management",
     "section": "",
-    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\n\n\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\n\n\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\n\n\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\n\n\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\n\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
+    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\n\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\n\n\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\n\n\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\n\n\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\n\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
     "crumbs": [
       "Course information",
       "Schedule"
