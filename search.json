@@ -33,25 +33,32 @@
     ]
   },
   {
-    "objectID": "posts/2025-09-15-Meetup-4-Slides.html",
-    "href": "posts/2025-09-15-Meetup-4-Slides.html",
-    "title": "Meetup 4 Slides",
+    "objectID": "posts/2025-09-23-Reprex-and-Debugging.html",
+    "href": "posts/2025-09-23-Reprex-and-Debugging.html",
+    "title": "How to find help and make a reproducible example (Debugging)",
     "section": "",
-    "text": "I have posted the slides for Meetup 4 which you can view by clicking here\nDuring this meetup we will learn about a set of methods called exploratory data analysis, which is usually the first step that you take when dealing with a new dataset. These methods allow you to both find problems with the data and develop hypotheses. We will cover just the basics, but entire textbooks have been written about this subject.\nSome things if you need:\n\nMeetup Link Zoom\nUse the google doodle poll to sign up for your Data Science in Context presentation"
+    "text": "I made a short coding demo (length about 20 minutes) where I slowly go through one example of making a reproducible example of out code with a bug, and debugging the code in the process. I talk a little bit about different places to find help. If you know what a reproducible example is, have used stack overflow, etc, this video may not be useful for you. If those concepts are new to you, then its very important for you to learn about them, unfortunately they are part of the “hidden curriculum” of data science and programming.\nYou can watch the video on youtube youtube by clicking here.\nHelpful resources for this subject include chapter 8 of your textbook, the help page for the reprex library, and the stack overflow website"
   },
   {
-    "objectID": "posts/2025-09-16-Meetup-4-Extra-Video-Posted.html",
-    "href": "posts/2025-09-16-Meetup-4-Extra-Video-Posted.html",
-    "title": "Meetup 4 Extra Video",
+    "objectID": "posts/2025-09-02-Transit-Vignette-Week-2-Meetup.html",
+    "href": "posts/2025-09-02-Transit-Vignette-Week-2-Meetup.html",
+    "title": "Week 2 Meetup Video and Coding Vignette",
     "section": "",
-    "text": "Hello all, I have finished recording a video of the content we didn’t get to on Monday. Below find links both to the original video and to the extra content:\nHere is the original meetup 4 video Watch the extra meetup 4 video here"
+    "text": "I have uploaded the video for Meetup 2, which you can watch by clicking here. After the hour of the meetup was over, I recorded some additional content, finishing the transit costs coding session and also talking a bit more about data visualization quality features and data ethics. If you want to skip to that part of the video it starts approximately at the hour mark. At some point in the middle of recording I was interrupted by something at home but hopefully it didn’t make the video too disconnected.\nIf you want to look at the code for the coding vignette, you can find both it and the data here:\n\nTransit Costs code\nTransit Costs data\nOriginal Tidy Tuesday Site"
   },
   {
-    "objectID": "posts/2025-08-31-Week-2-Info.html",
-    "href": "posts/2025-08-31-Week-2-Info.html",
-    "title": "Week 2 Info: Data Visualizations and Transformations",
+    "objectID": "posts/2025-09-21-Week-5.html",
+    "href": "posts/2025-09-21-Week-5.html",
+    "title": "Week 5 Info: Data Transformations",
     "section": "",
-    "text": "Hello Class, it is the start of Week 2. During the first week you should have completed the reading assignments, familiarized yourself with R, RStudio, quarto, and git, and made sure these are working on your computer. If you haven’t done these things its extremely important that you do them asap to avoid falling behind. It was really nice to read all of your intro posts on Brightspace, thanks for putting in the effort to describe your interests and background in data science.\nThe biggest difference from Week 2 to Week 1 is that you will have your first homework assignment, a lab assignment titled Airbnb in NYC. It will be due next Sunday at midnight.\nFor your reading assignments and more details about this week, head over to Module 2. If you need help with with anything, don’t hesitate to post in slack or contact me directly."
+    "text": "Hello Class,\nToday is the start of week 5, where we will learn about data transformations. Data transformations allow you to view your dataset in a new light, and are key tools for constructing models, performing EDA and visualizations, and eventually building features for machine learning. We will focus on using boolean operations (i.e. logic) to generate new features from existing data, and practice using window functions to transform time series data. Lastly, we will discuss some issues related to dates and times.\nYou will have a lab assignment titled Data Transformations due next Sunday at midnight.\nFor your reading assignments and more details about this week, head over to Module 5."
+  },
+  {
+    "objectID": "posts/2025-09-23-Correlation-Trick.html",
+    "href": "posts/2025-09-23-Correlation-Trick.html",
+    "title": "Meetup 5 Continuation: Correlation Trick",
+    "section": "",
+    "text": "Click here to watch the last few slides of Meetup 5. We couldn’t quite finish all of the slides in this week’s meetup 5. I recorded a short video on the material we missed, which is a very useful window function called rank. The rank of your data points is invariant under monotone transformations and is the basis of the Spearman Correlation, which is a measure of correlation that holds even under nonlinear relationships."
   },
   {
     "objectID": "posts/2025-09-01-Meetup-2-Slides.html",
@@ -2035,7 +2042,7 @@
     "href": "meetups/Meetup5/Meetup5.html#rank",
     "title": "Meetup 5: Data Transformation",
     "section": "Rank",
-    "text": "Rank\n\nrank transforms data from values to numerical rank:\n\n\nrandVec = rnorm(10)\nprint(randVec)\n\n [1]  0.8634743  0.3891848  0.9269365  0.5614654  0.2496438 -0.5868980\n [7] -1.2196279  0.4508101  0.0709613 -0.1553094\n\nprint(randVec |&gt; rank())\n\n [1]  9  6 10  8  5  2  1  7  4  3\n\n\n\nRank preserved by all monotone transformations"
+    "text": "Rank\n\nrank transforms data from values to numerical rank:\n\n\nrandVec = rnorm(10)\nprint(randVec)\n\n [1]  2.3018724  0.4560994  0.8971370  1.2285259 -0.5153130 -0.4754930\n [7] -1.0822176  1.7008024 -0.1618288  0.2311937\n\nprint(randVec |&gt; rank())\n\n [1] 10  6  7  8  2  3  1  9  4  5\n\n\n\nRank preserved by all monotone transformations"
   },
   {
     "objectID": "meetups/Meetup5/Meetup5.html#rank-and-correlation-trick",
@@ -2301,7 +2308,7 @@
     "href": "index.html",
     "title": "Announcements",
     "section": "",
-    "text": "Be sure to check this page regularly for updates. In addition to periodic updates about the course, slides and recordings of the weekly meetups will be posted here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5 Info: Data Transformations\n\n\n\n\n\nClick here for info on Week 5\n\n\n\n\n\nSep 21, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nMeetup 4 Extra Video\n\n\n\n\n\nClick here to watch the material in Meetup 4 that we did not get to on Monday.\n\n\n\n\n\nSep 16, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nMeetup 4 Slides\n\n\n\n\n\nClick here to download slides for Meetup 4.\n\n\n\n\n\nSep 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4 Info: Exploratory Data Analysis\n\n\n\n\n\nClick here for info on Week 4\n\n\n\n\n\nSep 14, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nPivot Vignette\n\n\n\n\n\nClick here to watch a coding demonstration on different types of pivoting and tidying.\n\n\n\n\n\nSep 9, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nMeetup 3 Slides\n\n\n\n\n\nClick here to download slides for Meetup 3.\n\n\n\n\n\nSep 8, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3 Info: Working with Tidy Data\n\n\n\n\n\nClick here for info on Week 3\n\n\n\n\n\nSep 7, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2 Meetup Video and Coding Vignette\n\n\n\n\n\nClick here to watch the Meetup 2 video and the additional content (completed transit cost vignette and graphics quality)\n\n\n\n\n\nSep 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nMeetup 2 Slides\n\n\n\n\n\nClick here to download slides for Meetup 2.\n\n\n\n\n\nSep 1, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2 Info: Data Visualizations and Transformations\n\n\n\n\n\nClick here for info on Week 2\n\n\n\n\n\nAug 31, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nMeetup 1 Slides\n\n\n\n\n\nClick here to download slides for Meetup 1.\n\n\n\n\n\nAug 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome to DATA 607\n\n\n\n\n\nImportant information on how to get started with this course. Click this post now for instructions on getting started.\n\n\n\n\n\nAug 17, 2025\n\n\n\n\n\n\nNo matching items",
+    "text": "Be sure to check this page regularly for updates. In addition to periodic updates about the course, slides and recordings of the weekly meetups will be posted here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMeetup 5 Continuation: Correlation Trick\n\n\n\n\n\nClick here for a video on the correlation trick\n\n\n\n\n\nSep 23, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nHow to find help and make a reproducible example (Debugging)\n\n\n\n\n\nClick here for a link to a code vignette and a youtube video of a coding demo focused on debugging and reprex\n\n\n\n\n\nSep 23, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5 Info: Data Transformations\n\n\n\n\n\nClick here for info on Week 5\n\n\n\n\n\nSep 21, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nMeetup 4 Extra Video\n\n\n\n\n\nClick here to watch the material in Meetup 4 that we did not get to on Monday.\n\n\n\n\n\nSep 16, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nMeetup 4 Slides\n\n\n\n\n\nClick here to download slides for Meetup 4.\n\n\n\n\n\nSep 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4 Info: Exploratory Data Analysis\n\n\n\n\n\nClick here for info on Week 4\n\n\n\n\n\nSep 14, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nPivot Vignette\n\n\n\n\n\nClick here to watch a coding demonstration on different types of pivoting and tidying.\n\n\n\n\n\nSep 9, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nMeetup 3 Slides\n\n\n\n\n\nClick here to download slides for Meetup 3.\n\n\n\n\n\nSep 8, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3 Info: Working with Tidy Data\n\n\n\n\n\nClick here for info on Week 3\n\n\n\n\n\nSep 7, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2 Meetup Video and Coding Vignette\n\n\n\n\n\nClick here to watch the Meetup 2 video and the additional content (completed transit cost vignette and graphics quality)\n\n\n\n\n\nSep 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nMeetup 2 Slides\n\n\n\n\n\nClick here to download slides for Meetup 2.\n\n\n\n\n\nSep 1, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2 Info: Data Visualizations and Transformations\n\n\n\n\n\nClick here for info on Week 2\n\n\n\n\n\nAug 31, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nMeetup 1 Slides\n\n\n\n\n\nClick here to download slides for Meetup 1.\n\n\n\n\n\nAug 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome to DATA 607\n\n\n\n\n\nImportant information on how to get started with this course. Click this post now for instructions on getting started.\n\n\n\n\n\nAug 17, 2025\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Announcements"
     ]
@@ -4261,18 +4268,25 @@
     "text": "Week 4 has now begun. During this week we will learn about a technique called exploratory data analysis (EDA). EDA is a methodology applied at the beginning of a statistical analysis to find errors in the data, to discover patterns, and to explore hypotheses. EDA uses visualizations as one of its primary tools, and we will also deepen our knowledge of how to make visualizations in ggplot.\nYou will have a lab assignment titled Exploratory Data Analysis due next Sunday at midnight.\nFor your reading assignments and more details about this week, head over to Module 4."
   },
   {
-    "objectID": "posts/2025-09-21-Week-5.html",
-    "href": "posts/2025-09-21-Week-5.html",
-    "title": "Week 5 Info: Data Transformations",
+    "objectID": "posts/2025-08-31-Week-2-Info.html",
+    "href": "posts/2025-08-31-Week-2-Info.html",
+    "title": "Week 2 Info: Data Visualizations and Transformations",
     "section": "",
-    "text": "Hello Class,\nToday is the start of week 5, where we will learn about data transformations. Data transformations allow you to view your dataset in a new light, and are key tools for constructing models, performing EDA and visualizations, and eventually building features for machine learning. We will focus on using boolean operations (i.e. logic) to generate new features from existing data, and practice using window functions to transform time series data. Lastly, we will discuss some issues related to dates and times.\nYou will have a lab assignment titled Data Transformations due next Sunday at midnight.\nFor your reading assignments and more details about this week, head over to Module 5."
+    "text": "Hello Class, it is the start of Week 2. During the first week you should have completed the reading assignments, familiarized yourself with R, RStudio, quarto, and git, and made sure these are working on your computer. If you haven’t done these things its extremely important that you do them asap to avoid falling behind. It was really nice to read all of your intro posts on Brightspace, thanks for putting in the effort to describe your interests and background in data science.\nThe biggest difference from Week 2 to Week 1 is that you will have your first homework assignment, a lab assignment titled Airbnb in NYC. It will be due next Sunday at midnight.\nFor your reading assignments and more details about this week, head over to Module 2. If you need help with with anything, don’t hesitate to post in slack or contact me directly."
   },
   {
-    "objectID": "posts/2025-09-02-Transit-Vignette-Week-2-Meetup.html",
-    "href": "posts/2025-09-02-Transit-Vignette-Week-2-Meetup.html",
-    "title": "Week 2 Meetup Video and Coding Vignette",
+    "objectID": "posts/2025-09-16-Meetup-4-Extra-Video-Posted.html",
+    "href": "posts/2025-09-16-Meetup-4-Extra-Video-Posted.html",
+    "title": "Meetup 4 Extra Video",
     "section": "",
-    "text": "I have uploaded the video for Meetup 2, which you can watch by clicking here. After the hour of the meetup was over, I recorded some additional content, finishing the transit costs coding session and also talking a bit more about data visualization quality features and data ethics. If you want to skip to that part of the video it starts approximately at the hour mark. At some point in the middle of recording I was interrupted by something at home but hopefully it didn’t make the video too disconnected.\nIf you want to look at the code for the coding vignette, you can find both it and the data here:\n\nTransit Costs code\nTransit Costs data\nOriginal Tidy Tuesday Site"
+    "text": "Hello all, I have finished recording a video of the content we didn’t get to on Monday. Below find links both to the original video and to the extra content:\nHere is the original meetup 4 video Watch the extra meetup 4 video here"
+  },
+  {
+    "objectID": "posts/2025-09-15-Meetup-4-Slides.html",
+    "href": "posts/2025-09-15-Meetup-4-Slides.html",
+    "title": "Meetup 4 Slides",
+    "section": "",
+    "text": "I have posted the slides for Meetup 4 which you can view by clicking here\nDuring this meetup we will learn about a set of methods called exploratory data analysis, which is usually the first step that you take when dealing with a new dataset. These methods allow you to both find problems with the data and develop hypotheses. We will cover just the basics, but entire textbooks have been written about this subject.\nSome things if you need:\n\nMeetup Link Zoom\nUse the google doodle poll to sign up for your Data Science in Context presentation"
   },
   {
     "objectID": "course/syllabus.html",
