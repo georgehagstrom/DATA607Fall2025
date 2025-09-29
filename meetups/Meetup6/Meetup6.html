@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.54">
 
   <meta name="author" content="George I. Hagstrom">
-  <meta name="dcterms.date" content="2024-10-02">
+  <meta name="dcterms.date" content="2025-09-29">
   <title>DATA 607 Fall 2025 – Meetup 6: Working With Text and Strings</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -404,72 +404,7 @@ George I. Hagstrom
 </div>
 </div>
 
-  <p class="date">2024-10-02</p>
-</section>
-<section id="lab-4-review" class="slide level2">
-<h2>Lab 4 Review</h2>
-<ul>
-<li>Parameter Choices in faceted scatter plots</li>
-<li>Try <code>scale = "free/free_x/free_y"</code></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>stocks <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>volume<span class="sc">/</span><span class="fl">1e8</span>,<span class="at">y=</span>log_return)) <span class="sc">+</span></span>
-<span id="cb1-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb1-3"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>symbol,<span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb1-4"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Adj. vol (10^8 shares)"</span>,</span>
-<span id="cb1-5"><a></a>       <span class="at">y =</span> <span class="st">"log(return)"</span>,</span>
-<span id="cb1-6"><a></a>       <span class="at">title =</span> <span class="st">"log(return) vs. Vol for Tech Stocks"</span>) <span class="sc">+</span></span>
-<span id="cb1-7"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="lab-4-review-1" class="slide level2 nostretch">
-<h2>Lab 4 Review</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="Meetup6_files/figure-revealjs/unnamed-chunk-3-1.png" width="768"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="lab-4-review-2" class="slide level2 nostretch">
-<h2>Lab 4 Review</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="Meetup6_files/figure-revealjs/unnamed-chunk-4-1.png" width="768"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="lab-4-review-3" class="slide level2 nostretch">
-<h2>Lab 4 Review</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>stocks <span class="sc">|&gt;</span> <span class="fu">filter</span>(symbol <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"META"</span>,<span class="st">"ADBE"</span>,<span class="st">"AMZN"</span>,<span class="st">"MSFT"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb2-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>(volume<span class="sc">/</span><span class="fl">1e8</span>),<span class="at">x=</span>log_return)) <span class="sc">+</span></span>
-<span id="cb2-3"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.1</span>,<span class="at">size=</span>.<span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb2-4"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>symbol,<span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
-<span id="cb2-5"><a></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Adj. vol (10^8 shares)"</span>,</span>
-<span id="cb2-6"><a></a>       <span class="at">x =</span> <span class="st">"log(return)"</span>,</span>
-<span id="cb2-7"><a></a>       <span class="at">title =</span> <span class="st">"log(return) vs. Vol for Tech Stocks"</span>) <span class="sc">+</span></span>
-<span id="cb2-8"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="lab-4-review-4" class="slide level2 nostretch">
-<h2>Lab 4 Review</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="Meetup6_files/figure-revealjs/unnamed-chunk-6-1.png" width="768"></p>
-</figure>
-</div>
-</div>
-</div>
+  <p class="date">2025-09-29</p>
 </section>
 <section id="case-study-huntingtons-disease" class="slide level2">
 <h2>Case Study: Huntington’s Disease</h2>
@@ -477,6 +412,9 @@ George I. Hagstrom
 <li><p>Tandem Repeats are sections of genetic code where same short element repeats over and over:</p></li>
 <li><p><code>CAGCAGCAGCAGCAGCAGCAG</code></p></li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(bioseq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
 <li>In certain genes, number of repeats varies, can cause genetic diseases etc</li>
 <li>Huntington’s Disease:
@@ -493,11 +431,31 @@ George I. Hagstrom
 <li>How to determine number of repeats <code>CAA</code> + <code>CAG</code> repeats in a section of code?</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-2"><a></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb3-3"><a></a>DNA <span class="ot">=</span><span class="fu">read_file</span>(<span class="st">"Huntington.txt"</span>)</span>
-<span id="cb3-4"><a></a></span>
-<span id="cb3-5"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_sub</span>(<span class="dv">1</span>, <span class="dv">800</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   4.0.0     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.1.0     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">library</span>(kableExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'kableExtra'
+
+The following object is masked from 'package:dplyr':
+
+    group_rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>DNA <span class="ot">=</span><span class="fu">read_file</span>(<span class="st">"Huntington.txt"</span>)</span>
+<span id="cb6-2"><a></a></span>
+<span id="cb6-3"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_sub</span>(<span class="dv">1</span>, <span class="dv">800</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "\t1 ttgctgtgtg aggcagaacc tgcgggggca ggggcgggct ggttccctgg ccagccattg\n       61 gcagagtccg caggctaggg ctgtcaatca tgctggccgg cgtggccccg cctccgccgg\n      121 cgcggccccg cctccgccgg cgcagcgtct gggacgcaag gcgccgtggg ggctgccggg\n      181 acgggtccaa gatggacggc cgctcaggtt ctgcttttac ctgcggccca gagccccatt\n      241 cattgccccg gtgctgagcg gcgccgcgag tcggcccgag gcctccgggg actgccgtgc\n      301 cgggcgggag accgccatgg cgaccctgga aaagctgatg aaggccttcg agtccctcaa\n      361 gtccttccag cagcagcagc agcagcagca gcagcagcag cagcagcagc agcagcagca\n      421 gcagcagcag caacagccgc caccgccgcc gccgccgccg ccgcctcctc agcttcctca\n      481 gccgccgccg caggcacagc cgctgctgcc tcagccgcag ccgcccccgc cgccgccccc\n      541 gccgccaccc ggcccggctg tggctgagga gccgctgcac cgaccaaaga aagaactttc\n      601 agctaccaag aaagaccgtg tgaatcattg tctg"</code></pre>
 </div>
@@ -509,10 +467,10 @@ George I. Hagstrom
 <li>Get rid of tabs, numbers, spaces, newlines:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>DNA <span class="ot">=</span> DNA <span class="sc">|&gt;</span> <span class="fu">str_remove_all</span>(<span class="st">"[0-9]"</span>) <span class="sc">|&gt;</span>   <span class="fu">str_remove_all</span>(<span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a></a>  <span class="fu">str_remove_all</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>) <span class="sc">|&gt;</span> <span class="fu">str_remove_all</span>(<span class="st">" "</span>)</span>
-<span id="cb5-3"><a></a></span>
-<span id="cb5-4"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_sub</span>(<span class="dv">1</span>,<span class="dv">60</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>DNA <span class="ot">=</span> DNA <span class="sc">|&gt;</span> <span class="fu">str_remove_all</span>(<span class="st">"[0-9]"</span>) <span class="sc">|&gt;</span>   <span class="fu">str_remove_all</span>(<span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a></a>  <span class="fu">str_remove_all</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>) <span class="sc">|&gt;</span> <span class="fu">str_remove_all</span>(<span class="st">" "</span>)</span>
+<span id="cb8-3"><a></a></span>
+<span id="cb8-4"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_sub</span>(<span class="dv">1</span>,<span class="dv">60</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "ttgctgtgtgaggcagaacctgcgggggcaggggcgggctggttccctggccagccattg"</code></pre>
 </div>
@@ -521,15 +479,15 @@ George I. Hagstrom
 <li>Following Regular Expression can match repeats of various lengths: (CAA|CAG){10,}</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_count</span>(<span class="st">"caa"</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_count</span>(<span class="st">"caa"</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 179</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_count</span>(<span class="st">"cag"</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_count</span>(<span class="st">"cag"</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 471</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_count</span>(<span class="st">"(caa|cag){10,}"</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_count</span>(<span class="st">"(caa|cag){10,}"</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
@@ -538,12 +496,12 @@ George I. Hagstrom
 <section id="how-long" class="slide level2">
 <h2>How Long?</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_extract_all</span>(<span class="st">"(caa|cag){10,}"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a></a>  <span class="fu">str_length</span>()<span class="sc">/</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_extract_all</span>(<span class="st">"(caa|cag){10,}"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a></a>  <span class="fu">str_length</span>()<span class="sc">/</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 23</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_extract_all</span>(<span class="st">"(caa|cag){10,}"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_extract_all</span>(<span class="st">"(caa|cag){10,}"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] "cagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcaacag"</code></pre>
@@ -568,9 +526,9 @@ George I. Hagstrom
 <li>Defined by enclosing in quotes:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>string1 <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"word"</span>,<span class="st">'another word'</span>, <span class="st">"multiple</span><span class="sc">\n</span><span class="st"> lines"</span>,</span>
-<span id="cb17-2"><a></a>            <span class="st">"using </span><span class="sc">\"</span><span class="st">escapes</span><span class="sc">\"</span><span class="st"> and \u00FCnicode "</span>)</span>
-<span id="cb17-3"><a></a><span class="fu">str_view</span>(string1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>string1 <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"word"</span>,<span class="st">'another word'</span>, <span class="st">"multiple</span><span class="sc">\n</span><span class="st"> lines"</span>,</span>
+<span id="cb20-2"><a></a>            <span class="st">"using </span><span class="sc">\"</span><span class="st">escapes</span><span class="sc">\"</span><span class="st"> and \u00FCnicode "</span>)</span>
+<span id="cb20-3"><a></a><span class="fu">str_view</span>(string1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] │ word
 [2] │ another word
@@ -596,15 +554,15 @@ George I. Hagstrom
 <li><code>str_flatten()</code> combines chars in a char vector into single string</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">str_c</span>(<span class="st">"Abraham"</span>,<span class="st">" "</span>,<span class="st">"Lincoln"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">str_c</span>(<span class="st">"Abraham"</span>,<span class="st">" "</span>,<span class="st">"Lincoln"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Abraham Lincoln"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">str_sub</span>(<span class="fu">c</span>(<span class="st">"Abraham"</span>,<span class="st">"Lincoln"</span>),<span class="at">start=</span><span class="dv">1</span>,<span class="at">end=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">str_sub</span>(<span class="fu">c</span>(<span class="st">"Abraham"</span>,<span class="st">"Lincoln"</span>),<span class="at">start=</span><span class="dv">1</span>,<span class="at">end=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Abra" "Linc"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">str_flatten</span>(letters)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">str_flatten</span>(letters)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "abcdefghijklmnopqrstuvwxyz"</code></pre>
 </div>
@@ -619,19 +577,19 @@ George I. Hagstrom
 <li><code>str_detect()</code> logical match</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">str_length</span>(<span class="st">"Grizzly Bear"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">str_length</span>(<span class="st">"Grizzly Bear"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 12</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_count</span>(<span class="st">"caa"</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_count</span>(<span class="st">"caa"</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 179</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="st">"Lions, Tigers, and Bears"</span> <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"Tiger"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="st">"Lions, Tigers, and Bears"</span> <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"Tiger"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] │ Lions, &lt;Tiger&gt;s, and Bears</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="st">"Lions, Tigers, and Bears"</span> <span class="sc">|&gt;</span> <span class="fu">str_detect</span>(<span class="st">"Cat"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="st">"Lions, Tigers, and Bears"</span> <span class="sc">|&gt;</span> <span class="fu">str_detect</span>(<span class="st">"Cat"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -645,15 +603,15 @@ George I. Hagstrom
 <li><code>str_extract()</code> and <code>str_extract_all()</code>: pull out matches</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="st">"Abraham Linc0ln"</span> <span class="sc">|&gt;</span> <span class="fu">str_replace_all</span>(<span class="st">"0"</span>,<span class="st">"o"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="st">"Abraham Linc0ln"</span> <span class="sc">|&gt;</span> <span class="fu">str_replace_all</span>(<span class="st">"0"</span>,<span class="st">"o"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Abraham Lincoln"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">c</span>(<span class="st">"Blueberry"</span>,<span class="st">"Blackberry"</span>,<span class="st">"Lingonberry"</span>) <span class="sc">|&gt;</span> <span class="fu">str_remove</span>(<span class="st">"berry"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">c</span>(<span class="st">"Blueberry"</span>,<span class="st">"Blackberry"</span>,<span class="st">"Lingonberry"</span>) <span class="sc">|&gt;</span> <span class="fu">str_remove</span>(<span class="st">"berry"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Blue"   "Black"  "Lingon"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_extract_all</span>(<span class="st">"tttttt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_extract_all</span>(<span class="st">"tttttt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] "tttttt"</code></pre>
@@ -681,7 +639,7 @@ George I. Hagstrom
 <li>Find all instances of “a” followed by two letters of any type, followed by another “a”:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>words <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"a..a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>words <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"a..a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [35] │ &lt;alwa&gt;ys
  [43] │ &lt;appa&gt;rent
@@ -700,8 +658,8 @@ George I. Hagstrom
 <li><code>?</code> for optional matches:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>str <span class="ot">=</span> <span class="st">"eTeeTeeeTeeeeT"</span></span>
-<span id="cb41-2"><a></a>str <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"ee?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>str <span class="ot">=</span> <span class="st">"eTeeTeeeTeeeeT"</span></span>
+<span id="cb44-2"><a></a>str <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"ee?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] │ &lt;e&gt;T&lt;ee&gt;T&lt;ee&gt;&lt;e&gt;T&lt;ee&gt;&lt;ee&gt;T</code></pre>
 </div>
@@ -710,7 +668,7 @@ George I. Hagstrom
 <li><code>+</code> for repeat matches:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>str <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"ee+"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>str <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"ee+"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] │ eT&lt;ee&gt;T&lt;eee&gt;T&lt;eeee&gt;T</code></pre>
 </div>
@@ -719,7 +677,7 @@ George I. Hagstrom
 <li><code>*</code> for any number of repeat matches, including 0:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>str <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"ee*"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a>str <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"ee*"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] │ &lt;e&gt;T&lt;ee&gt;T&lt;eee&gt;T&lt;eeee&gt;T</code></pre>
 </div>
@@ -731,11 +689,11 @@ George I. Hagstrom
 <li>Use {m,n} to specify at least “m” matches but no more than “n” matches:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a>AASeq <span class="ot">=</span> <span class="fu">read_file</span>(<span class="st">"HuntingtonTrans.txt"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb47-2"><a></a>  <span class="fu">str_remove_all</span>(<span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb47-3"><a></a>  <span class="fu">str_remove_all</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb47-4"><a></a>  <span class="fu">str_remove_all</span>(<span class="st">" "</span>)</span>
-<span id="cb47-5"><a></a>AASeq <span class="sc">|&gt;</span> <span class="fu">str_extract_all</span>(<span class="st">"Q{2,}"</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a>AASeq <span class="ot">=</span> <span class="fu">read_file</span>(<span class="st">"HuntingtonTrans.txt"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb50-2"><a></a>  <span class="fu">str_remove_all</span>(<span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb50-3"><a></a>  <span class="fu">str_remove_all</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb50-4"><a></a>  <span class="fu">str_remove_all</span>(<span class="st">" "</span>)</span>
+<span id="cb50-5"><a></a>AASeq <span class="sc">|&gt;</span> <span class="fu">str_extract_all</span>(<span class="st">"Q{2,}"</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
  [1] "QQQQQQQQQQQQQQQQQQQQQQQ" "QQQ"                    
@@ -746,7 +704,7 @@ George I. Hagstrom
 [11] "QQ"                      "QQ"                     
 [13] "QQ"                     </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>AASeq <span class="sc">|&gt;</span> <span class="fu">str_extract_all</span>(<span class="st">"Q{3,10}"</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a>AASeq <span class="sc">|&gt;</span> <span class="fu">str_extract_all</span>(<span class="st">"Q{3,10}"</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] "QQQQQQQQQQ" "QQQQQQQQQQ" "QQQ"        "QQQ"       </code></pre>
@@ -759,7 +717,7 @@ George I. Hagstrom
 <li>Use square brackets to denote a group of characters to match</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>words <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"[aeiou]tt[aeiou]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a>words <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"[aeiou]tt[aeiou]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [60] │ &lt;atte&gt;nd
 [107] │ b&lt;otto&gt;m
@@ -772,8 +730,8 @@ George I. Hagstrom
 <li>“^” matches everything not in the brackets</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a>words <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"q[^u]"</span>)</span>
-<span id="cb53-2"><a></a>words <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"q[u]"</span>) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a>words <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"q[^u]"</span>)</span>
+<span id="cb56-2"><a></a>words <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"q[u]"</span>) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[276] │ e&lt;qu&gt;al
 [665] │ &lt;qu&gt;ality
@@ -793,7 +751,7 @@ George I. Hagstrom
 <li>NEED TO DOUBLE ESCAPE IN R!</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a><span class="fu">str_view</span>(<span class="st">"abc123"</span>,<span class="st">"</span><span class="sc">\\</span><span class="st">d"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a><span class="fu">str_view</span>(<span class="st">"abc123"</span>,<span class="st">"</span><span class="sc">\\</span><span class="st">d"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] │ abc&lt;1&gt;&lt;2&gt;&lt;3&gt;</code></pre>
 </div>
@@ -805,7 +763,7 @@ George I. Hagstrom
 <li>“|” allows for specifying alternative expressions to match</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>fruit <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"apple|berry|melon"</span>) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a>fruit <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"apple|berry|melon"</span>) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] │ &lt;apple&gt;
  [6] │ bil&lt;berry&gt;
@@ -827,7 +785,7 @@ George I. Hagstrom
 <li>Example from earlier, finding repeats of a sequence</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_extract_all</span>(<span class="st">"(caa|cag){3,60}"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_extract_all</span>(<span class="st">"(caa|cag){3,60}"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] "cagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcaacag"
@@ -843,7 +801,7 @@ George I. Hagstrom
 <li>If something is contained in parentheses, you can reference it using “\1”, “\2”, etc</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_extract_all</span>(<span class="st">"(......)</span><span class="sc">\\</span><span class="st">1+"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a>DNA <span class="sc">|&gt;</span> <span class="fu">str_extract_all</span>(<span class="st">"(......)</span><span class="sc">\\</span><span class="st">1+"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
  [1] "cagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcag"
@@ -866,7 +824,7 @@ George I. Hagstrom
 <li>“^” start of string, “$” end of string</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a>words <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"^a.+d$"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a>words <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"^a.+d$"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[12] │ &lt;add&gt;
 [17] │ &lt;afford&gt;
@@ -882,7 +840,7 @@ George I. Hagstrom
 <li>“\b” the boundary of a word</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a>sentences <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"ink"</span>) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a>sentences <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"ink"</span>) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [12] │ A rod is used to catch p&lt;ink&gt; salmon.
  [73] │ The &lt;ink&gt; stain dried on the finished page.
@@ -890,7 +848,7 @@ George I. Hagstrom
 [148] │ The spot on the blotter was made by green &lt;ink&gt;.
 [206] │ The club rented the r&lt;ink&gt; for the fifth night.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a>sentences <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">bink</span><span class="sc">\\</span><span class="st">b"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a></a>sentences <span class="sc">|&gt;</span> <span class="fu">str_view</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">bink</span><span class="sc">\\</span><span class="st">b"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [73] │ The &lt;ink&gt; stain dried on the finished page.
 [148] │ The spot on the blotter was made by green &lt;ink&gt;.
@@ -1123,44 +1081,6 @@ George I. Hagstrom
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

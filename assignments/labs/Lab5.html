@@ -5021,16 +5021,19 @@ vertical-align: -.125em;
 <section id="overview" class="level1">
 <h1>Overview</h1>
 <p>In this lab you will practice perform a series of exercises that use text and string manipulation to either analyze data with text, manipulate data containing strings, apply regular expressions, or handle data files with unusual formats or text strings.</p>
-<section id="problems" class="level2">
-<h2 class="anchored" data-anchor-id="problems">Problems</h2>
-<p><strong>Problem 1.</strong> Using the 173 majors listed in fivethirtyeight.com’s <a href="https://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/">College Majors dataset</a>, provide code that identifies the majors that contain either “DATA” or “STATISTICS”, case insensitive. You can find this dataset on R by installing the package <code>fivethirtyeight</code> and using the <code>major</code> column in either <code>college_recent_grades</code>, <code>college_new_grads</code>, or <code>college_all_ages</code>.</p>
-<p><strong>Problem 2</strong> Write code that transforms the data below:</p>
+<section id="problem-1." class="level2">
+<h2 class="anchored" data-anchor-id="problem-1.">Problem 1.</h2>
+<p>Using the 173 majors listed in fivethirtyeight.com’s <a href="https://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/">College Majors dataset</a>, provide code that identifies the majors that contain either “DATA” or “STATISTICS”, case insensitive. You can find this dataset on R by installing the package <code>fivethirtyeight</code> and using the <code>major</code> column in either <code>college_recent_grades</code>, <code>college_new_grads</code>, or <code>college_all_ages</code>.</p>
+</section>
+<section id="problem-2" class="level2">
+<h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
+<p>Write code that transforms the data below (treated as a raw string):</p>
 <p><code>[1] &quot;bell pepper&quot; &quot;bilberry&quot; &quot;blackberry&quot; &quot;blood orange&quot;</code><br>
 <code>[5] &quot;blueberry&quot; &quot;cantaloupe&quot; &quot;chili pepper&quot; &quot;cloudberry&quot;</code><br>
 <code>[9] &quot;elderberry&quot; &quot;lime&quot; &quot;lychee&quot; &quot;mulberry&quot;</code><br>
 <code>[13] &quot;olive&quot;  &quot;salal berry&quot;</code><br>
 </p>
-<p>Into a format like this:</p>
+<p>Into a format like this (i.e. as a vector containing all of the individual strings):</p>
 <p><code>c(&quot;bell pepper&quot;, &quot;bilberry&quot;, &quot;blackberry&quot;, &quot;blood orange&quot;, &quot;blueberry&quot;, &quot;cantaloupe&quot;, &quot;chili pepper&quot;, &quot;cloudberry&quot;, &quot;elderberry&quot;, &quot;lime&quot;, &quot;lychee&quot;, &quot;mulberry&quot;, &quot;olive&quot;, &quot;salal berry&quot;)</code></p>
 <p>As your starting point take the string defined in the following code chunk:</p>
 <div class="cell">
@@ -5040,28 +5043,91 @@ vertical-align: -.125em;
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st"> [13] &quot;olive&quot;  &quot;salal berry&quot; &#39;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Hint: There are many different ways to solve this problem, but if you use <code>str_extract_all</code> a helpful flag that returns a character vector instead of a list is <code>simplify=TRUE</code>. Then you can apply other tools from <code>stringr</code> if needed.</p>
-<p><strong>Problem 3</strong> Describe, in words, what these regular expressions will match. Read carefully to see if each entry is a regular expression or a string that defines a regular expression.</p>
+</section>
+<section id="problem-3" class="level2">
+<h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
+<ol type="a">
+<li>Describe, in words, what these regular expressions will match. Read carefully to see if each entry is a regular expression or a string that defines a regular expression. Remember that you can test these with code if you are uncertain.</li>
+</ol>
 <ul>
-<li><code>^.*$</code></li>
 <li><code>&quot;\\{.+\\}&quot;</code></li>
 <li><code>\d{4}-\d{2}-\d{2}</code></li>
-<li><code>&quot;\\\\{4}&quot;</code></li>
 <li><code>&quot;(..)\\1&quot;</code></li>
 </ul>
-<p><strong>Problem 4.</strong> Construct regular expressions to match words that:</p>
+<ol start="2" type="a">
+<li>Construct regular expressions to match words that (again remember you can test if you are unsure):</li>
+</ol>
 <ul>
 <li>Start with “y”.</li>
-<li>Have seven letters or more.</li>
 <li>Contain a vowel-consonant pair</li>
-<li>Contain at least two vowel-consonant pairs in a row.</li>
 <li>Contain the same vowel-consonant pair repeated twice in a row.</li>
 </ul>
 <p>For each example, verify that they work by running them on the <code>stringr::words</code> dataset and show the first 10 results (hint: combine <code>str_detect</code> and logical subsetting).</p>
-<p><strong>Problem 5</strong> Consider the <code>gss_cat</code> data-frame discussed in Chapter 16 of R4DS (provided as part of the <code>forcats</code> package):</p>
-<ul>
+</section>
+<section id="problem-4" class="level2">
+<h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
+<p>LLM Prompting Exercise. In the meetup case study we introduced a case-study which showed examples of FASTA sequences and how to search them using <code>regex</code>. A <strong>telomere</strong> is a region of repetitive DNA that occurs at the end of linear chromosomes (such as occur in humans and other mammals). These sequences are <strong>non-coding</strong> regions because they are not <strong>translated</strong> into proteins. The goal of this problem is to use an LLM of your choice to write a short R program using a regular expression that takes a string, determines if it ends in a telomeres, and then returns the coding part of the string. Here a telomere is defined as a series of 3 or more repeats of the DNA sequence <code>TTAGGG</code></p>
+<p>This can be solved with a very short regular expression which uses a slightly fancier feature than we discussed in the meetup:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.1.0     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>coding_match <span class="ot">=</span> <span class="st">&quot;^([CATG]+?)(?=(TTAGGG){3,}$)&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>coding_region <span class="ot">=</span> <span class="cf">function</span>(seq){</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    match <span class="ot">=</span> seq <span class="sc">|&gt;</span> <span class="fu">str_extract</span>(coding_match)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(match)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can see 3 examples (one which contains a telomere and two that do not below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># code-overflow: wrap</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>good_1 <span class="ot">=</span> <span class="st">&quot;CCCTGAATAATCAAGGTCACAGACCAGTTAGAATGGTTTAGTGTGGAAAGCGGGAAACGAAAAGCCTCTCTGAATCCTGCGCACCGAGATTCTCCCAAGGCAAGGCGAGGGGCTGTATTGCAGGGTTCAACTGCAGCGTCGCAACTCAAATGCAGCATTCCTAATGCACACATGACACCCAAAATATAACAGACATATTACTCATGGAGGGTGAGGGTGAGGGTGAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGG&quot;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>bad_1 <span class="ot">=</span> <span class="st">&quot;CCCNTGAATAATCAAGGTCACAGACCAGTTAGAATGGTTTAGTGTGGAAAGCGGGAAACGAAAAGCCTCTCTGAATCCTGCGCACCGAGATTCTCCCAAGGCAAGGCGAGGGGCTGTATTGCAGGGTTCAACTGCAGCGTCGCAACTCAAATGCAGCATTCCTAATGCACACATGACACCCAAAATATAACAGACATATTACTCATGGAGGGTGAGGGTGAGGGTGAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGG&quot;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>bad_2 <span class="ot">=</span> <span class="st">&quot;CCCTGAATAATCAAGGTCACAGACCAGTTAGAATGGTTTAGTGTGGAAAGCGGGAAACGAAAAGCCTCTCTGAATCCTGCGCACCGAGATTCTCCCAAGGCAAGGCGAGGGGCTGTATTGCAGGGTTCAACTGCAGCGTCGCAACTCAAATGCAGCATTCCTAATGCACACATGACACCCAAAATATAACAGACATATTACTCATGGAGGGTGAGGGTGAGGGTGAGGGTTAGGGTTAGGGTTTAGGGTTAGGGTTTAGGGGTTAGGGGTTAGGGATTAGGGTTAGGGTTTAGG&quot;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># This shows everything but the telomere repeats</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>good_1 <span class="sc">|&gt;</span> <span class="fu">str_view</span>(coding_match) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] │ &lt;CCCTGAATAATCAAGGTCACAGACCAGTTAGAATGGTTTAGTGTGGAAAGCGGGAAACGAAAAGCCTCTCTGAATCCTGCGCACCGAGATTCTCCCAAGGCAAGGCGAGGGGCTGTATTGCAGGGTTCAACTGCAGCGTCGCAACTCAAATGCAGCATTCCTAATGCACACATGACACCCAAAATATAACAGACATATTACTCATGGAGGGTGAGGGTGAGGGTGAGGG&gt;TTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGG</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># These will show you nothing</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>bad_1 <span class="sc">|&gt;</span> <span class="fu">str_view</span>(coding_match)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>bad_2 <span class="sc">|&gt;</span> <span class="fu">str_view</span>(coding_match)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The second string doesn’t match because it contains a non-coding character <code>N</code>. The third string doesn’t match because it does not have enough repeats.</p>
+<p>The regex <code>^([CATG]+?)(?=(TTAGGG){3,}$)</code> works for the following reasons:</p>
+<p>The first part of the regex, <code>^([CATG]+?)</code> looks for the start of the expression and then a sequence of characters containing either C, A, T, or G. The <code>+?</code> makes this part of the expression do lazy matching. This means it will match an expression starting with and containing nucleotide sequences until there is a part of the string that matches the next part of the regular expression. The next part of the regular expression contains <code>(TTAGGG){3,}$)</code> which matches three or more repeats of our telomere sequence <code>TTAGGG</code> terminating at the end of the string. The <code>?=</code> that is placed before this expression makes it so that our match does not return the telomere repeats, so that we only end up with the coding part at the end.</p>
+<ol type="a">
+<li>Use an LLM to try to solve this problem. Does your LLM solution use a regular expression? Provide your code and the LLM prompt (as well as the LLM you used). This problem was inspired by the book “Regular Expression Puzzles and AI Coding Assistants”. When the book was written (2023) <code>copilot</code> couldn’t solve this problem and <code>ChatGPT</code> struggled. I was able to generate very ugly solutions with lazy prompts. See how you can do. I recommend testing on the three strings I provided above in addition to thinking about the solution yourself.</li>
+</ol>
+</section>
+<section id="problem-5" class="level2">
+<h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
+<p>Consider the <code>gss_cat</code> data-frame discussed in Chapter 16 of R4DS (provided as part of the <code>forcats</code> package):</p>
+<ol type="a">
 <li><p>Create a new variable that describes whether the party-id of a survey respondent is “strong” if they are a strong republican or strong democrat, “weak” if they are a not strong democrat, not strong republican, or independent of any type, and “other” for the rest.</p></li>
 <li><p>Calculate the mean hours of TV watched by each of the groups “strong”, “weak”, and “other” and display it with a dot-plot (geom_point). Sort the levels in the dot-plot so that the group appears in order of most mean TV hours watched.</p></li>
-</ul>
+</ol>
 
 
 </section>
