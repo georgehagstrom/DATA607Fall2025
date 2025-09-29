@@ -9,21 +9,23 @@ editor: source
 In this lab you will practice perform a series of exercises that use text and string manipulation to either analyze data with text, manipulate data containing strings, apply
 regular expressions, or handle data files with unusual formats or text strings.
 
-## Problems
+## Problem 1. 
 
-
-**Problem 1.** Using the 173 majors listed in fivethirtyeight.com’s 
+Using the 173 majors listed in fivethirtyeight.com’s 
 [College Majors dataset](https://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/), provide code that identifies the majors that contain either "DATA" or "STATISTICS", case insensitive.
 You can find this dataset on R by installing the package `fivethirtyeight` and using the `major` column in either `college_recent_grades`, `college_new_grads`, or `college_all_ages`.
 
-**Problem 2** Write code that transforms the data below:
+
+## Problem 2 
+
+Write code that transforms the data below (treated as a raw string):
 
 ` [1] "bell pepper" "bilberry" "blackberry" "blood orange" `\
 ` [5] "blueberry" "cantaloupe" "chili pepper" "cloudberry" `\
 ` [9] "elderberry" "lime" "lychee" "mulberry" `\
 ` [13] "olive"  "salal berry" `\
 
-Into a format like this:
+Into a format like this (i.e. as a vector containing all of the individual strings):
 
 ` c("bell pepper", "bilberry", "blackberry", "blood orange", "blueberry", "cantaloupe", "chili pepper", "cloudberry", "elderberry", "lime", "lychee", "mulberry", "olive", "salal berry") `
 
@@ -40,31 +42,99 @@ Hint: There are many different ways to solve this problem, but if you use `str_e
 
 
 
-**Problem 3** Describe, in words, what these regular expressions will match. Read carefully to see if each entry is a regular expression or a string that defines a regular expression. 
+## Problem 3 
 
-- ` ^.*$ `
+(a) Describe, in words, what these regular expressions will match. Read carefully to see if each entry is a regular expression or a string that defines a regular expression. Remember that 
+you can test these with code if you are uncertain.
+
 - ` "\\{.+\\}" `
 - ` \d{4}-\d{2}-\d{2} `
-- ` "\\\\{4}"`
 - ` "(..)\\1" `
 
-**Problem 4.** Construct regular expressions to match words that:
+(b) Construct regular expressions to match words that (again remember you can test if you are unsure):
 
 - Start with “y”.
-- Have seven letters or more.
 - Contain a vowel-consonant pair
-- Contain at least two vowel-consonant pairs in a row.
 - Contain the same vowel-consonant pair repeated twice in a row.
 
 For each example, verify that they work by running them on the `stringr::words` dataset and show the first 10
 results (hint: combine `str_detect` and logical subsetting).
 
-**Problem 5** Consider the `gss_cat` data-frame discussed in Chapter 16 of R4DS (provided as part of the `forcats` package):
 
-- Create a new variable that describes whether the party-id of a survey respondent is "strong" if they are a
+## Problem 4
+
+LLM Prompting Exercise. In the meetup case study we introduced a case-study which showed examples of FASTA sequences and how to search them using `regex`. 
+A **telomere** is a region of repetitive DNA that occurs at the end of linear chromosomes (such as occur in humans and other mammals). These sequences are 
+**non-coding** regions because they are not **translated** into proteins. The goal of this problem is to use an LLM of your choice to write a short R program
+using a regular expression that takes a string, determines if it ends in a telomeres, and then returns the coding part of the string. Here a telomere is defined as
+a series of 3 or more repeats of the DNA sequence `TTAGGG`
+
+This can be solved with a very
+short regular expression which uses a slightly fancier feature than we discussed in the meetup:
+
+```{r}
+#| echo: true
+library(tidyverse)
+library(stringr)
+coding_match = "^([CATG]+?)(?=(TTAGGG){3,}$)"
+
+coding_region = function(seq){
+
+    match = seq |> str_extract(coding_match)
+    return(match)
+	
+}
+
+```
+
+You can see 3 examples (one which contains a telomere and two that do not below:
+
+```{r}
+# code-overflow: wrap
+
+good_1 = "CCCTGAATAATCAAGGTCACAGACCAGTTAGAATGGTTTAGTGTGGAAAGCGGGAAACGAAAAGCCTCTCTGAATCCTGCGCACCGAGATTCTCCCAAGGCAAGGCGAGGGGCTGTATTGCAGGGTTCAACTGCAGCGTCGCAACTCAAATGCAGCATTCCTAATGCACACATGACACCCAAAATATAACAGACATATTACTCATGGAGGGTGAGGGTGAGGGTGAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGG"
+
+bad_1 = "CCCNTGAATAATCAAGGTCACAGACCAGTTAGAATGGTTTAGTGTGGAAAGCGGGAAACGAAAAGCCTCTCTGAATCCTGCGCACCGAGATTCTCCCAAGGCAAGGCGAGGGGCTGTATTGCAGGGTTCAACTGCAGCGTCGCAACTCAAATGCAGCATTCCTAATGCACACATGACACCCAAAATATAACAGACATATTACTCATGGAGGGTGAGGGTGAGGGTGAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGG"
+
+bad_2 = "CCCTGAATAATCAAGGTCACAGACCAGTTAGAATGGTTTAGTGTGGAAAGCGGGAAACGAAAAGCCTCTCTGAATCCTGCGCACCGAGATTCTCCCAAGGCAAGGCGAGGGGCTGTATTGCAGGGTTCAACTGCAGCGTCGCAACTCAAATGCAGCATTCCTAATGCACACATGACACCCAAAATATAACAGACATATTACTCATGGAGGGTGAGGGTGAGGGTGAGGGTTAGGGTTAGGGTTTAGGGTTAGGGTTTAGGGGTTAGGGGTTAGGGATTAGGGTTAGGGTTTAGG"
+
+# This shows everything but the telomere repeats
+
+good_1 |> str_view(coding_match) 
+
+# These will show you nothing
+
+bad_1 |> str_view(coding_match)
+
+bad_2 |> str_view(coding_match)
+
+
+```
+
+The second string doesn't match because it contains a non-coding character `N`. The third string doesn't match because it does not have enough repeats. 
+
+The regex `^([CATG]+?)(?=(TTAGGG){3,}$)` works for the following reasons:
+
+The first part of the regex, `^([CATG]+?)` looks for the start of the expression and then a sequence of characters containing either C, A, T, or G. The `+?` makes this
+part of the expression do lazy matching. This means it will match an expression starting with and containing nucleotide sequences until there is a part of the string that matches
+the next part of the regular expression. The next part of the regular expression contains `(TTAGGG){3,}$)` which matches three or more repeats of our telomere sequence
+`TTAGGG` terminating at the end of the string. The `?=` that is placed before this expression makes it so that our match does not return the telomere repeats, so that we only
+end up with the coding part at the end.  
+
+(a) Use an LLM to try to solve this problem. Does your LLM solution use a regular expression? Provide your code and the LLM prompt (as well as the LLM you used). This problem was inspired by
+the book "Regular Expression Puzzles and AI Coding Assistants". When the book was written (2023) `copilot` couldn't solve this problem and `ChatGPT` struggled. I was able to generate very 
+ugly solutions with lazy prompts. See how you can do. I recommend testing on the three strings I provided above in addition to thinking about the solution yourself.
+
+
+
+## Problem 5 
+
+Consider the `gss_cat` data-frame discussed in Chapter 16 of R4DS (provided as part of the `forcats` package):
+
+(a) Create a new variable that describes whether the party-id of a survey respondent is "strong" if they are a
 strong republican or strong democrat, "weak" if they are a not strong democrat, not strong republican, or independent of any type, and "other" for the rest.
 
-- Calculate the mean hours of TV watched by each of the groups "strong", "weak", and "other" and display it with a dot-plot (geom_point). Sort the 
+(b) Calculate the mean hours of TV watched by each of the groups "strong", "weak", and "other" and display it with a dot-plot (geom_point). Sort the 
 levels in the dot-plot so that the group appears in order of most mean TV hours watched.
 
 
