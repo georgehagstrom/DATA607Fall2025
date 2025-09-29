@@ -3096,46 +3096,95 @@
     "text": "Data Science in Context Presentations"
   },
   {
+    "objectID": "meetups/Meetup6/Meetup6.html#week-preview",
+    "href": "meetups/Meetup6/Meetup6.html#week-preview",
+    "title": "Meetup 6: Working With Text and Strings",
+    "section": "Week Preview",
+    "text": "Week Preview\n\nThis week is all about text and categorical variables\nKey packages stringr, forcats and also the regex language\nChapters 14-16 in R4DS\nI’ll release a video coding analysis of a baby names dataset"
+  },
+  {
+    "objectID": "meetups/Meetup6/Meetup6.html#hw-pitfalls",
+    "href": "meetups/Meetup6/Meetup6.html#hw-pitfalls",
+    "title": "Meetup 6: Working With Text and Strings",
+    "section": "HW Pitfalls",
+    "text": "HW Pitfalls\n\nDon’t automatically remove all outliers, decide case by case\nFormatting- big variation in submission length this week\n\nDon’t submit a table that is multiple pages long, find another way"
+  },
+  {
+    "objectID": "meetups/Meetup6/Meetup6.html#window-functions",
+    "href": "meetups/Meetup6/Meetup6.html#window-functions",
+    "title": "Meetup 6: Working With Text and Strings",
+    "section": "Window Functions",
+    "text": "Window Functions"
+  },
+  {
+    "objectID": "meetups/Meetup6/Meetup6.html#window-functions-1",
+    "href": "meetups/Meetup6/Meetup6.html#window-functions-1",
+    "title": "Meetup 6: Working With Text and Strings",
+    "section": "Window Functions",
+    "text": "Window Functions"
+  },
+  {
+    "objectID": "meetups/Meetup6/Meetup6.html#window-functions-2",
+    "href": "meetups/Meetup6/Meetup6.html#window-functions-2",
+    "title": "Meetup 6: Working With Text and Strings",
+    "section": "Window Functions",
+    "text": "Window Functions"
+  },
+  {
+    "objectID": "meetups/Meetup6/Meetup6.html#window-functions-3",
+    "href": "meetups/Meetup6/Meetup6.html#window-functions-3",
+    "title": "Meetup 6: Working With Text and Strings",
+    "section": "Window Functions",
+    "text": "Window Functions"
+  },
+  {
     "objectID": "meetups/Meetup6/Meetup6.html#case-study-huntingtons-disease",
     "href": "meetups/Meetup6/Meetup6.html#case-study-huntingtons-disease",
     "title": "Meetup 6: Working With Text and Strings",
     "section": "Case Study: Huntington’s Disease",
-    "text": "Case Study: Huntington’s Disease\n\nTandem Repeats are sections of genetic code where same short element repeats over and over:\nCAGCAGCAGCAGCAGCAGCAG\n\n\nlibrary(bioseq)\n\n\nIn certain genes, number of repeats varies, can cause genetic diseases etc\nHuntington’s Disease:\n\nCAA and CAG repeats, code for amino acid Glutamine\n6-35 normal\n36+ causes disease"
+    "text": "Case Study: Huntington’s Disease\n\nTandem Repeats: sections of genetic code where short element repeats:\nCAGCAGCAGCAGCAGCAGCAG\n\n\nIn certain genes wrong number of repeats causes disease:\nHuntington’s Disease:\n\nCAA and CAG repeats, code for amino acid Glutamine\n6-35 normal\n36+ causes disease"
   },
   {
     "objectID": "meetups/Meetup6/Meetup6.html#pattern-matching",
     "href": "meetups/Meetup6/Meetup6.html#pattern-matching",
     "title": "Meetup 6: Working With Text and Strings",
     "section": "Pattern Matching",
-    "text": "Pattern Matching\n\nHow to determine number of repeats CAA + CAG repeats in a section of code?\n\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   4.0.0     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.1.0     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(kableExtra)\n\n\nAttaching package: 'kableExtra'\n\nThe following object is masked from 'package:dplyr':\n\n    group_rows\n\nDNA =read_file(\"Huntington.txt\")\n\nDNA |&gt; str_sub(1, 800) |&gt; print()\n\n[1] \"\\t1 ttgctgtgtg aggcagaacc tgcgggggca ggggcgggct ggttccctgg ccagccattg\\n       61 gcagagtccg caggctaggg ctgtcaatca tgctggccgg cgtggccccg cctccgccgg\\n      121 cgcggccccg cctccgccgg cgcagcgtct gggacgcaag gcgccgtggg ggctgccggg\\n      181 acgggtccaa gatggacggc cgctcaggtt ctgcttttac ctgcggccca gagccccatt\\n      241 cattgccccg gtgctgagcg gcgccgcgag tcggcccgag gcctccgggg actgccgtgc\\n      301 cgggcgggag accgccatgg cgaccctgga aaagctgatg aaggccttcg agtccctcaa\\n      361 gtccttccag cagcagcagc agcagcagca gcagcagcag cagcagcagc agcagcagca\\n      421 gcagcagcag caacagccgc caccgccgcc gccgccgccg ccgcctcctc agcttcctca\\n      481 gccgccgccg caggcacagc cgctgctgcc tcagccgcag ccgcccccgc cgccgccccc\\n      541 gccgccaccc ggcccggctg tggctgagga gccgctgcac cgaccaaaga aagaactttc\\n      601 agctaccaag aaagaccgtg tgaatcattg tctg\""
+    "text": "Pattern Matching\n\nHow to determine number of repeats CAA + CAG repeats in a section of code?\n\n\nlibrary(tidyverse)\nlibrary(kableExtra)\nDNA =read_file(\"Huntington.txt\")\n\nDNA |&gt; str_sub(1, 800) |&gt; print()\n\n[1] \"\\t1 ttgctgtgtg aggcagaacc tgcgggggca ggggcgggct ggttccctgg ccagccattg\\n       61 gcagagtccg caggctaggg ctgtcaatca tgctggccgg cgtggccccg cctccgccgg\\n      121 cgcggccccg cctccgccgg cgcagcgtct gggacgcaag gcgccgtggg ggctgccggg\\n      181 acgggtccaa gatggacggc cgctcaggtt ctgcttttac ctgcggccca gagccccatt\\n      241 cattgccccg gtgctgagcg gcgccgcgag tcggcccgag gcctccgggg actgccgtgc\\n      301 cgggcgggag accgccatgg cgaccctgga aaagctgatg aaggccttcg agtccctcaa\\n      361 gtccttccag cagcagcagc agcagcagca gcagcagcag cagcagcagc agcagcagca\\n      421 gcagcagcag caacagccgc caccgccgcc gccgccgccg ccgcctcctc agcttcctca\\n      481 gccgccgccg caggcacagc cgctgctgcc tcagccgcag ccgcccccgc cgccgccccc\\n      541 gccgccaccc ggcccggctg tggctgagga gccgctgcac cgaccaaaga aagaactttc\\n      601 agctaccaag aaagaccgtg tgaatcattg tctg\""
   },
   {
     "objectID": "meetups/Meetup6/Meetup6.html#processing-steps",
     "href": "meetups/Meetup6/Meetup6.html#processing-steps",
     "title": "Meetup 6: Working With Text and Strings",
     "section": "Processing Steps",
-    "text": "Processing Steps\n\nGet rid of tabs, numbers, spaces, newlines:\n\n\nDNA = DNA |&gt; str_remove_all(\"[0-9]\") |&gt;   str_remove_all(\"\\t\") |&gt; \n  str_remove_all(\"\\n\") |&gt; str_remove_all(\" \")\n\nDNA |&gt; str_sub(1,60) |&gt; print()\n\n[1] \"ttgctgtgtgaggcagaacctgcgggggcaggggcgggctggttccctggccagccattg\"\n\n\n\nFollowing Regular Expression can match repeats of various lengths: (CAA|CAG){10,}\n\n\nDNA |&gt; str_count(\"caa\") |&gt; print()\n\n[1] 179\n\nDNA |&gt; str_count(\"cag\") |&gt; print()\n\n[1] 471\n\nDNA |&gt; str_count(\"(caa|cag){10,}\") |&gt; print()\n\n[1] 1"
+    "text": "Processing Steps\n\nGet rid of tabs, numbers, spaces, newlines:\n\n\nDNA = DNA |&gt; \n  str_remove_all(\"[0-9]\") |&gt;   \n  str_remove_all(\"\\t\") |&gt; \n  str_remove_all(\"\\n\") |&gt; \n  str_remove_all(\" \")\n\nDNA |&gt; str_sub(1,60) |&gt; print()\n\n[1] \"ttgctgtgtgaggcagaacctgcgggggcaggggcgggctggttccctggccagccattg\""
+  },
+  {
+    "objectID": "meetups/Meetup6/Meetup6.html#matching-using-regex",
+    "href": "meetups/Meetup6/Meetup6.html#matching-using-regex",
+    "title": "Meetup 6: Working With Text and Strings",
+    "section": "Matching Using regex",
+    "text": "Matching Using regex\n\nFollowing Regular Expression can match repeats of various lengths: (CAA|CAG){10,}\n\n\nDNA |&gt; \n  str_count(\"caa\") |&gt;\n  print()\n\n[1] 179\n\nDNA |&gt; \n  str_count(\"cag\") |&gt; \n  print()\n\n[1] 471\n\nDNA |&gt;\n  str_count(\"(caa|cag){10,}\") |&gt;\n  print()\n\n[1] 1"
   },
   {
     "objectID": "meetups/Meetup6/Meetup6.html#how-long",
     "href": "meetups/Meetup6/Meetup6.html#how-long",
     "title": "Meetup 6: Working With Text and Strings",
     "section": "How Long?",
-    "text": "How Long?\n\nDNA |&gt; str_extract_all(\"(caa|cag){10,}\") |&gt; \n  str_length()/3\n\n[1] 23\n\nDNA |&gt; str_extract_all(\"(caa|cag){10,}\")\n\n[[1]]\n[1] \"cagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcaacag\""
+    "text": "How Long?\n\nDNA |&gt; \n  str_extract_all(\"(caa|cag){10,}\") |&gt; \n  str_length()/3\n\n[1] 23\n\nDNA |&gt; str_extract_all(\"(caa|cag){10,}\")\n\n[[1]]\n[1] \"cagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcagcaacag\""
   },
   {
     "objectID": "meetups/Meetup6/Meetup6.html#other-examples",
     "href": "meetups/Meetup6/Meetup6.html#other-examples",
     "title": "Meetup 6: Working With Text and Strings",
     "section": "Other Examples",
-    "text": "Other Examples\n\nPowerful tools like stringr and regex elevate your ability to work with text\nUseful in many domains, from identifying emails and phone numbers to motifs in DNA sequences\n\n\"\\\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,}\\\\b\" pattern matches valid email\n\"\\\\d{5}([ \\\\-]\\\\d{4})?\" matches American Zip codes\n\"/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/\" YYYY-MM-DD dates"
+    "text": "Other Examples\n\nLibraries stringr and regex elevate your ability to work with text\nUseful in many domains:\n\nEmail: \"\\\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,}\\\\b\"\nUS Zip Code: \"\\\\d{5}([ \\\\-]\\\\d{4})?\"\nYYYY-MM-DD dates: \"/([12]\\\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\\\d|3[01]))/\""
   },
   {
     "objectID": "meetups/Meetup6/Meetup6.html#stringcharacter-basics",
     "href": "meetups/Meetup6/Meetup6.html#stringcharacter-basics",
     "title": "Meetup 6: Working With Text and Strings",
     "section": "String/Character Basics",
-    "text": "String/Character Basics\n\nDefined by enclosing in quotes:\n\n\nstring1 = c(\"word\",'another word', \"multiple\\n lines\",\n            \"using \\\"escapes\\\" and \\u00FCnicode \")\nstr_view(string1)\n\n[1] │ word\n[2] │ another word\n[3] │ multiple\n    │  lines\n[4] │ using \"escapes\" and ünicode \n\n\n\nSpecial characters:\n\n\"\\\\n\" newline\n\"\\\\t\" tab\n\"\\\\\" to escape and write special character"
+    "text": "String/Character Basics\n\nDefined by enclosing in quotes:\n\n\nstring1 = c(\"word\",'another word', \"multiple\\n lines\",\n            \"using \\\"escapes\\\" and \\u00FCnicode \")\nstr_view(string1)\n\n[1] │ word\n[2] │ another word\n[3] │ multiple\n    │  lines\n[4] │ using \"escapes\" and ünicode \n\n\n\nSpecial characters:\n\n\"\\n\" newline\n\"\\t\" tab\n\"\\\" to escape and write special character"
   },
   {
     "objectID": "meetups/Meetup6/Meetup6.html#key-functions",
@@ -3163,7 +3212,7 @@
     "href": "meetups/Meetup6/Meetup6.html#regular-expressions-regex",
     "title": "Meetup 6: Working With Text and Strings",
     "section": "Regular Expressions (regex)",
-    "text": "Regular Expressions (regex)\n\nRegular Expressions are a powerful language for describing complex patterns\nString search tools often use them by default\nRegular Characters:\na-z, A-z, 0-9\nMetacharacters:\n\n. , * , () , [] , {} , | , \\ , $ , ? , ^ , +\nThese add special meaning to the patterns"
+    "text": "Regular Expressions (regex)\n\nRegex are a powerful language for describing complex patterns\nString search tools often use them by default\nRegular Characters:\na-z, A-z, 0-9\nMetacharacters:\n\n. , * , () , [] , {} , | , \\ , $ , ? , ^ , +\nThese add special meaning to the patterns"
   },
   {
     "objectID": "meetups/Meetup6/Meetup6.html#wildcard-.",
@@ -3198,7 +3247,7 @@
     "href": "meetups/Meetup6/Meetup6.html#special-characters-and-escaping",
     "title": "Meetup 6: Working With Text and Strings",
     "section": "Special Characters and Escaping",
-    "text": "Special Characters and Escaping\n\nUse “\\” if you need to match a metacharacter for real, i.e.\n“\\.”, “\\”, “\\+” etc\nSpecial character groups also denoted with “\" -”\\s” space, opposite: “\\S” -“\\d” number, “\\D” not number -“\\w” letter or number, “\\W” not letter or number\nRanges: “[A-E]”, “[1-4]”\nNEED TO DOUBLE ESCAPE IN R!\n\n\nstr_view(\"abc123\",\"\\\\d\")\n\n[1] │ abc&lt;1&gt;&lt;2&gt;&lt;3&gt;"
+    "text": "Special Characters and Escaping\n\nUse “\\” if you need to match a metacharacter for real, i.e.\n“\\.”, “\\\\”, “\\+” etc\nSpecial character groups also denoted with “\" -”\\s” space, opposite: “\\S” -“\\d” number, “\\D” not number -“\\w” letter or number, “\\W” not letter or number\nRanges: “[A-E]”, “[1-4]”\nNEED TO DOUBLE ESCAPE IN R!\n\n\nstr_view(\"abc123\",\"\\\\d\")\n\n[1] │ abc&lt;1&gt;&lt;2&gt;&lt;3&gt;"
   },
   {
     "objectID": "meetups/Meetup6/Meetup6.html#logical-or",
@@ -3236,11 +3285,11 @@
     "text": "Boundary\n\n“\\b” the boundary of a word\n\n\nsentences |&gt; str_view(\"ink\") |&gt; head(5)\n\n [12] │ A rod is used to catch p&lt;ink&gt; salmon.\n [73] │ The &lt;ink&gt; stain dried on the finished page.\n [96] │ Bail the boat to stop it from s&lt;ink&gt;ing.\n[148] │ The spot on the blotter was made by green &lt;ink&gt;.\n[206] │ The club rented the r&lt;ink&gt; for the fifth night.\n\nsentences |&gt; str_view(\"\\\\bink\\\\b\")\n\n [73] │ The &lt;ink&gt; stain dried on the finished page.\n[148] │ The spot on the blotter was made by green &lt;ink&gt;.\n[217] │ It is hard to erase blue or red &lt;ink&gt;.\n[321] │ Fill the &lt;ink&gt; jar with sticky glue."
   },
   {
-    "objectID": "meetups/Meetup6/Meetup6.html#data-science-in-context-presentation",
-    "href": "meetups/Meetup6/Meetup6.html#data-science-in-context-presentation",
+    "objectID": "meetups/Meetup6/Meetup6.html#data-science-in-context-presentations",
+    "href": "meetups/Meetup6/Meetup6.html#data-science-in-context-presentations",
     "title": "Meetup 6: Working With Text and Strings",
-    "section": "Data Science in Context Presentation",
-    "text": "Data Science in Context Presentation"
+    "section": "Data Science in Context Presentations",
+    "text": "Data Science in Context Presentations"
   },
   {
     "objectID": "meetups/Meetup6/Meetup6.html#meetup-reflectionone-minute-paper",
@@ -4304,7 +4353,7 @@
     "href": "course/schedule.html",
     "title": "DATA607 - Data Acquisition and Management",
     "section": "",
-    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\n\n\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\n\n\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\n\n\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\n\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
+    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\nMeetup 6 Slides\n\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\n\n\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\n\n\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\n\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -4315,7 +4364,7 @@
     "href": "course/schedule.html#meetup-link",
     "title": "DATA607 - Data Acquisition and Management",
     "section": "",
-    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\n\n\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\n\n\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\n\n\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\n\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
+    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\nMeetup 6 Slides\n\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\n\n\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\n\n\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\n\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
     "crumbs": [
       "Course information",
       "Schedule"
