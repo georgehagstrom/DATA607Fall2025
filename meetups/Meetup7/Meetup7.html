@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.54">
 
   <meta name="author" content="George I. Hagstrom">
-  <meta name="dcterms.date" content="2024-10-09">
+  <meta name="dcterms.date" content="2025-10-06">
   <title>DATA 607 Fall 2025 – Meetup 7: Joins and SQL</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -404,59 +404,66 @@ George I. Hagstrom
 </div>
 </div>
 
-  <p class="date">2024-10-09</p>
+  <p class="date">2025-10-06</p>
 </section>
-<section id="lab-5-review" class="slide level2">
-<h2>Lab 5 Review</h2>
+<section id="lab-3-4-review-axes" class="slide level2">
+<h2>Lab 3-4 Review: Axes</h2>
 <ul>
-<li>Have graded all labs that were handed in last Sunday evening.</li>
-<li>Mostly really good, most common mistake was string typos</li>
+<li>Never plot different units on the same axis</li>
+<li><code>airquality</code> dataset</li>
+<li>contains <code>ozone</code>, <code>solar.R</code>, <code>Wind</code>, <code>Temp</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>gss_cat <span class="sc">|&gt;</span> <span class="fu">select</span>(partyid) <span class="sc">|&gt;</span> <span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 1
-   partyid           
-   &lt;fct&gt;             
- 1 Ind,near rep      
- 2 Not str republican
- 3 Independent       
- 4 Not str democrat  
- 5 Strong democrat   
- 6 Ind,near dem      
- 7 Strong republican 
- 8 Other party       
- 9 No answer         
-10 Don't know        </code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>airquality <span class="sc">|&gt;</span> </span>
+<span id="cb1-2"><a></a>  <span class="fu">pivot_longer</span>(Ozone<span class="sc">:</span>Temp,</span>
+<span id="cb1-3"><a></a>               <span class="at">names_to =</span> <span class="st">"variable"</span>,</span>
+<span id="cb1-4"><a></a>               <span class="at">values_to =</span> <span class="st">"value"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-5"><a></a>               <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>value,<span class="at">y=</span>variable)) <span class="sc">+</span></span>
+<span id="cb1-6"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb1-7"><a></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"NOT LIKE THIS"</span>) <span class="sc">+</span></span>
+<span id="cb1-8"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="lab-5-review-1" class="slide level2">
-<h2>Lab 5 Review</h2>
+<section id="lab-3-4-review-axes-1" class="slide level2">
+<h2>Lab 3-4 Review: Axes</h2>
 <ul>
-<li>Have graded all labs that were handed in last Sunday evening.</li>
-<li>Mostly really good, most common mistake was string typos</li>
-<li>Typos with these categories lead to errors in plots
-<ul>
-<li>Some should have been red flags (plot with only 2 categories)</li>
-<li>Others more subtle (numbers off)</li>
-<li>Always a good idea to look at intermediate output, doublecheck things</li>
-</ul></li>
+<li>Never plot different units on the same axis</li>
+<li><code>airquality</code> dataset</li>
+<li>contains <code>ozone</code>, <code>solar.R</code>, <code>Wind</code>, <code>Temp</code></li>
 </ul>
-</section>
-<section id="very-subtle-regex-issues-on-lab-5" class="slide level2">
-<h2>Very Subtle Regex Issues on Lab 5</h2>
+
+<img data-src="Meetup7_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section id="lab-3-4-review-axes-2" class="slide level2">
+<h2>Lab 3-4 Review: Axes</h2>
 <ul>
-<li>Your book (and me also) were a bit uncareful:</li>
-<li><code>"[^aeoiu]"</code> only identifies consonants if the input is purely a word</li>
-<li>Though the book is right in a very technical sense, props to all who noticed this and identified all the consonants</li>
+<li>Instead use facets to make each axis distinct</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>airquality <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a></a>  <span class="fu">pivot_longer</span>(Ozone<span class="sc">:</span>Temp,</span>
+<span id="cb2-3"><a></a>               <span class="at">names_to =</span> <span class="st">"variable"</span>,</span>
+<span id="cb2-4"><a></a>               <span class="at">values_to =</span> <span class="st">"value"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb2-5"><a></a>               <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>value)) <span class="sc">+</span></span>
+<span id="cb2-6"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb2-7"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>variable,<span class="at">ncol =</span> <span class="dv">2</span>,<span class="at">scales=</span><span class="st">"free_x"</span>) <span class="sc">+</span></span>
+<span id="cb2-8"><a></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"LIKE THIS"</span>) <span class="sc">+</span></span>
+<span id="cb2-9"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>) <span class="sc">+</span></span>
+<span id="cb2-10"><a></a>  <span class="fu">theme</span>( <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb2-11"><a></a>           <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
+<section id="lab-3-4-review-axes-3" class="slide level2">
+<h2>Lab 3-4 Review: Axes</h2>
+<ul>
+<li>Instead use facets to make each axis distinct</li>
+</ul>
+
+<img data-src="Meetup7_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
 <section id="project-proposal" class="slide level2">
 <h2>Project Proposal</h2>
 <ul>
 <li>No lab next week</li>
-<li>But <a href="https://georgehagstrom.github.io/DATA607/assignments/project.html">project proposal</a> due October 20th</li>
+<li>But <a href="https://georgehagstrom.github.io/DATA607Fall2025/assignments/project.html">project proposal</a> due October 20th</li>
 <li>Target 2 Pages
 <ul>
 <li>Intro</li>
@@ -468,6 +475,47 @@ George I. Hagstrom
 <li>Feel free to ask me about your idea as you develop it</li>
 </ul>
 </section>
+<section id="project-proposal-1" class="slide level2">
+<h2>Project Proposal</h2>
+<ul>
+<li>Pick a topic that either:
+<ul>
+<li>Relates to a specific professional goal or your current job</li>
+<li>Relates to a something you know a lot about</li>
+<li>Is something you have become very interested in</li>
+</ul></li>
+<li>Read about your topic when developing your proposal!
+<ul>
+<li>Have a short section on with references explaining state-of-the-art</li>
+</ul></li>
+</ul>
+</section>
+<section id="heilmeier-framework" class="slide level2">
+<h2>Heilmeier Framework</h2>
+</section>
+<section id="developing-a-research-proposal-heilmeier-questions" class="slide level2">
+<h2>Developing a Research Proposal: Heilmeier Questions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>George Heilmeier developed a series of questions he would ask of potential DARPA grant recipients</p>
+<p>The answers to these questions get you to the core of your idea</p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="heilmeier.png"></p>
+</div></div>
+</section>
+<section id="heilmeier-questions" class="slide level2">
+<h2>Heilmeier Questions</h2>
+<ol type="1">
+<li>What are you trying to do? (Without Jargon)</li>
+<li>How is it done today and what are the limits?</li>
+<li>What is your approach and why will it be successful?</li>
+<li>Who cares about this question? (Stakeholders?)</li>
+<li>What are the risks/obstacles</li>
+<li>What will it cost? (0$)</li>
+<li>How long will it take? (Deadline)</li>
+<li>What does progress/success look like?</li>
+</ol>
+</section>
 <section id="this-week" class="slide level2">
 <h2>This Week</h2>
 <ul>
@@ -475,8 +523,8 @@ George I. Hagstrom
 <li>Separate video for SQL with a coding vignette</li>
 </ul>
 </section>
-<section id="combining-tables-from-multiple-tables" class="slide level2">
-<h2>Combining Tables From Multiple Tables</h2>
+<section id="combining-data-from-multiple-tables" class="slide level2">
+<h2>Combining Data From Multiple Tables</h2>
 <ul>
 <li>Data usually stored in separate files/data frames</li>
 <li>Analysis requires data in a single frame</li>
@@ -954,9 +1002,9 @@ George I. Hagstrom
 <li>Columns that are common “Keys” used to link data frames</li>
 </ul>
 </section>
-<section id="primary-keys" class="slide level2 smaller">
+<section id="primary-keys" class="slide level2">
 <h2>Primary Keys</h2>
-<p>A <strong>Primary Key</strong> for a data frame is a column group of columns within that data frame whose values uniquely determine each row of the data frame.</p>
+<p>A <strong>Primary Key</strong> is a column/group of columns whose values uniquely determine each row of the data frame.</p>
 <ul>
 <li>For <code>planes</code> it is <code>tailnum</code></li>
 </ul>
@@ -1010,7 +1058,7 @@ George I. Hagstrom
 </section>
 <section id="definition" class="slide level2">
 <h2>Definition</h2>
-<p>A <strong>Primary Key</strong> for a data frame is a column group of columns within that data frame whose values uniquely determine each row of the data frame.</p>
+<p>A <strong>Primary Key</strong> is a column/group of columns whose values uniquely determine each row of the data frame.</p>
 <ul>
 <li>For <code>planes</code> it is <code>tailnum</code></li>
 </ul>
@@ -1030,7 +1078,7 @@ George I. Hagstrom
 <section id="compound-keys" class="slide level2">
 <h2>Compound Keys</h2>
 <ul>
-<li><p>Sometimes a single variable is not enough to uniquely identify rows.</p></li>
+<li><p>Sometimes no single variable uniquely identifies rows.</p></li>
 <li><p>Multiple variables can combine to be a primary key</p></li>
 <li><p>For <code>weather</code> it requires <code>origin</code> and <code>time-hour</code>:</p></li>
 </ul>
@@ -1048,9 +1096,9 @@ George I. Hagstrom
 </div>
 </div>
 </section>
-<section id="foreign-keys" class="slide level2 smaller">
+<section id="foreign-keys" class="slide level2">
 <h2>Foreign Keys</h2>
-<p>A <strong>Foreign Key</strong> is a variable or group of variables within a data frame that serves as a primary key for another data frame.</p>
+<p>A <strong>Foreign Key</strong> is a variable/group of variables that is a primary key for another data frame.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>flights <span class="sc">|&gt;</span> <span class="fu">select</span>(flight,time_hour,tailnum) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">4</span>) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -1089,7 +1137,7 @@ George I. Hagstrom
 </div>
 <ul>
 <li><code>tailnum</code> is a primary key for <code>planes</code></li>
-<li>Foreign key is what allows for rows to be matched between data frames</li>
+<li>Foreign key allows for rows to be matched between data frames</li>
 </ul>
 </section>
 <section id="joins" class="slide level2">
@@ -1099,7 +1147,15 @@ George I. Hagstrom
 </ul>
 <p><code>something_join(x,y,by = join_by(...))</code></p>
 <ul>
-<li>Here <code>something</code> is either: -left, right, full, inner, semi, or anti</li>
+<li>Here <code>something</code> is either:
+<ul>
+<li><code>left_join</code></li>
+<li><code>right_join</code></li>
+<li><code>full_join</code></li>
+<li><code>inner_join</code></li>
+<li><code>semi_join</code></li>
+<li><code>anti_join</code></li>
+</ul></li>
 </ul>
 </section>
 <section id="join-types" class="slide level2">
@@ -1287,8 +1343,8 @@ George I. Hagstrom
 <section id="what-about-keys" class="slide level2">
 <h2>What about Keys?</h2>
 <ul>
-<li>Join functions automatically try to find a foreign key</li>
-<li>You may specify a key using <code>join_by</code> and then specifying match using formula:</li>
+<li><code>join</code> functions automatically try to find a foreign key</li>
+<li>You may specify a key using <code>join_by</code> and a formula:</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>flights <span class="sc">|&gt;</span> <span class="fu">left_join</span>(airports,<span class="fu">join_by</span>(dest <span class="sc">==</span> faa)) <span class="sc">|&gt;</span> </span>
@@ -1311,8 +1367,8 @@ George I. Hagstrom
 <section id="filtering-joins" class="slide level2">
 <h2>Filtering Joins</h2>
 <ul>
-<li><code>semi_join(x,y)</code> gets rid of rows of <code>x</code> that don’t have matches in <code>y</code></li>
-<li>Use semi_join to restrict airports to the destination airports</li>
+<li><code>semi_join(x,y)</code> removes rows of <code>x</code> that don’t have matches in <code>y</code></li>
+<li>Use <code>semi_join</code> to restrict airports to the destination airports</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>airports <span class="sc">|&gt;</span> </span>
@@ -1330,7 +1386,7 @@ George I. Hagstrom
 <section id="filtering-joins-1" class="slide level2">
 <h2>Filtering Joins</h2>
 <ul>
-<li><code>anti_join(x,y)</code> gets rid of rows of <code>x</code> that have matches in <code>y</code></li>
+<li><code>anti_join(x,y)</code> removes rows of <code>x</code> that have matches in <code>y</code></li>
 <li>Use <code>anti_join</code> to find implicit missing values</li>
 <li>Flights where weather info lacking:</li>
 </ul>
@@ -1359,71 +1415,6 @@ George I. Hagstrom
 <h2>Meetup Reflection/One Minute Paper</h2>
 <p>Please fill out the following google form after the meeting or watching the video:</p>
 <p><a href="https://forms.gle/wa1LCs15j6Bnp8KW6">Click Here</a></p>
-</section>
-<section id="relational-databases" class="slide level2">
-<h2>Relational Databases</h2>
-
-<img data-src="../../posts/SQL.png" class="r-stretch"></section>
-<section id="features" class="slide level2">
-<h2>Features</h2>
-<ul>
-<li>Tables linked by keys</li>
-<li>Tables correspond to entities</li>
-<li>Rows called records</li>
-<li>Stored on disk</li>
-<li>Take data from SQL to analyze elsewhere</li>
-</ul>
-</section>
-<section id="trade-offs" class="slide level2">
-<h2>Trade Offs</h2>
-<p>When should you use a relational database for your project?</p>
-<ul>
-<li>If many people are using the data</li>
-<li>If the data takes up lots of space</li>
-<li>If the data has complex organization</li>
-<li>If you are planning to scale up</li>
-</ul>
-</section>
-<section id="dbms-classes" class="slide level2">
-<h2>DBMS Classes</h2>
-<p>Use Database Management Systems to access data</p>
-<ol type="1">
-<li>Client-Server: (Most Traditional). Database hosted on a central server to which you connect (IBM, Oracle)</li>
-<li>Cloud: Database hosted on cloud. Newer, easier to scale resources (Google, Amazon)</li>
-<li>In Process: For smaller datasets with few users. Best for data analysis and learning (<code>sqlite</code>, <code>duckdb</code>)</li>
-</ol>
-</section>
-<section id="normalization-schemes" class="slide level2">
-<h2>Normalization Schemes</h2>
-<ul>
-<li>Databases often organized according to strict rules called <code>normalization</code></li>
-<li>These improve things like space efficiency, data consistency, etc</li>
-<li>Massive research topic in the 1970s <img data-src="Norm.png" alt="wikpedia"></li>
-</ul>
-</section>
-<section id="normalization-schemes-1" class="slide level2">
-<h2>Normalization Schemes</h2>
-<ul>
-<li>Databases often organized according to strict rules called <code>normalization</code></li>
-<li>These improve things like space efficiency, data consistency, etc</li>
-<li>Massive research topic in the 1970s</li>
-<li>Ideas often involve separating data into tables corresponding to entities</li>
-<li>Each fact stored in one place</li>
-</ul>
-</section>
-<section id="sql-basics" class="slide level2">
-<h2>SQL Basics</h2>
-<ul>
-<li>Structured Query Language</li>
-<li>Queries composed of clauses (must be in order):
-<ul>
-<li><code>SELECT</code>, <code>FROM</code>, <code>WHERE</code>, <code>GROUP BY</code>, <code>ORDER BY</code></li>
-<li><code>SELECT</code> is combo of <code>mutate</code>, <code>select</code>, <code>rename</code>, <code>summarize</code>, <code>relocate</code>, <code>summarize</code></li>
-<li>Also has <code>JOINS</code></li>
-</ul></li>
-<li><code>dbplyr</code> translates tidyverse manipulations to SQL</li>
-<li><code>DBI</code> is the library that lets you open database connections in R</li>
-</ul>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
