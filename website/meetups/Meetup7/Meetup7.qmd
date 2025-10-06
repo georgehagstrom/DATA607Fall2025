@@ -1,0 +1,550 @@
+---
+title: "Meetup 7: Joins and SQL"
+author: "George I. Hagstrom"
+format: revealjs
+date: 10/06/2025
+---
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(nycflights13)
+library(dm)
+library(duckdb)
+library(DBI)
+library(kableExtra)
+
+```
+
+
+## Lab 3-4 Review: Axes
+
+- Never plot different units on the same axis
+- `airquality` dataset
+- contains `ozone`, `solar.R`, `Wind`, `Temp`
+
+```{r}
+#| echo: true
+#| eval: false
+airquality |> 
+  pivot_longer(Ozone:Temp,
+               names_to = "variable",
+               values_to = "value") |> 
+               ggplot(aes(x=value,y=variable)) +
+  geom_boxplot() +
+  labs(title="NOT LIKE THIS") +
+  theme_bw(base_size = 16)
+
+
+```
+
+## Lab 3-4 Review: Axes
+
+- Never plot different units on the same axis
+- `airquality` dataset
+- contains `ozone`, `solar.R`, `Wind`, `Temp`
+
+```{r}
+
+airquality |> 
+  pivot_longer(Ozone:Temp,
+               names_to = "variable",
+               values_to = "value") |> 
+               ggplot(aes(x=value,y=variable)) +
+  geom_boxplot() +
+  labs(title="NOT LIKE THIS") +
+  theme_bw(base_size = 16)
+
+
+```
+
+
+
+
+## Lab 3-4 Review: Axes
+
+- Instead use facets to make each axis distinct
+
+```{r}
+#| echo: true
+#| eval: false
+
+airquality |> 
+  pivot_longer(Ozone:Temp,
+               names_to = "variable",
+               values_to = "value") |> 
+               ggplot(aes(x=value)) +
+  geom_boxplot() +
+  facet_wrap(~variable,ncol = 2,scales="free_x") +
+  labs(title="LIKE THIS") +
+  theme_bw(base_size = 16) +
+  theme( axis.text.y = element_blank(),
+           axis.ticks = element_blank())
+
+
+```
+
+## Lab 3-4 Review: Axes
+
+- Instead use facets to make each axis distinct
+
+```{r}
+
+airquality |> 
+  pivot_longer(Ozone:Temp,
+               names_to = "variable",
+               values_to = "value") |> 
+               ggplot(aes(x=value)) +
+  geom_boxplot() +
+  facet_wrap(~variable,ncol = 2,scales="free_x") +
+  labs(title="LIKE THIS") +
+  theme_bw(base_size = 16) +
+  theme( axis.text.y = element_blank(),
+           axis.ticks = element_blank())
+
+
+```
+
+
+
+## Project Proposal
+
+* No lab next week
+* But [project proposal](https://georgehagstrom.github.io/DATA607Fall2025/assignments/project.html) due October 20th
+* Target 2 Pages
+  - Intro
+  - Data
+  - Analysis Plan
+* Idea: Demonstrate full data science workflow
+* Emphasis on everything but modeling
+* Feel free to ask me about your idea as you develop it
+
+
+## Project Proposal 
+
+- Pick a topic that either:
+  - Relates to a specific professional goal or your current job
+  - Relates to a something you know a lot about
+  - Is something you have become very interested in
+- Read about your topic when developing your proposal! 
+  - Have a short section on with references explaining state-of-the-art
+  
+## Heilmeier Framework
+
+## Developing a Research Proposal: Heilmeier Questions
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+George Heilmeier developed a series of questions he would ask of potential DARPA
+grant recipients
+
+The answers to these questions get you to the core of your idea
+
+:::
+
+::: {.column width=50%}
+![](heilmeier.png)
+:::
+
+::::
+
+## Heilmeier Questions
+
+1. What are you trying to do? (Without Jargon)
+2. How is it done today and what are the limits?
+3. What is your approach and why will it be successful?
+4. Who cares about this question? (Stakeholders?)
+5. What are the risks/obstacles
+6. What will it cost? (0\$)
+7. How long will it take? (Deadline)
+8. What does progress/success look like?
+
+## This Week
+
+* Two main topics: Joins and SQL
+* Separate video for SQL with a coding vignette
+
+
+## Combining Data From Multiple Tables
+
+* Data usually stored in separate files/data frames
+* Analysis requires data in a single frame
+* Need tools to combine data-frames
+
+
+
+## Example: nycflights13
+
+![](../../posts/SQL.png)
+
+## Example: nycflights13
+
+```{r}
+#| echo: true
+flights |> select(time_hour,carrier,dep_time) |> head(8) |> kable()
+
+
+
+```
+
+## Example: nycflights13
+
+```{r}
+#| echo: true
+planes |> select(tailnum,year,model) |> head(8) |> kable()
+
+```
+
+## Example: nycflights13
+
+```{r}
+#| echo: true
+airports |> select(faa,name,lat,lon) |> head(8) |> kable()
+
+```
+
+## Example: nycflights13 {.smaller}
+
+* Can combine data frames along rows that share matching values of a common variable:
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+```{r}
+#| echo: true
+flights |> 
+  select(dest,origin) |> 
+  head(6) |>
+  kable()
+
+
+```
+
+:::
+
+::: {.column width=50%}
+
+
+```{r}
+#| echo: true
+airports |> 
+  select(faa) |> 
+  head(8) |> 
+  kable()
+
+
+```
+
+:::
+
+::::
+
+* Columns which connect different data frames are *Keys*
+
+## Example: nycflights13 {.smaller}
+
+* Can combine data frames along rows that share matching values of a common variable:
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+```{r}
+#| echo: true
+flights |> 
+  select(dest,origin) |> 
+  head(6) |>
+  kable()
+
+
+```
+
+:::
+
+::: {.column width=50%}
+
+
+```{r}
+#| echo: true
+airports |> 
+  select(faa) |> 
+  head(8) |> 
+  kable()
+
+
+```
+
+:::
+
+::::
+
+* Columns which connect different data frames are *Keys*
+
+## Example: nycflights13 {.smaller}
+
+* Can combine data frames along rows that share matching values of a common variable:
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+```{r}
+#| echo: true
+flights |> 
+  select(tailnum) |> 
+  head(6) |>
+  kable()
+
+
+```
+
+:::
+
+::: {.column width=50%}
+
+
+```{r}
+#| echo: true
+planes |> 
+  select(tailnum) |> 
+  head(8) |> 
+  kable()
+
+
+```
+
+:::
+
+::::
+
+* Columns that are common "Keys" used to link data frames
+
+
+
+
+## Primary Keys 
+
+
+A **Primary Key** is a column/group of columns whose values
+uniquely determine each row of the data frame.
+
+
+* For `planes` it is `tailnum`
+
+```{r}
+#| echo: true
+planes |> select(tailnum, year, type, model) |> head(5) |> kable()
+
+```
+
+
+## Definition
+
+A **Primary Key** is a column/group of columns whose values
+uniquely determine each row of the data frame.
+
+* For `planes` it is `tailnum`
+
+```{r}
+#| echo: true
+planes |> 
+  count(tailnum) |> 
+  filter(n > 1)
+```
+* This count command shows that each row has a unique value of `tailnum` proving that it is a primary key
+
+## Compound Keys
+
+* Sometimes no single variable uniquely identifies rows.
+
+* Multiple variables can combine to be a primary key
+
+* For `weather` it requires `origin` and `time-hour`:
+
+```{r}
+#| echo: true
+
+weather |> count(time_hour) |> filter(n>1) |> nrow()
+
+weather |> 
+  count(origin,time_hour) |> 
+  filter(n > 1)
+```
+
+## Foreign Keys
+
+A **Foreign Key** is a variable/group of variables that is a 
+primary key for another data frame.
+
+```{r}
+#| echo: true
+flights |> select(flight,time_hour,tailnum) |> head(4) |> kable()
+
+
+```
+
+* `tailnum` is a primary key for `planes`
+* Foreign key allows for rows to be matched between data frames 
+
+## Joins
+
+* Joins are functions that combine two data frames
+
+`something_join(x,y,by = join_by(...))`
+
+* Here `something` is either:
+  - `left_join`
+  - `right_join` 
+  - `full_join` 
+  - `inner_join` 
+  - `semi_join`
+  - `anti_join`
+
+## Join Types
+
+Two main "types" of joins:
+
+- Mutating Joins: 
+  - Combine data between data frames
+  - `left_join`, `right_join`, `full_join`, `inner_join`
+- Filtering Joins:
+  - Filter rows based on matches
+  - `semi_join`, `anti_join`
+  
+## Mutating Joins  
+
+1. `left_join`: Keeps all rows of `x`, matches/adds from `y`
+2. `right_join`: reversed `left_join`
+3. `full_join`: keeps all rows of both
+4. `inner_join`: only rows occurring in both
+
+![R4DS 19.8](venn.png)
+
+## Left Join
+
+```{r}
+
+x <- tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
+)
+y <- tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
+)
+
+```
+
+* Starting Point:
+
+![R4DS 19.2](setup.png)
+
+## Left Join
+
+![R4DS 19.2](setup.png)
+
+```{r}
+#| echo: true
+left_join(x,y) |> kable()
+
+```
+
+## Right Join
+
+![R4DS 19.2](setup.png)
+
+```{r}
+#| echo: true
+right_join(x,y) |> kable()
+
+```
+
+## Inner Join
+
+
+![R4DS 19.2](setup.png)
+
+```{r}
+#| echo: true
+inner_join(x,y) |> kable()
+
+```
+
+## Full Join
+:::: {.columns}
+
+::: {.column width=50%}
+![R4DS 19.2](setup.png)
+
+:::
+
+::: {.column width=50%}
+
+```{r}
+#| echo: true
+full_join(x,y) |> kable()
+
+```
+:::
+
+::::
+
+## What about Keys?
+
+* `join` functions automatically try to find a foreign key
+* You may specify a key using `join_by` and a formula:
+
+```{r}
+#| echo: true
+flights |> left_join(airports,join_by(dest == faa)) |> 
+  select(year:dep_delay) |> head(5)
+
+```
+
+* Potential for multiple matches and duplication when there is no foreign key
+
+  
+## Filtering Joins
+
+* `semi_join(x,y)` removes rows of `x` that don't have matches in `y`
+* Use `semi_join` to restrict airports to the destination airports
+```{r}
+#| echo: true
+airports |> 
+  semi_join(flights, join_by(faa == origin))
+
+```
+
+## Filtering Joins
+
+* `anti_join(x,y)` removes rows of `x` that have matches in `y`
+* Use `anti_join` to find implicit missing values
+* Flights where weather info lacking:
+```{r}
+#| echo: true
+flights |> 
+  anti_join(weather) |> 
+  head(5) |> 
+  select(year:dep_delay) |>
+  print()
+```
+
+## Data Science in Context Presentations
+
+
+
+## Meetup Reflection/One Minute Paper
+
+Please fill out the following google form after the meeting or watching the video:
+
+[Click Here](https://forms.gle/wa1LCs15j6Bnp8KW6)
+
+
+

@@ -1,0 +1,324 @@
+---
+title: "SQL Slides"
+author: "George Hagstrom"
+format: revealjs
+---
+
+```{r}
+library(tidyverse)
+
+```
+
+## Relational Databases
+
+* Database is a collection of related tables
+* Database schema defines the structure/relationships
+![](../../posts/SQL.png){width=60%}
+
+## Features
+
+* Tables linked by keys
+  - Common to create a separate unique index/id-number to serves as primary key
+* Tables correspond to entities
+  - Each table about 1 "thing"
+* Rows called records
+
+## Entity Relationship Diagram (ERD)
+
+![Teate SQL4DS](PatientAppointments.png)
+
+
+## Entity Relationship Diagram (ERD)
+
+![Teate SQL4DS](PatientsERD.png)
+
+* Stars mark primary and foreign keys
+* 1 and Infinity symbol indicate one-many relationship
+
+## More Complex ERD
+
+![Teate SQL4DS](ManyManyERD.png)
+
+* Here authors and books have a many-many relationship
+* Associative Table used as a junction Authors and Books
+* Combo of ISBN and Author ID are primary key for Books-Authors
+
+## Normalization Schemes
+
+* Databases often organized according to strict rules called `normalization`
+* These improve things like space efficiency, data consistency, etc
+* Massive research topic in the 1970s
+![wikpedia](Norm.png)
+
+## Normalization Schemes
+
+* Databases often organized according to strict rules called `normalization`
+* These improve things like space efficiency, data consistency, etc
+* Massive research topic in the 1970s
+* Ideas often involve separating data into tables corresponding to entities
+* Each fact stored in one place
+* Can make a career as a database designer/architect
+
+
+## Trade Offs
+
+When should you use a relational database instead of regular file(s) for your project?
+
+* If many people are using the data
+* If the data takes up lots of space 
+* If the data has complex organization
+* If you are planning to scale up
+
+But it is likely that your organization will be using it and so knowing how to interact with databases is key, will make you more efficient and more independent!
+
+## DBMS Classes
+
+Use Database Management Systems to access data/interact with databases
+
+1. Client-Server: (Most Traditional). Database hosted on a central server to which you connect (IBM, Oracle, MySQL server)
+2. Cloud: Database hosted on cloud. Newer, easier to scale resources (Google, Amazon, Snowflake)
+3. In Process: For smaller datasets with few users. Best for data analysis and learning (`sqlite`, `duckdb`)
+
+
+
+
+## Structured Query Language (SQL) 
+
+* Stored on disk, queried to generate smaller dataset for analysis elsewhere
+* Queries composed of clauses (must be in order):
+  - `SELECT`, `FROM`, `WHERE`, `GROUP BY`, `ORDER BY`
+  - `SELECT` is combo of `mutate`, `select`, `rename`, `summarize`, `relocate`, `summarize`
+  - Also has `JOINS`
+* `dbplyr` translates tidyverse manipulations to SQL
+* SQL is a standard with many flavors
+
+## Connecting to a Database in R
+
+* `DBI` library has functions to manipulate databases
+```{r}
+#| echo: true
+library(DBI)
+library(duckdb)
+con = dbConnect(duckdb::duckdb(), dbdir = "duckdb")
+
+```
+
+* `dbConnect()` connections and initializes an empty database
+* `duckdb()` creates an instance of a duck database
+*  Can use many options with `DBI`
+
+## Writing Tables 
+
+* dbWriteTable writes data from R to your database
+
+```{r}
+#| echo: true
+library(nycflights13)
+
+dbWriteTable(con, "flights", flights,overwrite=TRUE)
+dbWriteTable(con, "planes", planes,overwrite=TRUE)
+
+dbListTables(con)
+
+```
+
+## Reading Tables
+
+* `dbReadTable` reads data from your database to R
+
+```{r}
+#| echo: true
+
+con |> dbReadTable("flights") |> 
+  as_tibble() |> select(year:arr_time)
+
+```
+
+## Queries
+
+* `dbGetQuery` runs SQL queries
+
+```{r}
+#| echo: true
+query = "
+SELECT dep_delay, month, sched_dep_time
+FROM flights
+WHERE carrier = 'UA'
+"
+
+con |> dbGetQuery(query) |> as_tibble()
+
+
+```
+
+## `dbplyr`
+
+* library that translates `dplyr` to `SQL`
+* Use it both to run queries and learn `SQL`
+
+```{r}
+#| echo: true
+library(dbplyr)
+flights_tab = con |> tbl("flights")
+planes_tab = con |> tbl("planes") |> print(n=3)
+
+
+
+
+```
+
+## Lazy Evaluation
+
+* `dbplyr` doesn't immediately execute code, builds up big query instead
+* `show_query()` to see it
+```{r}
+#| echo: true
+flights_tab |> inner_join(planes_tab) |> 
+  group_by(tailnum) |> 
+  summarise(num_flights = n()) |> 
+  arrange(desc(num_flights)) |> print(n=4)
+
+
+```
+
+## Lazy Evaluation
+
+* `dbplyr` doesn't immediately execute code, builds up big query instead
+* `show_query()` to see it
+```{r}
+#| echo: true
+flights_tab |> inner_join(planes_tab) |> 
+  group_by(tailnum) |> 
+  summarise(num_flights = n()) |> 
+  arrange(desc(num_flights)) |> show_query()
+
+```
+
+## Lazy Evaluation
+
+* `dbplyr` doesn't immediately execute code, builds up big query instead
+* `collect` to execute it
+```{r}
+#| echo: true
+flights_tab |> inner_join(planes_tab) |> 
+  group_by(tailnum) |> 
+  summarise(num_flights = n()) |> 
+  arrange(desc(num_flights)) |> collect()
+
+```
+
+
+## SQL Basics
+
+* SQL queries composed of statements in order:
+  - `SELECT`, `FROM`, `WHERE`, `GROUP BY`, `ORDER BY`
+* Evaluation occurs in different order:
+ - `FROM WHERE GROUP BY SELECT ORDER BY`
+ * `SELECT FROM`:
+ 
+```{r}
+#| echo: true
+ flights_tab |> show_query()
+ 
+flights_tab |> select(carrier, flight, arr_time) |> show_query()
+```
+
+## SQL Basics
+
+* `WHERE` is like `filter()`
+* `ORDER BY` is like `arrange()`
+
+```{r}
+#| echo: true
+flights_tab |> filter(dep_delay > 30, carrier == 'UA') |> 
+  arrange(arr_delay) |> show_query()
+
+
+```
+
+## SELECT aggregates
+
+```{r}
+#| echo: true
+flights_tab |> 
+  group_by(carrier) |> 
+  summarise(dep_delay = mean(dep_delay,na.rm=TRUE),
+            num_flights = n()) |> 
+  show_query()
+```
+
+* `summarise` variables put in select statement
+
+## `select`, `rename`, `relocate`
+
+```{r}
+#| echo: true
+planes_tab |> 
+  select(tailnum, type, manufacturer, model, year) |> 
+  show_query()
+
+planes_tab |> 
+  select(tailnum, type, manufacturer, model, year) |> 
+  rename(year_built = year) |> 
+  show_query()
+
+planes_tab |> 
+  select(tailnum, type, manufacturer, model, year) |> 
+  relocate(manufacturer, model, .before = type) |> 
+  show_query()
+```
+
+## `SELECT` and `mutate` {.smaller}
+
+* `mutate` formulas appear as in `SELECT` statements
+
+```{r}
+#| echo: true
+flights_tab |> 
+  mutate(speed = distance/(air_time/60.0)) |> 
+  show_query()
+
+flights_tab |> 
+  mutate(speed = distance/(air_time/60.0)) |> 
+  collect() |> 
+  select(origin,dest,time_hour,carrier,flight,speed) |>
+  head(5)
+```
+
+## HAVING clause
+
+* If you `filter` after `summarise`, `HAVING` instead of `WHERE`
+
+```{r}
+
+#| echo: true
+flights_tab |> 
+  group_by(carrier) |> 
+  summarise(dep_delay = mean(dep_delay,na.rm=TRUE),
+            num_flights = n()) |> 
+  filter(num_flights > 100) |> 
+  show_query()
+```
+
+
+## Sub-queries
+
+* `SQL` uses sub-queries to create sources of data for further queries:
+
+```{r}
+#| echo: true
+flights_tab |> 
+  mutate(speed = distance/(air_time/60.0)) |> 
+  filter(speed > 450) |> 
+  show_query()
+```
+
+* query name `q01` generated by `dbplyr`
+* Saw this in join example earlier
+
+## Pitfalls
+
+* `dbplyr` won't always write nicest code
+* It takes deep knowledge to write performant/fast queries for large databases
+  - If you need to become a pro in this, read [use the index, Luke](https://use-the-index-luke.com/)
+* Many many SQL standards
