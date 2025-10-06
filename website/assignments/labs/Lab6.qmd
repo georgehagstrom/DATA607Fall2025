@@ -18,6 +18,7 @@ You will need to have installed and to use the following libraries:
 
 ```{r}
 #| echo: true
+#| eval: false
 #| warning: false
 library(tidyverse)
 library(DBI)
@@ -28,7 +29,7 @@ library(nycflights13)
 
 # Problems
 
-## Part I: Airline Flight Delays**
+## Part I: Airline Flight Delays
 
 For the first part of this lab exercise, we will be using the `nycflights` library, which contains 
 several different built in datasets including `planes`, which has information on each plane that
