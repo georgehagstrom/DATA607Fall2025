@@ -5020,8 +5020,8 @@ vertical-align: -.125em;
 
 <section id="overview" class="level1">
 <h1>Overview</h1>
-<p>This lab is divided into two parts. In the first part you will practice using joins for data wrangling and analysis on the <code>nycflights</code> dataset. Some of the problems come from Chapter 19 of your book. For the second part, you will download a dataset on the budgets of college sports programs and process it for storage in a relational database (I strongly recommend using <code>duckdb</code> which can be installed using <code>install.packages(&quot;duckdb&quot;)</code>- duckdb is highly performant, self-contained, and ideally suited both to learning SQL and performing data analysis). Then you will load this database and use <code>dbplyr</code> to perform an analysis. You will also practice using <code>forcats</code> to recode some of the variables as factors (which are supported by duckdb) and using <code>separate_wider_delim</code> to split columns of text data.</p>
-<p>You will need to have installed and to the following libraries:</p>
+<p>This lab is divided into two parts. In the first part you will practice using joins for data wrangling and analysis on the <code>nycflights</code> dataset. Some of these problems originate from Chapter 19 of your book. For the second part, you will download a dataset on the budgets of college sports programs and process it for storage in a relational database (I strongly recommend using <code>duckdb</code> which can be installed using <code>install.packages(&quot;duckdb&quot;)</code>- duckdb is highly performant, self-contained, and ideally suited both to learning SQL and performing data analysis). Then you will load this database and use <code>dbplyr</code> to perform an analysis. You will also practice using <code>forcats</code> to recode some of the variables as factors (which are supported by duckdb) and using <code>separate_wider_delim</code> to split columns of text data.</p>
+<p>You will need to have installed and to use the following libraries:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
@@ -5031,18 +5031,23 @@ vertical-align: -.125em;
 </section>
 <section id="problems" class="level1">
 <h1>Problems</h1>
-<p><strong>Part I: Airline Flight Delays</strong></p>
+<section id="part-i-airline-flight-delays" class="level2">
+<h2 class="anchored" data-anchor-id="part-i-airline-flight-delays">Part I: Airline Flight Delays</h2>
 <p>For the first part of this lab exercise, we will be using the <code>nycflights</code> library, which contains several different built in datasets including <code>planes</code>, which has information on each plane that appears in the data; <code>flights</code>, which has information on individual flights; <code>airports</code>, which has information on individual airports; and <code>weather</code>, which has information on the weather that the origin airports. In order to do this set of lab exercises, you will need to use different types of joins to combine variables in each data frame.</p>
-<p><strong>Problem 1</strong></p>
-<ul>
-<li><p>Use the <code>flights</code> and <code>planes</code> tables to compute the mean departure delay of each aircraft that has more than 30 recorded flights in the dataset. Hint: Make note of the fact that the variable <code>year</code> appears in both <code>flights</code> and <code>planes</code> but means different things in each before performing any joins.</p></li>
+</section>
+<section id="problem-1" class="level2">
+<h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
+<ol type="a">
+<li><p>Use the <code>flights</code> and <code>planes</code> tibbles (both part <code>nycflights</code>) to compute the mean departure delay of each aircraft that has more than 30 recorded flights in the dataset. Hint: Make note of the fact that the variable <code>year</code> appears in both <code>flights</code> and <code>planes</code> but means different things in each before performing any joins.</p></li>
 <li><p>Use <code>anti-join</code> to identify flights where <code>tailnum</code> does not have a match in <code>plane</code>. Determine the carriers for which this problem is the most common.</p></li>
-<li><p>Find the airplane model which made the most flights in the dataset, and filter the dataset to contain only flights flown by airplanes of that model, adding a variable which corresponds to the year each those airplanes were built. Then compute the average departure delay for each year of origin and plot the data. Is there any evidence that older planes have more greater departure delays?</p></li>
-</ul>
-<p><strong>Problem 2</strong></p>
-<ul>
+<li><p>Find the airplane model whose planes made the most flights in the dataset, and filter the dataset to contain only flights flown by airplanes of that model, adding a variable which corresponds to the year each those airplanes were built. Then compute the average departure delay for each year of origin and plot the data. Is there any evidence that plane age relates to departure delays?</p></li>
+</ol>
+</section>
+<section id="problem-2" class="level2">
+<h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
+<ol type="a">
 <li>Compute the average delay by destination, then join on the airports data frame so you can show the spatial distribution of delays. Here’s an easy way to draw a map of the United States:</li>
-</ul>
+</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>airports <span class="sc">|&gt;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(flights, <span class="fu">join_by</span>(faa <span class="sc">==</span> dest)) <span class="sc">|&gt;</span></span>
@@ -5052,26 +5057,33 @@ vertical-align: -.125em;
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_quickmap</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You might want to use the size or color of the points to display the average delay for each airport.</p>
-<p><strong>Part II: Creating and Accessing a Database </strong></p>
-<p>In this exercise we will begin with a flat file which contains data on college sports programs throughout the country. The source of the data is a government run database called <a href="https://ope.ed.gov/athletics/#/">Equity in Athletics Data Analysis</a>, though we are working with just a small subset here. You can download this file by clicking here: <a href="https://github.com/georgehagstrom/DATA607/tree/main/website/assignments/labs/labData/sports_program_costs.csv">sports_program_costs.csv</a>. I have also included a data dictionary which gives a quick description of the dataset, which can be downloaded from here: <a href="https://github.com/georgehagstrom/DATA607/tree/main/website/assignments/labs/labData/sports_program_data_dictionary.qmd">sports_program_data_dictionary.qmd</a>. This file contains information on two types of entities: sports teams and universities, however the information on both entities is combined into a single table, creating substantial redundancies. This exercise has several goals:</p>
+</section>
+</section>
+<section id="part-ii-creating-and-accessing-a-database" class="level1">
+<h1>Part II: Creating and Accessing a Database</h1>
+<p>In this exercise we will begin with a flat file which contains data on college sports programs throughout the country. The source of the data is a government run database called <a href="https://ope.ed.gov/athletics/#/">Equity in Athletics Data Analysis</a>, though we are working with just a small subset here. You can download this file by clicking here: <a href="https://media.githubusercontent.com/media/georgehagstrom/DATA607Fall2025/refs/heads/main/website/assignments/labs/labData/sports_program_costs.csv">sports_program_costs.csv</a>. I have also included a data dictionary which gives a quick description of the dataset, which can be downloaded from here: <a href="https://github.com/georgehagstrom/DATA607Fall2025/tree/main/website/assignments/labs/labData/sports_program_data_dictionary.qmd">sports_program_data_dictionary.qmd</a>. This file contains information on two types of entities: sports teams and universities, however the information on both entities is combined into a single table, creating substantial redundancies. This exercise has several goals:</p>
 <ol type="1">
-<li>Load this data into R, split the dataframe into two dataframes, one corresponding to colleges and another corresponding to sports teams, related to each other by common keys. Many databases are stored according to normalization rules, which are designed to limit redundancy and to make it easier to both work with the data and make changes to it. By splitting the data frame we will partially normalize it (but won’t go too far).</li>
+<li>Load this data into R, split the dataframe into two dataframes, one corresponding to colleges and another corresponding to sports teams, related to each other by common keys. Many databases are stored according to normalization rules, which are designed to limit redundancy and to make it easier to both work with the data and make changes to it. By splitting the data frame we will partially normalize it.</li>
 <li>Create a relational database using <code>duckdb</code> which contains these two tables.</li>
-<li>Read this database into R and a/an SQL query/queries to perform an analysis.</li>
+<li>Read this database into R and use SQL queries to perform an analysis.</li>
 </ol>
-<p><strong>Problem 3:</strong></p>
-<ul>
-<li><p><code>sports_program_data.csv</code> contains variables which either describe properties of a sports team or a college. Split <code>sports_programs_data</code> into two data frames, one called <code>colleges</code> and another called <code>teams</code>. How can you tell which variables describe colleges and which describe teams? Use the data dictionary and observations of how the values vary as you move from college to college to help make the decision easier. Make sure there are primary keys for both the colleges and teams data frames (verify with <code>count</code>)- what are the primary keys in each case and are they simple keys (one variable) or compound keys (require multiple variables). One of these data-sets should contain a foreign key- which one has it and what variables comprise it?</p></li>
+<section id="problem-3" class="level2">
+<h2 class="anchored" data-anchor-id="problem-3">Problem 3:</h2>
+<ol type="a">
+<li><p><code>sports_program_data.csv</code> contains variables which either describe properties of a sports team or a college. Split <code>sports_programs_data</code> into two data frames, one called <code>colleges</code> and another called <code>teams</code>. How can you tell which variables describe colleges and which describe teams? Use the data dictionary and observations of how the values vary as you move from college to college to help make the decision easier. Make sure there are primary keys for both the colleges and teams data frames (verify with <code>count</code>)- what are the primary keys in each case and are they simple keys (one variable) or compound keys (require multiple variables)? After the split, one of the data-sets you created should contain a foreign key- which one has it and what variables comprise it?</p></li>
 <li><p>The variable <code>sector_name</code> contains information about whether a college is public, private, non-profit, for-profit, a 2-year college, or a 4-year + college. Split this variable (using <code>separate_wider_delim</code>) into two variables, one of which describes whether the college is a Public, Private nonprofit, or private for-profit, and another which describes how many years the college programs run.</p></li>
 <li><p>Several variables are candidates to be recoded as factors, for example <code>state_cd</code>, <code>zip_text</code>, <code>classification_name</code>, <code>sports</code>, and the <code>sector</code> variables you just created for the previous part. Recode these variables as categorical variables. For the <code>classification</code> variable, use the <code>classification_code</code> to order the factors according to the numeric code.</p></li>
-</ul>
-<p><strong>Problem 4</strong></p>
-<ul>
-<li><p>Using <code>DBI</code>, <code>duckdb</code>, and <code>dbplyr</code>, create a relational database with two tables, writing the <code>sports</code> data frame you created in problem 3 to one and the <code>colleges</code> data frame (also from problem 3) to the other. Write this database to disk. How does the size of the database file compare to the original csv?</p></li>
-<li><p>Use <code>dbplyr</code> to write a query to this database that calculates the top 10 colleges ranked by the average profit (defined as revenue - expenses) of their american football team over the years of data. Print the SQL query that results from your R pipeline using <code>show_query()</code> and then use <code>collect()</code> to show the results of this query.</p></li>
-</ul>
+</ol>
+</section>
+<section id="problem-4" class="level2">
+<h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
+<ol type="a">
+<li><p>Using <code>DBI</code>, <code>duckdb</code>, and <code>dbplyr</code>, create a relational database with two tables, writing the <code>sports</code> data frame you created in problem 3 to one and the <code>colleges</code> data frame (also from problem 3) to the other. Write this database to disk. How does the size of the database file compare to the original csv? DuckDB uses a compression algorithm to store database files. Create a separate relational database with just a single table containing all the data in the original csv and compare the size of this database file to the normalized one you created (this is technically more of an apples to apples comparison of the effect of normalization).</p></li>
+<li><p>Use <code>dbplyr</code> to write a query to this database that calculates the top 10 colleges ranked by the average profit (defined as revenue - expenses) of their American football team over the years of data. Print the SQL query that results from your R pipeline using <code>show_query()</code> and then use <code>collect()</code> to show the results of this query.</p></li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
