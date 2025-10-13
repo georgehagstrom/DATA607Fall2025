@@ -407,7 +407,7 @@ George Hagstrom
 <section id="this-week" class="slide level2">
 <h2>This week</h2>
 <ul>
-<li>Behind on grading….</li>
+<li>No Lab!</li>
 <li>Work on your project proposals, reach out if you want my opinion</li>
 <li>Today:
 <ul>
@@ -428,11 +428,11 @@ George Hagstrom
 <section id="case-study-statistical-model" class="slide level2">
 <h2>Case Study: Statistical Model</h2>
 <ul>
-<li>Environmental vars: <span class="math inline">\(Temp\)</span>, <span class="math inline">\(Irr\)</span>, <span class="math inline">\(NO3\)</span>, <span class="math inline">\(PO4\)</span>,</li>
-<li>Parameters <span class="math inline">\(pars\)</span></li>
+<li>Environmental vars: <span class="math inline">\(\mathrm{Temp}\)</span>, <span class="math inline">\(\mathrm{Irr}\)</span>, <span class="math inline">\(\mathrm{NO_3}\)</span>, <span class="math inline">\(\mathrm{PO_4}\)</span>,</li>
+<li>Parameters <span class="math inline">\(\mathrm{pars}\)</span></li>
 <li>error <span class="math inline">\(\sigma\)</span></li>
 <li>Function <em>CP</em> that I created (could be linear regression, a neural network, anything, my case something fancy)</li>
-<li>Use Maximum Likelihood or a Bayesian model with priors on parameters: <span class="math display">\[ \mathrm{{C:P}} \sim \mathrm{lognormal}(CP(Temp,Irr,NO3,PO4,pars),\sigma)\]</span></li>
+<li>Use Maximum Likelihood or a Bayesian model with priors on parameters: <span class="math display">\[ \mathrm{{C{:}P}} \sim \mathrm{lognormal}(CP\mathrm{(Temp,Irr,NO_3,PO_4,pars)},\sigma)\]</span></li>
 <li>What does this look like in code?</li>
 </ul>
 </section>
@@ -841,6 +841,19 @@ Caused by error:
 <h2>Functional Programming</h2>
 <ul>
 <li>Functions are <em>first class</em> objects in R:</li>
+<li>Treated like a normal data type
+<ul>
+<li>Pass them to functions</li>
+<li>Modify them</li>
+<li>Assign to variables</li>
+<li>Return them from functions</li>
+</ul></li>
+</ul>
+</section>
+<section id="functional-programming-1" class="slide level2">
+<h2>Functional Programming</h2>
+<ul>
+<li>Functions are <em>first class</em> objects in R:</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a>power <span class="ot">&lt;-</span> <span class="cf">function</span>(g,exponent) {</span>
@@ -875,18 +888,18 @@ Caused by error:
 <span id="cb50-8"><a></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 4
-        a      b       c       d
-    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1  1.14  -0.795 -0.562  -0.436 
- 2  1.21  -0.766 -0.623   0.453 
- 3  0.284  0.685 -0.734  -0.916 
- 4 -0.799  0.732 -0.403  -0.584 
- 5 -1.47  -2.13  -0.912   0.417 
- 6  1.39   0.545 -0.489   0.0369
- 7 -1.90   0.403  0.902   0.558 
- 8 -0.407  0.198  0.0850  1.65  
- 9 -0.618  0.221 -1.04    0.107 
-10  0.719 -0.707 -0.187   0.0702</code></pre>
+        a       b       c       d
+    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1  2.86   0.280   0.231   1.78  
+ 2 -0.576  0.304   0.260   0.157 
+ 3  2.37  -1.49    0.0379 -0.104 
+ 4  1.97  -0.0977  0.110  -0.0196
+ 5 -0.636  0.616   0.421   0.433 
+ 6 -0.108  0.0294 -2.15   -1.64  
+ 7 -1.19  -0.145   1.70   -0.147 
+ 8 -0.753 -1.61    0.404   0.154 
+ 9 -0.585 -1.63    0.0601  0.125 
+10  1.14   2.30    1.47   -1.05  </code></pre>
 </div>
 </div>
 </section>
@@ -905,9 +918,9 @@ Caused by error:
 <span id="cb52-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 5
-      n       a      b      c     d
-  &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
-1    10 -0.0449 -0.161 -0.397 0.135</code></pre>
+      n     a      b     c       d
+  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+1    10 0.449 -0.145 0.254 -0.0318</code></pre>
 </div>
 </div>
 <ul>
@@ -929,9 +942,9 @@ Caused by error:
 <span id="cb54-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 5
-      n       a      b      c     d
-  &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
-1    10 -0.0449 -0.161 -0.397 0.135</code></pre>
+      n     a      b     c       d
+  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+1    10 0.449 -0.145 0.254 -0.0318</code></pre>
 </div>
 </div>
 <ul>
@@ -947,7 +960,7 @@ Caused by error:
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a>\(x) <span class="fu">median</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>\(x) median(x^2 * exp(-x^2))</code></pre>
+<pre><code>&lt;srcref: file "" chars 1:1 to 1:28&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -963,9 +976,9 @@ Caused by error:
 <span id="cb58-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 5
-      n       a      b      c     d
-  &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
-1    10 -0.0449 -0.161 -0.397 0.135</code></pre>
+      n     a      b     c       d
+  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+1    10 0.449 -0.145 0.254 -0.0318</code></pre>
 </div>
 </div>
 </section>
@@ -987,6 +1000,14 @@ Caused by error:
 [1] 20.08554</code></pre>
 </div>
 </div>
+</section>
+<section id="map-family-in-purrr-1" class="slide level2">
+<h2><code>map</code> family in <code>purrr</code></h2>
+<ul>
+<li><p><code>map(vec,f) = [f(vec[1]),f(vec[2]),....]</code> <img data-src="map1.png" style="width:30.0%" alt="Adv. R"></p></li>
+<li><p><code>map</code> returns a <code>list</code>, not a <code>vector</code></p></li>
+<li><p><code>R</code> functions do not have strict return types</p></li>
+</ul>
 </section>
 <section id="map_" class="slide level2 smaller">
 <h2><code>map_*</code></h2>
@@ -1045,7 +1066,7 @@ Merc 240D         24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2</code></pr
 <span id="cb67-6"><a></a></span>
 <span id="cb67-7"><a></a>counter</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 14</code></pre>
+<pre><code>[1] 55</code></pre>
 </div>
 </div>
 </section>
