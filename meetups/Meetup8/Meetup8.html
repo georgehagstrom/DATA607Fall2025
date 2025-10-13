@@ -417,6 +417,37 @@ George Hagstrom
 <li>Vignettes will be synced with next week’s material</li>
 </ul>
 </section>
+<section id="hw-comments" class="slide level2">
+<h2>HW Comments</h2>
+<ul>
+<li>Check LLM answer
+<ul>
+<li>Accuracy of LLM solutions varied a lot</li>
+<li>A few exact answers- are you sure my answer wasn’t in your context window?</li>
+</ul></li>
+<li>Regex subtlety</li>
+<li>My fault: <code>[^aeoui]</code> will match things like “1” or “$”</li>
+<li>Self Contained HTML (hat tip to Masoud):
+<ul>
+<li>Brightspace strips HTML submissions of resources etc</li>
+</ul></li>
+</ul>
+</section>
+<section id="when-to-use-each-join" class="slide level2">
+<h2>When to use each join?</h2>
+<ul>
+<li><code>left_join</code> and <code>right_join</code> are the most common</li>
+<li><code>full_join</code> is rare: for messy datasets or data quality checks</li>
+<li><code>inner_join</code> only when you want to also filter data</li>
+<li><code>anti_join</code> usually to search for missing values</li>
+<li><code>semi_join</code> when you don’t need the data</li>
+<li><code>anti_join</code> missing values</li>
+</ul>
+</section>
+<section id="meetup-next-wednesday" class="slide level2">
+<h2>Meetup Next Wednesday</h2>
+<p><img data-src="October_2025_Meetup_Card.png"> <a href="https://nyhackr.org/">Buy tickets here</a></p>
+</section>
 <section id="case-study-functions-make-your-code-simpler" class="slide level2">
 <h2>Case Study: Functions Make Your Code Simpler</h2>
 <ul>
@@ -713,7 +744,7 @@ George Hagstrom
 </div>
 </div>
 <ul>
-<li><p>When <code>group_by</code> and <code>summarize</code> are called, they treat <code>group_var</code> and <code>mean_var</code> literally as names of of variables to search for in data</p></li>
+<li><p>When <code>group_by</code> and <code>summarize</code> are called, they treat <code>group_var</code> and <code>mean_var</code> literally as names of variables to search for in data</p></li>
 <li><p>Called <em>data masking</em> because real values of <code>group_var</code> and <code>mean_var</code> ignored</p></li>
 </ul>
 </section>
@@ -888,18 +919,18 @@ Caused by error:
 <span id="cb50-8"><a></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 4
-        a       b       c       d
-    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1  2.86   0.280   0.231   1.78  
- 2 -0.576  0.304   0.260   0.157 
- 3  2.37  -1.49    0.0379 -0.104 
- 4  1.97  -0.0977  0.110  -0.0196
- 5 -0.636  0.616   0.421   0.433 
- 6 -0.108  0.0294 -2.15   -1.64  
- 7 -1.19  -0.145   1.70   -0.147 
- 8 -0.753 -1.61    0.404   0.154 
- 9 -0.585 -1.63    0.0601  0.125 
-10  1.14   2.30    1.47   -1.05  </code></pre>
+         a       b       c       d
+     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 -0.508   0.109  -0.984   0.120 
+ 2  0.424  -0.113  -0.223  -0.703 
+ 3 -1.44    1.08   -0.675  -0.560 
+ 4  0.0191 -0.949  -0.0584  0.961 
+ 5 -0.218   1.96   -0.740   0.805 
+ 6 -0.231   1.34   -0.0767 -0.277 
+ 7  0.470   0.149   0.258   0.424 
+ 8 -0.698   0.705   0.233   0.0547
+ 9  0.122  -0.0598 -0.0317 -0.457 
+10 -1.12   -0.526  -0.970   0.704 </code></pre>
 </div>
 </div>
 </section>
@@ -918,9 +949,9 @@ Caused by error:
 <span id="cb52-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 5
-      n     a      b     c       d
-  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-1    10 0.449 -0.145 0.254 -0.0318</code></pre>
+      n      a     b      c     d
+  &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+1    10 -0.317 0.371 -0.327 0.107</code></pre>
 </div>
 </div>
 <ul>
@@ -942,9 +973,9 @@ Caused by error:
 <span id="cb54-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 5
-      n     a      b     c       d
-  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-1    10 0.449 -0.145 0.254 -0.0318</code></pre>
+      n      a     b      c     d
+  &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+1    10 -0.317 0.371 -0.327 0.107</code></pre>
 </div>
 </div>
 <ul>
@@ -960,7 +991,8 @@ Caused by error:
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a>\(x) <span class="fu">median</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;srcref: file "" chars 1:1 to 1:28&gt;</code></pre>
+<pre><code>function (x) 
+median(x^2 * exp(-x^2))</code></pre>
 </div>
 </div>
 </section>
@@ -976,9 +1008,9 @@ Caused by error:
 <span id="cb58-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 5
-      n     a      b     c       d
-  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-1    10 0.449 -0.145 0.254 -0.0318</code></pre>
+      n      a     b      c     d
+  &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+1    10 -0.317 0.371 -0.327 0.107</code></pre>
 </div>
 </div>
 </section>
@@ -1066,7 +1098,7 @@ Merc 240D         24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2</code></pr
 <span id="cb67-6"><a></a></span>
 <span id="cb67-7"><a></a>counter</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 55</code></pre>
+<pre><code>[1] 84</code></pre>
 </div>
 </div>
 </section>

@@ -197,6 +197,27 @@
     "text": "This week\n\nNo Lab!\nWork on your project proposals, reach out if you want my opinion\nToday:\n\nFunctions\nIterations\n\nVignettes will be synced with next week’s material"
   },
   {
+    "objectID": "meetups/Meetup8/Meetup8.html#hw-comments",
+    "href": "meetups/Meetup8/Meetup8.html#hw-comments",
+    "title": "Meetup 8: Functions and Iteration",
+    "section": "HW Comments",
+    "text": "HW Comments\n\nCheck LLM answer\n\nAccuracy of LLM solutions varied a lot\nA few exact answers- are you sure my answer wasn’t in your context window?\n\nRegex subtlety\nMy fault: [^aeoui] will match things like “1” or “$”\nSelf Contained HTML (hat tip to Masoud):\n\nBrightspace strips HTML submissions of resources etc"
+  },
+  {
+    "objectID": "meetups/Meetup8/Meetup8.html#when-to-use-each-join",
+    "href": "meetups/Meetup8/Meetup8.html#when-to-use-each-join",
+    "title": "Meetup 8: Functions and Iteration",
+    "section": "When to use each join?",
+    "text": "When to use each join?\n\nleft_join and right_join are the most common\nfull_join is rare: for messy datasets or data quality checks\ninner_join only when you want to also filter data\nanti_join usually to search for missing values\nsemi_join when you don’t need the data\nanti_join missing values"
+  },
+  {
+    "objectID": "meetups/Meetup8/Meetup8.html#meetup-next-wednesday",
+    "href": "meetups/Meetup8/Meetup8.html#meetup-next-wednesday",
+    "title": "Meetup 8: Functions and Iteration",
+    "section": "Meetup Next Wednesday",
+    "text": "Meetup Next Wednesday\n Buy tickets here"
+  },
+  {
     "objectID": "meetups/Meetup8/Meetup8.html#case-study-functions-make-your-code-simpler",
     "href": "meetups/Meetup8/Meetup8.html#case-study-functions-make-your-code-simpler",
     "title": "Meetup 8: Functions and Iteration",
@@ -299,7 +320,7 @@
     "href": "meetups/Meetup8/Meetup8.html#data-masking",
     "title": "Meetup 8: Functions and Iteration",
     "section": "Data Masking",
-    "text": "Data Masking\n\nWhat if we try to make a function that takes a data frame?\n\n\ngrouped_mean &lt;- function(df, group_var, mean_var) {\n  df |&gt; \n    group_by(group_var) |&gt; \n    summarize(mean(mean_var))\n}\n\n\ndiamonds |&gt; grouped_mean(cut, carat)\n\nError in `group_by()`:\n! Must group by variables found in `.data`.\n✖ Column `group_var` is not found.\n\n\n\nWhen group_by and summarize are called, they treat group_var and mean_var literally as names of of variables to search for in data\nCalled data masking because real values of group_var and mean_var ignored"
+    "text": "Data Masking\n\nWhat if we try to make a function that takes a data frame?\n\n\ngrouped_mean &lt;- function(df, group_var, mean_var) {\n  df |&gt; \n    group_by(group_var) |&gt; \n    summarize(mean(mean_var))\n}\n\n\ndiamonds |&gt; grouped_mean(cut, carat)\n\nError in `group_by()`:\n! Must group by variables found in `.data`.\n✖ Column `group_var` is not found.\n\n\n\nWhen group_by and summarize are called, they treat group_var and mean_var literally as names of variables to search for in data\nCalled data masking because real values of group_var and mean_var ignored"
   },
   {
     "objectID": "meetups/Meetup8/Meetup8.html#data-masking-1",
@@ -355,35 +376,35 @@
     "href": "meetups/Meetup8/Meetup8.html#across-iterates-on-columns",
     "title": "Meetup 8: Functions and Iteration",
     "section": "across iterates on columns",
-    "text": "across iterates on columns\nSuppose we want to apply an operation to many columns at once:\n\ndf &lt;- tibble(\n  a = rnorm(10),\n  b = rnorm(10),\n  c = rnorm(10),\n  d = rnorm(10)\n)\n\ndf\n\n# A tibble: 10 × 4\n        a       b       c       d\n    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n 1  2.86   0.280   0.231   1.78  \n 2 -0.576  0.304   0.260   0.157 \n 3  2.37  -1.49    0.0379 -0.104 \n 4  1.97  -0.0977  0.110  -0.0196\n 5 -0.636  0.616   0.421   0.433 \n 6 -0.108  0.0294 -2.15   -1.64  \n 7 -1.19  -0.145   1.70   -0.147 \n 8 -0.753 -1.61    0.404   0.154 \n 9 -0.585 -1.63    0.0601  0.125 \n10  1.14   2.30    1.47   -1.05"
+    "text": "across iterates on columns\nSuppose we want to apply an operation to many columns at once:\n\ndf &lt;- tibble(\n  a = rnorm(10),\n  b = rnorm(10),\n  c = rnorm(10),\n  d = rnorm(10)\n)\n\ndf\n\n# A tibble: 10 × 4\n         a       b       c       d\n     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n 1 -0.508   0.109  -0.984   0.120 \n 2  0.424  -0.113  -0.223  -0.703 \n 3 -1.44    1.08   -0.675  -0.560 \n 4  0.0191 -0.949  -0.0584  0.961 \n 5 -0.218   1.96   -0.740   0.805 \n 6 -0.231   1.34   -0.0767 -0.277 \n 7  0.470   0.149   0.258   0.424 \n 8 -0.698   0.705   0.233   0.0547\n 9  0.122  -0.0598 -0.0317 -0.457 \n10 -1.12   -0.526  -0.970   0.704"
   },
   {
     "objectID": "meetups/Meetup8/Meetup8.html#across-iterates-on-columns-1",
     "href": "meetups/Meetup8/Meetup8.html#across-iterates-on-columns-1",
     "title": "Meetup 8: Functions and Iteration",
     "section": "across iterates on columns",
-    "text": "across iterates on columns\n\nCount the elements and compute median:\n\n\ndf |&gt; summarise(\n  n = n(),\n  a = mean(a),\n  b = mean(b),\n  c = mean(c),\n  d = mean(d)\n)\n\n# A tibble: 1 × 5\n      n     a      b     c       d\n  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;\n1    10 0.449 -0.145 0.254 -0.0318\n\n\n\nInvolves lots of copy/pasting\nDoesn’t scale well with number of columns"
+    "text": "across iterates on columns\n\nCount the elements and compute median:\n\n\ndf |&gt; summarise(\n  n = n(),\n  a = mean(a),\n  b = mean(b),\n  c = mean(c),\n  d = mean(d)\n)\n\n# A tibble: 1 × 5\n      n      a     b      c     d\n  &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;\n1    10 -0.317 0.371 -0.327 0.107\n\n\n\nInvolves lots of copy/pasting\nDoesn’t scale well with number of columns"
   },
   {
     "objectID": "meetups/Meetup8/Meetup8.html#across-iterates-on-columns-2",
     "href": "meetups/Meetup8/Meetup8.html#across-iterates-on-columns-2",
     "title": "Meetup 8: Functions and Iteration",
     "section": "across iterates on columns",
-    "text": "across iterates on columns\n\nAlternative is function across\npart of purrr functional programming library\nArguments: function and selection of columns:\n\n\ndf |&gt; summarise(\n  n = n(),\n  across(a:d,mean)\n)\n\n# A tibble: 1 × 5\n      n     a      b     c       d\n  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;\n1    10 0.449 -0.145 0.254 -0.0318\n\n\n\nCan use other selects (i.e. starts_with, everything)"
+    "text": "across iterates on columns\n\nAlternative is function across\npart of purrr functional programming library\nArguments: function and selection of columns:\n\n\ndf |&gt; summarise(\n  n = n(),\n  across(a:d,mean)\n)\n\n# A tibble: 1 × 5\n      n      a     b      c     d\n  &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;\n1    10 -0.317 0.371 -0.327 0.107\n\n\n\nCan use other selects (i.e. starts_with, everything)"
   },
   {
     "objectID": "meetups/Meetup8/Meetup8.html#anonymous-functions-in-across",
     "href": "meetups/Meetup8/Meetup8.html#anonymous-functions-in-across",
     "title": "Meetup 8: Functions and Iteration",
     "section": "Anonymous functions in across",
-    "text": "Anonymous functions in across\n\nHow to pass additional arguments to functions?\nAnonymous (or lambda functions), functions not important enough to be named:\n\n\n\\(x) median(x^2 * exp(-x^2)) \n\n&lt;srcref: file \"\" chars 1:1 to 1:28&gt;"
+    "text": "Anonymous functions in across\n\nHow to pass additional arguments to functions?\nAnonymous (or lambda functions), functions not important enough to be named:\n\n\n\\(x) median(x^2 * exp(-x^2)) \n\nfunction (x) \nmedian(x^2 * exp(-x^2))"
   },
   {
     "objectID": "meetups/Meetup8/Meetup8.html#anonymous-functions-in-across-1",
     "href": "meetups/Meetup8/Meetup8.html#anonymous-functions-in-across-1",
     "title": "Meetup 8: Functions and Iteration",
     "section": "Anonymous functions in across",
-    "text": "Anonymous functions in across\n\nCan use this to pass arguments:\n\n\ndf |&gt; summarise(\n  n = n(),\n  across(a:d, \\(x) mean(x,na.rm=TRUE))\n)\n\n# A tibble: 1 × 5\n      n     a      b     c       d\n  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;\n1    10 0.449 -0.145 0.254 -0.0318"
+    "text": "Anonymous functions in across\n\nCan use this to pass arguments:\n\n\ndf |&gt; summarise(\n  n = n(),\n  across(a:d, \\(x) mean(x,na.rm=TRUE))\n)\n\n# A tibble: 1 × 5\n      n      a     b      c     d\n  &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;\n1    10 -0.317 0.371 -0.327 0.107"
   },
   {
     "objectID": "meetups/Meetup8/Meetup8.html#map-family-in-purrr",
@@ -425,7 +446,7 @@
     "href": "meetups/Meetup8/Meetup8.html#while-loop-in-action",
     "title": "Meetup 8: Functions and Iteration",
     "section": "while loop in action",
-    "text": "while loop in action\n\ncounter = 0\nwhile (rnorm(1) &lt; 2) {\n  counter = counter + 1\n  \n}\n\ncounter\n\n[1] 55"
+    "text": "while loop in action\n\ncounter = 0\nwhile (rnorm(1) &lt; 2) {\n  counter = counter + 1\n  \n}\n\ncounter\n\n[1] 84"
   },
   {
     "objectID": "meetups/Meetup8/Meetup8.html#data-science-in-context-presentation",
@@ -4423,7 +4444,7 @@
     "href": "course/schedule.html",
     "title": "DATA607 - Data Acquisition and Management",
     "section": "",
-    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\nMeetup 6 Slides\nMeetup 6 Video\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\nMeetup 7 Slides\nMeetup 7 Video\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\n\n\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\n\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
+    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\nMeetup 6 Slides\nMeetup 6 Video\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\nMeetup 7 Slides\nMeetup 7 Video\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\nMeetup 8 Slides\n\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\n\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -4434,7 +4455,7 @@
     "href": "course/schedule.html#meetup-link",
     "title": "DATA607 - Data Acquisition and Management",
     "section": "",
-    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\nMeetup 6 Slides\nMeetup 6 Video\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\nMeetup 7 Slides\nMeetup 7 Video\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\n\n\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\n\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
+    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\nMeetup 6 Slides\nMeetup 6 Video\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\nMeetup 7 Slides\nMeetup 7 Video\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\nMeetup 8 Slides\n\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\n\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
     "crumbs": [
       "Course information",
       "Schedule"
