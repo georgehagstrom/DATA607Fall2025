@@ -5003,7 +5003,14 @@ vertical-align: -.125em;
 <li><p>Check that open secrets allows you to webscrape by running the <code>paths_allowed</code> function on the url <code>https://www.opensecrets.org</code>.</p></li>
 <li><p>Write a function called <code>scrape_pac()</code> that scrapes information from the Open Secrets webpage for foreign connected PAC contributions in a given year. The <code>url</code> for this data is <a href="https://www.opensecrets.org/political-action-committees-pacs/foreign-connected-pacs/2024">https://www.opensecrets.org/political-action-committees-pacs/foreign-connected-pacs/2024</a>. This function should take the url of the webpage as its only input and should output a data frame. The variables of this data-frame should be renamed so that they are in <code>snake_case</code> format (<code>lower_case_and_underscores_for_spaces</code>, see R4DS section 2.3). Use <code>str_squish()</code> to remove excess whitespace from the Country of Origin/Parent Company variables, and add a new column which records the year by extracting from the input url.</p></li>
 </ol>
-<p>Hints (you may not need all of these): - If you have trouble finding the right elements to search for using the selector gadget try looking for a table element. - Use <code>read_html_live</code> instead of <code>read_html</code> - To improve reliability, put a small pause after you use <code>read_html_live</code> (<code>Sys.sleep(1) should work</code>) - Before your function returns, call <code>rm</code> to remove the object created by <code>read_html_live</code>. This prevents the creation of large numbers of browser sessions - Sometimes your working function may fail inexplicably. Modify your function using <code>insistently</code> so that it retries multiple times.</p>
+<p>Hints (you may not need all of these):</p>
+<ul>
+<li>If you have trouble finding the right elements to search for using the selector gadget try looking for a table element.</li>
+<li>Use <code>read_html_live</code> instead of <code>read_html</code></li>
+<li>To improve reliability, put a small pause after you use <code>read_html_live</code> (<code>Sys.sleep(1) should work</code>)</li>
+<li>Before your function returns, call <code>rm</code> to remove the object created by <code>read_html_live</code>. This prevents the creation of large numbers of browser sessions</li>
+<li>Sometimes your working function may fail inexplicably. Modify your function using <code>insistently</code> so that it retries multiple times.</li>
+</ul>
 <ol start="3" type="a">
 <li>Test your function on the urls for 2024, 2022, and 2000, and show the first several rows of each of the outpus. Does the function seem to do what you expected it to do?</li>
 </ol>
