@@ -30,6 +30,7 @@ In addition to `tidyverse`, you will need to install and load the packages `robo
 (b)   Write a function called `scrape_pac()` that scrapes information from the Open Secrets webpage for foreign connected PAC contributions in a given year. The `url` for this data is [https://www.opensecrets.org/political-action-committees-pacs/foreign-connected-pacs/2024](https://www.opensecrets.org/political-action-committees-pacs/foreign-connected-pacs/2024). This function should take the url of the webpage as its only input and should output a data frame. The variables of this data-frame should be renamed so that they are in `snake_case` format (`lower_case_and_underscores_for_spaces`, see R4DS section 2.3). Use `str_squish()` to remove excess whitespace from the Country of Origin/Parent Company variables, and add a new column which records the year by extracting from the input url.
 
 Hints (you may not need all of these):
+  
   - If you have trouble finding the right elements to search for using the selector gadget try looking for a table element.
   - Use `read_html_live` instead of `read_html`
   - To improve reliability, put a small pause after you use `read_html_live` (`Sys.sleep(1) should work`)
