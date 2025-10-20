@@ -404,11 +404,63 @@ George Hagstrom
 </div>
 
 </section>
-<section id="lab-6-primary-keys" class="slide level2">
-<h2>Lab 6: Primary Keys</h2>
+<section id="lab-6-color-scheme" class="slide level2">
+<h2>Lab 6: Color Scheme</h2>
 <ul>
-<li>Most common mistake on Lab 6 was not identifying keys correctly in the college sports dataset</li>
+<li>Color Scheme for map:</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">100</span>)</span>
+<span id="cb1-2"><a></a>y <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">100</span>)</span>
+<span id="cb1-3"><a></a>z <span class="ot">=</span> <span class="fu">rcauchy</span>(<span class="at">n=</span><span class="dv">100</span>,<span class="at">location=</span><span class="dv">0</span>,<span class="at">scale=</span><span class="dv">1</span>)</span>
+<span id="cb1-4"><a></a>data <span class="ot">=</span> <span class="fu">tibble</span>(<span class="at">x =</span> x, <span class="at">y=</span>y,<span class="at">z=</span>z)</span>
+<span id="cb1-5"><a></a></span>
+<span id="cb1-6"><a></a>data <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">color=</span>z)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb1-7"><a></a>  <span class="fu">scale_color_gradient2</span>(<span class="at">high=</span><span class="st">"blue"</span>,<span class="at">low=</span><span class="st">"red"</span>,<span class="at">mid =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb1-8"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="lab-6-color-scheme-1" class="slide level2">
+<h2>Lab 6: : Color Scheme</h2>
+<ul>
+<li>Color Scheme for map:</li>
+</ul>
+
+<img data-src="Meetup9_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section id="lab-6-color-scheme-2" class="slide level2">
+<h2>Lab 6: Color Scheme</h2>
+<ul>
+<li>Instead use perceptually uniform color scheme or pick different middle color:
+<ul>
+<li><code>scale_color_viridis</code></li>
+<li><code>scale_color_gradient2(high="blue",low="red",mid = "white",midpoint=0)</code></li>
+</ul></li>
+</ul>
+
+<img data-src="Meetup9_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<section id="lab-6-review-principle-of-proportional-ink" class="slide level2">
+<h2>Lab 6 Review: Principle of Proportional Ink</h2>
+<ul>
+<li>On me since I said to consider using size…..</li>
+<li><code>scale_size_area</code>, only use for positive variables</li>
+</ul>
+</section>
+<section id="lab-6-review" class="slide level2">
+<h2>Lab 6 Review</h2>
+<ul>
+<li><code>join</code> disordering</li>
+<li>In <code>SQL</code> joins can change the order of columns</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>  <span class="fu">left_join</span>(colleges_clean, <span class="at">by =</span> <span class="st">"unitid"</span>) <span class="sc">|&gt;</span>  </span>
+<span id="cb2-2"><a></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> avg_profit, <span class="at">n =</span> <span class="dv">10</span>) </span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> avg_profit, <span class="at">n =</span> <span class="dv">10</span>) </span>
+<span id="cb2-5"><a></a>  <span class="fu">left_join</span>(colleges_clean, <span class="at">by =</span> <span class="st">"unitid"</span>) <span class="sc">|&gt;</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="lab-6-review-keys" class="slide level2">
+<h2>Lab 6 Review: Keys</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 132,327 × 28
@@ -434,7 +486,7 @@ George Hagstrom
 </div>
 </div>
 </section>
-<section id="lab-6-primary-keys-1" class="slide level2">
+<section id="lab-6-primary-keys" class="slide level2">
 <h2>Lab 6: Primary Keys</h2>
 <ul>
 <li>Most common mistake on Lab 6 was not identifying keys correctly in the college sports dataset</li>
@@ -447,44 +499,51 @@ George Hagstrom
 </ul></li>
 </ul>
 </section>
-<section id="week-ahead" class="slide level2">
-<h2>Week Ahead</h2>
+<section id="week-ahead-webscraping-and-hierarchical-data" class="slide level2">
+<h2>Week Ahead: Webscraping and Hierarchical Data</h2>
 <ul>
-<li>Project Proposal</li>
-<li>Lab Assignment</li>
-<li>Sign up For DS in Context</li>
+<li>Read: Chapter 23 and 24</li>
+<li>Lab 7</li>
+<li>Lengthy Vignette</li>
 </ul>
 </section>
 <section id="hierarchical-data" class="slide level2">
 <h2>Hierarchical Data</h2>
 <ul>
 <li>Data stored in a tree-strucutre</li>
-<li>Parent nodes are connected to children <img data-src="tree.png" alt="cran data.tree"></li>
+<li>Parent nodes are connected to children</li>
+</ul>
+
+<img data-src="tree.png" class="r-stretch quarto-figure-center"><p class="caption">cran data.tree</p></section>
+<section id="hierarchical-data-1" class="slide level2">
+<h2>Hierarchical Data</h2>
+<ul>
 <li>One of the most common ways to store data</li>
 <li>Easy to understand, can be fast</li>
 <li>Has some drawbacks (read Codd 1970)</li>
 </ul>
-</section>
+
+<img data-src="tree.png" class="r-stretch quarto-figure-center"><p class="caption">cran data.tree</p></section>
 <section id="list-data-type" class="slide level2">
 <h2>List data type</h2>
 <ul>
 <li>List is like a vector, but data types don’t have to be the same</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>list1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vector =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">letter =</span> <span class="st">"a"</span>, <span class="at">logical =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a><span class="fu">str</span>(list1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>list1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vector =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">letter =</span> <span class="st">"a"</span>, <span class="at">logical =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a><span class="fu">str</span>(list1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 3
  $ vector : int [1:4] 1 2 3 4
  $ letter : chr "a"
  $ logical: logi TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>list1[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>list1[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>list1[<span class="st">"vector"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>list1[<span class="st">"vector"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$vector
 [1] 1 2 3 4</code></pre>
@@ -500,11 +559,11 @@ George Hagstrom
 <li>This allows lists to be hierarchical</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>country_list <span class="ot">=</span> <span class="fu">list</span>( <span class="at">USA =</span> <span class="fu">list</span>(<span class="at">capital =</span> <span class="st">"Washington"</span>, <span class="at">pop =</span> <span class="dv">330</span>, <span class="at">continent =</span> <span class="st">"NA"</span>),</span>
-<span id="cb8-2"><a></a>                     <span class="at">Brazil =</span> <span class="fu">list</span>(<span class="at">capital =</span> <span class="st">"Brasilia"</span>, <span class="at">pop =</span> <span class="dv">212</span>, <span class="at">continent =</span> <span class="st">"SA"</span>),</span>
-<span id="cb8-3"><a></a>                     <span class="at">Poland =</span> <span class="fu">list</span>(<span class="at">capital =</span> <span class="st">"Warsaw"</span>,<span class="at">pop =</span> <span class="dv">38</span>, <span class="at">continent =</span> <span class="st">"EU"</span>))</span>
-<span id="cb8-4"><a></a></span>
-<span id="cb8-5"><a></a><span class="fu">str</span>(country_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>country_list <span class="ot">=</span> <span class="fu">list</span>( <span class="at">USA =</span> <span class="fu">list</span>(<span class="at">capital =</span> <span class="st">"Washington"</span>, <span class="at">pop =</span> <span class="dv">330</span>, <span class="at">continent =</span> <span class="st">"NA"</span>),</span>
+<span id="cb10-2"><a></a>                     <span class="at">Brazil =</span> <span class="fu">list</span>(<span class="at">capital =</span> <span class="st">"Brasilia"</span>, <span class="at">pop =</span> <span class="dv">212</span>, <span class="at">continent =</span> <span class="st">"SA"</span>),</span>
+<span id="cb10-3"><a></a>                     <span class="at">Poland =</span> <span class="fu">list</span>(<span class="at">capital =</span> <span class="st">"Warsaw"</span>,<span class="at">pop =</span> <span class="dv">38</span>, <span class="at">continent =</span> <span class="st">"EU"</span>))</span>
+<span id="cb10-4"><a></a></span>
+<span id="cb10-5"><a></a><span class="fu">str</span>(country_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 3
  $ USA   :List of 3
@@ -551,14 +610,14 @@ George Hagstrom
 <li>When list children have names and common structure, each list member can become a new columns:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>  df1 <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb10-2"><a></a>  <span class="sc">~</span>x, <span class="sc">~</span>y,</span>
-<span id="cb10-3"><a></a>  <span class="dv">1</span>, <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">11</span>, <span class="at">b =</span> <span class="dv">12</span>),</span>
-<span id="cb10-4"><a></a>  <span class="dv">2</span>, <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">21</span>, <span class="at">b =</span> <span class="dv">22</span>),</span>
-<span id="cb10-5"><a></a>  <span class="dv">3</span>, <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">31</span>, <span class="at">b =</span> <span class="dv">32</span>),</span>
-<span id="cb10-6"><a></a>)</span>
-<span id="cb10-7"><a></a>  </span>
-<span id="cb10-8"><a></a>df1 <span class="sc">|&gt;</span> <span class="fu">unnest_wider</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>  df1 <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb12-2"><a></a>  <span class="sc">~</span>x, <span class="sc">~</span>y,</span>
+<span id="cb12-3"><a></a>  <span class="dv">1</span>, <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">11</span>, <span class="at">b =</span> <span class="dv">12</span>),</span>
+<span id="cb12-4"><a></a>  <span class="dv">2</span>, <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">21</span>, <span class="at">b =</span> <span class="dv">22</span>),</span>
+<span id="cb12-5"><a></a>  <span class="dv">3</span>, <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">31</span>, <span class="at">b =</span> <span class="dv">32</span>),</span>
+<span id="cb12-6"><a></a>)</span>
+<span id="cb12-7"><a></a>  </span>
+<span id="cb12-8"><a></a>df1 <span class="sc">|&gt;</span> <span class="fu">unnest_wider</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
       x     a     b
@@ -575,14 +634,14 @@ George Hagstrom
 <li>When there list elements aren’t named, each list member gets put into a new row</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>df2 <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb12-2"><a></a>  <span class="sc">~</span>x, <span class="sc">~</span>y,</span>
-<span id="cb12-3"><a></a>  <span class="dv">1</span>, <span class="fu">list</span>(<span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>),</span>
-<span id="cb12-4"><a></a>  <span class="dv">2</span>, <span class="fu">list</span>(<span class="dv">21</span>),</span>
-<span id="cb12-5"><a></a>  <span class="dv">3</span>, <span class="fu">list</span>(<span class="dv">31</span>, <span class="dv">32</span>),</span>
-<span id="cb12-6"><a></a>)</span>
-<span id="cb12-7"><a></a></span>
-<span id="cb12-8"><a></a>df2 <span class="sc">|&gt;</span> <span class="fu">unnest_longer</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>df2 <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb14-2"><a></a>  <span class="sc">~</span>x, <span class="sc">~</span>y,</span>
+<span id="cb14-3"><a></a>  <span class="dv">1</span>, <span class="fu">list</span>(<span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>),</span>
+<span id="cb14-4"><a></a>  <span class="dv">2</span>, <span class="fu">list</span>(<span class="dv">21</span>),</span>
+<span id="cb14-5"><a></a>  <span class="dv">3</span>, <span class="fu">list</span>(<span class="dv">31</span>, <span class="dv">32</span>),</span>
+<span id="cb14-6"><a></a>)</span>
+<span id="cb14-7"><a></a></span>
+<span id="cb14-8"><a></a>df2 <span class="sc">|&gt;</span> <span class="fu">unnest_longer</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
       x     y
@@ -596,14 +655,14 @@ George Hagstrom
 </div>
 </div>
 </section>
-<section id="got-case-study" class="slide level2">
+<section id="got-case-study" class="slide level2 smaller">
 <h2>GOT Case Study</h2>
 <ul>
 <li><code>repurrrsive</code> package contains hierarchical datasets for practice</li>
 <li><code>got_chars</code> contains info on Game of Thrones characters</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">str</span>(got_chars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">str</span>(got_chars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 30
  $ :List of 18
@@ -1185,6 +1244,8 @@ George Hagstrom
 <li>Start by turning it into tibble:</li>
 </ul>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>chars <span class="ot">=</span> <span class="fu">tibble</span>(<span class="at">json =</span> got_chars)</span>
+<span id="cb18-2"><a></a>chars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 1
    json             
@@ -1209,7 +1270,7 @@ George Hagstrom
 <li>Lists are named, structure is same, so use <code>unnest_wider</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>chars <span class="sc">|&gt;</span> <span class="fu">unnest_wider</span>(json)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>chars <span class="sc">|&gt;</span> <span class="fu">unnest_wider</span>(json)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 18
    url           id name  gender culture born  died  alive titles aliases father
@@ -1237,9 +1298,9 @@ George Hagstrom
 <li>Let’s create a table with all the data on that</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>chars <span class="sc">|&gt;</span></span>
-<span id="cb19-2"><a></a>  <span class="fu">unnest_wider</span>(json) <span class="sc">|&gt;</span> </span>
-<span id="cb19-3"><a></a>  <span class="fu">select</span>(id,name,povBooks) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>chars <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a></a>  <span class="fu">unnest_wider</span>(json) <span class="sc">|&gt;</span> </span>
+<span id="cb22-3"><a></a>  <span class="fu">select</span>(id,name,povBooks) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 3
      id name              povBooks 
@@ -1258,10 +1319,10 @@ George Hagstrom
 <li>The lists aren’t named, so we need to use <code>unnest_longer</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>chars <span class="sc">|&gt;</span> </span>
-<span id="cb21-2"><a></a>  <span class="fu">unnest_wider</span>(json) <span class="sc">|&gt;</span> </span>
-<span id="cb21-3"><a></a>  <span class="fu">select</span>(id,name,povBooks) <span class="sc">|&gt;</span> </span>
-<span id="cb21-4"><a></a>  <span class="fu">unnest_longer</span>(povBooks) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>chars <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a></a>  <span class="fu">unnest_wider</span>(json) <span class="sc">|&gt;</span> </span>
+<span id="cb24-3"><a></a>  <span class="fu">select</span>(id,name,povBooks) <span class="sc">|&gt;</span> </span>
+<span id="cb24-4"><a></a>  <span class="fu">unnest_longer</span>(povBooks) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 3
       id name              povBooks            
@@ -1315,11 +1376,11 @@ George Hagstrom
 <li>Several functions exist for reading and parsing json files</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">got_chars_json</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">got_chars_json</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "/home/georgehagstrom/R/x86_64-pc-linux-gnu-library/4.5/repurrrsive/extdata/got_chars.json"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">got_chars_json</span>() <span class="sc">|&gt;</span> <span class="fu">read_json</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">got_chars_json</span>() <span class="sc">|&gt;</span> <span class="fu">read_json</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [[1]]$url
@@ -4047,15 +4108,15 @@ list()
 <ul>
 <li>Webpages are usually HTML files:</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb28-1"><a></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
-<span id="cb28-2"><a></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="cb28-3"><a></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Page title<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
-<span id="cb28-4"><a></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="cb28-5"><a></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb28-6"><a></a>  <span class="dt">&lt;</span><span class="kw">h1</span><span class="ot"> id</span><span class="op">=</span><span class="st">'first'</span><span class="dt">&gt;</span>A heading<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
-<span id="cb28-7"><a></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Some text <span class="dv">&amp;amp;</span> <span class="dt">&lt;</span><span class="kw">b</span><span class="dt">&gt;</span>some bold text.<span class="dt">&lt;/</span><span class="kw">b</span><span class="dt">&gt;&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
-<span id="cb28-8"><a></a>  <span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">'myimg.png'</span><span class="ot"> width</span><span class="op">=</span><span class="st">'100'</span><span class="ot"> height</span><span class="op">=</span><span class="st">'100'</span><span class="dt">&gt;</span></span>
-<span id="cb28-9"><a></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb31-1"><a></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="cb31-2"><a></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb31-3"><a></a>  <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Page title<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb31-4"><a></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb31-5"><a></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb31-6"><a></a>  <span class="dt">&lt;</span><span class="kw">h1</span><span class="ot"> id</span><span class="op">=</span><span class="st">'first'</span><span class="dt">&gt;</span>A heading<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb31-7"><a></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Some text <span class="dv">&amp;amp;</span> <span class="dt">&lt;</span><span class="kw">b</span><span class="dt">&gt;</span>some bold text.<span class="dt">&lt;/</span><span class="kw">b</span><span class="dt">&gt;&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb31-8"><a></a>  <span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">'myimg.png'</span><span class="ot"> width</span><span class="op">=</span><span class="st">'100'</span><span class="ot"> height</span><span class="op">=</span><span class="st">'100'</span><span class="dt">&gt;</span></span>
+<span id="cb31-9"><a></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Nested “tags”: <code>body</code>, <code>head</code>, <code>h1</code>, <code>p</code>, <code>b</code></li>
 <li>Attributes: <code>id</code>, <code>src</code>, <code>width</code>, <code>height</code></li>
@@ -4121,12 +4182,12 @@ list()
 <li>How to know if you can scrape a website?</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">library</span>(robotstxt)</span>
-<span id="cb29-2"><a></a><span class="fu">paths_allowed</span>(<span class="st">"http://www.facebook.com"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">library</span>(robotstxt)</span>
+<span id="cb32-2"><a></a><span class="fu">paths_allowed</span>(<span class="st">"http://www.facebook.com"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">paths_allowed</span>(<span class="st">"http://www.wikipedia.com"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">paths_allowed</span>(<span class="st">"http://www.wikipedia.com"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>

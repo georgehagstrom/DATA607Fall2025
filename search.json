@@ -470,32 +470,74 @@
     "text": "Meetup Reflection/One Minute Paper\nPlease fill out the following google form after the meeting or watching the video:\nClick Here"
   },
   {
-    "objectID": "meetups/Meetup9/Meetup9.html#lab-6-primary-keys",
-    "href": "meetups/Meetup9/Meetup9.html#lab-6-primary-keys",
+    "objectID": "meetups/Meetup9/Meetup9.html#lab-6-color-scheme",
+    "href": "meetups/Meetup9/Meetup9.html#lab-6-color-scheme",
     "title": "Meetup 9: Hierarchical Data and Webscraping",
-    "section": "Lab 6: Primary Keys",
-    "text": "Lab 6: Primary Keys\n\nMost common mistake on Lab 6 was not identifying keys correctly in the college sports dataset\n\n\n\n# A tibble: 132,327 × 28\n    year unitid institution_name  city_txt state_cd zip_text classification_code\n   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;                  &lt;dbl&gt;\n 1  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n 2  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n 3  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n 4  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n 5  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n 6  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n 7  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n 8  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n 9  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n10  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n# ℹ 132,317 more rows\n# ℹ 21 more variables: classification_name &lt;chr&gt;, classification_other &lt;chr&gt;,\n#   ef_male_count &lt;dbl&gt;, ef_female_count &lt;dbl&gt;, ef_total_count &lt;dbl&gt;,\n#   sector_cd &lt;dbl&gt;, sector_name &lt;chr&gt;, sportscode &lt;dbl&gt;, partic_men &lt;dbl&gt;,\n#   partic_women &lt;dbl&gt;, partic_coed_men &lt;dbl&gt;, partic_coed_women &lt;dbl&gt;,\n#   sum_partic_men &lt;dbl&gt;, sum_partic_women &lt;dbl&gt;, rev_men &lt;dbl&gt;,\n#   rev_women &lt;dbl&gt;, total_rev_menwomen &lt;dbl&gt;, exp_men &lt;dbl&gt;, …"
+    "section": "Lab 6: Color Scheme",
+    "text": "Lab 6: Color Scheme\n\nColor Scheme for map:\n\n\nx = rnorm(n=100)\ny = rnorm(n=100)\nz = rcauchy(n=100,location=0,scale=1)\ndata = tibble(x = x, y=y,z=z)\n\ndata |&gt; ggplot(aes(x=x,y=y,color=z)) + geom_point(size=10) +\n  scale_color_gradient2(high=\"blue\",low=\"red\",mid = \"white\") +\n  theme_minimal()"
   },
   {
-    "objectID": "meetups/Meetup9/Meetup9.html#lab-6-primary-keys-1",
-    "href": "meetups/Meetup9/Meetup9.html#lab-6-primary-keys-1",
+    "objectID": "meetups/Meetup9/Meetup9.html#lab-6-color-scheme-1",
+    "href": "meetups/Meetup9/Meetup9.html#lab-6-color-scheme-1",
+    "title": "Meetup 9: Hierarchical Data and Webscraping",
+    "section": "Lab 6: : Color Scheme",
+    "text": "Lab 6: : Color Scheme\n\nColor Scheme for map:"
+  },
+  {
+    "objectID": "meetups/Meetup9/Meetup9.html#lab-6-color-scheme-2",
+    "href": "meetups/Meetup9/Meetup9.html#lab-6-color-scheme-2",
+    "title": "Meetup 9: Hierarchical Data and Webscraping",
+    "section": "Lab 6: Color Scheme",
+    "text": "Lab 6: Color Scheme\n\nInstead use perceptually uniform color scheme or pick different middle color:\n\nscale_color_viridis\nscale_color_gradient2(high=\"blue\",low=\"red\",mid = \"white\",midpoint=0)"
+  },
+  {
+    "objectID": "meetups/Meetup9/Meetup9.html#lab-6-review-principle-of-proportional-ink",
+    "href": "meetups/Meetup9/Meetup9.html#lab-6-review-principle-of-proportional-ink",
+    "title": "Meetup 9: Hierarchical Data and Webscraping",
+    "section": "Lab 6 Review: Principle of Proportional Ink",
+    "text": "Lab 6 Review: Principle of Proportional Ink\n\nOn me since I said to consider using size…..\nscale_size_area, only use for positive variables"
+  },
+  {
+    "objectID": "meetups/Meetup9/Meetup9.html#lab-6-review",
+    "href": "meetups/Meetup9/Meetup9.html#lab-6-review",
+    "title": "Meetup 9: Hierarchical Data and Webscraping",
+    "section": "Lab 6 Review",
+    "text": "Lab 6 Review\n\njoin disordering\nIn SQL joins can change the order of columns\n\n\n  left_join(colleges_clean, by = \"unitid\") |&gt;  \n  slice_max(order_by = avg_profit, n = 10) \n\n  slice_max(order_by = avg_profit, n = 10) \n  left_join(colleges_clean, by = \"unitid\") |&gt;"
+  },
+  {
+    "objectID": "meetups/Meetup9/Meetup9.html#lab-6-review-keys",
+    "href": "meetups/Meetup9/Meetup9.html#lab-6-review-keys",
+    "title": "Meetup 9: Hierarchical Data and Webscraping",
+    "section": "Lab 6 Review: Keys",
+    "text": "Lab 6 Review: Keys\n\n\n# A tibble: 132,327 × 28\n    year unitid institution_name  city_txt state_cd zip_text classification_code\n   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;                  &lt;dbl&gt;\n 1  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n 2  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n 3  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n 4  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n 5  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n 6  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n 7  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n 8  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n 9  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n10  2015 100654 Alabama A & M Un… Normal   AL       35762                      2\n# ℹ 132,317 more rows\n# ℹ 21 more variables: classification_name &lt;chr&gt;, classification_other &lt;chr&gt;,\n#   ef_male_count &lt;dbl&gt;, ef_female_count &lt;dbl&gt;, ef_total_count &lt;dbl&gt;,\n#   sector_cd &lt;dbl&gt;, sector_name &lt;chr&gt;, sportscode &lt;dbl&gt;, partic_men &lt;dbl&gt;,\n#   partic_women &lt;dbl&gt;, partic_coed_men &lt;dbl&gt;, partic_coed_women &lt;dbl&gt;,\n#   sum_partic_men &lt;dbl&gt;, sum_partic_women &lt;dbl&gt;, rev_men &lt;dbl&gt;,\n#   rev_women &lt;dbl&gt;, total_rev_menwomen &lt;dbl&gt;, exp_men &lt;dbl&gt;, …"
+  },
+  {
+    "objectID": "meetups/Meetup9/Meetup9.html#lab-6-primary-keys",
+    "href": "meetups/Meetup9/Meetup9.html#lab-6-primary-keys",
     "title": "Meetup 9: Hierarchical Data and Webscraping",
     "section": "Lab 6: Primary Keys",
     "text": "Lab 6: Primary Keys\n\nMost common mistake on Lab 6 was not identifying keys correctly in the college sports dataset\nKey ideas:\n\nRemove duplicate rows from new tables\nKey should uniquely identify each row\nIs year needed?\nunitid versus institution_name?"
   },
   {
-    "objectID": "meetups/Meetup9/Meetup9.html#week-ahead",
-    "href": "meetups/Meetup9/Meetup9.html#week-ahead",
+    "objectID": "meetups/Meetup9/Meetup9.html#week-ahead-webscraping-and-hierarchical-data",
+    "href": "meetups/Meetup9/Meetup9.html#week-ahead-webscraping-and-hierarchical-data",
     "title": "Meetup 9: Hierarchical Data and Webscraping",
-    "section": "Week Ahead",
-    "text": "Week Ahead\n\nProject Proposal\nLab Assignment\nSign up For DS in Context"
+    "section": "Week Ahead: Webscraping and Hierarchical Data",
+    "text": "Week Ahead: Webscraping and Hierarchical Data\n\nRead: Chapter 23 and 24\nLab 7\nLengthy Vignette"
   },
   {
     "objectID": "meetups/Meetup9/Meetup9.html#hierarchical-data",
     "href": "meetups/Meetup9/Meetup9.html#hierarchical-data",
     "title": "Meetup 9: Hierarchical Data and Webscraping",
     "section": "Hierarchical Data",
-    "text": "Hierarchical Data\n\nData stored in a tree-strucutre\nParent nodes are connected to children \nOne of the most common ways to store data\nEasy to understand, can be fast\nHas some drawbacks (read Codd 1970)"
+    "text": "Hierarchical Data\n\nData stored in a tree-strucutre\nParent nodes are connected to children\n\n\ncran data.tree"
+  },
+  {
+    "objectID": "meetups/Meetup9/Meetup9.html#hierarchical-data-1",
+    "href": "meetups/Meetup9/Meetup9.html#hierarchical-data-1",
+    "title": "Meetup 9: Hierarchical Data and Webscraping",
+    "section": "Hierarchical Data",
+    "text": "Hierarchical Data\n\nOne of the most common ways to store data\nEasy to understand, can be fast\nHas some drawbacks (read Codd 1970)\n\n\ncran data.tree"
   },
   {
     "objectID": "meetups/Meetup9/Meetup9.html#list-data-type",
@@ -544,7 +586,7 @@
     "href": "meetups/Meetup9/Meetup9.html#rectangling-got",
     "title": "Meetup 9: Hierarchical Data and Webscraping",
     "section": "Rectangling GOT",
-    "text": "Rectangling GOT\n\nStart by turning it into tibble:\n\n\n\n# A tibble: 30 × 1\n   json             \n   &lt;list&gt;           \n 1 &lt;named list [18]&gt;\n 2 &lt;named list [18]&gt;\n 3 &lt;named list [18]&gt;\n 4 &lt;named list [18]&gt;\n 5 &lt;named list [18]&gt;\n 6 &lt;named list [18]&gt;\n 7 &lt;named list [18]&gt;\n 8 &lt;named list [18]&gt;\n 9 &lt;named list [18]&gt;\n10 &lt;named list [18]&gt;\n# ℹ 20 more rows"
+    "text": "Rectangling GOT\n\nStart by turning it into tibble:\n\n\nchars = tibble(json = got_chars)\nchars\n\n# A tibble: 30 × 1\n   json             \n   &lt;list&gt;           \n 1 &lt;named list [18]&gt;\n 2 &lt;named list [18]&gt;\n 3 &lt;named list [18]&gt;\n 4 &lt;named list [18]&gt;\n 5 &lt;named list [18]&gt;\n 6 &lt;named list [18]&gt;\n 7 &lt;named list [18]&gt;\n 8 &lt;named list [18]&gt;\n 9 &lt;named list [18]&gt;\n10 &lt;named list [18]&gt;\n# ℹ 20 more rows"
   },
   {
     "objectID": "meetups/Meetup9/Meetup9.html#rectangling-got-1",
@@ -4458,7 +4500,7 @@
     "href": "course/schedule.html",
     "title": "DATA607 - Data Acquisition and Management",
     "section": "",
-    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\nMeetup 6 Slides\nMeetup 6 Video\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\nMeetup 7 Slides\nMeetup 7 Video\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\nMeetup 8 Slides\nMeetup 8 Video\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\n\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
+    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\nMeetup 6 Slides\nMeetup 6 Video\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\nMeetup 7 Slides\nMeetup 7 Video\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\nMeetup 8 Slides\nMeetup 8 Video\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\nMeetup 9 Slides\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -4469,7 +4511,7 @@
     "href": "course/schedule.html#meetup-link",
     "title": "DATA607 - Data Acquisition and Management",
     "section": "",
-    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\nMeetup 6 Slides\nMeetup 6 Video\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\nMeetup 7 Slides\nMeetup 7 Video\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\nMeetup 8 Slides\nMeetup 8 Video\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\n\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
+    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\nMeetup 6 Slides\nMeetup 6 Video\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\nMeetup 7 Slides\nMeetup 7 Video\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\nMeetup 8 Slides\nMeetup 8 Video\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\nMeetup 9 Slides\n\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
     "crumbs": [
       "Course information",
       "Schedule"
