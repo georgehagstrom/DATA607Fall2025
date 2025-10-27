@@ -3453,6 +3453,13 @@
     "text": "Meetup Reflection/One Minute Paper\nPlease fill out the following google form after the meeting or watching the video:\nClick Here"
   },
   {
+    "objectID": "meetups/Meetup10/Meetup10.html#proposal-feedback",
+    "href": "meetups/Meetup10/Meetup10.html#proposal-feedback",
+    "title": "Meetup 10: Web APIs and Git",
+    "section": "Proposal Feedback",
+    "text": "Proposal Feedback\n\nI saw lots of great proposal ideas\nThe more research and reading you do on your topic, the better\nFor future proposals:\n\nAlways have some references\nI don’t need so many details on how you will do an EDA or what figures you will, devote more space to discussing your problem and potential challenges"
+  },
+  {
     "objectID": "meetups/Meetup10/Meetup10.html#week-10-nuts-and-bolts",
     "href": "meetups/Meetup10/Meetup10.html#week-10-nuts-and-bolts",
     "title": "Meetup 10: Web APIs and Git",
@@ -3485,28 +3492,42 @@
     "href": "meetups/Meetup10/Meetup10.html#httr2-package",
     "title": "Meetup 10: Web APIs and Git",
     "section": "httr2 package",
-    "text": "httr2 package\n\nhttr2 let’s you construct API calls systematically\n\n\nlibrary(tidyverse)\nlibrary(httr2)\n\nreq_weather = request(\"https://api.weather.gov/\")\nreq_weather |&gt; req_dry_run()\n\nGET / HTTP/1.1\naccept: */*\naccept-encoding: deflate, gzip, br, zstd\nhost: api.weather.gov\nuser-agent: httr2/1.2.1 r-curl/7.0.0 libcurl/7.81.0\n\nreq_weather |&gt; req_perform() |&gt; resp_body_html()\n\n{html_document}\n&lt;html&gt;\n[1] &lt;head&gt;\\n&lt;meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8 ...\n[2] &lt;body&gt;\\n        &lt;div class=\"wrapper\"&gt;\\n            &lt;section class=\"usa-ba ...\n\n\n\nfunctions start with req_* or resp_*"
+    "text": "httr2 package\n\nhttr2 let’s you construct API calls systematically\n\n\nlibrary(tidyverse)\nlibrary(httr2)\n\nreq_weather = request(\"https://api.weather.gov/\")\nreq_weather |&gt; req_dry_run()\n\nGET / HTTP/1.1\naccept: */*\naccept-encoding: deflate, gzip, br, zstd\nhost: api.weather.gov\nuser-agent: httr2/1.2.1 r-curl/7.0.0 libcurl/7.81.0"
+  },
+  {
+    "objectID": "meetups/Meetup10/Meetup10.html#httr2-package-1",
+    "href": "meetups/Meetup10/Meetup10.html#httr2-package-1",
+    "title": "Meetup 10: Web APIs and Git",
+    "section": "httr2 package",
+    "text": "httr2 package\n\nreq_weather |&gt; req_perform() |&gt; resp_body_html()\n\n{html_document}\n&lt;html&gt;\n[1] &lt;head&gt;\\n&lt;meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8 ...\n[2] &lt;body&gt;\\n        &lt;div class=\"wrapper\"&gt;\\n            &lt;section class=\"usa-ba ...\n\n\n\nfunctions start with req_* or resp_*\n\nreq_* builds requests\nres_* reads responses"
   },
   {
     "objectID": "meetups/Meetup10/Meetup10.html#query-structure",
     "href": "meetups/Meetup10/Meetup10.html#query-structure",
     "title": "Meetup 10: Web APIs and Git",
     "section": "Query Structure",
-    "text": "Query Structure\n\nTypically send requests to different endpoints\nUse req_url_path_append to add endpoint url\n\n\nalert_url = \"alerts/active\"\nrequest_weather_alerts = req_weather |&gt; req_url_path_append(alert_url)\n\nrequest_weather_alerts |&gt; req_dry_run()"
+    "text": "Query Structure\n\nTypically send requests to different endpoints\nUse req_url_path_append to add endpoint url\n\n\nalert_url = \"alerts/active\"\nrequest_weather_alerts = req_weather |&gt; req_url_path_append(alert_url)\n\nrequest_weather_alerts |&gt; req_dry_run()\n\nGET /alerts/active HTTP/1.1\naccept: */*\naccept-encoding: deflate, gzip, br, zstd\nhost: api.weather.gov\nuser-agent: httr2/1.2.1 r-curl/7.0.0 libcurl/7.81.0"
   },
   {
     "objectID": "meetups/Meetup10/Meetup10.html#query-structure-1",
     "href": "meetups/Meetup10/Meetup10.html#query-structure-1",
     "title": "Meetup 10: Web APIs and Git",
     "section": "Query Structure",
-    "text": "Query Structure\n\nUse req_url_query to add “instructions” to url\n\n\nny_alerts = request_weather_alerts |&gt; req_url_query(area = \"NY\")\n\nny_alerts |&gt; req_dry_run()"
+    "text": "Query Structure\n\nUse req_url_query to add “instructions” to url\n\n\nfl_alerts = request_weather_alerts |&gt; req_url_query(area = \"FL\")\n\nfl_alerts |&gt; req_dry_run()\n\nGET /alerts/active HTTP/1.1\naccept: */*\naccept-encoding: deflate, gzip, br, zstd\nhost: api.weather.gov\nuser-agent: httr2/1.2.1 r-curl/7.0.0 libcurl/7.81.0"
   },
   {
     "objectID": "meetups/Meetup10/Meetup10.html#processing-output",
     "href": "meetups/Meetup10/Meetup10.html#processing-output",
     "title": "Meetup 10: Web APIs and Git",
     "section": "Processing Output",
-    "text": "Processing Output\n\nUsually get json\ntibblify helps you unnest\n\n\nlibrary(tibblify)\nny_alerts |&gt; \n  req_perform() |&gt; \n  resp_body_json() |&gt; \n  tibblify()"
+    "text": "Processing Output\n\nUsually get json\ntibblify helps you unnest\n\n\nlibrary(tibblify)\nfl_alert_data = fl_alerts |&gt; \n  req_perform() |&gt; \n  resp_body_json() |&gt; \n  tibblify()"
+  },
+  {
+    "objectID": "meetups/Meetup10/Meetup10.html#processing-output-1",
+    "href": "meetups/Meetup10/Meetup10.html#processing-output-1",
+    "title": "Meetup 10: Web APIs and Git",
+    "section": "Processing Output",
+    "text": "Processing Output\n\nlibrary(tibblify)\nfl_alert_data = fl_alerts |&gt; \n  req_perform() |&gt; \n  resp_body_json() |&gt; \n  tibblify()\n\nfl_alert_data\n\n$`@context`\n$`@context`[[1]]\n[1] \"https://geojson.org/geojson-ld/geojson-context.jsonld\"\n\n$`@context`[[2]]\n$`@context`[[2]]$`@version`\n[1] \"1.1\"\n\n$`@context`[[2]]$wx\n[1] \"https://api.weather.gov/ontology#\"\n\n$`@context`[[2]]$`@vocab`\n[1] \"https://api.weather.gov/ontology#\"\n\n\n\n$type\n[1] \"FeatureCollection\"\n\n$features\n# A tibble: 14 × 4\n   id                                       type  geometry$type properties$`@id`\n   &lt;chr&gt;                                    &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;           \n 1 https://api.weather.gov/alerts/urn:oid:… Feat… Polygon       https://api.wea…\n 2 https://api.weather.gov/alerts/urn:oid:… Feat… Polygon       https://api.wea…\n 3 https://api.weather.gov/alerts/urn:oid:… Feat… Polygon       https://api.wea…\n 4 https://api.weather.gov/alerts/urn:oid:… Feat… Polygon       https://api.wea…\n 5 https://api.weather.gov/alerts/urn:oid:… Feat… &lt;NA&gt;          https://api.wea…\n 6 https://api.weather.gov/alerts/urn:oid:… Feat… &lt;NA&gt;          https://api.wea…\n 7 https://api.weather.gov/alerts/urn:oid:… Feat… &lt;NA&gt;          https://api.wea…\n 8 https://api.weather.gov/alerts/urn:oid:… Feat… Polygon       https://api.wea…\n 9 https://api.weather.gov/alerts/urn:oid:… Feat… Polygon       https://api.wea…\n10 https://api.weather.gov/alerts/urn:oid:… Feat… &lt;NA&gt;          https://api.wea…\n11 https://api.weather.gov/alerts/urn:oid:… Feat… &lt;NA&gt;          https://api.wea…\n12 https://api.weather.gov/alerts/urn:oid:… Feat… &lt;NA&gt;          https://api.wea…\n13 https://api.weather.gov/alerts/urn:oid:… Feat… &lt;NA&gt;          https://api.wea…\n14 https://api.weather.gov/alerts/urn:oid:… Feat… &lt;NA&gt;          https://api.wea…\n# ℹ 31 more variables: geometry$coordinates &lt;list&gt;, properties$`@type` &lt;chr&gt;,\n#   $id &lt;chr&gt;, $areaDesc &lt;chr&gt;, $geocode &lt;tibble[,2]&gt;, $affectedZones &lt;list&gt;,\n#   $references &lt;list&lt;tibble[,4]&gt;&gt;, $sent &lt;chr&gt;, $effective &lt;chr&gt;,\n#   $onset &lt;chr&gt;, $expires &lt;chr&gt;, $ends &lt;chr&gt;, $status &lt;chr&gt;,\n#   $messageType &lt;chr&gt;, $category &lt;chr&gt;, $severity &lt;chr&gt;, $certainty &lt;chr&gt;,\n#   $urgency &lt;chr&gt;, $event &lt;chr&gt;, $sender &lt;chr&gt;, $senderName &lt;chr&gt;,\n#   $headline &lt;chr&gt;, $description &lt;chr&gt;, $instruction &lt;chr&gt;, $response &lt;chr&gt;, …\n\n$title\n[1] \"Current watches, warnings, and advisories for Florida\"\n\n$updated\n[1] \"2025-10-27T22:00:17+00:00\""
   },
   {
     "objectID": "meetups/Meetup10/Meetup10.html#git",
@@ -3614,15 +3635,22 @@
     "text": "git Pull"
   },
   {
-    "objectID": "meetups/Meetup10/Meetup10.html#merge-conflicts",
-    "href": "meetups/Meetup10/Meetup10.html#merge-conflicts",
-    "title": "Meetup 10: Web APIs and Git",
-    "section": "Merge Conflicts",
-    "text": "Merge Conflicts"
-  },
-  {
     "objectID": "meetups/Meetup10/Meetup10.html#merge-conflicts-push",
     "href": "meetups/Meetup10/Meetup10.html#merge-conflicts-push",
+    "title": "Meetup 10: Web APIs and Git",
+    "section": "Merge Conflicts Push",
+    "text": "Merge Conflicts Push"
+  },
+  {
+    "objectID": "meetups/Meetup10/Meetup10.html#merge-conflicts-push-1",
+    "href": "meetups/Meetup10/Meetup10.html#merge-conflicts-push-1",
+    "title": "Meetup 10: Web APIs and Git",
+    "section": "Merge Conflicts Push",
+    "text": "Merge Conflicts Push"
+  },
+  {
+    "objectID": "meetups/Meetup10/Meetup10.html#merge-conflicts-push-2",
+    "href": "meetups/Meetup10/Meetup10.html#merge-conflicts-push-2",
     "title": "Meetup 10: Web APIs and Git",
     "section": "Merge Conflicts Push",
     "text": "Merge Conflicts Push"
@@ -3665,30 +3693,44 @@
   {
     "objectID": "meetups/Meetup10/APISlides.html#restful-apis",
     "href": "meetups/Meetup10/APISlides.html#restful-apis",
-    "title": "APISlides",
+    "title": "API Slides",
     "section": "RESTful APIs",
     "text": "RESTful APIs\n\nAPI is an interface that allows applications to communicate\nEach one is unique- read the docs to figure out the rules\nREST APIs are a common standard\nUses HTTP, encodes commands in url\nFour verbs: get, post, put, delete\nHierarchical Output (usually json)"
   },
   {
     "objectID": "meetups/Meetup10/APISlides.html#httr2-package",
     "href": "meetups/Meetup10/APISlides.html#httr2-package",
-    "title": "APISlides",
+    "title": "API Slides",
     "section": "httr2 package",
-    "text": "httr2 package\n\nhttr2 let’s you construct API calls systematically\n\n\nlibrary(tidyverse)\nlibrary(httr2)\n\nreq_weather = request(\"https://api.weather.gov/\")\nreq_weather |&gt; req_dry_run()\n\nGET / HTTP/1.1\naccept: */*\naccept-encoding: deflate, gzip, br, zstd\nhost: api.weather.gov\nuser-agent: httr2/1.1.2 r-curl/6.4.0 libcurl/7.81.0\n\nreq_weather |&gt; req_perform() |&gt; resp_body_html()\n\n{html_document}\n&lt;html&gt;\n[1] &lt;head&gt;\\n&lt;meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8 ...\n[2] &lt;body&gt;\\n        &lt;div class=\"wrapper\"&gt;\\n            &lt;section class=\"usa-ba ...\n\n\n\nfunctions start with req_* or resp_*"
+    "text": "httr2 package\n\nhttr2 let’s you construct API calls systematically\n\n\nlibrary(tidyverse)\nlibrary(httr2)\n\nreq_weather = request(\"https://api.weather.gov/\")\nreq_weather |&gt; req_dry_run()\n\nGET / HTTP/1.1\naccept: */*\naccept-encoding: deflate, gzip, br, zstd\nhost: api.weather.gov\nuser-agent: httr2/1.2.1 r-curl/7.0.0 libcurl/7.81.0\n\nreq_weather |&gt; req_perform() |&gt; resp_body_html()\n\n{html_document}\n&lt;html&gt;\n[1] &lt;head&gt;\\n&lt;meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8 ...\n[2] &lt;body&gt;\\n        &lt;div class=\"wrapper\"&gt;\\n            &lt;section class=\"usa-ba ..."
+  },
+  {
+    "objectID": "meetups/Meetup10/APISlides.html#httr2-package-1",
+    "href": "meetups/Meetup10/APISlides.html#httr2-package-1",
+    "title": "API Slides",
+    "section": "httr2 package",
+    "text": "httr2 package\n\nfunctions start with req_* or resp_*\n\nreq_* builds requests\nres_* reads responses"
   },
   {
     "objectID": "meetups/Meetup10/APISlides.html#query-structure",
     "href": "meetups/Meetup10/APISlides.html#query-structure",
-    "title": "APISlides",
+    "title": "API Slides",
     "section": "Query Structure",
-    "text": "Query Structure\n\nTypically send requests to different endpoints\nUse req_url_path_append to add endpoint url\n\n\nalert_url = \"alerts/active\"\nrequest_weather_alerts = req_weather |&gt; req_url_path_append(alert_url)\n\nrequest_weather_alerts |&gt; req_dry_run()\n\nGET /alerts/active HTTP/1.1\naccept: */*\naccept-encoding: deflate, gzip, br, zstd\nhost: api.weather.gov\nuser-agent: httr2/1.1.2 r-curl/6.4.0 libcurl/7.81.0\n\n\n\nUse req_url_query to add “instructions” to url\n\n\nny_alerts = request_weather_alerts |&gt; req_url_query(area = \"NY\")\n\nny_alerts |&gt; req_dry_run()\n\nGET /alerts/active HTTP/1.1\naccept: */*\naccept-encoding: deflate, gzip, br, zstd\nhost: api.weather.gov\nuser-agent: httr2/1.1.2 r-curl/6.4.0 libcurl/7.81.0"
+    "text": "Query Structure\n\nTypically send requests to different endpoints\nUse req_url_path_append to add endpoint url\n\n\nalert_url = \"alerts/active\"\nrequest_weather_alerts = req_weather |&gt; req_url_path_append(alert_url)\n\nrequest_weather_alerts |&gt; req_dry_run()\n\nGET /alerts/active HTTP/1.1\naccept: */*\naccept-encoding: deflate, gzip, br, zstd\nhost: api.weather.gov\nuser-agent: httr2/1.2.1 r-curl/7.0.0 libcurl/7.81.0"
+  },
+  {
+    "objectID": "meetups/Meetup10/APISlides.html#query-structure-1",
+    "href": "meetups/Meetup10/APISlides.html#query-structure-1",
+    "title": "API Slides",
+    "section": "Query Structure",
+    "text": "Query Structure\n\nUse req_url_query to add “instructions” to url\n\n\nny_alerts = request_weather_alerts |&gt; req_url_query(area = \"NY\")\n\nny_alerts |&gt; req_dry_run()\n\nGET /alerts/active HTTP/1.1\naccept: */*\naccept-encoding: deflate, gzip, br, zstd\nhost: api.weather.gov\nuser-agent: httr2/1.2.1 r-curl/7.0.0 libcurl/7.81.0"
   },
   {
     "objectID": "meetups/Meetup10/APISlides.html#processing-output",
     "href": "meetups/Meetup10/APISlides.html#processing-output",
-    "title": "APISlides",
+    "title": "API Slides",
     "section": "Processing Output",
-    "text": "Processing Output\n\nUsually get json\ntibblify helps you unnest\n\n\nlibrary(tibblify)\nny_alerts |&gt; \n  req_perform() |&gt; \n  resp_body_json() |&gt; \n  tibblify()\n\n$`@context`\n$`@context`[[1]]\n[1] \"https://geojson.org/geojson-ld/geojson-context.jsonld\"\n\n$`@context`[[2]]\n$`@context`[[2]]$`@version`\n[1] \"1.1\"\n\n$`@context`[[2]]$wx\n[1] \"https://api.weather.gov/ontology#\"\n\n$`@context`[[2]]$`@vocab`\n[1] \"https://api.weather.gov/ontology#\"\n\n\n\n$type\n[1] \"FeatureCollection\"\n\n$features\n# A tibble: 4 × 4\n  id                                             type  geometry properties$`@id`\n  &lt;chr&gt;                                          &lt;chr&gt; &lt;list&gt;   &lt;chr&gt;           \n1 https://api.weather.gov/alerts/urn:oid:2.49.0… Feat… &lt;NULL&gt;   https://api.wea…\n2 https://api.weather.gov/alerts/urn:oid:2.49.0… Feat… &lt;NULL&gt;   https://api.wea…\n3 https://api.weather.gov/alerts/urn:oid:2.49.0… Feat… &lt;NULL&gt;   https://api.wea…\n4 https://api.weather.gov/alerts/urn:oid:2.49.0… Feat… &lt;NULL&gt;   https://api.wea…\n# ℹ 30 more variables: properties$`@type` &lt;chr&gt;, $id &lt;chr&gt;, $areaDesc &lt;chr&gt;,\n#   $geocode &lt;tibble[,2]&gt;, $affectedZones &lt;list&gt;, $references &lt;list&gt;,\n#   $sent &lt;chr&gt;, $effective &lt;chr&gt;, $onset &lt;chr&gt;, $expires &lt;chr&gt;, $ends &lt;list&gt;,\n#   $status &lt;chr&gt;, $messageType &lt;chr&gt;, $category &lt;chr&gt;, $severity &lt;chr&gt;,\n#   $certainty &lt;chr&gt;, $urgency &lt;chr&gt;, $event &lt;chr&gt;, $sender &lt;chr&gt;,\n#   $senderName &lt;chr&gt;, $headline &lt;chr&gt;, $description &lt;chr&gt;,\n#   $instruction &lt;list&gt;, $response &lt;chr&gt;, $parameters &lt;tibble[,4]&gt;, …\n\n$title\n[1] \"Current watches, warnings, and advisories for New York\"\n\n$updated\n[1] \"2025-08-02T20:58:51+00:00\""
+    "text": "Processing Output\n\ntibblify to unnest json\n\n\nlibrary(tibblify)\nny_alerts |&gt; \n  req_perform() |&gt; \n  resp_body_json() |&gt; \n  tibblify()\n\n$`@context`\n$`@context`[[1]]\n[1] \"https://geojson.org/geojson-ld/geojson-context.jsonld\"\n\n$`@context`[[2]]\n$`@context`[[2]]$`@version`\n[1] \"1.1\"\n\n$`@context`[[2]]$wx\n[1] \"https://api.weather.gov/ontology#\"\n\n$`@context`[[2]]$`@vocab`\n[1] \"https://api.weather.gov/ontology#\"\n\n\n\n$type\n[1] \"FeatureCollection\"\n\n$features\n# A tibble: 1 × 4\n  id                                             type  geometry properties$`@id`\n  &lt;chr&gt;                                          &lt;chr&gt; &lt;list&gt;   &lt;chr&gt;           \n1 https://api.weather.gov/alerts/urn:oid:2.49.0… Feat… &lt;NULL&gt;   https://api.wea…\n# ℹ 30 more variables: properties$`@type` &lt;chr&gt;, $id &lt;chr&gt;, $areaDesc &lt;chr&gt;,\n#   $geocode &lt;tibble[,2]&gt;, $affectedZones &lt;list&gt;, $references &lt;list&gt;,\n#   $sent &lt;chr&gt;, $effective &lt;chr&gt;, $onset &lt;chr&gt;, $expires &lt;chr&gt;, $ends &lt;chr&gt;,\n#   $status &lt;chr&gt;, $messageType &lt;chr&gt;, $category &lt;chr&gt;, $severity &lt;chr&gt;,\n#   $certainty &lt;chr&gt;, $urgency &lt;chr&gt;, $event &lt;chr&gt;, $sender &lt;chr&gt;,\n#   $senderName &lt;chr&gt;, $headline &lt;chr&gt;, $description &lt;chr&gt;, $instruction &lt;chr&gt;,\n#   $response &lt;chr&gt;, $parameters &lt;tibble[,6]&gt;, $scope &lt;chr&gt;, $code &lt;chr&gt;, …\n\n$title\n[1] \"Current watches, warnings, and advisories for New York\"\n\n$updated\n[1] \"2025-10-27T13:00:00+00:00\""
   },
   {
     "objectID": "meetups/Meetup7/Meetup7.html#lab-3-4-review-axes",
@@ -4528,7 +4570,7 @@
     "href": "course/schedule.html",
     "title": "DATA607 - Data Acquisition and Management",
     "section": "",
-    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\nMeetup 6 Slides\nMeetup 6 Video\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\nMeetup 7 Slides\nMeetup 7 Video\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\nMeetup 8 Slides\nMeetup 8 Video\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\nMeetup 9 Slides\nMeetup 9 Video\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
+    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\nMeetup 6 Slides\nMeetup 6 Video\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\nMeetup 7 Slides\nMeetup 7 Video\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\nMeetup 8 Slides\nMeetup 8 Video\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\nMeetup 9 Slides\nMeetup 9 Video\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\nMeetup 10 Slides\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -4539,7 +4581,7 @@
     "href": "course/schedule.html#meetup-link",
     "title": "DATA607 - Data Acquisition and Management",
     "section": "",
-    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\nMeetup 6 Slides\nMeetup 6 Video\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\nMeetup 7 Slides\nMeetup 7 Video\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\nMeetup 8 Slides\nMeetup 8 Video\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\nMeetup 9 Slides\nMeetup 9 Video\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\n\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
+    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\nMeetup 6 Slides\nMeetup 6 Video\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\nMeetup 7 Slides\nMeetup 7 Video\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\nMeetup 8 Slides\nMeetup 8 Video\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\nMeetup 9 Slides\nMeetup 9 Video\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\nMeetup 10 Slides\n\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\n\n\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nGraphs and Graph Data\n\n\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
     "crumbs": [
       "Course information",
       "Schedule"

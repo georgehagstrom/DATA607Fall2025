@@ -406,6 +406,18 @@ George Hagstrom
 
   <p class="date">2025-10-27</p>
 </section>
+<section id="proposal-feedback" class="slide level2">
+<h2>Proposal Feedback</h2>
+<ul>
+<li>I saw lots of great proposal ideas</li>
+<li>The more research and reading you do on your topic, the better</li>
+<li>For future proposals:
+<ul>
+<li>Always have some references</li>
+<li>I don’t need so many details on how you will do an EDA or what figures you will, devote more space to discussing your problem and potential challenges</li>
+</ul></li>
+</ul>
+</section>
 <section id="week-10-nuts-and-bolts" class="slide level2">
 <h2>Week 10 Nuts and Bolts</h2>
 <ul>
@@ -481,6 +493,11 @@ accept-encoding: deflate, gzip, br, zstd
 host: api.weather.gov
 user-agent: httr2/1.2.1 r-curl/7.0.0 libcurl/7.81.0</code></pre>
 </div>
+</div>
+</section>
+<section id="httr2-package-1" class="slide level2">
+<h2><code>httr2</code> package</h2>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>req_weather <span class="sc">|&gt;</span> <span class="fu">req_perform</span>() <span class="sc">|&gt;</span> <span class="fu">resp_body_html</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{html_document}
@@ -490,7 +507,11 @@ user-agent: httr2/1.2.1 r-curl/7.0.0 libcurl/7.81.0</code></pre>
 </div>
 </div>
 <ul>
-<li>functions start with <code>req_*</code> or <code>resp_*</code></li>
+<li>functions start with <code>req_*</code> or <code>resp_*</code>
+<ul>
+<li><code>req_*</code> builds requests</li>
+<li><code>res_*</code> reads responses</li>
+</ul></li>
 </ul>
 </section>
 <section id="query-structure" class="slide level2">
@@ -504,6 +525,13 @@ user-agent: httr2/1.2.1 r-curl/7.0.0 libcurl/7.81.0</code></pre>
 <span id="cb5-2"><a></a>request_weather_alerts <span class="ot">=</span> req_weather <span class="sc">|&gt;</span> <span class="fu">req_url_path_append</span>(alert_url)</span>
 <span id="cb5-3"><a></a></span>
 <span id="cb5-4"><a></a>request_weather_alerts <span class="sc">|&gt;</span> <span class="fu">req_dry_run</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>GET /alerts/active HTTP/1.1
+accept: */*
+accept-encoding: deflate, gzip, br, zstd
+host: api.weather.gov
+user-agent: httr2/1.2.1 r-curl/7.0.0 libcurl/7.81.0</code></pre>
+</div>
 </div>
 </section>
 <section id="query-structure-1" class="slide level2">
@@ -512,23 +540,94 @@ user-agent: httr2/1.2.1 r-curl/7.0.0 libcurl/7.81.0</code></pre>
 <li>Use <code>req_url_query</code> to add “instructions” to <code>url</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>ny_alerts <span class="ot">=</span> request_weather_alerts <span class="sc">|&gt;</span> <span class="fu">req_url_query</span>(<span class="at">area =</span> <span class="st">"NY"</span>)</span>
-<span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a>ny_alerts <span class="sc">|&gt;</span> <span class="fu">req_dry_run</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>fl_alerts <span class="ot">=</span> request_weather_alerts <span class="sc">|&gt;</span> <span class="fu">req_url_query</span>(<span class="at">area =</span> <span class="st">"FL"</span>)</span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a>fl_alerts <span class="sc">|&gt;</span> <span class="fu">req_dry_run</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>GET /alerts/active HTTP/1.1
+accept: */*
+accept-encoding: deflate, gzip, br, zstd
+host: api.weather.gov
+user-agent: httr2/1.2.1 r-curl/7.0.0 libcurl/7.81.0</code></pre>
+</div>
 </div>
 </section>
-<section id="processing-output" class="slide level2 smaller">
+<section id="processing-output" class="slide level2">
 <h2>Processing Output</h2>
 <ul>
 <li>Usually get <code>json</code></li>
 <li><code>tibblify</code> helps you unnest</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(tibblify)</span>
-<span id="cb7-2"><a></a>ny_alerts <span class="sc">|&gt;</span> </span>
-<span id="cb7-3"><a></a>  <span class="fu">req_perform</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb7-4"><a></a>  <span class="fu">resp_body_json</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb7-5"><a></a>  <span class="fu">tibblify</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(tibblify)</span>
+<span id="cb9-2"><a></a>fl_alert_data <span class="ot">=</span> fl_alerts <span class="sc">|&gt;</span> </span>
+<span id="cb9-3"><a></a>  <span class="fu">req_perform</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb9-4"><a></a>  <span class="fu">resp_body_json</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb9-5"><a></a>  <span class="fu">tibblify</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="processing-output-1" class="slide level2">
+<h2>Processing Output</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">library</span>(tibblify)</span>
+<span id="cb10-2"><a></a>fl_alert_data <span class="ot">=</span> fl_alerts <span class="sc">|&gt;</span> </span>
+<span id="cb10-3"><a></a>  <span class="fu">req_perform</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb10-4"><a></a>  <span class="fu">resp_body_json</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb10-5"><a></a>  <span class="fu">tibblify</span>()</span>
+<span id="cb10-6"><a></a></span>
+<span id="cb10-7"><a></a>fl_alert_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$`@context`
+$`@context`[[1]]
+[1] "https://geojson.org/geojson-ld/geojson-context.jsonld"
+
+$`@context`[[2]]
+$`@context`[[2]]$`@version`
+[1] "1.1"
+
+$`@context`[[2]]$wx
+[1] "https://api.weather.gov/ontology#"
+
+$`@context`[[2]]$`@vocab`
+[1] "https://api.weather.gov/ontology#"
+
+
+
+$type
+[1] "FeatureCollection"
+
+$features
+# A tibble: 14 × 4
+   id                                       type  geometry$type properties$`@id`
+   &lt;chr&gt;                                    &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;           
+ 1 https://api.weather.gov/alerts/urn:oid:… Feat… Polygon       https://api.wea…
+ 2 https://api.weather.gov/alerts/urn:oid:… Feat… Polygon       https://api.wea…
+ 3 https://api.weather.gov/alerts/urn:oid:… Feat… Polygon       https://api.wea…
+ 4 https://api.weather.gov/alerts/urn:oid:… Feat… Polygon       https://api.wea…
+ 5 https://api.weather.gov/alerts/urn:oid:… Feat… &lt;NA&gt;          https://api.wea…
+ 6 https://api.weather.gov/alerts/urn:oid:… Feat… &lt;NA&gt;          https://api.wea…
+ 7 https://api.weather.gov/alerts/urn:oid:… Feat… &lt;NA&gt;          https://api.wea…
+ 8 https://api.weather.gov/alerts/urn:oid:… Feat… Polygon       https://api.wea…
+ 9 https://api.weather.gov/alerts/urn:oid:… Feat… Polygon       https://api.wea…
+10 https://api.weather.gov/alerts/urn:oid:… Feat… &lt;NA&gt;          https://api.wea…
+11 https://api.weather.gov/alerts/urn:oid:… Feat… &lt;NA&gt;          https://api.wea…
+12 https://api.weather.gov/alerts/urn:oid:… Feat… &lt;NA&gt;          https://api.wea…
+13 https://api.weather.gov/alerts/urn:oid:… Feat… &lt;NA&gt;          https://api.wea…
+14 https://api.weather.gov/alerts/urn:oid:… Feat… &lt;NA&gt;          https://api.wea…
+# ℹ 31 more variables: geometry$coordinates &lt;list&gt;, properties$`@type` &lt;chr&gt;,
+#   $id &lt;chr&gt;, $areaDesc &lt;chr&gt;, $geocode &lt;tibble[,2]&gt;, $affectedZones &lt;list&gt;,
+#   $references &lt;list&lt;tibble[,4]&gt;&gt;, $sent &lt;chr&gt;, $effective &lt;chr&gt;,
+#   $onset &lt;chr&gt;, $expires &lt;chr&gt;, $ends &lt;chr&gt;, $status &lt;chr&gt;,
+#   $messageType &lt;chr&gt;, $category &lt;chr&gt;, $severity &lt;chr&gt;, $certainty &lt;chr&gt;,
+#   $urgency &lt;chr&gt;, $event &lt;chr&gt;, $sender &lt;chr&gt;, $senderName &lt;chr&gt;,
+#   $headline &lt;chr&gt;, $description &lt;chr&gt;, $instruction &lt;chr&gt;, $response &lt;chr&gt;, …
+
+$title
+[1] "Current watches, warnings, and advisories for Florida"
+
+$updated
+[1] "2025-10-27T22:00:17+00:00"</code></pre>
+</div>
 </div>
 </section>
 <section id="git" class="slide level2">
@@ -596,14 +695,18 @@ user-agent: httr2/1.2.1 r-curl/7.0.0 libcurl/7.81.0</code></pre>
 <h2><code>git</code> Pull</h2>
 
 <img data-src="SlideGraphics/github12-pull-2.png" class="r-stretch"></section>
-<section id="merge-conflicts" class="slide level2">
-<h2>Merge Conflicts</h2>
-
-<img data-src="SlideGraphics/github13-conflicts.png" class="r-stretch"></section>
 <section id="merge-conflicts-push" class="slide level2">
 <h2>Merge Conflicts Push</h2>
 
 <img data-src="SlideGraphics/github14-push-conflicts.png" class="r-stretch"></section>
+<section id="merge-conflicts-push-1" class="slide level2">
+<h2>Merge Conflicts Push</h2>
+
+<img data-src="SlideGraphics/github14-push-conflicts-fix.png" class="r-stretch"></section>
+<section id="merge-conflicts-push-2" class="slide level2">
+<h2>Merge Conflicts Push</h2>
+
+<img data-src="SlideGraphics/github14-push-conflicts-fixed.png" class="r-stretch"></section>
 <section id="merge-conflicts-pull" class="slide level2">
 <h2>Merge Conflicts Pull</h2>
 

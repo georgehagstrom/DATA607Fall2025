@@ -11,8 +11,8 @@
   <meta name="generator" content="quarto-1.5.54">
 
   <meta name="author" content="George Hagstrom">
-  <meta name="dcterms.date" content="2024-10-30">
-  <title>DATA 607 Fall 2025 – APISlides</title>
+  <meta name="dcterms.date" content="2025-10-27">
+  <title>DATA 607 Fall 2025 – API Slides</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -386,7 +386,7 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="APISlides – DATA 607 Fall 2025">
+<meta property="og:title" content="API Slides – DATA 607 Fall 2025">
 <meta property="og:site_name" content="DATA 607 Fall 2025">
 </head>
 <body class="quarto-light">
@@ -394,7 +394,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">APISlides</h1>
+  <h1 class="title">API Slides</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -404,7 +404,7 @@ George Hagstrom
 </div>
 </div>
 
-  <p class="date">2024-10-30</p>
+  <p class="date">2025-10-27</p>
 </section>
 <section id="restful-apis" class="slide level2">
 <h2>RESTful APIs</h2>
@@ -433,7 +433,7 @@ George Hagstrom
 accept: */*
 accept-encoding: deflate, gzip, br, zstd
 host: api.weather.gov
-user-agent: httr2/1.1.2 r-curl/6.4.0 libcurl/7.81.0</code></pre>
+user-agent: httr2/1.2.1 r-curl/7.0.0 libcurl/7.81.0</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>req_weather <span class="sc">|&gt;</span> <span class="fu">req_perform</span>() <span class="sc">|&gt;</span> <span class="fu">resp_body_html</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -443,8 +443,15 @@ user-agent: httr2/1.1.2 r-curl/6.4.0 libcurl/7.81.0</code></pre>
 [2] &lt;body&gt;\n        &lt;div class="wrapper"&gt;\n            &lt;section class="usa-ba ...</code></pre>
 </div>
 </div>
+</section>
+<section id="httr2-package-1" class="slide level2">
+<h2><code>httr2</code> package</h2>
 <ul>
-<li>functions start with <code>req_*</code> or <code>resp_*</code></li>
+<li>functions start with <code>req_*</code> or <code>resp_*</code>
+<ul>
+<li><code>req_*</code> builds requests</li>
+<li><code>res_*</code> reads responses</li>
+</ul></li>
 </ul>
 </section>
 <section id="query-structure" class="slide level2">
@@ -463,9 +470,12 @@ user-agent: httr2/1.1.2 r-curl/6.4.0 libcurl/7.81.0</code></pre>
 accept: */*
 accept-encoding: deflate, gzip, br, zstd
 host: api.weather.gov
-user-agent: httr2/1.1.2 r-curl/6.4.0 libcurl/7.81.0</code></pre>
+user-agent: httr2/1.2.1 r-curl/7.0.0 libcurl/7.81.0</code></pre>
 </div>
 </div>
+</section>
+<section id="query-structure-1" class="slide level2">
+<h2>Query Structure</h2>
 <ul>
 <li>Use <code>req_url_query</code> to add “instructions” to <code>url</code></li>
 </ul>
@@ -478,15 +488,14 @@ user-agent: httr2/1.1.2 r-curl/6.4.0 libcurl/7.81.0</code></pre>
 accept: */*
 accept-encoding: deflate, gzip, br, zstd
 host: api.weather.gov
-user-agent: httr2/1.1.2 r-curl/6.4.0 libcurl/7.81.0</code></pre>
+user-agent: httr2/1.2.1 r-curl/7.0.0 libcurl/7.81.0</code></pre>
 </div>
 </div>
 </section>
 <section id="processing-output" class="slide level2 smaller">
 <h2>Processing Output</h2>
 <ul>
-<li>Usually get <code>json</code></li>
-<li><code>tibblify</code> helps you unnest</li>
+<li><code>tibblify</code> to unnest <code>json</code></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(tibblify)</span>
@@ -515,26 +524,23 @@ $type
 [1] "FeatureCollection"
 
 $features
-# A tibble: 4 × 4
+# A tibble: 1 × 4
   id                                             type  geometry properties$`@id`
   &lt;chr&gt;                                          &lt;chr&gt; &lt;list&gt;   &lt;chr&gt;           
 1 https://api.weather.gov/alerts/urn:oid:2.49.0… Feat… &lt;NULL&gt;   https://api.wea…
-2 https://api.weather.gov/alerts/urn:oid:2.49.0… Feat… &lt;NULL&gt;   https://api.wea…
-3 https://api.weather.gov/alerts/urn:oid:2.49.0… Feat… &lt;NULL&gt;   https://api.wea…
-4 https://api.weather.gov/alerts/urn:oid:2.49.0… Feat… &lt;NULL&gt;   https://api.wea…
 # ℹ 30 more variables: properties$`@type` &lt;chr&gt;, $id &lt;chr&gt;, $areaDesc &lt;chr&gt;,
 #   $geocode &lt;tibble[,2]&gt;, $affectedZones &lt;list&gt;, $references &lt;list&gt;,
-#   $sent &lt;chr&gt;, $effective &lt;chr&gt;, $onset &lt;chr&gt;, $expires &lt;chr&gt;, $ends &lt;list&gt;,
+#   $sent &lt;chr&gt;, $effective &lt;chr&gt;, $onset &lt;chr&gt;, $expires &lt;chr&gt;, $ends &lt;chr&gt;,
 #   $status &lt;chr&gt;, $messageType &lt;chr&gt;, $category &lt;chr&gt;, $severity &lt;chr&gt;,
 #   $certainty &lt;chr&gt;, $urgency &lt;chr&gt;, $event &lt;chr&gt;, $sender &lt;chr&gt;,
-#   $senderName &lt;chr&gt;, $headline &lt;chr&gt;, $description &lt;chr&gt;,
-#   $instruction &lt;list&gt;, $response &lt;chr&gt;, $parameters &lt;tibble[,4]&gt;, …
+#   $senderName &lt;chr&gt;, $headline &lt;chr&gt;, $description &lt;chr&gt;, $instruction &lt;chr&gt;,
+#   $response &lt;chr&gt;, $parameters &lt;tibble[,6]&gt;, $scope &lt;chr&gt;, $code &lt;chr&gt;, …
 
 $title
 [1] "Current watches, warnings, and advisories for New York"
 
 $updated
-[1] "2025-08-02T20:58:51+00:00"</code></pre>
+[1] "2025-10-27T13:00:00+00:00"</code></pre>
 </div>
 </div>
 
