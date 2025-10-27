@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.54">
 
   <meta name="author" content="George Hagstrom">
-  <meta name="dcterms.date" content="2024-10-30">
+  <meta name="dcterms.date" content="2025-10-27">
   <title>DATA 607 Fall 2025 – Meetup 10: Web APIs and Git</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -404,12 +404,11 @@ George Hagstrom
 </div>
 </div>
 
-  <p class="date">2024-10-30</p>
+  <p class="date">2025-10-27</p>
 </section>
 <section id="week-10-nuts-and-bolts" class="slide level2">
 <h2>Week 10 Nuts and Bolts</h2>
 <ul>
-<li>Behind on grading</li>
 <li>Two topics and two vignettes</li>
 <li>Working with APIs
 <ul>
@@ -433,7 +432,7 @@ George Hagstrom
 </ul></li>
 <li>github part:
 <ul>
-<li>clone github.com/georgehagstrom/FALL2024TIDYVERSE</li>
+<li>clone github.com/georgehagstrom/FALL2025TIDYVERSE</li>
 <li>Add your analysis as a separate file</li>
 <li>update the readme.md</li>
 </ul></li>
@@ -442,11 +441,11 @@ George Hagstrom
 <section id="assignment-considerations" class="slide level2">
 <h2>Assignment Considerations</h2>
 <ul>
-<li>The biggest “challenge” with github will be resolving merge conflicts in the readme.md file</li>
+<li>The biggest “challenge” with github will be resolving merge conflicts in the <code>README.md</code> file</li>
 <li>Best practice to minimize merge conflicts:
 <ul>
 <li>pull the repository</li>
-<li>add your changes to readme.md</li>
+<li>add your changes to <code>README.md</code></li>
 <li>push</li>
 </ul></li>
 <li>It should be straightforward to upload your qmd analysis</li>
@@ -480,7 +479,7 @@ George Hagstrom
 accept: */*
 accept-encoding: deflate, gzip, br, zstd
 host: api.weather.gov
-user-agent: httr2/1.1.2 r-curl/5.0.2 libcurl/7.81.0</code></pre>
+user-agent: httr2/1.2.1 r-curl/7.0.0 libcurl/7.81.0</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>req_weather <span class="sc">|&gt;</span> <span class="fu">req_perform</span>() <span class="sc">|&gt;</span> <span class="fu">resp_body_html</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
