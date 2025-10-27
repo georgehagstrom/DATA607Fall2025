@@ -4396,7 +4396,7 @@
     "href": "modules/module10.html",
     "title": "Module 10 - Git and Collaboration",
     "section": "",
-    "text": "Learning Objectives\n\nBasic github commands\nGithub workflows and Branching\n\n\n\nReadings\n\nHappy Git and GitHub for the useR : Sections 15-25, 28 and 29 if you need\nhttr2 API package\n\n\n\nAdditional Resources:\nSoftware Carpentries git tutorial Learn Git Branching interactive tutorial usethis package Web APIs Book Club Page I recommend the intro slides and the httr2 specific slides.",
+    "text": "Learning Objectives\n\nBasic github commands\nGithub workflows and Branching\n\n\n\nReadings\n\nHappy Git and GitHub for the useR : Sections 15-25, 28 and 29 if you need\nhttr2 API package\n\n\n\nAdditional Resources:\n\nSoftware Carpentries git tutorial\nLearn Git Branching interactive tutorial\nusethis package\nWeb APIs Book Club Page I recommend the intro slides and the httr2 specific slides.",
     "crumbs": [
       "Topics",
       "10 - GIT and Collaboration"
