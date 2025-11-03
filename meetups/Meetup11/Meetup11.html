@@ -406,11 +406,12 @@ George I. Hagstrom
 
   <p class="date">2024-11-06</p>
 </section>
-<section id="week-schedule-and-project-proposals" class="slide level2">
-<h2>Week Schedule and Project Proposals</h2>
+<section id="week-schedule-and-hw-feedback" class="slide level2">
+<h2>Week Schedule and HW Feedback</h2>
 <ul>
-<li>Have provided feedback on project proposals</li>
-<li>Most common comment: Project calls for using data from multiple sources</li>
+<li>Webscraping confusing and inconsistent across platforms</li>
+<li><code>read_html</code> vs <code>read_html_live</code></li>
+<li>On some machines, <code>open screts</code> rendered a static pages</li>
 <li>Lab on text mining due this Sunday</li>
 <li>Expect one coding vignette tomorrow some time</li>
 <li>Reading a different book <a href="https://www.tidytextmining.com/">Text Mining with R: A Tidy Approach</a> Chapters 1-4</li>
@@ -925,12 +926,12 @@ George I. Hagstrom
 <pre><code># A tibble: 6 × 5
   title  index negative positive sentiment
   &lt;chr&gt;  &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;     &lt;int&gt;
-1 Hamlet    63        6        1        -5
-2 Hamlet    64        8        7        -1
-3 Hamlet    65       11       13         2
-4 Hamlet    66       19       11        -8
-5 Hamlet    67       13       15         2
-6 Hamlet    68       10        8        -2</code></pre>
+1 Hamlet    63        9        1        -8
+2 Hamlet    64        5        8         3
+3 Hamlet    65       13       13         0
+4 Hamlet    66       14       10        -4
+5 Hamlet    67       14       13        -1
+6 Hamlet    68        9        8        -1</code></pre>
 </div>
 </div>
 </section>
@@ -955,20 +956,20 @@ George I. Hagstrom
 <span id="cb33-2"><a></a></span>
 <span id="cb33-3"><a></a>shakespeare <span class="sc">|&gt;</span> <span class="fu">unnest_tokens</span>(word,text) <span class="sc">|&gt;</span> <span class="fu">count</span>(title,word,<span class="at">sort=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 17,159 × 3
+<pre><code># A tibble: 17,111 × 3
    title     word      n
    &lt;chr&gt;     &lt;chr&gt; &lt;int&gt;
- 1 Hamlet    the    1034
- 2 Hamlet    and     883
- 3 Othello   i       870
- 4 Othello   and     789
- 5 King Lear the     770
- 6 Othello   the     742
- 7 Hamlet    to      698
- 8 Macbeth   the     690
- 9 King Lear and     656
-10 Hamlet    of      635
-# ℹ 17,149 more rows</code></pre>
+ 1 Hamlet    the    1031
+ 2 Hamlet    and     881
+ 3 Othello   i       868
+ 4 Othello   and     787
+ 5 King Lear the     767
+ 6 Othello   the     737
+ 7 Hamlet    to      696
+ 8 Macbeth   the     687
+ 9 King Lear and     654
+10 Hamlet    of      632
+# ℹ 17,101 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -1016,20 +1017,20 @@ George I. Hagstrom
 <span id="cb36-2"><a></a>  <span class="fu">count</span>(title,word,<span class="at">sort=</span><span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb36-3"><a></a>  <span class="fu">bind_tf_idf</span>(word,title,n)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 17,159 × 6
+<pre><code># A tibble: 17,111 × 6
    title     word      n     tf   idf tf_idf
    &lt;chr&gt;     &lt;chr&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
- 1 Hamlet    the    1034 0.0340     0      0
- 2 Hamlet    and     883 0.0291     0      0
- 3 Othello   i       870 0.0309     0      0
- 4 Othello   and     789 0.0280     0      0
- 5 King Lear the     770 0.0303     0      0
- 6 Othello   the     742 0.0263     0      0
- 7 Hamlet    to      698 0.0230     0      0
- 8 Macbeth   the     690 0.0373     0      0
- 9 King Lear and     656 0.0258     0      0
-10 Hamlet    of      635 0.0209     0      0
-# ℹ 17,149 more rows</code></pre>
+ 1 Hamlet    the    1031 0.0340     0      0
+ 2 Hamlet    and     881 0.0291     0      0
+ 3 Othello   i       868 0.0309     0      0
+ 4 Othello   and     787 0.0280     0      0
+ 5 King Lear the     767 0.0302     0      0
+ 6 Othello   the     737 0.0262     0      0
+ 7 Hamlet    to      696 0.0230     0      0
+ 8 Macbeth   the     687 0.0372     0      0
+ 9 King Lear and     654 0.0258     0      0
+10 Hamlet    of      632 0.0208     0      0
+# ℹ 17,101 more rows</code></pre>
 </div>
 </div>
 </section>
