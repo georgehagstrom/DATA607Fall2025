@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.54">
 
   <meta name="author" content="George I. Hagstrom">
-  <title>DATA 607 Fall 2025 – Meetup 12: Graph Theory and Graph Data</title>
+  <title>DATA 607 Fall 2025 – Meetup 12: Large Language Models</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -385,7 +385,7 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="Meetup 12: Graph Theory and Graph Data – DATA 607 Fall 2025">
+<meta property="og:title" content="Meetup 12: Large Language Models – DATA 607 Fall 2025">
 <meta property="og:site_name" content="DATA 607 Fall 2025">
 </head>
 <body class="quarto-light">
@@ -393,7 +393,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Meetup 12: Graph Theory and Graph Data</h1>
+  <h1 class="title">Meetup 12: Large Language Models</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -404,683 +404,684 @@ George I. Hagstrom
 </div>
 
 </section>
-<section id="graphs" class="slide level2 smaller">
-<h2>Graphs</h2>
+<section id="week-summary" class="slide level2">
+<h2>Week Summary</h2>
 <ul>
-<li>Graphs are a set of objects (nodes) connected by links (edges)</li>
+<li>3 or 4 “Lectures” remain</li>
+<li>This week LLMs
+<ul>
+<li>Instead of Graph Data (might cover it in bonus meetup)</li>
+</ul></li>
+<li>Lab 9 Due Sunday at Midnight
+<ul>
+<li>You will need to be able to interact with an LLM over an API</li>
+</ul></li>
+<li>Keep working on projects</li>
+</ul>
+</section>
+<section id="common-questions" class="slide level2">
+<h2>Common Questions</h2>
+<ul>
+<li>What are the applications of NLP?</li>
+</ul>
+<p>Humans generate a ton of textual data, and NLP is one of the only ways to analyze it. Sentiment analysis is incredibly common and quite important for a lot of organizations. Consider social media ad campaigns, etc.</p>
+</section>
+<section id="common-questions-1" class="slide level2">
+<h2>Common Questions</h2>
+<ul>
+<li>Can we change the weights of words in lexicons?</li>
+</ul>
+<p>Absolutely, you can alter lexicons to suit your purpose. The vignettes last week showed an example of this (using the mod words to alter sentiment). Not identical but you get the idea.</p>
+</section>
+<section id="what-is-an-llm" class="slide level2">
+<h2>What is an LLM?</h2>
+<p>From Wikipedia:</p>
+<blockquote>
+<p>A large language model (LLM) is a language model trained with self-supervised machine learning on a vast amount of text, designed for natural language processing tasks, especially language generation.</p>
+</blockquote>
+</section>
+<section id="what-is-an-llm-1" class="slide level2">
+<h2>What is an LLM?</h2>
+<ul>
+<li>Sometimes people call them “AI”, “GenAI”, or other terms</li>
+<li>LLM is a subset of these things</li>
+<li>Most LLMs are GPTs (Generative Pretrained Transformers)</li>
+</ul>
+</section>
+<section id="what-is-an-llm-2" class="slide level2">
+<h2>What is an LLM?</h2>
+<ul>
+<li>There is an ever growing list of providers</li>
 </ul>
 
-<img data-src="Meetup12_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
-<section id="examples-social-networks" class="slide level2 smaller">
-<h2>Examples: Social Networks</h2>
+<img data-src="LLMs.png" style="width:70.0%" class="r-stretch"></section>
+<section id="what-are-llms" class="slide level2">
+<h2>What are LLMs?</h2>
 <ul>
-<li>Nodes are people</li>
-<li>Edges are social interaction or friendship</li>
+<li>For most part, you can treat LLMs like a black box</li>
+<li>Knowledge is Power, so we’ll cover the very basics</li>
 </ul>
+</section>
+<section id="training-data" class="slide level2">
+<h2>Training Data</h2>
+<ul>
+<li>Starting point is a huge corpus of human generated text</li>
+<li>Example is <a href="https://huggingface.co/datasets/HuggingFaceFW/fineweb">fineweb</a>
+<ul>
+<li>108 TB of parquet files</li>
+<li>Primarily from the internet</li>
+</ul></li>
+</ul>
+<p><img data-src="fineweb-logo.png" style="height:30.0%"></p>
+</section>
+<section id="tokenization" class="slide level2">
+<h2>Tokenization</h2>
+<ul>
+<li>Just like in NLP, convert text strings into tokens</li>
+<li>Token library is words and common word combinations</li>
+<li>Typically use Byte-Pair encoding algorithm
+<ul>
+<li>Recursively combines tokens that occur together</li>
+</ul></li>
+<li><a href="https://tiktokenizer.vercel.app/">https://tiktokenizer.vercel.app/</a> to experiment</li>
+</ul>
+</section>
+<section id="neural-network-inference" class="slide level2">
+<h2>Neural Network Inference</h2>
+<ul>
+<li>Next step is to create a <code>base model</code></li>
+<li>Train a huge statistical model which predicts the odds of tokens given the previous</li>
+</ul>
+<p><img data-src="token_flow1.png" style="height:50.0%"></p>
+</section>
+<section id="neural-network-inference-1" class="slide level2">
+<h2>Neural Network Inference</h2>
+<ul>
+<li>Next step is to create a <code>base model</code></li>
+<li>Train a huge statistical model which predicts the odds of tokens given the previous</li>
+</ul>
+<p><img data-src="token_flow2.png" style="height:45.0%"></p>
+</section>
+<section id="neural-network-inference-2" class="slide level2">
+<h2>Neural Network Inference</h2>
+<ul>
+<li>Next step is to create a <code>base model</code></li>
+<li>Train a huge statistical model which predicts the odds of tokens given the previous</li>
+</ul>
+<p><img data-src="token_flow3.png" style="height:45.0%"></p>
+</section>
+<section id="neural-network-inference-3" class="slide level2">
+<h2>Neural Network Inference</h2>
+<ul>
+<li>Next step is to create a <code>base model</code></li>
+<li>Train a huge statistical model which predicts the odds of tokens given the previous</li>
+</ul>
+<p><img data-src="token_flow4.png" style="height:45.0%"></p>
+</section>
+<section id="neural-network-inference-4" class="slide level2">
+<h2>Neural Network Inference</h2>
+<ul>
+<li>Next step is to create a <code>base model</code></li>
+<li>Train a huge statistical model which predicts the odds of tokens given the previous</li>
+</ul>
+<p><img data-src="token_flow5.png" style="height:8.0%"></p>
+</section>
+<section id="neural-network-inference-5" class="slide level2">
+<h2>Neural Network Inference</h2>
 <div class="columns">
-<div class="column" style="width:80%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
+<div class="column" style="width:50%;">
+<ul>
+<li>Probabilities trained against the text corpus</li>
+<li>Model is a neural network with ~100 layers and up to 1 trillion parameters</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Meetup12_files/figure-revealjs/unnamed-chunk-3-1.png" width="768"></p>
+<p><img data-src="nanogpt.png"></p>
+<figcaption>karpathy.ai</figcaption>
 </figure>
-</div>
-</div>
 </div>
 </div></div>
 </section>
-<section id="examples-transportation-network" class="slide level2 smaller">
-<h2>Examples: Transportation Network</h2>
+<section id="neural-network-inference-6" class="slide level2">
+<h2>Neural Network Inference</h2>
 <ul>
-<li>Nodes are locations</li>
-<li>Edges are road or air links</li>
+<li>The probability predictions are tested against the text corpus</li>
+<li>Model is a neural network with ~100 layers and up to 1 trillion parameters</li>
+<li>Training this model takes time and is very expensive</li>
 </ul>
-<div class="columns">
-<div class="column" style="width:80%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="Meetup12_files/figure-revealjs/unnamed-chunk-4-1.png" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
 </section>
-<section id="examples-statistical-models" class="slide level2 smaller">
-<h2>Examples: Statistical Models</h2>
+<section id="from-text-prediction-to-chat" class="slide level2">
+<h2>From text prediction to Chat</h2>
 <ul>
-<li>Graphs represent the causal structure between a set of variables</li>
+<li>Result is a generative model that predicts the next token</li>
+<li>Fine tuning is needed to make base model useful</li>
+<li>Supply it with relatively small number of human generated examples</li>
+<li>Retrain to turn model into a chat bot or for other purposes</li>
+</ul>
+</section>
+<section id="traditional-models-and-costs" class="slide level2">
+<h2>Traditional Models and Costs</h2>
+<ul>
+<li>Models range in size and complexity</li>
+<li>Cost is $ per million tokens</li>
 </ul>
 
-<img data-src="Meetup12_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
-<section id="what-graph-theory-can-do" class="slide level2 smaller">
-<h2>What Graph Theory Can Do</h2>
+<img data-src="gpt_pricing.png" class="r-stretch"></section>
+<section id="traditional-models-and-costs-1" class="slide level2">
+<h2>Traditional Models and Costs</h2>
 <ul>
-<li>Social Networks:
-<ul>
-<li>Identifying influential people</li>
-<li>Identifying Communities</li>
-<li>Using social info for recommendations</li>
-<li>Epidemiology/Contact Tracing</li>
-</ul></li>
-<li>Financial or Infrastructure Networks
-<ul>
-<li>Fraud Detection</li>
-<li>Vulnerability Detection</li>
-</ul></li>
-<li>Logistical Networks- Optimization</li>
-<li>Graph Databases (neo4js)</li>
-<li>Statistical Methods and Models</li>
+<li>Models range in size and complexity</li>
+<li>Cost is $ per million tokens</li>
 </ul>
-</section>
-<section id="definition-of-a-simple-graph" class="slide level2 smaller">
-<h2>Definition of a Simple Graph</h2>
-<ol type="1">
-<li><p>Set of objects called the nodes: N = (Chicago, Detroit, Miami, NYC)</p></li>
-<li><p>Set of pairs of nodes, called edges: E = [ (Chicago,Detroit), (Miami,NYC), (NYC,Chicago)]</p></li>
-</ol>
-<p>Adjacency Matrix A:</p>
-<ul>
-<li><span class="math inline">\(A_{ij} = 1\)</span> if node <span class="math inline">\(i\)</span> and node <span class="math inline">\(j\)</span> connected</li>
-<li><span class="math inline">\(A_{ij} = 0\)</span> if no connection between <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span></li>
-</ul>
-<p><span class="math display">\[ A = \begin{pmatrix}
-0 &amp; 1 &amp; 0 &amp; 1\\
-1 &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; 1 \\
-1 &amp; 0 &amp; 1 &amp; 0
-\end{pmatrix} \]</span></p>
-</section>
-<section id="directed-and-weighted-graphs" class="slide level2 smaller">
-<h2>Directed and Weighted Graphs</h2>
-<ul>
-<li>In a directed graph edges have directionality, from node <span class="math inline">\(i\)</span> to node <span class="math inline">\(j\)</span>
-<ul>
-<li>I might follow Warren Buffett on LinkedIn, but he doesn’t follow me</li>
-</ul></li>
-<li>Adjacency Matrix no longer symmetric</li>
-<li>In a weighted graph, edges have <code>weights</code> which represent the strength of the connection</li>
-</ul>
-<div class="columns">
-<div class="column">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="Meetup12_files/figure-revealjs/unnamed-chunk-6-1.png" width="768"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="graph-stats-degree" class="slide level2 smaller">
-<h2>Graph Stats: Degree</h2>
-<ul>
-<li>Degree of a node is the number of edges connecting to that node</li>
-<li>For directed graphs: in-degree and out-degree are nodes going in and out</li>
-<li>For weighted graphs, each edge can contribute to weighted degree according to weight</li>
-<li>High degree nodes are often very influential</li>
-</ul>
-<div class="columns">
-<div class="column">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="Meetup12_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="graph-stats-centrality" class="slide level2">
-<h2>Graph Stats: Centrality</h2>
-<ul>
-<li>Can define measures of how central/connected each node is</li>
-<li>Degree Centrality: just the degree</li>
-<li>Page Rank: probability that a random walker lands on a given node</li>
-<li>Betweenness Centrality: How many shortest paths go through a given node</li>
-<li>Must be 100 others….</li>
-</ul>
-</section>
-<section id="other-important-graph-concepts" class="slide level2">
-<h2>Other Important Graph Concepts</h2>
-<ul>
-<li>Cliques: groups of nodes where each node is connected to every other</li>
-<li>Paths: Sets of vertices that start with one node and end with another</li>
-<li>Connected Components: groups of nodes where you can travel from one to another along paths</li>
-<li>Random Graphs: Defined by connection probability and degree distribution</li>
-<li>Small World Networks: In many social networks, path between any two edges is very short</li>
-</ul>
-</section>
-<section id="graph-packages-in-r" class="slide level2">
-<h2>Graph Packages in R</h2>
-<ul>
-<li>Two important graph packages in <code>R</code> are <code>tidygraph</code> and <code>igraph</code></li>
-<li><code>tidygraph</code> is a tidy wrapper around <code>igraph</code>
-<ul>
-<li>Key idea: represent graph with two tibbles, nodes and edges</li>
-</ul></li>
-<li><code>ggraph</code> is a <code>ggplot</code> style graph visualization package</li>
-<li><code>igraph</code> can do more things than <code>tidygraph</code></li>
-</ul>
-</section>
-<section id="create-a-graph" class="slide level2 smaller">
-<h2>Create a Graph</h2>
-<ul>
-<li><code>tbl_graph</code> creates a graph from set of nodes and edges</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>nodes <span class="ot">=</span> <span class="fu">tibble</span>(<span class="st">"nodes"</span> <span class="ot">=</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>])</span>
-<span id="cb1-2"><a></a>edges <span class="ot">=</span> <span class="fu">tibble</span>(<span class="st">"from"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>),<span class="st">"to"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">6</span>))</span>
-<span id="cb1-3"><a></a>gr2<span class="ot">=</span> <span class="fu">tbl_graph</span>(<span class="at">nodes =</span> nodes,<span class="at">edges =</span> edges,<span class="at">directed =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-4"><a></a>nodes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 1
-  nodes
-  &lt;chr&gt;
-1 a    
-2 b    
-3 c    
-4 d    
-5 e    
-6 f    </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>edges</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 7 × 2
-   from    to
-  &lt;dbl&gt; &lt;dbl&gt;
-1     1     2
-2     1     3
-3     2     4
-4     3     4
-5     2     5
-6     3     6
-7     5     6</code></pre>
-</div>
-</div>
-</section>
-<section id="create-a-graph-1" class="slide level2 smaller">
-<h2>Create a Graph</h2>
-<ul>
-<li><code>as_tbl_graph</code> creates a graph from tibble of edges</li>
-<li><code>tbl_graph</code> from nodes and edges</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>nodes <span class="ot">=</span> <span class="fu">tibble</span>(<span class="st">"nodes"</span> <span class="ot">=</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>])</span>
-<span id="cb5-2"><a></a>edges <span class="ot">=</span> <span class="fu">tibble</span>(<span class="st">"from"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>),<span class="st">"to"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">6</span>))</span>
-<span id="cb5-3"><a></a>gr1 <span class="ot">=</span> <span class="fu">as_tbl_graph</span>(edges,<span class="at">directed =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-4"><a></a>gr2<span class="ot">=</span> <span class="fu">tbl_graph</span>(<span class="at">nodes =</span> nodes,<span class="at">edges =</span> edges,<span class="at">directed =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-5"><a></a>nodes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 1
-  nodes
-  &lt;chr&gt;
-1 a    
-2 b    
-3 c    
-4 d    
-5 e    
-6 f    </code></pre>
-</div>
-</div>
-</section>
-<section id="create-a-graph-2" class="slide level2 smaller">
-<h2>Create a Graph</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>nodes <span class="ot">=</span> <span class="fu">tibble</span>(<span class="st">"nodes"</span> <span class="ot">=</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>])</span>
-<span id="cb7-2"><a></a>edges <span class="ot">=</span> <span class="fu">tibble</span>(<span class="st">"from"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>),<span class="st">"to"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">6</span>))</span>
-<span id="cb7-3"><a></a>gr1 <span class="ot">=</span> <span class="fu">as_tbl_graph</span>(edges,<span class="at">directed =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb7-4"><a></a>gr2<span class="ot">=</span> <span class="fu">tbl_graph</span>(<span class="at">nodes =</span> nodes,<span class="at">edges =</span> edges,<span class="at">directed =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb7-5"><a></a>gr1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tbl_graph: 6 nodes and 7 edges
-#
-# A directed acyclic simple graph with 1 component
-#
-# Node Data: 6 × 0 (active)
-#
-# Edge Data: 7 × 2
-   from    to
-  &lt;int&gt; &lt;int&gt;
-1     1     2
-2     1     3
-3     2     5
-# ℹ 4 more rows</code></pre>
-</div>
-</div>
-</section>
-<section id="create-a-graph-3" class="slide level2 smaller">
-<h2>Create a Graph</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>nodes <span class="ot">=</span> <span class="fu">tibble</span>(<span class="st">"nodes"</span> <span class="ot">=</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>])</span>
-<span id="cb9-2"><a></a>edges <span class="ot">=</span> <span class="fu">tibble</span>(<span class="st">"from"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>),<span class="st">"to"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">6</span>))</span>
-<span id="cb9-3"><a></a>gr1 <span class="ot">=</span> <span class="fu">as_tbl_graph</span>(edges,<span class="at">directed =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb9-4"><a></a>gr2<span class="ot">=</span> <span class="fu">tbl_graph</span>(<span class="at">nodes =</span> nodes,<span class="at">edges =</span> edges,<span class="at">directed =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb9-5"><a></a>gr2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tbl_graph: 6 nodes and 7 edges
-#
-# A directed acyclic simple graph with 1 component
-#
-# Node Data: 6 × 1 (active)
-  nodes
-  &lt;chr&gt;
-1 a    
-2 b    
-3 c    
-4 d    
-5 e    
-6 f    
-#
-# Edge Data: 7 × 2
-   from    to
-  &lt;int&gt; &lt;int&gt;
-1     1     2
-2     1     3
-3     2     4
-# ℹ 4 more rows</code></pre>
-</div>
-</div>
-</section>
-<section id="create-a-graph-4" class="slide level2">
-<h2>Create a Graph</h2>
-<ul>
-<li>We have been using <code>ggraph</code> to visualize graphs</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>gr2 <span class="sc">|&gt;</span> <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"auto"</span>) <span class="sc">+</span></span>
-<span id="cb11-2"><a></a>   <span class="fu">geom_edge_link</span>(<span class="fu">aes</span>(<span class="at">start_cap =</span> <span class="fu">circle</span>(<span class="dv">10</span>, <span class="st">'mm'</span>),</span>
-<span id="cb11-3"><a></a>                     <span class="at">end_cap =</span> <span class="fu">circle</span>(<span class="dv">10</span>, <span class="st">'mm'</span>)), </span>
-<span id="cb11-4"><a></a>                 <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="dv">8</span>, <span class="st">'mm'</span>))) <span class="sc">+</span> </span>
-<span id="cb11-5"><a></a>     <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> nodes),<span class="at">size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
-<span id="cb11-6"><a></a>  <span class="fu">theme_graph</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-</div>
-<img data-src="Meetup12_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
-<section id="other-ways-to-create-a-graph" class="slide level2 smaller">
-<h2>Other ways to create a graph</h2>
+<img data-src="claude_pricing.png" style="width:70.0%" class="r-stretch"></section>
+<section id="open-weight-models" class="slide level2">
+<h2>Open Weight Models</h2>
 <ul>
-<li><code>as_tbl_graph</code> converts from <code>igraph</code> format to <code>tidy</code> format
+<li>These are models where the code/weights have been released to the public</li>
+<li>You can download and run them on your computer for free</li>
+<li><a href="ollama.com">ollama.com</a>
 <ul>
-<li>Many datasets come in this format</li>
+<li>Can download lots of open weight models there</li>
+<li>Free but very slow</li>
 </ul></li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">library</span>(networkdata)</span>
-<span id="cb12-2"><a></a><span class="fu">data</span>(<span class="st">"flo_marriage"</span>)</span>
-<span id="cb12-3"><a></a>flo_marriage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>IGRAPH bc7fb16 UN-- 16 20 -- 
-+ attr: name (v/c), wealth (v/n), #priors (v/n), #ties (v/n)
-+ edges from bc7fb16 (vertex names):
- [1] Acciaiuoli--Medici       Albizzi   --Ginori       Albizzi   --Guadagni    
- [4] Albizzi   --Medici       Barbadori --Castellani   Barbadori --Medici      
- [7] Bischeri  --Guadagni     Bischeri  --Peruzzi      Bischeri  --Strozzi     
-[10] Castellani--Peruzzi      Castellani--Strozzi      Guadagni  --Lamberteschi
-[13] Guadagni  --Tornabuoni   Medici    --Ridolfi      Medici    --Salviati    
-[16] Medici    --Tornabuoni   Pazzi     --Salviati     Peruzzi   --Strozzi     
-[19] Ridolfi   --Strozzi      Ridolfi   --Tornabuoni  </code></pre>
-</div>
-</div>
 </section>
-<section id="other-ways-to-create-a-graph-1" class="slide level2 smaller">
-<h2>Other ways to create a graph</h2>
+<section id="interacting-with-llms-in-ellmer" class="slide level2">
+<h2>Interacting with LLMs in <code>Ellmer</code></h2>
 <ul>
-<li><code>as_tbl_graph</code> also converts from <code>igraph</code> format to <code>tidy</code> format
-<ul>
-<li>Many datasets come in this format</li>
-</ul></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>flo_marriage <span class="sc">|&gt;</span> <span class="fu">as_tbl_graph</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tbl_graph: 16 nodes and 20 edges
-#
-# An undirected simple graph with 2 components
-#
-# Node Data: 16 × 4 (active)
-   name         wealth `#priors` `#ties`
-   &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
- 1 Acciaiuoli       10        53       2
- 2 Albizzi          36        65       3
- 3 Barbadori        55         0      14
- 4 Bischeri         44        12       9
- 5 Castellani       20        22      18
- 6 Ginori           32         0       9
- 7 Guadagni          8        21      14
- 8 Lamberteschi     42         0      14
- 9 Medici          103        53      54
-10 Pazzi            48         0       7
-11 Peruzzi          49        42      32
-12 Pucci             3         0       1
-13 Ridolfi          27        38       4
-14 Salviati         10        35       5
-15 Strozzi         146        74      29
-16 Tornabuoni       48         0       7
-#
-# Edge Data: 20 × 2
-   from    to
-  &lt;int&gt; &lt;int&gt;
-1     1     9
-2     2     6
-3     2     7
-# ℹ 17 more rows</code></pre>
-</div>
-</div>
-</section>
-<section id="visualizing-graphs-ggraph" class="slide level2">
-<h2>Visualizing Graphs: <code>ggraph</code></h2>
-<ul>
-<li><code>ggraph(graph,layout="auto",...)</code></li>
-<li><code>geom_node_*(point,range,text,label,....)</code></li>
-<li><code>geom_edge_*(link,sf,hive,...)</code></li>
-<li>Pick layout and style for nodes and edges</li>
-<li>Use <code>aes</code> to plot other data</li>
+<li><code>ellmer</code> is a tidyverse package that enables you to interactively chat with LLM apis</li>
+<li>Based on <code>httr2</code></li>
+<li>Supports a large number of commercial APIs and open weight local instances</li>
 </ul>
 </section>
-<section id="visualizing-graphs-basic-example" class="slide level2">
-<h2>Visualizing Graphs: Basic Example</h2>
+<section id="setting-up-ellmer" class="slide level2">
+<h2>Setting Up Ellmer</h2>
+<ul>
+<li>First set up our environment</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>gr2 <span class="sc">|&gt;</span> <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"auto"</span>) <span class="sc">+</span></span>
-<span id="cb16-2"><a></a>   <span class="fu">geom_edge_link0</span>() <span class="sc">+</span></span>
-<span id="cb16-3"><a></a>    <span class="fu">geom_node_point</span>() <span class="sc">+</span></span>
-<span id="cb16-4"><a></a>  <span class="fu">theme_graph</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(ellmer)</span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a>anthropic_key <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"/home/georgehagstrom/anthropic_key.csv"</span>)  <span class="sc">|&gt;</span> </span>
+<span id="cb1-5"><a></a>  <span class="fu">pull</span>(ANTHROPIC_API_KEY)</span>
+<span id="cb1-6"><a></a></span>
+<span id="cb1-7"><a></a>gemini_key <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"/home/georgehagstrom/gemini_api_key.csv"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-8"><a></a>  <span class="fu">pull</span>(GEMINI_API_KEY)</span>
+<span id="cb1-9"><a></a></span>
+<span id="cb1-10"><a></a><span class="fu">Sys.setenv</span>(<span class="at">ANTHROPIC_API_KEY =</span> anthropic_key)</span>
+<span id="cb1-11"><a></a><span class="fu">Sys.setenv</span>(<span class="at">GEMINI_API_KEY =</span> gemini_key)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="chat-objects" class="slide level2">
+<h2>Chat Objects</h2>
+<ul>
+<li>Interaction mediated through <code>chat object</code> data type</li>
+<li>Mutable (unlike most R types)</li>
+<li><code>system_prompt</code> is prompt that sets base behavior</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>chat <span class="ot">=</span> <span class="fu">chat_anthropic</span>(<span class="at">system_prompt =</span> <span class="st">"You are a terse, but very whimsical astronomer"</span>,<span class="at">model =</span> <span class="st">"claude-haiku-4-5"</span>)</span>
+<span id="cb2-2"><a></a></span>
+<span id="cb2-3"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Which type of cheese is the moon made from?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="chat-objects-1" class="slide level2">
+<h2>Chat Objects</h2>
+<ul>
+<li>Interaction mediated through <code>chat object</code> data type</li>
+<li>Mutable (unlike most R types)</li>
+<li><code>system_prompt</code> is prompt that sets base behavior</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Ah, a classic inquiry! The moon, I'm afraid, is made of *neither* cheddar nor 
+brie, but rather regolith—a dreadfully boring silicate compound.
 
-</div>
-<img data-src="Meetup12_files/figure-revealjs/unnamed-chunk-15-1.png" width="768" class="r-stretch"></section>
-<section id="layouts" class="slide level2 smaller">
-<h2>Layouts</h2>
-<ul>
-<li>layouts use algorithms for arranging the nodes</li>
-<li><code>kk</code> and <code>stress</code> pretends the edges are springs, finds equilibrium</li>
-</ul>
-<div class="columns">
-<div class="column" style="width:80%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>gr2 <span class="sc">|&gt;</span> <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
-<span id="cb17-2"><a></a>   <span class="fu">geom_edge_link0</span>() <span class="sc">+</span></span>
-<span id="cb17-3"><a></a>    <span class="fu">geom_node_point</span>() <span class="sc">+</span></span>
-<span id="cb17-4"><a></a>  <span class="fu">theme_graph</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="Meetup12_files/figure-revealjs/unnamed-chunk-16-1.png" width="576"></p>
-</figure>
+Though I confess, when gazing through my telescope on wistful evenings, the 
+cratered surface does bear an uncanny resemblance to a rather well-aged 
+Emmental. Pockmarked and porous, you see.
+
+If pressed to assign it a cheese, I'd call it **Lunar Limburger**—aged 4.5 
+billion years, with notes of basalt and a pungent bouquet of solar wind. 🌙</code></pre>
 </div>
 </div>
-</div>
-</div></div>
 </section>
-<section id="layouts-1" class="slide level2 smaller">
-<h2>Layouts</h2>
+<section id="anatomy-of-a-chat" class="slide level2">
+<h2>Anatomy of a Chat</h2>
 <ul>
-<li>layouts use algorithms for arranging the nodes</li>
-<li><code>dendrogram</code> draws a family tree (note duplicates)</li>
-</ul>
-<div class="columns" width="100%">
-<div class="column" style="width:80%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>gr2 <span class="sc">|&gt;</span> <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"dendrogram"</span>) <span class="sc">+</span></span>
-<span id="cb18-2"><a></a>   <span class="fu">geom_edge_link0</span>() <span class="sc">+</span></span>
-<span id="cb18-3"><a></a>    <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> nodes),<span class="at">size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
-<span id="cb18-4"><a></a>  <span class="fu">theme_graph</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="Meetup12_files/figure-revealjs/unnamed-chunk-17-1.png" width="576"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="geom_node_" class="slide level2 smaller">
-<h2><code>geom_node_*</code></h2>
-<ul>
-<li><code>point</code>, <code>circle</code>, <code>text</code> most common</li>
-<li>Key aestethics:</li>
-<li><code>point</code>: <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>shape</code>, <code>size</code></li>
-<li>text: <code>label</code></li>
-</ul>
-<div class="columns">
-<div class="column" style="width:100%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>gr2 <span class="sc">|&gt;</span> <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
-<span id="cb19-2"><a></a>   <span class="fu">geom_edge_link0</span>() <span class="sc">+</span></span>
-<span id="cb19-3"><a></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> <span class="fu">centrality_degree</span>(<span class="at">mode =</span> <span class="st">"in"</span>) <span class="sc">+</span> <span class="fu">centrality_degree</span>(<span class="at">mode =</span> <span class="st">"out"</span>),</span>
-<span id="cb19-4"><a></a>                      <span class="at">color =</span> <span class="fu">centrality_degree</span>(<span class="at">mode =</span> <span class="st">"in"</span>) <span class="sc">&gt;</span> <span class="dv">0</span>), </span>
-<span id="cb19-5"><a></a>                  <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb19-6"><a></a>  <span class="fu">theme_graph</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div></div>
-</section>
-<section id="geom_node_-1" class="slide level2 smaller">
-<h2><code>geom_node_*</code></h2>
-<ul>
-<li><code>point</code>, <code>circle</code>, <code>text</code> most common</li>
-<li>Key aestethics:</li>
-<li><code>point</code>: <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>shape</code>, <code>size</code></li>
-<li>text: <code>label</code></li>
-</ul>
-<div class="columns">
-<div class="column" style="width:80%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="Meetup12_files/figure-revealjs/unnamed-chunk-19-1.png" width="576"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="geom_edge_" class="slide level2">
-<h2><code>geom_edge_*</code></h2>
-<ul>
-<li><code>geom_edge_link</code> family common</li>
-<li>Key aestethics: <code>edge_color/width/linetype</code> <code>arrow</code></li>
-<li>Fancy aestethics: <code>label</code>, <code>start/end_cap</code></li>
-</ul>
-<div class="columns">
-<div class="column" style="width:100%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>gr2 <span class="sc">|&gt;</span> <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"auto"</span>) <span class="sc">+</span></span>
-<span id="cb20-2"><a></a>   <span class="fu">geom_edge_link</span>(<span class="fu">aes</span>(<span class="at">start_cap =</span> <span class="fu">circle</span>(<span class="dv">6</span>, <span class="st">'mm'</span>),</span>
-<span id="cb20-3"><a></a>                     <span class="at">end_cap =</span> <span class="fu">circle</span>(<span class="dv">6</span>, <span class="st">'mm'</span>)), </span>
-<span id="cb20-4"><a></a>                 <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="dv">5</span>, <span class="st">'mm'</span>))) <span class="sc">+</span> </span>
-<span id="cb20-5"><a></a>     <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> nodes),<span class="at">size =</span> <span class="dv">8</span>) <span class="sc">+</span></span>
-<span id="cb20-6"><a></a>  <span class="fu">theme_graph</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div></div>
-</section>
-<section id="geom_edge_-1" class="slide level2">
-<h2><code>geom_edge_*</code></h2>
-<ul>
-<li><code>geom_edge_link</code> family common</li>
-<li>Key aestethics: <code>edge_color/width/linetype</code> <code>arrow</code></li>
-<li>Fancy aestethics: <code>label</code>, <code>start/end_cap</code></li>
-</ul>
-<div class="columns">
-<div class="column" style="width:80%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="Meetup12_files/figure-revealjs/unnamed-chunk-21-1.png" width="576"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="manipulating-the-graph" class="slide level2">
-<h2>Manipulating the Graph</h2>
-<ul>
-<li><code>tidy</code> manipulation requires that you <code>activate</code> either <code>edges</code> or <code>nodes</code></li>
-<li><code>nodes</code> active by default</li>
+<li>Chat procedes in a series of turns between user and system</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>gr2 <span class="sc">|&gt;</span> </span>
-<span id="cb21-2"><a></a>  <span class="fu">mutate</span>(<span class="at">degree =</span> <span class="fu">centrality_degree</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>chat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tbl_graph: 6 nodes and 7 edges
-#
-# A directed acyclic simple graph with 1 component
-#
-# Node Data: 6 × 2 (active)
-  nodes degree
-  &lt;chr&gt;  &lt;dbl&gt;
-1 a          2
-2 b          2
-3 c          2
-4 d          0
-5 e          1
-6 f          0
-#
-# Edge Data: 7 × 2
-   from    to
-  &lt;int&gt; &lt;int&gt;
-1     1     2
-2     1     3
-3     2     4
-# ℹ 4 more rows</code></pre>
+<pre><code>&lt;Chat Anthropic/claude-haiku-4-5 turns=3 tokens=31/149&gt;
+── system [0] ──────────────────────────────────────────────────────────────────
+You are a terse, but very whimsical astronomer
+── user [31] ───────────────────────────────────────────────────────────────────
+Which type of cheese is the moon made from?
+── assistant [149] ─────────────────────────────────────────────────────────────
+Ah, a classic inquiry! The moon, I'm afraid, is made of *neither* cheddar nor brie, but rather regolith—a dreadfully boring silicate compound.
+
+Though I confess, when gazing through my telescope on wistful evenings, the cratered surface does bear an uncanny resemblance to a rather well-aged Emmental. Pockmarked and porous, you see.
+
+If pressed to assign it a cheese, I'd call it **Lunar Limburger**—aged 4.5 billion years, with notes of basalt and a pungent bouquet of solar wind. 🌙</code></pre>
 </div>
 </div>
 </section>
-<section id="manipulating-the-graph-1" class="slide level2 smaller">
-<h2>Manipulating the Graph</h2>
+<section id="anatomy-of-a-chat-1" class="slide level2">
+<h2>Anatomy of a Chat</h2>
 <ul>
-<li><code>tidy</code> manipulation requires that you <code>activate</code> either <code>edges</code> or <code>nodes</code></li>
-<li>use <code>activate</code> to change the edges</li>
+<li>Chat will remember past history</li>
 </ul>
-<div class="columns">
-<div class="column" style="width:100%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>gr3 <span class="ot">=</span> gr2 <span class="sc">|&gt;</span> </span>
-<span id="cb23-2"><a></a>  <span class="fu">activate</span>(edges) <span class="sc">|&gt;</span> </span>
-<span id="cb23-3"><a></a>  <span class="fu">mutate</span>(<span class="at">distance =</span> <span class="fu">abs</span>(to<span class="sc">-</span>from))  </span>
-<span id="cb23-4"><a></a>  </span>
-<span id="cb23-5"><a></a>gr3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Are the phases of the moon just what happens when a mice takes a bite out of the cheese?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tbl_graph: 6 nodes and 7 edges
-#
-# A directed acyclic simple graph with 1 component
-#
-# Edge Data: 7 × 3 (active)
-   from    to distance
-  &lt;int&gt; &lt;int&gt;    &lt;int&gt;
-1     1     2        1
-2     1     3        2
-3     2     4        2
-4     3     4        1
-5     2     5        3
-6     3     6        3
-7     5     6        1
-#
-# Node Data: 6 × 1
-  nodes
-  &lt;chr&gt;
-1 a    
-2 b    
-3 c    
-# ℹ 3 more rows</code></pre>
+<pre><code>*peers over spectacles with delight*
+
+Oh, what a *delightfully terrible* hypothesis! Alas, the culprit is far more 
+tedious: geometry.
+
+The moon orbits 'round us while we pirouette about the sun, and thus the shadow
+of Earth creeps across our lunar cheese wheel in predictable crescents and 
+gibbous curves. Newton's fault, really. Dreadfully practical fellow, no 
+imagination.
+
+Though I *do* admire the image: a cosmic rodent, nibbling away—a mouse of 
+stupendous proportions, perhaps the size of Jupiter, with whiskers of 
+starlight. Now *that's* an astronomer's fancy!
+
+In reality? Merely light and shadow playing their eternal game of peek-a-boo. 
+Far less whimsical, I'm afraid. 🐭🌙</code></pre>
 </div>
 </div>
-</div></div>
 </section>
-<section id="manipulating-the-graph-2" class="slide level2 smaller">
-<h2>Manipulating the Graph</h2>
+<section id="anatomy-of-a-chat-2" class="slide level2">
+<h2>Anatomy of a Chat</h2>
 <ul>
-<li><code>tidy</code> manipulation requires that you <code>activate</code> either <code>edges</code> or <code>nodes</code></li>
-<li>use <code>activate</code> to change the edges</li>
+<li>Chat will remember past history</li>
 </ul>
-<div class="columns">
-<div class="column" style="width:100%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>gr3 <span class="sc">|&gt;</span> </span>
-<span id="cb25-2"><a></a>   <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"auto"</span>) <span class="sc">+</span></span>
-<span id="cb25-3"><a></a>   <span class="fu">geom_edge_link</span>(<span class="fu">aes</span>(<span class="at">start_cap =</span> <span class="fu">circle</span>(<span class="dv">10</span>, <span class="st">'mm'</span>),</span>
-<span id="cb25-4"><a></a>                     <span class="at">end_cap =</span> <span class="fu">circle</span>(<span class="dv">10</span>, <span class="st">'mm'</span>),</span>
-<span id="cb25-5"><a></a>                     <span class="at">color =</span> distance <span class="sc">&gt;</span> <span class="dv">1</span>), </span>
-<span id="cb25-6"><a></a>                 <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="dv">8</span>, <span class="st">'mm'</span>))) <span class="sc">+</span> </span>
-<span id="cb25-7"><a></a>     <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> nodes),<span class="at">size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
-<span id="cb25-8"><a></a>  <span class="fu">theme_graph</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>chat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;Chat Anthropic/claude-haiku-4-5 turns=5 tokens=234/340&gt;
+── system [0] ──────────────────────────────────────────────────────────────────
+You are a terse, but very whimsical astronomer
+── user [31] ───────────────────────────────────────────────────────────────────
+Which type of cheese is the moon made from?
+── assistant [149] ─────────────────────────────────────────────────────────────
+Ah, a classic inquiry! The moon, I'm afraid, is made of *neither* cheddar nor brie, but rather regolith—a dreadfully boring silicate compound.
+
+Though I confess, when gazing through my telescope on wistful evenings, the cratered surface does bear an uncanny resemblance to a rather well-aged Emmental. Pockmarked and porous, you see.
+
+If pressed to assign it a cheese, I'd call it **Lunar Limburger**—aged 4.5 billion years, with notes of basalt and a pungent bouquet of solar wind. 🌙
+── user [23] ───────────────────────────────────────────────────────────────────
+Are the phases of the moon just what happens when a mice takes a bite out of the cheese?
+── assistant [191] ─────────────────────────────────────────────────────────────
+*peers over spectacles with delight*
+
+Oh, what a *delightfully terrible* hypothesis! Alas, the culprit is far more tedious: geometry.
+
+The moon orbits 'round us while we pirouette about the sun, and thus the shadow of Earth creeps across our lunar cheese wheel in predictable crescents and gibbous curves. Newton's fault, really. Dreadfully practical fellow, no imagination.
+
+Though I *do* admire the image: a cosmic rodent, nibbling away—a mouse of stupendous proportions, perhaps the size of Jupiter, with whiskers of starlight. Now *that's* an astronomer's fancy!
+
+In reality? Merely light and shadow playing their eternal game of peek-a-boo. Far less whimsical, I'm afraid. 🐭🌙</code></pre>
 </div>
-</div></div>
+</div>
 </section>
-<section id="manipulating-the-graph-3" class="slide level2 smaller">
-<h2>Manipulating the Graph</h2>
+<section id="costs" class="slide level2">
+<h2>Costs</h2>
 <ul>
-<li><code>tidy</code> manipulation requires that you <code>activate</code> either <code>edges</code> or <code>nodes</code></li>
-<li>use <code>activate</code> to change the edges</li>
+<li>Can get costs with <code>get_costs</code> method or <code>token_usage</code> function</li>
 </ul>
-<div class="columns">
-<div class="column" style="width:100%;">
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="Meetup12_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">token_usage</span>()</span>
+<span id="cb10-2"><a></a></span>
+<span id="cb10-3"><a></a>chat<span class="sc">$</span><span class="fu">get_costs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
-</div></div>
 </section>
-<section id="graph-analysis-functions" class="slide level2 smaller">
-<h2>Graph Analysis Functions</h2>
+<section id="costs-1" class="slide level2">
+<h2>Costs</h2>
 <ul>
-<li><code>centrality_*</code> tidygraph centrality functions</li>
-<li><code>node_*</code> and <code>edge_*</code>- example <code>node_distance_to</code></li>
+<li>Can get costs with <code>get_costs</code> method or <code>token_usage</code> function</li>
 </ul>
-<div class="columns">
-<div class="column" style="width:100%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>gr2 <span class="sc">|&gt;</span> </span>
-<span id="cb26-2"><a></a>  <span class="fu">activate</span>(<span class="st">"nodes"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb26-3"><a></a>  <span class="fu">mutate</span>(<span class="at">dist_to_a =</span> <span class="fu">node_distance_from</span>(<span class="at">nodes =</span> <span class="dv">1</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb26-4"><a></a>  <span class="fu">ggraph</span>() <span class="sc">+</span></span>
-<span id="cb26-5"><a></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">size=</span><span class="dv">3</span><span class="sc">-</span>dist_to_a)) <span class="sc">+</span> </span>
-<span id="cb26-6"><a></a>  <span class="fu">geom_edge_link0</span>() <span class="sc">+</span></span>
-<span id="cb26-7"><a></a>  <span class="fu">theme_graph</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div></div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">provider</th>
+<th style="text-align: left;">model</th>
+<th style="text-align: right;">input</th>
+<th style="text-align: right;">output</th>
+<th style="text-align: right;">cached_input</th>
+<th style="text-align: right;">price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Google/Gemini</td>
+<td style="text-align: left;">gemini-2.5-flash</td>
+<td style="text-align: right;">16444</td>
+<td style="text-align: right;">182</td>
+<td style="text-align: right;">802</td>
+<td style="text-align: right;">$0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ollama</td>
+<td style="text-align: left;">llama3</td>
+<td style="text-align: right;">81421</td>
+<td style="text-align: right;">882</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Anthropic</td>
+<td style="text-align: left;">claude-haiku-4-5</td>
+<td style="text-align: right;">82</td>
+<td style="text-align: right;">470</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="graph-analysis-functions-1" class="slide level2">
-<h2>Graph Analysis Functions</h2>
+<section id="context-and-costs" class="slide level2">
+<h2>Context and Costs</h2>
 <ul>
-<li><code>centrality_*</code> tidygraph centrality functions</li>
-<li><code>node_*</code> and <code>edge_*</code>- example <code>node_distance_to</code></li>
+<li>LLM <code>context</code> is the amount of text processed during each turn</li>
+<li>Limited by ever increasing context window
+<ul>
+<li>Varies by model, up to ~1 Million tokens (several novels)</li>
+</ul></li>
+<li><code>context</code> grows with each chat turn</li>
+<li>Costs of long chats start scaling up even if each additional prompt is simple!</li>
 </ul>
-<div class="columns">
-<div class="column" style="width:100%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="Meetup12_files/figure-revealjs/unnamed-chunk-27-1.png" width="768"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
 </section>
-<section id="graph-analysis-functions-2" class="slide level2">
-<h2>Graph Analysis Functions</h2>
+<section id="resetting-context" class="slide level2">
+<h2>Resetting Context</h2>
 <ul>
-<li><code>centrality_*</code> tidygraph centrality functions</li>
-<li><code>node_*</code> and <code>edge_*</code>- example <code>node_distance_to</code></li>
-<li><code>graph_*</code> and <code>to_*</code> functions</li>
-<li>Sometimes need to call them <code>with_graph</code></li>
-<li><code>igraph</code> functions: good fraction of most important network science stats</li>
+<li>Use <code>set_turns</code> method to erase or even change chat history</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>new_chat <span class="ot">=</span> old_chat<span class="sc">$</span><span class="fu">set_turns</span>(<span class="fu">list</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="writing-good-prompts" class="slide level2">
+<h2>Writing good prompts</h2>
+<ul>
+<li>Prompt Engineering is the “art” of choosing prompts that deliver the best LLM performance</li>
+<li>Lots has been written on this, I think it is a bit of a mess</li>
+<li><a href="https://www.oneusefulthing.org/p/getting-started-with-ai-good-enough">Good Enough Prompting</a>
+<ul>
+<li>This is for day to day use</li>
+</ul></li>
+<li>Professional guides from the LLM providers for serious use at scale</li>
+</ul>
+</section>
+<section id="interpolate" class="slide level2">
+<h2>Interpolate</h2>
+<ul>
+<li>The <code>interpolate</code> functions allow you to replace a placeholder with data in a prompt</li>
+<li>Similar to <code>glue</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>material_prompt <span class="ot">=</span> <span class="st">"What type of cheese is {{planet}} made from?"</span></span>
+<span id="cb12-2"><a></a></span>
+<span id="cb12-3"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="fu">interpolate</span>(material_prompt,<span class="at">planet =</span> <span class="st">"Jupiter"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>*strokes beard thoughtfully*
+
+Ah, Jupiter! A gas giant wrapped in swirling clouds of ammonia and 
+methane—decidedly *not* a cheese, more's the pity.
+
+Though if one must indulge the conceit: **Swiss cheese**, undoubtedly. Those 
+tremendous storm systems—the Great Red Spot especially—are rather like holes, 
+wouldn't you say? Vast, turbulent voids in a otherwise unremarkable golden 
+mass.
+
+The bands of darker and lighter clouds resembling the marbling in Emmental or 
+Gruyère is merely coincidence... or perhaps the universe possesses a sense of 
+humor after all.
+
+*sighs wistfully*
+
+Were Jupiter actually edible, it would crumble to vaporous nothing the moment 
+you bit into it. A cruel cosmic prank—all appearance, no substance. Much like 
+most of the cosmos, come to think of it. ✨🧀</code></pre>
+</div>
+</div>
+</section>
+<section id="put-your-prompts-in-files" class="slide level2">
+<h2>Put your prompts in files</h2>
+<ul>
+<li>Good prompts can be many pages long</li>
+<li>Specific instructions, examples of behavior you want</li>
+<li>Put your prompt into a markdown file and use <code>interpolate_file</code>:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>my_chat <span class="ot">=</span> <span class="fu">chat_anthropic</span>(<span class="at">system_prompt =</span> <span class="fu">interpolate_file</span>(<span class="st">"prompt.md"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>You may include {{names}} in your file to interpolate with</li>
+</ul>
+</section>
+<section id="structured-data" class="slide level2">
+<h2>Structured Data</h2>
+<ul>
+<li>Suppose you want to use LLM for a serious task, like processing some textual data</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>prompts <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb15-2"><a></a>  <span class="st">"I go by Alex. 42 years on this planet and counting."</span>,</span>
+<span id="cb15-3"><a></a>  <span class="st">"Pleased to meet you! I'm Jamal, age 27."</span>,</span>
+<span id="cb15-4"><a></a>  <span class="st">"They call me Li Wei. Nineteen years young."</span>,</span>
+<span id="cb15-5"><a></a>  <span class="st">"Fatima here. Just celebrated my 35th birthday last week."</span>,</span>
+<span id="cb15-6"><a></a>  <span class="st">"The name's Robert - 51 years old and proud of it."</span>,</span>
+<span id="cb15-7"><a></a>  <span class="st">"Kwame here - just hit the big 5-0 this year."</span></span>
+<span id="cb15-8"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>You might want a data frame with names and ages</li>
+</ul>
+</section>
+<section id="structured-data-1" class="slide level2">
+<h2>Structured Data</h2>
+<ul>
+<li>You could add the format that you want to the prompt:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>system_prompt <span class="ot">=</span> <span class="st">"You are an expert at processing data and data extraction. You will be processing</span></span>
+<span id="cb16-2"><a></a><span class="st">text in a series of lines which contains the name and age of people. Each line will contain one name and</span></span>
+<span id="cb16-3"><a></a><span class="st">one age. Return the data for each line so it can be incorporated into a csv file, with the name first and</span></span>
+<span id="cb16-4"><a></a><span class="st">the age second"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>But it might not always do what you expect</li>
+<li>When running the prompt many times, you need to guarantee a certain format</li>
+</ul>
+</section>
+<section id="structured-data-2" class="slide level2 smaller">
+<h2>Structured Data</h2>
+<ul>
+<li>Method <code>chat_structured</code> and function <code>parallel_chat_structured</code> force LLM to give answers as data in a certain format</li>
+<li>Can fail and produce NA values sometimes</li>
+<li>Type specification:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>type_person <span class="ot">&lt;-</span> <span class="fu">type_object</span>(</span>
+<span id="cb17-2"><a></a>  <span class="at">name =</span> <span class="fu">type_string</span>(),</span>
+<span id="cb17-3"><a></a>  <span class="at">age =</span> <span class="fu">type_number</span>()</span>
+<span id="cb17-4"><a></a>)</span>
+<span id="cb17-5"><a></a></span>
+<span id="cb17-6"><a></a>chat_gem <span class="ot">=</span> <span class="fu">chat_google_gemini</span>(<span class="at">system_prompt =</span> <span class="fu">interpolate_file</span>(<span class="st">"/home/georgehagstrom/work/Teaching/DATA607Fall2025/website/meetups/Meetup12/text_prompt.md"</span>))</span>
+<span id="cb17-7"><a></a></span>
+<span id="cb17-8"><a></a></span>
+<span id="cb17-9"><a></a></span>
+<span id="cb17-10"><a></a>processed_text <span class="ot">=</span> <span class="fu">parallel_chat_structured</span>(chat_gem,prompts,<span class="at">type =</span> type_person)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="structured-data-3" class="slide level2">
+<h2>Structured Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>processed_text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    name age
+1   Alex  42
+2  Jamal  27
+3 Li Wei  19
+4 Fatima  35
+5 Robert  51
+6  Kwame  50</code></pre>
+</div>
+</div>
+<ul>
+<li>Additional types include booleans, integers, arrays</li>
+<li>Can process alternative files, like <code>pdf</code>, <code>images</code>, <code>videos</code>, <code>audio</code>, depending on the capabilities of your <code>LLM</code></li>
+</ul>
+</section>
+<section id="tool-calling" class="slide level2">
+<h2>Tool Calling</h2>
+<ul>
+<li>LLMs are inefficient and bad at many tasks that can be easily done in other ways
+<ul>
+<li>Math computations</li>
+<li>Counting anything i.e.&nbsp;“How many R’s are there in the word Strawberry”</li>
+<li>Obtaining current information</li>
+</ul></li>
+</ul>
+</section>
+<section id="tool-calling-1" class="slide level2">
+<h2>Tool Calling</h2>
+<ul>
+<li>Solution: Allow (select!) LLMs to call user defined functions</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>dice_prompt <span class="ot">=</span> <span class="st">"Each time you get a prompt, roll a dice with a number of faces equal to what the user requested"</span></span>
+<span id="cb20-2"><a></a></span>
+<span id="cb20-3"><a></a>chat_ol <span class="ot">&lt;-</span> <span class="fu">chat_anthropic</span>(dice_prompt, <span class="at">model =</span> <span class="st">"claude-haiku-4-5"</span>)</span>
+<span id="cb20-4"><a></a></span>
+<span id="cb20-5"><a></a>chat_ol<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Roll a six sided dice"</span>)</span>
+<span id="cb20-6"><a></a>chat_ol<span class="sc">$</span><span class="fu">set_turns</span>(<span class="fu">list</span>())</span>
+<span id="cb20-7"><a></a>chat_ol<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Roll a six sided dice"</span>)</span>
+<span id="cb20-8"><a></a>chat_ol<span class="sc">$</span><span class="fu">set_turns</span>(<span class="fu">list</span>())</span>
+<span id="cb20-9"><a></a>chat_ol<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Roll a six sided dice"</span>)</span>
+<span id="cb20-10"><a></a>chat_ol<span class="sc">$</span><span class="fu">set_turns</span>(<span class="fu">list</span>())</span>
+<span id="cb20-11"><a></a>chat_ol<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Roll a six sided dice"</span>)</span>
+<span id="cb20-12"><a></a>chat_ol<span class="sc">$</span><span class="fu">set_turns</span>(<span class="fu">list</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tool-calling-2" class="slide level2">
+<h2>Tool Calling</h2>
+<ul>
+<li>Solution: Allow LLMs to call user defined functions</li>
+<li>Nothing random about this:</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>🎲 Rolling a six-sided dice...
+
+**You rolled a 4!**</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>🎲 Rolling a six-sided die...
+
+**You rolled a 4!**</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>🎲 Rolling a six-sided dice...
+
+You rolled a **4**!</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>🎲 Rolling a six-sided dice...
+
+**You rolled a 4!**</code></pre>
+</div>
+</div>
+</section>
+<section id="tool-calling-3" class="slide level2">
+<h2>Tool Calling</h2>
+<ul>
+<li>First step, define function with documentation:
+<ul>
+<li>The documentation lets you use <code>create_tool_def</code> if you want</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="co">#' Simulates the roll of a k-sided dice</span></span>
+<span id="cb25-2"><a></a><span class="co">#'</span></span>
+<span id="cb25-3"><a></a><span class="co">#' @param k The number of sides of the dice. Must be a positive integer</span></span>
+<span id="cb25-4"><a></a><span class="co">#' @return The outcome from the random dice roll</span></span>
+<span id="cb25-5"><a></a>roll_dice <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">k =</span> <span class="dv">6</span>) {</span>
+<span id="cb25-6"><a></a>  <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>k)</span>
+<span id="cb25-7"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tool-calling-4" class="slide level2">
+<h2>Tool Calling</h2>
+<ul>
+<li>Second step, explicitly add metadata</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>roll_dice <span class="ot">&lt;-</span> <span class="fu">tool</span>(</span>
+<span id="cb26-2"><a></a>  roll_dice,</span>
+<span id="cb26-3"><a></a>  <span class="at">name =</span> <span class="st">"roll_dice"</span>,</span>
+<span id="cb26-4"><a></a>  <span class="at">description =</span> <span class="st">"Simulates a roll of a k-sided dice"</span>,</span>
+<span id="cb26-5"><a></a>  <span class="at">arguments =</span> <span class="fu">list</span>(</span>
+<span id="cb26-6"><a></a>    <span class="at">k =</span> <span class="fu">type_integer</span>(</span>
+<span id="cb26-7"><a></a>      <span class="st">"Number of sides of the dice that is to be rolled. Defaults to 6. Should be positive"</span>,</span>
+<span id="cb26-8"><a></a>      <span class="at">required =</span> <span class="cn">FALSE</span></span>
+<span id="cb26-9"><a></a>    )</span>
+<span id="cb26-10"><a></a>  )</span>
+<span id="cb26-11"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tool-calling-5" class="slide level2">
+<h2>Tool Calling</h2>
+<ul>
+<li>Final Step, register the tool with your chat</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>chat_ol<span class="sc">$</span><span class="fu">register_tool</span>(roll_dice)</span>
+<span id="cb27-2"><a></a></span>
+<span id="cb27-3"><a></a>chat_ol<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Roll a six sided dice"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>I rolled a six-sided dice and got: **3**
+
+Actually, looking at the results more carefully, it appears the function 
+returned all possible outcomes [3,4,2,6,1,5], but if I had to give you a single
+roll result, the primary value shown is **3**.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>chat_ol<span class="sc">$</span><span class="fu">set_turns</span>(<span class="fu">list</span>())</span>
+<span id="cb29-2"><a></a>chat_ol<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Roll a six sided dice"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>I rolled a six-sided dice and got: **3**</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>chat_ol<span class="sc">$</span><span class="fu">set_turns</span>(<span class="fu">list</span>())</span>
+<span id="cb31-2"><a></a>chat_ol<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Roll a six sided dice"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>I rolled a six-sided dice and got: **5**</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>chat_ol<span class="sc">$</span><span class="fu">set_turns</span>(<span class="fu">list</span>())</span>
+<span id="cb33-2"><a></a>chat_ol<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Roll a six sided dice"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>I rolled a six-sided dice and got: **5**</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>chat_ol<span class="sc">$</span><span class="fu">set_turns</span>(<span class="fu">list</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section>
+<section id="ecoystem" class="title-slide slide level1 center">
+<h1>Ecoystem</h1>
+<ul>
+<li><code>vitals</code> for LLM Evaluations</li>
+<li><code>mall</code> for NLP helper functions</li>
+<li><code>ragnar</code> for Retrieval augmented generation</li>
+<li><code>shinychat</code> to create custom chatbots, LLM-enabled dashboards</li>
+<li><code>gander</code> for code generation</li>
+<li><code>chores</code> help with various coding/data analysis/maintenance tasks</li>
 </ul>
 </section>
 <section id="meetup-reflection" class="slide level2">
@@ -1093,7 +1094,7 @@ George I. Hagstrom
 
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
