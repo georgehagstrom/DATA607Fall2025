@@ -1,48 +1,114 @@
 ---
-title: "Lab 9: Graphs and Social Networks in Pride & Prejudice"
+title: "Lab 9: Using and Evaluating LLMs"
 author: "George I. Hagstrom"
 format: html
 ---
 
 ## Overview
 
-In the this lab assignment, you are going to construct a social network 
-from the characters in the book "Pride & Prejudice", a novel written by Jane Austen
-and available in the `janeaustenr` package. The social network will be a weighted
-graph connecting the characters, where the weight is equal to the number of times the
-names of each character appeared in each 10 line section of the book. Once you create the graph, you
-will load it into tidygraph, make a visualization of the graph, and rank the most 
-connected characters by a measure called `degree centrality`
 
-**Problem 1**
+### Data
 
-Load the text of Pride & Prejudice into R using the `janeaustenr` library. Then download and read [pride_prejudice_characters.csv](https://github.com/georgehagstrom/DATA607/blob/main/website/assignments/labs/labData/pride_prejudice_characters.csv), the
-csv file from my github page containing a list of characters in `Pride & Prejudice` and their aliases. 
-Here aliases refers to the different names that the characters go by in the books, for example "Darcy"
-also goes by the names "Mr. Darcy", and "Mr. Fitzwilliam Darcy" (not to be confused with his cousin "Colonel Fitzwilliam"). 
+In this assignment you will be working with different datasets review datasets. The first dataset is the Large Movie Reviews dataset from `imdb`, which I covered in the sentiment
+analysis vignette last week. I have processed that dataset and converted it into a single file. On each line it contains the numerical rating of the movie given by the viewer and the
 
-Process the text of Pride & Prejudice to replace instances where an 
-alias occurs with the full name of the character- I recommend using the iteration techniques you learned ealier, I arranged the order of names in the `csv` file to minimize misidentifications if you replace names in the order that they appear in the file. Making this perfect would require a bit of
-effort but we are ok if there are some misidentifications. Here the final name of each character will
-be a single word. 
+The second dataset contains randomly selected negative Amazon reviews that have been labeled
+according to whether they identify certain flaws in a given product. The values of the human response are `None`, `Quality` (the product is of low overall quality, is not fit for purpose), `Quality Control` 
+(the product sometimes arrives broken or differs from batch to batch), `Durability` (the product breaks too easily), `False Advertising` (the product does not match expectations based on
+the picture or product description). There is a "test" set and a "training" set.
 
-**Problem 2**
-
-Following the example in chapter 4 of the text mining with R book, create a new column in the data frame corresponding to the Pride & Prejudice text that divides the text into sections of 10 lines each. Then use the `pairwise_count` function from `widyr` to determine the number of times each name occurs
-with each other name in the same 10 line section. 
-
-**Problem 3**
-
-Create a dataframe of nodes which contains the id and unique names of each character, and create a 
-dataframe of edges which contains three columns: a column named `from`, a column named `to`, and a column named `weight`, where the `from` and `to` are the id numbers of each character and `weight` is the number of co-occurences you found in Problem 2. Each pair should only appear once in the edge list (i.e. Elizabeth and MrDarcy but not MrDarcy and then Elizabeth). Create a tidygraph object using `tbl_graph` that contains the social network data that we just constructed.
+The second dataset consists of a subset of negative (below 4 stars) product reviews from a selection of 50 different products. These reviews contain the SKU which identifies the product,
+but there is no human labeling.
 
 
+### Software 
+
+To complete this lab assignment, you will need to be able to interact with LLMs using the `R` packages [`ellmer`](https://ellmer.tidyverse.org/articles/ellmer.html) and ['vitals`](https://vitals.tidyverse.org/). You
+may also want to use the [`mall`](https://mlverse.github.io/mall/). There are two
+ways to connect LLMs with R:
+
+(1) Acquiring an API key from one of the major providers, such as `anthropic`, `openAI`, or `google` amongst others
+(2) Installing open weights models on your computer, for instance using `ollama`
+
+The downside of (1) is that it can cost a small amount of money or have otherwise limited usage. I will provide API keys for anthropic for those who request them, but if you have
+access to an API key at google gemini or openAI or some other provide, you may use that. The downside of (2) is that the models are inferior and run more slowly. However
+in all cases there are cheap/fast models that can be used for this assignment (`haiku`, `llama3`, `nanogpt` etc). Installation instructions and API key acquisition depends on
+what you choose, and there are links to compatible LLMs on the `ellmer` page. `Ollama` can be [installed by clicking here](https://ollama.com/)
 
 
-**Problem 4**
+## Problem 1: LLMs for Sentiment Analysis
 
-Using `ggraph`, graph the connections between the characters. Make sure that each node is labeled
-by the character name, and make sure that the weight is represented by the thickness of the edge
-plotted between the two nodes. Then use the `centrality_degree` function to calculate the weighted degree centrality of each character, and make a plot which shows the degree centrality of each character where the characters are arranged in order of degree centrality. 
+In this problem you are going to use either `ellmer` (with `parrallel_chat_structured`)  or `mall` (with `llm_sentiment`) to perform sentiment analysis on the large movie reviews dataset
+at IMDB. 
+
+(a) Select three different LLMs (don't use Claude Opus, and I recommend against expensive deep thinking models but you can try things versions of sonnet, haiku, nanogpt, llama-3, or even deepseek if you have the processing power for it). Use either the `mall` package's `llm_sentiment` function or the `ellmer` package's `parallel_chat_structured` function. Report the system
+prompt that you use for each LLM. Ensure that the output of the LLMs is restricted to a integer values between 1 and 10, using `options` if you are using `mall` or `type_enum` if you
+are using `ellmer`. The reviews are contained in the file ['imdb_test.csv'](https://github.com/georgehagstrom/DATA607Fall2025/blob/main/website/assignments/labs/labData/imdb_test.csv). You will need to put the reviews into a list where each element contains a single review in a character
+format to use the functions in these packages. Compute the correlation coefficient of each of the models output and create a table which shows
+the correlation and the cost for each model. Do the more expensive models perform better? When I performed a sentiment analysis using standard methods on this dataset, the correlation
+coefficient was 0.53. Compare that to the LLM performance.
+
+(b) Update the system prompts that you used in (b) by adding examples of reviews from the [`imdb_train.md`](https://github.com/georgehagstrom/DATA607Fall2025/blob/main/website/assignments/labs/labData/imdb_train.md) file (you can add text to the beginning of this file to prompt the 
+LLM and then use the function `interpolate_file` to add a file to the system prompt), or
+by modifying the chat object to include instances of receiving movie reviews as text and outputing the correct rating. If you do include additional text in the file as a system prompt,
+be sure to report what text you used and to upload the file you used for your prompt. Repeat the sentiment analysis of the part (b) using these modified
+prompts, and again compute the correlation and the cost, outputing them in a table. How did enhancing the prompts change the results?
+
+_Note: I was shocked at the high correlation and wondered if there was a data leakage issue (data leakage is a term from machine learning that describes a situation where data for testing 
+the algorithm is unexpectedly part of the data set that was used to train the algorithm), because LLMs are trained using a very large corpus of data which may include the reviews and
+the ratings. I did a small experiment on reviews gathered from the past few weeks and found roughly the same answer so I think the result of this homework is not explained by data
+laekage._
+
+
+
+## Problem 2: LLMs for identifying flaws in products from user reviews.
+
+For this problem, I have selected a subset of negative amazon reviews taken from a public dataset of amazon reviews. 
+The goal is to extract information about potential flaws in products from these reviews automatically using LLMs. Again
+these reviews are divided into two files, a training set which may be incorporated into prompts, and a test set. I have labeled the Amazon reviews into several categories:
+
+- `None` indicates no specific flaw was identified with the product
+- `Quality` indicates that the product is poorly designed for the intended purpose
+- `Quality Control` indicates that different instances of the product are inconsistent with each other or that the product sometimes arrives broken
+- `Durability` indicates that the product is damaged easily from use
+- `False Advertising` indicates that the product doesn't correspond to the images or online descriptions on Amazon
+
+Your goal is to determine the accuracy of LLMs at classifying text into one of these categories, compared against a human labeler.
+
+(a) Again select three LLMs (they do not have to be the same as in problem 1, but it would make sense to use the same ones to observe if the same accuracy relationships hold on a new
+task). The human labeled reviews for training are contained in the file ['amazon_training_examples.csv'](https://github.com/georgehagstrom/DATA607Fall2025/blob/main/website/assignments/labs/labData/amazon_training_examples.csv), and the labeled testing reviews are contained in ['amazon_testing_examples.csv'](https://github.com/georgehagstrom/DATA607Fall2025/blob/main/website/assignments/labs/labData/amazon_testing_examples.csv). 
+Use `parallel_chat_structured` with a `type_enum` corresponding to the categories described above. Again you should create a list of prompts containing each review, and modify the
+system prompt or the chat object history with the training reviews. Compute the accuracy and cost of each LLM in comparison to the labels, and comment on the results. If you selected
+the same models as in problem 1, do the same relationships hold in this experiment?
+
+(b) Determine which questions have the highest error and examine them. Do you agree with the human label? Compare the error patterns across models- note if there are some models 
+which tend to make mistakes on a distinct set of reviews compared to other questions.
+
+
+## Problem 3 (Extra Credit- up to 10 points): Using a LLM judge and the `vitals` package to screen products for problems.
+
+The `vitals` package has a number of features which enable comparison and evaluation of LLMs. These include the ability to use an LLM to score the outputs of models, which is
+called an "LLM as a judge" evaluation. For this problem, I have assembled another dataset of amazon reviews, tabulated by product. The reviews are contained in the file ['amazon_reviews_by_product.csv"](https://github.com/georgehagstrom/DATA607Fall2025/blob/main/website/assignments/labs/labData/amazon_reviews_by_product.csv). For each product I have assembled 10 negative reviews,
+with the text concatenated together for each product so that it forms a single string per product.
+Create a vitals dataset where each input contains all of the negative reviews, and each target contains criteria for the llm-judge to evaluate the outputs by. Create a solver for your chosen
+LLMs and use `model_graded_qa` as the scorer. Use a strong model as the judge (not a "thinking model" but something like sonnet, and use cheaper models to compare against each-other.
+Perform the comparison of the different models at the task of identifying the primary problems with each product. I recommend using the "Incorrect, Correct, Partial Credit" scheme to 
+score the models. Output the results of the model comparison using vitals. Which models perform best? Examine some of the product reviews for which model performance varies, or which are 
+very challenging for all models. Can you understand why those problems were challenging or differentiators between models (I realize this is a subjective question- I just want your thoughts
+on what happened in your experiment).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
