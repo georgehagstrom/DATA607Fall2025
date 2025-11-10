@@ -8,7 +8,7 @@
 
 <meta name="author" content="George I. Hagstrom">
 
-<title>Lab 9: Graphs and Social Networks in Pride &amp; Prejudice – DATA 607 Fall 2025</title>
+<title>Lab 9: Using and Evaluating LLMs – DATA 607 Fall 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4703,7 +4703,7 @@ vertical-align: -.125em;
 <script type="text/javascript" src="../../fullcalendar-lib/main.js"></script>
 
 
-<meta property="og:title" content="Lab 9: Graphs and Social Networks in Pride &amp; Prejudice – DATA 607 Fall 2025">
+<meta property="og:title" content="Lab 9: Using and Evaluating LLMs – DATA 607 Fall 2025">
 <meta property="og:description" content="DATA 607 - Data Acquisition and Management - CUNY School of Professional Studies">
 <meta property="og:site_name" content="DATA 607 Fall 2025">
 </head>
@@ -4717,7 +4717,7 @@ vertical-align: -.125em;
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lab 9: Graphs and Social Networks in Pride &amp; Prejudice</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lab 9: Using and Evaluating LLMs</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -4940,7 +4940,7 @@ vertical-align: -.125em;
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../modules/module12.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">12 - Graphs and Graph Data</span></a>
+ <span class="menu-text">12 - Large Language Models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -4968,7 +4968,7 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 9: Graphs and Social Networks in Pride &amp; Prejudice</h1>
+<h1 class="title">Lab 9: Using and Evaluating LLMs</h1>
 </div>
 
 
@@ -4993,16 +4993,50 @@ vertical-align: -.125em;
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>In the this lab assignment, you are going to construct a social network from the characters in the book “Pride &amp; Prejudice”, a novel written by Jane Austen and available in the <code>janeaustenr</code> package. The social network will be a weighted graph connecting the characters, where the weight is equal to the number of times the names of each character appeared in each 10 line section of the book. Once you create the graph, you will load it into tidygraph, make a visualization of the graph, and rank the most connected characters by a measure called <code>degree centrality</code></p>
-<p><strong>Problem 1</strong></p>
-<p>Load the text of Pride &amp; Prejudice into R using the <code>janeaustenr</code> library. Then download and read <a href="https://github.com/georgehagstrom/DATA607/blob/main/website/assignments/labs/labData/pride_prejudice_characters.csv">pride_prejudice_characters.csv</a>, the csv file from my github page containing a list of characters in <code>Pride &amp; Prejudice</code> and their aliases. Here aliases refers to the different names that the characters go by in the books, for example “Darcy” also goes by the names “Mr. Darcy”, and “Mr. Fitzwilliam Darcy” (not to be confused with his cousin “Colonel Fitzwilliam”).</p>
-<p>Process the text of Pride &amp; Prejudice to replace instances where an alias occurs with the full name of the character- I recommend using the iteration techniques you learned ealier, I arranged the order of names in the <code>csv</code> file to minimize misidentifications if you replace names in the order that they appear in the file. Making this perfect would require a bit of effort but we are ok if there are some misidentifications. Here the final name of each character will be a single word.</p>
-<p><strong>Problem 2</strong></p>
-<p>Following the example in chapter 4 of the text mining with R book, create a new column in the data frame corresponding to the Pride &amp; Prejudice text that divides the text into sections of 10 lines each. Then use the <code>pairwise_count</code> function from <code>widyr</code> to determine the number of times each name occurs with each other name in the same 10 line section.</p>
-<p><strong>Problem 3</strong></p>
-<p>Create a dataframe of nodes which contains the id and unique names of each character, and create a dataframe of edges which contains three columns: a column named <code>from</code>, a column named <code>to</code>, and a column named <code>weight</code>, where the <code>from</code> and <code>to</code> are the id numbers of each character and <code>weight</code> is the number of co-occurences you found in Problem 2. Each pair should only appear once in the edge list (i.e. Elizabeth and MrDarcy but not MrDarcy and then Elizabeth). Create a tidygraph object using <code>tbl_graph</code> that contains the social network data that we just constructed.</p>
-<p><strong>Problem 4</strong></p>
-<p>Using <code>ggraph</code>, graph the connections between the characters. Make sure that each node is labeled by the character name, and make sure that the weight is represented by the thickness of the edge plotted between the two nodes. Then use the <code>centrality_degree</code> function to calculate the weighted degree centrality of each character, and make a plot which shows the degree centrality of each character where the characters are arranged in order of degree centrality.</p>
+<section id="data" class="level3">
+<h3 class="anchored" data-anchor-id="data">Data</h3>
+<p>In this assignment you will be working with different datasets review datasets. The first dataset is the Large Movie Reviews dataset from <code>imdb</code>, which I covered in the sentiment analysis vignette last week. I have processed that dataset and converted it into a single file. On each line it contains the numerical rating of the movie given by the viewer and the</p>
+<p>The second dataset contains randomly selected negative Amazon reviews that have been labeled according to whether they identify certain flaws in a given product. The values of the human response are <code>None</code>, <code>Quality</code> (the product is of low overall quality, is not fit for purpose), <code>Quality Control</code> (the product sometimes arrives broken or differs from batch to batch), <code>Durability</code> (the product breaks too easily), <code>False Advertising</code> (the product does not match expectations based on the picture or product description). There is a “test” set and a “training” set.</p>
+<p>The second dataset consists of a subset of negative (below 4 stars) product reviews from a selection of 50 different products. These reviews contain the SKU which identifies the product, but there is no human labeling.</p>
+</section>
+<section id="software" class="level3">
+<h3 class="anchored" data-anchor-id="software">Software</h3>
+<p>To complete this lab assignment, you will need to be able to interact with LLMs using the <code>R</code> packages <a href="https://ellmer.tidyverse.org/articles/ellmer.html"><code>ellmer</code></a> and <a href="https://mlverse.github.io/mall/">’vitals<code>]( ). You may also want to use the [</code>mall`</a>. There are two ways to connect LLMs with R:</p>
+<ol type="1">
+<li>Acquiring an API key from one of the major providers, such as <code>anthropic</code>, <code>openAI</code>, or <code>google</code> amongst others</li>
+<li>Installing open weights models on your computer, for instance using <code>ollama</code></li>
+</ol>
+<p>The downside of (1) is that it can cost a small amount of money or have otherwise limited usage. I will provide API keys for anthropic for those who request them, but if you have access to an API key at google gemini or openAI or some other provide, you may use that. The downside of (2) is that the models are inferior and run more slowly. However in all cases there are cheap/fast models that can be used for this assignment (<code>haiku</code>, <code>llama3</code>, <code>nanogpt</code> etc). Installation instructions and API key acquisition depends on what you choose, and there are links to compatible LLMs on the <code>ellmer</code> page. <code>Ollama</code> can be <a href="https://ollama.com/">installed by clicking here</a></p>
+</section>
+</section>
+<section id="problem-1-llms-for-sentiment-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="problem-1-llms-for-sentiment-analysis">Problem 1: LLMs for Sentiment Analysis</h2>
+<p>In this problem you are going to use either <code>ellmer</code> (with <code>parrallel_chat_structured</code>) or <code>mall</code> (with <code>llm_sentiment</code>) to perform sentiment analysis on the large movie reviews dataset at IMDB.</p>
+<ol type="a">
+<li><p>Select three different LLMs (don’t use Claude Opus, and I recommend against expensive deep thinking models but you can try things versions of sonnet, haiku, nanogpt, llama-3, or even deepseek if you have the processing power for it). Use either the <code>mall</code> package’s <code>llm_sentiment</code> function or the <code>ellmer</code> package’s <code>parallel_chat_structured</code> function. Report the system prompt that you use for each LLM. Ensure that the output of the LLMs is restricted to a integer values between 1 and 10, using <code>options</code> if you are using <code>mall</code> or <code>type_enum</code> if you are using <code>ellmer</code>. The reviews are contained in the file <a href="https://github.com/georgehagstrom/DATA607Fall2025/blob/main/website/assignments/labs/labData/imdb_test.csv">‘imdb_test.csv’</a>. You will need to put the reviews into a list where each element contains a single review in a character format to use the functions in these packages. Compute the correlation coefficient of each of the models output and create a table which shows the correlation and the cost for each model. Do the more expensive models perform better? When I performed a sentiment analysis using standard methods on this dataset, the correlation coefficient was 0.53. Compare that to the LLM performance.</p></li>
+<li><p>Update the system prompts that you used in (b) by adding examples of reviews from the <a href="https://github.com/georgehagstrom/DATA607Fall2025/blob/main/website/assignments/labs/labData/imdb_train.md"><code>imdb_train.md</code></a> file (you can add text to the beginning of this file to prompt the LLM and then use the function <code>interpolate_file</code> to add a file to the system prompt), or by modifying the chat object to include instances of receiving movie reviews as text and outputing the correct rating. If you do include additional text in the file as a system prompt, be sure to report what text you used and to upload the file you used for your prompt. Repeat the sentiment analysis of the part (b) using these modified prompts, and again compute the correlation and the cost, outputing them in a table. How did enhancing the prompts change the results?</p></li>
+</ol>
+<p><em>Note: I was shocked at the high correlation and wondered if there was a data leakage issue (data leakage is a term from machine learning that describes a situation where data for testing the algorithm is unexpectedly part of the data set that was used to train the algorithm), because LLMs are trained using a very large corpus of data which may include the reviews and the ratings. I did a small experiment on reviews gathered from the past few weeks and found roughly the same answer so I think the result of this homework is not explained by data laekage.</em></p>
+</section>
+<section id="problem-2-llms-for-identifying-flaws-in-products-from-user-reviews." class="level2">
+<h2 class="anchored" data-anchor-id="problem-2-llms-for-identifying-flaws-in-products-from-user-reviews.">Problem 2: LLMs for identifying flaws in products from user reviews.</h2>
+<p>For this problem, I have selected a subset of negative amazon reviews taken from a public dataset of amazon reviews. The goal is to extract information about potential flaws in products from these reviews automatically using LLMs. Again these reviews are divided into two files, a training set which may be incorporated into prompts, and a test set. I have labeled the Amazon reviews into several categories:</p>
+<ul>
+<li><code>None</code> indicates no specific flaw was identified with the product</li>
+<li><code>Quality</code> indicates that the product is poorly designed for the intended purpose</li>
+<li><code>Quality Control</code> indicates that different instances of the product are inconsistent with each other or that the product sometimes arrives broken</li>
+<li><code>Durability</code> indicates that the product is damaged easily from use</li>
+<li><code>False Advertising</code> indicates that the product doesn’t correspond to the images or online descriptions on Amazon</li>
+</ul>
+<p>Your goal is to determine the accuracy of LLMs at classifying text into one of these categories, compared against a human labeler.</p>
+<ol type="a">
+<li><p>Again select three LLMs (they do not have to be the same as in problem 1, but it would make sense to use the same ones to observe if the same accuracy relationships hold on a new task). The human labeled reviews for training are contained in the file <a href="https://github.com/georgehagstrom/DATA607Fall2025/blob/main/website/assignments/labs/labData/amazon_training_examples.csv">‘amazon_training_examples.csv’</a>, and the labeled testing reviews are contained in <a href="https://github.com/georgehagstrom/DATA607Fall2025/blob/main/website/assignments/labs/labData/amazon_testing_examples.csv">‘amazon_testing_examples.csv’</a>. Use <code>parallel_chat_structured</code> with a <code>type_enum</code> corresponding to the categories described above. Again you should create a list of prompts containing each review, and modify the system prompt or the chat object history with the training reviews. Compute the accuracy and cost of each LLM in comparison to the labels, and comment on the results. If you selected the same models as in problem 1, do the same relationships hold in this experiment?</p></li>
+<li><p>Determine which questions have the highest error and examine them. Do you agree with the human label? Compare the error patterns across models- note if there are some models which tend to make mistakes on a distinct set of reviews compared to other questions.</p></li>
+</ol>
+</section>
+<section id="problem-3-extra-credit--up-to-10-points-using-a-llm-judge-and-the-vitals-package-to-screen-products-for-problems." class="level2">
+<h2 class="anchored" data-anchor-id="problem-3-extra-credit--up-to-10-points-using-a-llm-judge-and-the-vitals-package-to-screen-products-for-problems.">Problem 3 (Extra Credit- up to 10 points): Using a LLM judge and the <code>vitals</code> package to screen products for problems.</h2>
+<p>The <code>vitals</code> package has a number of features which enable comparison and evaluation of LLMs. These include the ability to use an LLM to score the outputs of models, which is called an “LLM as a judge” evaluation. For this problem, I have assembled another dataset of amazon reviews, tabulated by product. The reviews are contained in the file <a href="https://github.com/georgehagstrom/DATA607Fall2025/blob/main/website/assignments/labs/labData/amazon_reviews_by_product.csv">’amazon_reviews_by_product.csv”</a>. For each product I have assembled 10 negative reviews, with the text concatenated together for each product so that it forms a single string per product. Create a vitals dataset where each input contains all of the negative reviews, and each target contains criteria for the llm-judge to evaluate the outputs by. Create a solver for your chosen LLMs and use <code>model_graded_qa</code> as the scorer. Use a strong model as the judge (not a “thinking model” but something like sonnet, and use cheaper models to compare against each-other. Perform the comparison of the different models at the task of identifying the primary problems with each product. I recommend using the “Incorrect, Correct, Partial Credit” scheme to score the models. Output the results of the model comparison using vitals. Which models perform best? Examine some of the product reviews for which model performance varies, or which are very challenging for all models. Can you understand why those problems were challenging or differentiators between models (I realize this is a subjective question- I just want your thoughts on what happened in your experiment).</p>
 
 
 </section>
