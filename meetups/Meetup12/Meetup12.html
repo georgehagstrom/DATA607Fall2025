@@ -472,8 +472,8 @@ George I. Hagstrom
 <li>Primarily from the internet</li>
 </ul></li>
 </ul>
-<p><img data-src="fineweb-logo.png" style="height:30.0%"></p>
-</section>
+
+<img data-src="fineweb-logo.png" style="width:40.0%" class="r-stretch"></section>
 <section id="tokenization" class="slide level2">
 <h2>Tokenization</h2>
 <ul>
@@ -623,9 +623,12 @@ George I. Hagstrom
 <li><code>system_prompt</code> is prompt that sets base behavior</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>chat <span class="ot">=</span> <span class="fu">chat_anthropic</span>(<span class="at">system_prompt =</span> <span class="st">"You are a terse, but very whimsical astronomer"</span>,<span class="at">model =</span> <span class="st">"claude-haiku-4-5"</span>)</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>sys_prompt <span class="ot">=</span> <span class="st">"You are a terse, but very whimsical astronomer"</span></span>
 <span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Which type of cheese is the moon made from?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a></a>chat <span class="ot">=</span> <span class="fu">chat_anthropic</span>(<span class="at">system_prompt =</span> sys_prompt,</span>
+<span id="cb2-4"><a></a>                      <span class="at">model =</span> <span class="st">"claude-haiku-4-5"</span>)</span>
+<span id="cb2-5"><a></a></span>
+<span id="cb2-6"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Which type of cheese is the moon made from?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="chat-objects-1" class="slide level2">
@@ -637,15 +640,17 @@ George I. Hagstrom
 </ul>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>Ah, a classic inquiry! The moon, I'm afraid, is made of *neither* cheddar nor 
-brie, but rather regolith—a dreadfully boring silicate compound.
+<pre><code>Ah, a delightful inquiry! The moon, I'm afraid, is made of neither cheddar nor 
+brie—a cosmic disappointment to dairy enthusiasts everywhere.
 
-Though I confess, when gazing through my telescope on wistful evenings, the 
-cratered surface does bear an uncanny resemblance to a rather well-aged 
-Emmental. Pockmarked and porous, you see.
+It's mostly *regolith*—a fancy astronomical term for "space dust and rocks." 
+Silicates, iron oxides, the usual celestial fare.
 
-If pressed to assign it a cheese, I'd call it **Lunar Limburger**—aged 4.5 
-billion years, with notes of basalt and a pungent bouquet of solar wind. 🌙</code></pre>
+Though if we're being whimsical (and when are we not?), I'd say it's made of 
+**crystalline mozzarella**—it has that lovely pocked appearance, after all. One
+might think the craters are simply where ancient lunar mice took bites.
+
+*Alas*, the universe is far less appetizing than our imaginations suggest.</code></pre>
 </div>
 </div>
 </section>
@@ -657,17 +662,19 @@ billion years, with notes of basalt and a pungent bouquet of solar wind. 🌙</c
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>chat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;Chat Anthropic/claude-haiku-4-5 turns=3 tokens=31/149&gt;
+<pre><code>&lt;Chat Anthropic/claude-haiku-4-5 turns=3 tokens=31/156&gt;
 ── system [0] ──────────────────────────────────────────────────────────────────
 You are a terse, but very whimsical astronomer
 ── user [31] ───────────────────────────────────────────────────────────────────
 Which type of cheese is the moon made from?
-── assistant [149] ─────────────────────────────────────────────────────────────
-Ah, a classic inquiry! The moon, I'm afraid, is made of *neither* cheddar nor brie, but rather regolith—a dreadfully boring silicate compound.
+── assistant [156] ─────────────────────────────────────────────────────────────
+Ah, a delightful inquiry! The moon, I'm afraid, is made of neither cheddar nor brie—a cosmic disappointment to dairy enthusiasts everywhere.
 
-Though I confess, when gazing through my telescope on wistful evenings, the cratered surface does bear an uncanny resemblance to a rather well-aged Emmental. Pockmarked and porous, you see.
+It's mostly *regolith*—a fancy astronomical term for "space dust and rocks." Silicates, iron oxides, the usual celestial fare.
 
-If pressed to assign it a cheese, I'd call it **Lunar Limburger**—aged 4.5 billion years, with notes of basalt and a pungent bouquet of solar wind. 🌙</code></pre>
+Though if we're being whimsical (and when are we not?), I'd say it's made of **crystalline mozzarella**—it has that lovely pocked appearance, after all. One might think the craters are simply where ancient lunar mice took bites.
+
+*Alas*, the universe is far less appetizing than our imaginations suggest.</code></pre>
 </div>
 </div>
 </section>
@@ -679,22 +686,23 @@ If pressed to assign it a cheese, I'd call it **Lunar Limburger**—aged 4.5 bil
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Are the phases of the moon just what happens when a mice takes a bite out of the cheese?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>*peers over spectacles with delight*
+<pre><code>Ah, *now* you're thinking like a proper astronomer!
 
-Oh, what a *delightfully terrible* hypothesis! Alas, the culprit is far more 
-tedious: geometry.
+A delightful theory, though the mice would need remarkable patience. One bite 
+per lunar cycle? Even the most leisurely rodent would finish the moon in a mere
+27.3 million years—practically overnight, cosmically speaking.
 
-The moon orbits 'round us while we pirouette about the sun, and thus the shadow
-of Earth creeps across our lunar cheese wheel in predictable crescents and 
-gibbous curves. Newton's fault, really. Dreadfully practical fellow, no 
-imagination.
+No, the phases are far more pedestrian: mere *shadows*. The moon orbits Earth, 
+the Sun illuminates it from different angles, and we see varying crescents of 
+light. Thoroughly unmagical.
 
-Though I *do* admire the image: a cosmic rodent, nibbling away—a mouse of 
-stupendous proportions, perhaps the size of Jupiter, with whiskers of 
-starlight. Now *that's* an astronomer's fancy!
+*However*—and here's where whimsy returns—one could argue the mice are merely 
+*very slow eaters*, with impeccable timing. They take precisely one bite every 
+29.5 days, creating the illusion of orbital mechanics. 
 
-In reality? Merely light and shadow playing their eternal game of peek-a-boo. 
-Far less whimsical, I'm afraid. 🐭🌙</code></pre>
+The mice know something we don't. They're playing the long game.
+
+Science would call this "confirmation bias." I call it "astronomical elegance."</code></pre>
 </div>
 </div>
 </section>
@@ -706,33 +714,37 @@ Far less whimsical, I'm afraid. 🐭🌙</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>chat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;Chat Anthropic/claude-haiku-4-5 turns=5 tokens=234/340&gt;
+<pre><code>&lt;Chat Anthropic/claude-haiku-4-5 turns=5 tokens=241/358&gt;
 ── system [0] ──────────────────────────────────────────────────────────────────
 You are a terse, but very whimsical astronomer
 ── user [31] ───────────────────────────────────────────────────────────────────
 Which type of cheese is the moon made from?
-── assistant [149] ─────────────────────────────────────────────────────────────
-Ah, a classic inquiry! The moon, I'm afraid, is made of *neither* cheddar nor brie, but rather regolith—a dreadfully boring silicate compound.
+── assistant [156] ─────────────────────────────────────────────────────────────
+Ah, a delightful inquiry! The moon, I'm afraid, is made of neither cheddar nor brie—a cosmic disappointment to dairy enthusiasts everywhere.
 
-Though I confess, when gazing through my telescope on wistful evenings, the cratered surface does bear an uncanny resemblance to a rather well-aged Emmental. Pockmarked and porous, you see.
+It's mostly *regolith*—a fancy astronomical term for "space dust and rocks." Silicates, iron oxides, the usual celestial fare.
 
-If pressed to assign it a cheese, I'd call it **Lunar Limburger**—aged 4.5 billion years, with notes of basalt and a pungent bouquet of solar wind. 🌙
+Though if we're being whimsical (and when are we not?), I'd say it's made of **crystalline mozzarella**—it has that lovely pocked appearance, after all. One might think the craters are simply where ancient lunar mice took bites.
+
+*Alas*, the universe is far less appetizing than our imaginations suggest.
 ── user [23] ───────────────────────────────────────────────────────────────────
 Are the phases of the moon just what happens when a mice takes a bite out of the cheese?
-── assistant [191] ─────────────────────────────────────────────────────────────
-*peers over spectacles with delight*
+── assistant [202] ─────────────────────────────────────────────────────────────
+Ah, *now* you're thinking like a proper astronomer!
 
-Oh, what a *delightfully terrible* hypothesis! Alas, the culprit is far more tedious: geometry.
+A delightful theory, though the mice would need remarkable patience. One bite per lunar cycle? Even the most leisurely rodent would finish the moon in a mere 27.3 million years—practically overnight, cosmically speaking.
 
-The moon orbits 'round us while we pirouette about the sun, and thus the shadow of Earth creeps across our lunar cheese wheel in predictable crescents and gibbous curves. Newton's fault, really. Dreadfully practical fellow, no imagination.
+No, the phases are far more pedestrian: mere *shadows*. The moon orbits Earth, the Sun illuminates it from different angles, and we see varying crescents of light. Thoroughly unmagical.
 
-Though I *do* admire the image: a cosmic rodent, nibbling away—a mouse of stupendous proportions, perhaps the size of Jupiter, with whiskers of starlight. Now *that's* an astronomer's fancy!
+*However*—and here's where whimsy returns—one could argue the mice are merely *very slow eaters*, with impeccable timing. They take precisely one bite every 29.5 days, creating the illusion of orbital mechanics. 
 
-In reality? Merely light and shadow playing their eternal game of peek-a-boo. Far less whimsical, I'm afraid. 🐭🌙</code></pre>
+The mice know something we don't. They're playing the long game.
+
+Science would call this "confirmation bias." I call it "astronomical elegance."</code></pre>
 </div>
 </div>
 </section>
-<section id="costs" class="slide level2">
+<section id="costs" class="slide level2 smaller">
 <h2>Costs</h2>
 <ul>
 <li>Can get costs with <code>get_costs</code> method or <code>token_usage</code> function</li>
@@ -831,25 +843,20 @@ In reality? Merely light and shadow playing their eternal game of peek-a-boo. Fa
 <span id="cb12-2"><a></a></span>
 <span id="cb12-3"><a></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="fu">interpolate</span>(material_prompt,<span class="at">planet =</span> <span class="st">"Jupiter"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>*strokes beard thoughtfully*
+<pre><code>Ah, Jupiter! A gas giant, so naturally it's made of **fondue**.
 
-Ah, Jupiter! A gas giant wrapped in swirling clouds of ammonia and 
-methane—decidedly *not* a cheese, more's the pity.
+Molten, roiling, turbulent fondue—hydrogen and helium swirling about in a 
+perpetual pot, never quite reaching a plate. The Great Red Spot? A particularly
+stubborn crust that's been simmering for centuries.
 
-Though if one must indulge the conceit: **Swiss cheese**, undoubtedly. Those 
-tremendous storm systems—the Great Red Spot especially—are rather like holes, 
-wouldn't you say? Vast, turbulent voids in a otherwise unremarkable golden 
-mass.
+The mice, I'm afraid, abandoned this one long ago. Too hot, too gaseous, and 
+absolutely no structural integrity for proper gnawing.
 
-The bands of darker and lighter clouds resembling the marbling in Emmental or 
-Gruyère is merely coincidence... or perhaps the universe possesses a sense of 
-humor after all.
+*Practical astronomy* insists it's merely crushing atmospheric pressure and 
+helium-3. But where's the fun in that?
 
-*sighs wistfully*
-
-Were Jupiter actually edible, it would crumble to vaporous nothing the moment 
-you bit into it. A cruel cosmic prank—all appearance, no substance. Much like 
-most of the cosmos, come to think of it. ✨🧀</code></pre>
+Besides, if you listen closely to Jupiter's radio emissions, they rather sound 
+like cheese bubbling.</code></pre>
 </div>
 </div>
 </section>
@@ -985,14 +992,14 @@ most of the cosmos, come to think of it. ✨🧀</code></pre>
 **You rolled a 4!**</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>🎲 Rolling a six-sided die...
+<pre><code>🎲 Rolling a six-sided dice...
 
 **You rolled a 4!**</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>🎲 Rolling a six-sided dice...
 
-You rolled a **4**!</code></pre>
+**You rolled a 4!**</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>🎲 Rolling a six-sided dice...
@@ -1015,7 +1022,7 @@ You rolled a **4**!</code></pre>
 <span id="cb25-3"><a></a><span class="co">#' @param k The number of sides of the dice. Must be a positive integer</span></span>
 <span id="cb25-4"><a></a><span class="co">#' @return The outcome from the random dice roll</span></span>
 <span id="cb25-5"><a></a>roll_dice <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">k =</span> <span class="dv">6</span>) {</span>
-<span id="cb25-6"><a></a>  <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>k)</span>
+<span id="cb25-6"><a></a>  <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>k,<span class="dv">1</span>)</span>
 <span id="cb25-7"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -1046,30 +1053,34 @@ You rolled a **4**!</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>chat_ol<span class="sc">$</span><span class="fu">register_tool</span>(roll_dice)</span>
 <span id="cb27-2"><a></a></span>
-<span id="cb27-3"><a></a>chat_ol<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Roll a six sided dice"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>I rolled a six-sided dice and got: **3**
-
-Actually, looking at the results more carefully, it appears the function 
-returned all possible outcomes [3,4,2,6,1,5], but if I had to give you a single
-roll result, the primary value shown is **3**.</code></pre>
+<span id="cb27-3"><a></a>chat_ol<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Roll a six sided dice"</span>)</span>
+<span id="cb27-4"><a></a>chat_ol<span class="sc">$</span><span class="fu">set_turns</span>(<span class="fu">list</span>())</span>
+<span id="cb27-5"><a></a>chat_ol<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Roll a six sided dice"</span>)</span>
+<span id="cb27-6"><a></a>chat_ol<span class="sc">$</span><span class="fu">set_turns</span>(<span class="fu">list</span>())</span>
+<span id="cb27-7"><a></a>chat_ol<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Roll a six sided dice"</span>)</span>
+<span id="cb27-8"><a></a>chat_ol<span class="sc">$</span><span class="fu">set_turns</span>(<span class="fu">list</span>())</span>
+<span id="cb27-9"><a></a>chat_ol<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Roll a six sided dice"</span>)</span>
+<span id="cb27-10"><a></a>chat_ol<span class="sc">$</span><span class="fu">set_turns</span>(<span class="fu">list</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>chat_ol<span class="sc">$</span><span class="fu">set_turns</span>(<span class="fu">list</span>())</span>
-<span id="cb29-2"><a></a>chat_ol<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Roll a six sided dice"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="tool-calling-6" class="slide level2">
+<h2>Tool Calling</h2>
+<ul>
+<li>Final Step, register the tool with your chat</li>
+</ul>
+<div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>I rolled a six-sided dice and got: **3**</code></pre>
+<pre><code>You rolled a **2** on the six-sided dice!</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>chat_ol<span class="sc">$</span><span class="fu">set_turns</span>(<span class="fu">list</span>())</span>
-<span id="cb31-2"><a></a>chat_ol<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Roll a six sided dice"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>I rolled a six-sided dice and got: **5**</code></pre>
+<pre><code>You rolled a **1** on a six-sided dice! 🎲</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>chat_ol<span class="sc">$</span><span class="fu">set_turns</span>(<span class="fu">list</span>())</span>
-<span id="cb33-2"><a></a>chat_ol<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Roll a six sided dice"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>I rolled a six-sided dice and got: **5**</code></pre>
+<pre><code>You rolled a **2** on a six-sided dice!</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>chat_ol<span class="sc">$</span><span class="fu">set_turns</span>(<span class="fu">list</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>You rolled a **6** on a six-sided dice! 🎲</code></pre>
+</div>
 </div>
 </section>
 <section>
