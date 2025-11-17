@@ -229,7 +229,14 @@
     "href": "meetups/Meetup13/Meetup13.html#pre-thanksgiving-update",
     "title": "Meetup 13: Big Data and data.table",
     "section": "Pre-Thanksgiving Update",
-    "text": "Pre-Thanksgiving Update\n\nEntering Course Home Stretch\nAssignments Remaining:\n\ntidyverse extend and graph theory (due this Sunday)\nFinal Lab due December 4th\nFinal Real Meetup December 1st\nFinal Project: Record Video Presentation and upload to Brightspace"
+    "text": "Pre-Thanksgiving Update\n\nEntering Course Home Stretch\nAssignments Remaining:\n\ntidyverse extend due this Sunday\nFinal Lab due December 7th\nFinal Real Meetup December 1st (do you want an extra lecture on something?)\nFinal Project: Record Video Presentation and upload to Brightspace"
+  },
+  {
+    "objectID": "meetups/Meetup13/Meetup13.html#nyhackr-meetup-this-thursday",
+    "href": "meetups/Meetup13/Meetup13.html#nyhackr-meetup-this-thursday",
+    "title": "Meetup 13: Big Data and data.table",
+    "section": "nyhackr meetup this Thursday!",
+    "text": "nyhackr meetup this Thursday!\n\nnyhackr.org"
   },
   {
     "objectID": "meetups/Meetup13/Meetup13.html#computer-architecture-basics",
@@ -251,6 +258,13 @@
     "title": "Meetup 13: Big Data and data.table",
     "section": "dplyr tradeoffs",
     "text": "dplyr tradeoffs\n“We optimize dplyr for expressiveness on medium data; feel free to use data.table for raw speed on bigger data”\n\nhttps://h2oai.github.io/db-benchmark/"
+  },
+  {
+    "objectID": "meetups/Meetup13/Meetup13.html#fast-r-packages",
+    "href": "meetups/Meetup13/Meetup13.html#fast-r-packages",
+    "title": "Meetup 13: Big Data and data.table",
+    "section": "Fast R packages",
+    "text": "Fast R packages"
   },
   {
     "objectID": "meetups/Meetup13/Meetup13.html#data.table-summary",
@@ -313,14 +327,7 @@
     "href": "meetups/Meetup13/Meetup13.html#subset-example-1",
     "title": "Meetup 13: Big Data and data.table",
     "section": "Subset Example",
-    "text": "Subset Example\n\ni: subset by index/key or logical conditions\n\n\n flights[origin == \"JFK\" & dest ==\"ORD\" & arr_delay &gt;60, ] |&gt; head(n=20)\n\n     year month   day dep_delay arr_delay carrier origin   dest air_time\n    &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;int&gt;     &lt;int&gt;  &lt;char&gt; &lt;char&gt; &lt;char&gt;    &lt;int&gt;\n 1:  2014     1     1        18        69      AA    JFK    ORD      155\n 2:  2014     1     2        82       113      AA    JFK    ORD      120\n 3:  2014     1     2        41       107      B6    JFK    ORD      136\n 4:  2014     1     3       150       173      B6    JFK    ORD      122\n 5:  2014     1     3       351       378      B6    JFK    ORD      123\n 6:  2014     1     4       121       147      B6    JFK    ORD      126\n 7:  2014     1     5        99        70      AA    JFK    ORD      119\n 8:  2014     1     5       269       248      B6    JFK    ORD      122\n 9:  2014     1     6        96        74      AA    JFK    ORD      124\n10:  2014     1     7        65        63      B6    JFK    ORD      132\n11:  2014     1    10       113       105      AA    JFK    ORD      139\n12:  2014     1    11       354       326      AA    JFK    ORD      111\n13:  2014     1    11       241       230      B6    JFK    ORD      113\n14:  2014     1    15       116        88      B6    JFK    ORD      115\n15:  2014     1    20        53        61      B6    JFK    ORD      132\n16:  2014     1    24        89        87      AA    JFK    ORD      143\n17:  2014     1    25        74        69      AA    JFK    ORD      120\n18:  2014     1    26        58        62      B6    JFK    ORD      137\n19:  2014     2     3       300       326      AA    JFK    ORD      146\n20:  2014     2     9        -9        74      B6    JFK    ORD      130\n     year month   day dep_delay arr_delay carrier origin   dest air_time\n    distance  hour\n       &lt;int&gt; &lt;int&gt;\n 1:      740    17\n 2:      740    18\n 3:      740     7\n 4:      740    23\n 5:      740    12\n 6:      740     9\n 7:      740    18\n 8:      740     1\n 9:      740    18\n10:      740    21\n11:      740    19\n12:      740    23\n13:      740     0\n14:      740    22\n15:      740     7\n16:      740    18\n17:      740    18\n18:      740    21\n19:      740    22\n20:      740    19\n    distance  hour"
-  },
-  {
-    "objectID": "meetups/Meetup13/Meetup13.html#subset-example-2",
-    "href": "meetups/Meetup13/Meetup13.html#subset-example-2",
-    "title": "Meetup 13: Big Data and data.table",
-    "section": "Subset Example",
-    "text": "Subset Example\n\ni: subset by index/key or logical conditions\n\n\n flights[origin == \"JFK\" & dest ==\"ORD\" & arr_delay &gt;60, ] |&gt; head(n=20)\n\n     year month   day dep_delay arr_delay carrier origin   dest air_time\n    &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;int&gt;     &lt;int&gt;  &lt;char&gt; &lt;char&gt; &lt;char&gt;    &lt;int&gt;\n 1:  2014     1     1        18        69      AA    JFK    ORD      155\n 2:  2014     1     2        82       113      AA    JFK    ORD      120\n 3:  2014     1     2        41       107      B6    JFK    ORD      136\n 4:  2014     1     3       150       173      B6    JFK    ORD      122\n 5:  2014     1     3       351       378      B6    JFK    ORD      123\n 6:  2014     1     4       121       147      B6    JFK    ORD      126\n 7:  2014     1     5        99        70      AA    JFK    ORD      119\n 8:  2014     1     5       269       248      B6    JFK    ORD      122\n 9:  2014     1     6        96        74      AA    JFK    ORD      124\n10:  2014     1     7        65        63      B6    JFK    ORD      132\n11:  2014     1    10       113       105      AA    JFK    ORD      139\n12:  2014     1    11       354       326      AA    JFK    ORD      111\n13:  2014     1    11       241       230      B6    JFK    ORD      113\n14:  2014     1    15       116        88      B6    JFK    ORD      115\n15:  2014     1    20        53        61      B6    JFK    ORD      132\n16:  2014     1    24        89        87      AA    JFK    ORD      143\n17:  2014     1    25        74        69      AA    JFK    ORD      120\n18:  2014     1    26        58        62      B6    JFK    ORD      137\n19:  2014     2     3       300       326      AA    JFK    ORD      146\n20:  2014     2     9        -9        74      B6    JFK    ORD      130\n     year month   day dep_delay arr_delay carrier origin   dest air_time\n    distance  hour\n       &lt;int&gt; &lt;int&gt;\n 1:      740    17\n 2:      740    18\n 3:      740     7\n 4:      740    23\n 5:      740    12\n 6:      740     9\n 7:      740    18\n 8:      740     1\n 9:      740    18\n10:      740    21\n11:      740    19\n12:      740    23\n13:      740     0\n14:      740    22\n15:      740     7\n16:      740    18\n17:      740    18\n18:      740    21\n19:      740    22\n20:      740    19\n    distance  hour"
+    "text": "Subset Example\n\ni: subset by index/key or logical conditions\n\n\n flights[origin == \"JFK\" & dest ==\"ORD\" & arr_delay &gt;60, ][1:20]\n\n     year month   day dep_delay arr_delay carrier origin   dest air_time\n    &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;int&gt;     &lt;int&gt;  &lt;char&gt; &lt;char&gt; &lt;char&gt;    &lt;int&gt;\n 1:  2014     1     1        18        69      AA    JFK    ORD      155\n 2:  2014     1     2        82       113      AA    JFK    ORD      120\n 3:  2014     1     2        41       107      B6    JFK    ORD      136\n 4:  2014     1     3       150       173      B6    JFK    ORD      122\n 5:  2014     1     3       351       378      B6    JFK    ORD      123\n 6:  2014     1     4       121       147      B6    JFK    ORD      126\n 7:  2014     1     5        99        70      AA    JFK    ORD      119\n 8:  2014     1     5       269       248      B6    JFK    ORD      122\n 9:  2014     1     6        96        74      AA    JFK    ORD      124\n10:  2014     1     7        65        63      B6    JFK    ORD      132\n11:  2014     1    10       113       105      AA    JFK    ORD      139\n12:  2014     1    11       354       326      AA    JFK    ORD      111\n13:  2014     1    11       241       230      B6    JFK    ORD      113\n14:  2014     1    15       116        88      B6    JFK    ORD      115\n15:  2014     1    20        53        61      B6    JFK    ORD      132\n16:  2014     1    24        89        87      AA    JFK    ORD      143\n17:  2014     1    25        74        69      AA    JFK    ORD      120\n18:  2014     1    26        58        62      B6    JFK    ORD      137\n19:  2014     2     3       300       326      AA    JFK    ORD      146\n20:  2014     2     9        -9        74      B6    JFK    ORD      130\n     year month   day dep_delay arr_delay carrier origin   dest air_time\n    distance  hour\n       &lt;int&gt; &lt;int&gt;\n 1:      740    17\n 2:      740    18\n 3:      740     7\n 4:      740    23\n 5:      740    12\n 6:      740     9\n 7:      740    18\n 8:      740     1\n 9:      740    18\n10:      740    21\n11:      740    19\n12:      740    23\n13:      740     0\n14:      740    22\n15:      740     7\n16:      740    18\n17:      740    18\n18:      740    21\n19:      740    22\n20:      740    19\n    distance  hour"
   },
   {
     "objectID": "meetups/Meetup13/Meetup13.html#sort-example",
@@ -334,21 +341,42 @@
     "href": "meetups/Meetup13/Meetup13.html#selecting-columns",
     "title": "Meetup 13: Big Data and data.table",
     "section": "Selecting Columns",
-    "text": "Selecting Columns\n\nCan choose a subset of columns in the second argument of []\n\n\nflights[ , air_time ] |&gt; \n  head()\n\n[1] 359 363 351 157 350 339\n\n\n\nNot “tidy” by default\nUse list to select multiple columns and return data table:\n\n\nflights[, list(arr_delay,air_time)] |&gt; \n  head()\n\n   arr_delay air_time\n       &lt;int&gt;    &lt;int&gt;\n1:        13      359\n2:        13      363\n3:         9      351\n4:       -26      157\n5:         1      350\n6:         0      339"
+    "text": "Selecting Columns\n\nCan choose a subset of columns in the second argument of []\n\n\nflights[ , air_time ] |&gt; \n  head()\n\n[1] 359 363 351 157 350 339\n\n\n\nNot “tidy” by default"
+  },
+  {
+    "objectID": "meetups/Meetup13/Meetup13.html#selecting-columns-1",
+    "href": "meetups/Meetup13/Meetup13.html#selecting-columns-1",
+    "title": "Meetup 13: Big Data and data.table",
+    "section": "Selecting Columns",
+    "text": "Selecting Columns\n\nUse list to select multiple columns and return data table:\n\n\nflights[, list(arr_delay,air_time)] |&gt; \n  head()\n\n   arr_delay air_time\n       &lt;int&gt;    &lt;int&gt;\n1:        13      359\n2:        13      363\n3:         9      351\n4:       -26      157\n5:         1      350\n6:         0      339"
   },
   {
     "objectID": "meetups/Meetup13/Meetup13.html#list-alias-.",
     "href": "meetups/Meetup13/Meetup13.html#list-alias-.",
     "title": "Meetup 13: Big Data and data.table",
     "section": "list alias .()",
-    "text": "list alias .()\n\nCan use . instead of list\n\n\nflights[ , .(origin,dest,dep_delay,arr_delay,air_time)] |&gt; \n  head()\n\n   origin   dest dep_delay arr_delay air_time\n   &lt;char&gt; &lt;char&gt;     &lt;int&gt;     &lt;int&gt;    &lt;int&gt;\n1:    JFK    LAX        14        13      359\n2:    JFK    LAX        -3        13      363\n3:    JFK    LAX         2         9      351\n4:    LGA    PBI        -8       -26      157\n5:    JFK    LAX         2         1      350\n6:    EWR    LAX         4         0      339\n\n\n\nCan also select using a vector with .. notation:\n\n\nsel = c(\"origin\",\"dest\",\"dep_delay\",\"arr_delay\",\"air_time\")\n\nflights[ , ..sel ] |&gt; head()\n\n   origin   dest dep_delay arr_delay air_time\n   &lt;char&gt; &lt;char&gt;     &lt;int&gt;     &lt;int&gt;    &lt;int&gt;\n1:    JFK    LAX        14        13      359\n2:    JFK    LAX        -3        13      363\n3:    JFK    LAX         2         9      351\n4:    LGA    PBI        -8       -26      157\n5:    JFK    LAX         2         1      350\n6:    EWR    LAX         4         0      339"
+    "text": "list alias .()\n\nCan use . instead of list\n\n\nflights[ , .(origin,dest,dep_delay,arr_delay,air_time)] |&gt; \n  head()\n\n   origin   dest dep_delay arr_delay air_time\n   &lt;char&gt; &lt;char&gt;     &lt;int&gt;     &lt;int&gt;    &lt;int&gt;\n1:    JFK    LAX        14        13      359\n2:    JFK    LAX        -3        13      363\n3:    JFK    LAX         2         9      351\n4:    LGA    PBI        -8       -26      157\n5:    JFK    LAX         2         1      350\n6:    EWR    LAX         4         0      339"
+  },
+  {
+    "objectID": "meetups/Meetup13/Meetup13.html#column-select-alias-..",
+    "href": "meetups/Meetup13/Meetup13.html#column-select-alias-..",
+    "title": "Meetup 13: Big Data and data.table",
+    "section": "Column select alias ..()",
+    "text": "Column select alias ..()\n\nCan also select using a vector with .. notation:\n\n\nsel = c(\"origin\",\"dest\",\"dep_delay\",\"arr_delay\",\"air_time\")\n\nflights[ , ..sel ] |&gt; head()\n\n   origin   dest dep_delay arr_delay air_time\n   &lt;char&gt; &lt;char&gt;     &lt;int&gt;     &lt;int&gt;    &lt;int&gt;\n1:    JFK    LAX        14        13      359\n2:    JFK    LAX        -3        13      363\n3:    JFK    LAX         2         9      351\n4:    LGA    PBI        -8       -26      157\n5:    JFK    LAX         2         1      350\n6:    EWR    LAX         4         0      339"
   },
   {
     "objectID": "meetups/Meetup13/Meetup13.html#logical-selection",
     "href": "meetups/Meetup13/Meetup13.html#logical-selection",
     "title": "Meetup 13: Big Data and data.table",
     "section": "Logical selection",
-    "text": "Logical selection\n\nCan select range of columns:\n\n\nflights[ , year:carrier  ] |&gt; head()\n\n    year month   day dep_delay arr_delay carrier\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;int&gt;     &lt;int&gt;  &lt;char&gt;\n1:  2014     1     1        14        13      AA\n2:  2014     1     1        -3        13      AA\n3:  2014     1     1         2         9      AA\n4:  2014     1     1        -8       -26      AA\n5:  2014     1     1         2         1      AA\n6:  2014     1     1         4         0      AA\n\nflights[ , !(year:carrier)  ]\n\n        origin   dest air_time distance  hour\n        &lt;char&gt; &lt;char&gt;    &lt;int&gt;    &lt;int&gt; &lt;int&gt;\n     1:    JFK    LAX      359     2475     9\n     2:    JFK    LAX      363     2475    11\n     3:    JFK    LAX      351     2475    19\n     4:    LGA    PBI      157     1035     7\n     5:    JFK    LAX      350     2475    13\n    ---                                      \n253312:    LGA    IAH      201     1416    14\n253313:    EWR    IAH      189     1400     8\n253314:    LGA    RDU       83      431    11\n253315:    LGA    DTW       75      502    11\n253316:    LGA    SDF      110      659     8"
+    "text": "Logical selection\n\nCan select range of columns:\n\n\nflights[ , year:carrier  ] |&gt; head()\n\n    year month   day dep_delay arr_delay carrier\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;int&gt;     &lt;int&gt;  &lt;char&gt;\n1:  2014     1     1        14        13      AA\n2:  2014     1     1        -3        13      AA\n3:  2014     1     1         2         9      AA\n4:  2014     1     1        -8       -26      AA\n5:  2014     1     1         2         1      AA\n6:  2014     1     1         4         0      AA"
+  },
+  {
+    "objectID": "meetups/Meetup13/Meetup13.html#logical-selection-1",
+    "href": "meetups/Meetup13/Meetup13.html#logical-selection-1",
+    "title": "Meetup 13: Big Data and data.table",
+    "section": "Logical Selection",
+    "text": "Logical Selection\n\nCan use ‘!’ to exclude columns\n\n\n\n   origin   dest air_time distance  hour\n   &lt;char&gt; &lt;char&gt;    &lt;int&gt;    &lt;int&gt; &lt;int&gt;\n1:    JFK    LAX      359     2475     9\n2:    JFK    LAX      363     2475    11\n3:    JFK    LAX      351     2475    19\n4:    LGA    PBI      157     1035     7\n5:    JFK    LAX      350     2475    13\n6:    EWR    LAX      339     2454    18"
   },
   {
     "objectID": "meetups/Meetup13/Meetup13.html#rename",
@@ -362,7 +390,14 @@
     "href": "meetups/Meetup13/Meetup13.html#calculations",
     "title": "Meetup 13: Big Data and data.table",
     "section": "Calculations",
-    "text": "Calculations\n\nCan perform mathematical operations in the j/2nd entry\nHow many flights with no delay:\n\n\nflights[ , sum( arr_delay + dep_delay &lt; 0  )   ] \n\n[1] 141814\n\n\n\nYou can combine sorting/subsetting in i with selection and computation in j\nEfficient because calculations done together, unnecessary options are avoided\n\n\nflights[origin == \"LGA\" & month == 1 , \n        sum( arr_delay + dep_delay &lt; 0  )   ] \n\n[1] 3671"
+    "text": "Calculations\n\nCan perform mathematical operations in the j/2nd entry\nHow many flights with no delay:\n\n\nflights[ , sum( arr_delay + dep_delay &lt; 0  )   ] \n\n[1] 141814\n\n\n\nYou can combine sorting/subsetting in i with selection and computation in j"
+  },
+  {
+    "objectID": "meetups/Meetup13/Meetup13.html#calculations-1",
+    "href": "meetups/Meetup13/Meetup13.html#calculations-1",
+    "title": "Meetup 13: Big Data and data.table",
+    "section": "Calculations",
+    "text": "Calculations\n\nEfficient because calculations done together, unnecessary options are avoided\n\n\nflights[origin == \"LGA\" & month == 1 , \n        sum( arr_delay + dep_delay &lt; 0  )   ] \n\n[1] 3671\n\n\n\nDo not need to subset the entire data.table, just the arr_delay and dep_delay rows"
   },
   {
     "objectID": "meetups/Meetup13/Meetup13.html#counting",
@@ -376,7 +411,14 @@
     "href": "meetups/Meetup13/Meetup13.html#aggregation",
     "title": "Meetup 13: Big Data and data.table",
     "section": "Aggregation",
-    "text": "Aggregation\n\nThird column by is for aggregation (group_by)\nHow many trips from each airport?\n\n\nflights[ , .N, by = origin]\n\n   origin     N\n   &lt;char&gt; &lt;int&gt;\n1:    JFK 81483\n2:    LGA 84433\n3:    EWR 87400\n\n\n\nNeed . alias for multiple entries:\n\n\nflights[ carrier %in% c(\"DL\",\"AA\") , \n         .(number = .N, mean_dep_delay = mean(dep_delay)) ,\n         by = .(origin,dest)    ] |&gt; \n  head()\n\n   origin   dest number mean_dep_delay\n   &lt;char&gt; &lt;char&gt;  &lt;int&gt;          &lt;num&gt;\n1:    JFK    LAX   5594       8.845370\n2:    LGA    PBI   1594       7.720828\n3:    EWR    LAX     62       4.870968\n4:    JFK    MIA   2750      10.008364\n5:    JFK    SEA   1376      11.578488\n6:    EWR    MIA    848       7.503538"
+    "text": "Aggregation\n\nThird column by is for aggregation (group_by)\nHow many trips from each airport?\n\n\nflights[ , .N, by = origin]\n\n   origin     N\n   &lt;char&gt; &lt;int&gt;\n1:    JFK 81483\n2:    LGA 84433\n3:    EWR 87400"
+  },
+  {
+    "objectID": "meetups/Meetup13/Meetup13.html#aggregation-1",
+    "href": "meetups/Meetup13/Meetup13.html#aggregation-1",
+    "title": "Meetup 13: Big Data and data.table",
+    "section": "Aggregation",
+    "text": "Aggregation\n\nNeed . alias for multiple entries:\n\n\nflights[ carrier %in% c(\"DL\",\"AA\") , \n         .(number = .N, mean_dep_delay = mean(dep_delay)) ,\n         by = .(origin,dest)    ] |&gt; \n  head()\n\n   origin   dest number mean_dep_delay\n   &lt;char&gt; &lt;char&gt;  &lt;int&gt;          &lt;num&gt;\n1:    JFK    LAX   5594       8.845370\n2:    LGA    PBI   1594       7.720828\n3:    EWR    LAX     62       4.870968\n4:    JFK    MIA   2750      10.008364\n5:    JFK    SEA   1376      11.578488\n6:    EWR    MIA    848       7.503538"
   },
   {
     "objectID": "meetups/Meetup13/Meetup13.html#sorting-groups",
@@ -4857,7 +4899,7 @@
     "href": "course/schedule.html",
     "title": "DATA607 - Data Acquisition and Management",
     "section": "",
-    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\nMeetup 6 Slides\nMeetup 6 Video\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\nMeetup 7 Slides\nMeetup 7 Video\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\nMeetup 8 Slides\nMeetup 8 Video\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\nMeetup 9 Slides\nMeetup 9 Video\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\nMeetup 10 Slides\nMeetup 10 Video\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\nMeetup 11 Slides\nMeetup 11 Video\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nLarge Language Models\nMeetup 12 Slides\nMeetup 12 Videp\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
+    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\nMeetup 6 Slides\nMeetup 6 Video\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\nMeetup 7 Slides\nMeetup 7 Video\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\nMeetup 8 Slides\nMeetup 8 Video\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\nMeetup 9 Slides\nMeetup 9 Video\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\nMeetup 10 Slides\nMeetup 10 Video\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\nMeetup 11 Slides\nMeetup 11 Video\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nLarge Language Models\nMeetup 12 Slides\nMeetup 12 Videp\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\nMeetup 13 Slides\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -4868,7 +4910,7 @@
     "href": "course/schedule.html#meetup-link",
     "title": "DATA607 - Data Acquisition and Management",
     "section": "",
-    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\nMeetup 6 Slides\nMeetup 6 Video\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\nMeetup 7 Slides\nMeetup 7 Video\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\nMeetup 8 Slides\nMeetup 8 Video\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\nMeetup 9 Slides\nMeetup 9 Video\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\nMeetup 10 Slides\nMeetup 10 Video\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\nMeetup 11 Slides\nMeetup 11 Video\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nLarge Language Models\nMeetup 12 Slides\nMeetup 12 Videp\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\n\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
+    "text": "Click Here to Join the Meetups on Zoom\n\nCourse Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nStart Time\nModule\nSlides\nVideo\nMain Deliverables\n\n\n\n\nAug 25\n06:45PM\nData Science Workflows and Toolkit\nMeetup 1 Slides\nMeetup 1 Video\nBrightspace Intro\n\n\nSep 1\n06:45PM\nVisualizing Data\nMeetup 2 Slides\nMeetup 2 Video\nSep 7 Lab 1\n\n\nSep 8\n06:45PM\nData Tidying and Wrangling\nMeetup 3 Slides\nMeetup 3 Video\nSep 14 Lab 2\n\n\nSep 15\n06:45PM\nExploratory Data Analysis\nMeetup 4 Slides\nMeetup 4 Video\nSep 21 Lab 3\n\n\nSep 22\n06:45PM\nData Transformations\nMeetup 5 Slides\nMeetup 5 Video\nSep 28 Lab 4\n\n\nSep 29\n06:45PM\nText and Strings\nMeetup 6 Slides\nMeetup 6 Video\nOct 5 Lab 5\n\n\nOct 6\n06:45PM\nDatabases and SQL\nMeetup 7 Slides\nMeetup 7 Video\nOct 12 Lab 6\n\n\nOct 13\n06:45PM\nAdvanced R Programming\nMeetup 8 Slides\nMeetup 8 Video\nOct 19 Proj. Proposal\n\n\nOct 20\n06:45PM\nWebscraping and APIs\nMeetup 9 Slides\nMeetup 9 Video\nOct 26 Lab 7\n\n\nOct 27\n06:45PM\nGit and Collaboration\nMeetup 10 Slides\nMeetup 10 Video\nNov 2 TV Create\n\n\nNov 3\n06:45PM\nTidy Text and NLP\nMeetup 11 Slides\nMeetup 11 Video\nNov 9 Lab 8\n\n\nNov 10\n06:45PM\nLarge Language Models\nMeetup 12 Slides\nMeetup 12 Videp\nNov 16 Lab 9\n\n\nNov 17\n06:45PM\nBig Data\nMeetup 13 Slides\n\nNov 23 TV Extend\n\n\nNov 24\n\nNo Meetup (Thanksgiving)\n\n\n\n\n\nDec 1\n06:45PM\nCloud Computing\n\n\nDec 7 Lab 10\n\n\nDec 8\n06:45PM\n\n\n\nDec 14 Final Project",
     "crumbs": [
       "Course information",
       "Schedule"
