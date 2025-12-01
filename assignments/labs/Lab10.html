@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
 width: 0.8em;
 margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
 }
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+}
+pre.numberSource { margin-left: 3em; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -4994,28 +5028,42 @@ vertical-align: -.125em;
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>This is a two part lab assignment. For both parts we will be using a dataset of New York City Taxi trips. In the first part you will complete a problem using <code>data.tables</code> and in the second part you will create a local <code>spark</code> instance on your computer and use the <code>sparklyr</code> library to simulate how you would process the dataset if it were stored on a distributed computing cluster.</p>
-<p>You will need to download up to three data files for this lab, which are available via shared links in a google drive folder. The first is a dataset of taxi trips that took place in 2021. This file is 3GB in size so if your computer doesn’t have a large amount of RAM (at least 16GB), consider using the smaller alternative (but be clear which one you are using when you complete your assignment):</p>
+<p>You will need to download up to three data files for this lab, which are available via shared links in a google drive folder. The first is a dataset of taxi trips that took place in 2024. This file is 3GB in size so if your computer doesn’t have a large amount of RAM (at least 16GB), consider using the smaller alternative (but be clear which one you are using when you complete your assignment):</p>
 <ol type="1">
-<li><a href="https://drive.google.com/file/d/1GtQFjgJbm9aaCUbO6EacrToySrzxb2SS/view?usp=drive_link">Click here to download 2021 Taxi Rides</a></li>
+<li><a href="https://drive.google.com/file/d/11dVIFwE9zTFCzd7OagMVHUMC6Ib9pOMd/view?usp=drive_link">Click here to download 2024 Taxi Rides</a></li>
 </ol>
-<p>The second dataset just contains the rides from November for the 2021 dataset, and as a result is 10 times smaller:</p>
+<p>The second dataset just contains the rides from November for the 2024 dataset, and as a result is 12 times smaller:</p>
 <ol start="2" type="1">
-<li><a href="https://drive.google.com/file/d/16_rRGea7X_v7o6OmBsoCsvwp2cZujnoy/view?usp=sharing">Click here to download the 2021 Taxi rides in November</a></li>
+<li><a href="https://drive.google.com/file/d/11ZzWjv0HPr1XS5pjQuvaqOelF5MOJy5x/view?usp=drive_link">Click here to download the 2024 Taxi rides in November</a></li>
 </ol>
 <p>Finally, the final dataset contains details on the meaning of the taxi location code, which is important for determining the actual geographic location of the pickup and dropoff of each taxi ride:</p>
 <ol start="3" type="1">
 <li><a href="https://drive.google.com/file/d/1BjHkT3fJv7cdLvuD0H04RYvvWyeYOwDD/view?usp=drive_link">Click here to download the taxi location codes dataset</a></li>
 </ol>
-<p><strong>Problem 1</strong></p>
+<p><strong>Problem 1: In-Place Operations in data.table</strong></p>
+<ol type="a">
+<li><p>Use <code>data.tables</code> to load 2024 NYC taxi dataset (or, if your computer has low memory, the alternative dataset of just November 2024) and the dataset that describes the location of each taxi location code, and output the memory address of the data.table obtained after loading. Performing all operations in place, recode the drop off and pick up time variables as date-times (the method you chose will depend on the precise way your file is parsed). Then create new columns in the data table which are equal to the duration of each taxi ride (in whatever time units you prefer) and the average speed in miles per hour of each taxi ride. Next, set equal to <code>NA</code> all values of the ride speed where ride speed is either negative, greater than 90 mph, or where the ride time is longer than 3 hours. Next join with the location information so that the borough of origin and destination of each taxi ride is present in the data.table (this may require joining twice). Verify that this final data.table has the same memory address as the original data.frame. Hint: <code>lubridate</code> has a variety of functions for working with characters that represent time stamps.</p></li>
+<li><p>For each combination of origin and destination boroughs, calculate the mean of the average speed variable of taxi rides between those two boroughs and the total number of taxi rides between those boroughs, sort in descending order by the mean of average speed, and display the full answer.</p></li>
+</ol>
+<p><strong>Problem 2: Shuffles and Skew in Spark</strong></p>
+<p>Overview: For this problem you have three choices: 1. Sign up for an account on my Azure Databricks workspace- I will add your CUNY email. (5 extra credit points for this option). If you choose this option you will need to be mindful that other classmates are sharing the virtual cluster that I have created. I will create a separate document on the ground rules for sharing this cluster. I don’t anticipate it to be that difficult but this should be a gentle introduction to working on a shared machine. 2. Create your own Azure Databricks workspace and load the file I suggested- this requires a lot of work but gives you the most experience and also some Azure credits. If you go this route I can help you but substantially more computer savvy is required. (5 extra credit points for this option) 3. Use a local spark instance on your computer- This will make benchmarking much less useful.</p>
+<p>If you perform options 1 or 2 you should perform the assignment in a databricks R notebook, save the notebook showing your results to html or ipynb, and submit that notebook to brightspace in addition to this qmd file (which can then just contain the solution to problem 1).</p>
+<p>(a). Partitioning and shuffles. In your databricks notebook load (and install if necessary) the libraries you plan to use, and create a spark instance. Then create a spark dataframe by reading the parquet files at <code>/mnt/myblob/taxi_data_2024_200p_date/</code>. Write code in a single pipeline that creates a logical plan to filter the dataset to only include taxi rides which satisfy the following two conditions:</p>
 <ul>
-<li><p>Use <code>data.tables</code> to load 2021 NYC taxi dataset (or, if your computer has low memory, the alternative dataset of just November 2021) and the dataset that describes the location of each taxi location code, and output the memory address of the data.table obtained after loading. Performing all operations in place, recode the the drop off and pick up time variables as date-times (whether or how you will do this depends on how your reader interprets the file). Then create new columns in the data table which are equal to the duration of each taxi ride (in whatever time units you prefer) and the average speed in miles per hour of each taxi ride. Next, set equal to <code>NA</code> all values of the ride speed where ride speed is either negative, greater than 90 mph, or where the ride time is longer than 3 hours. Next join with the location information so that the borough of origin and destination of each taxi ride is present in the data.table (this may require joining twice). Verify that this final data.table has the same memory address as the original data.frame. Hint: <code>lubridate</code> has a variety of functions for working with characters that represent time stamps.</p></li>
-<li><p>For each combination of origin and destination boroughs, calculate the average speed (technically the average of the average speed) of taxi rides between those two boroughs and the total number of taxi rides between those boroughs, sort in descending order by average speed, and display the full answer.</p></li>
-</ul>
-<p><strong>Problem 2</strong></p>
+<li>The value of the <code>trip_duration</code> variable is greater than <code>mean(trip_duration) + 3*sd(trip_duration)</code> where the mean and standard deviation are calculated over all trips with the same <code>PULocationID</code> and <code>DOLocationID</code> (this is like an extreme outlier in trip duration for the selected group)
 <ul>
-<li><p>Create a local <code>spark</code> instance on your computer and load the November taxi dataset and taxi location dataset into your spark instance by using <code>spark_read_csv</code>. Join the datasets so that that the taxi ride data has data on the borough of origin of each taxi ride. Create a new column in the dataset equal to the tip percentage, and filter the tip percentage data so that it excludes data points where either the tip or fare was less 0. Then, for taxi rides originating in each borough, calculate the mean and maximum tip percentage.</p></li>
-<li><p>For taxi rides on November 25th, filter the data so that tip percentage includes only rows where the tip and fare were non-negative, and the tip percentage is less than 100%. Make a plot of the distribution of cab fares for taxi rides originating in each borough (using ggplot2 or ggridges). Perform all of the computations and data wrangling in Spark, and only collect the final tibbles to display your results make your plot.</p></li>
+<li>The value of the <code>fare_amount</code> variable is greater than <code>mean(fare_amount) + 3*sd(fare_amount)</code> where the mean and standard deviation are calculated over all trips with the same values of <code>PULocationID</code> and <code>hour</code>.</li>
+</ul></li>
 </ul>
+<p>This will involve combining group_by and mutate twice. Use <code>explain()</code> on this plan and determine the number of times that the word <code>exchange</code> occurs in the physical plan. You can use this code to better format the output of explain:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>plan_variable <span class="sc">|&gt;</span> <span class="fu">spark_dataframe</span>() <span class="sc">|&gt;</span> <span class="fu">invoke</span>(<span class="st">&quot;queryExecution&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">invoke</span>(<span class="st">&quot;toString&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">cat</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then use <code>microbenchmark</code> to execute the plan (using <code>times=1</code> up to <code>times=5</code> depending on your patience and the amount of users on the cluster (<code>microbenchmark(your_plan |&gt; collect(), times=1)</code> for example). <strong>DO NOT JUST RUN MICROBENCHMARK WITHOUT SETTING THE TIMES VARIABLE</strong>. Use the spark UI or click on view on the tasks to and determine how much <code>shuffle read</code> and <code>shuffle write</code> were needed.</p>
+<ol start="2" type="a">
+<li><p>Your answer to part (a) should have identified a substantial amount of shuffle read and write. You should be able to reduce those close to 0 for this problem with an appropriate repartitioning. Of the three variables you are aggregating over (<code>PULocationID</code>, <code>DOLocationID</code>, and <code>hour</code>) is there one where repartitioning should minimize shuffles most? If you are unsure, you may experiment with repartitioning by all 3. For the variable you selected, use <code>sdf_repartition</code> to repartition the original dataset by that variable (for this problem, set <code>partitions=15</code> in your call to <code>sdf_repartition</code>. Cache the result of this repartitioning in a new DataFrame using <code>compute</code>. Create a new plan using the same code as in part (a), but using your repartitioned dataset in the first step. If you use <code>explain</code> on this plan you should see no instances of the word <code>exchange</code> (you can alternatively use <code>str_count</code> to make sure). Use <code>microbenchmark</code> to determine the execution time for this plan and use the UI/view to determine the shuffle memory use. How did each compare to part (a)? You should see that there are fewer steps in this plan, but that the execution time might not be faster. This is partially due to the fact that our cluster only has 2 executor nodes, so communication costs are smaller than on a big cluster.</p></li>
+<li><p>In part (b) we choose 15 as the number of partitions. Partitions can impact the execution speed in several ways. One such way is something called <code>partition skew</code>. Each partition (either those you defined or those that <code>spark</code> creates when shuffling) must be processed by a single executor core. Thus if some partitions are very large compared to others, the overall speed of the process can be limited by the size of the largest partition. In this dataset, some partitions have many more rides associated with them than others. You can observe this skew by using the function <code>mutate(partition_id = spark_partition_id())</code> and then using <code>count</code>. Do this for the DataFrame used in problem (b), and observe the size of the largest partition. Next create a DataFrame by repartitoning on the same variable in part (b) but with a larger number of partitions and cache it (253 is the maximum number you should consider for this problem). Then look at the count of trips by partition for DataFrame and compare to the 15 partition DataFrame. How much has the size of the largest partition decreased by? Experiment with a few different values of partitions, and also observe how long the list of counts is (spark sometimes combines unneeded partitions automatically). Pick a value of partitions where the maximum partition size is small and uUse <code>microbenchmark</code> to determine the execution speed of this plan. Is it slower or faster than in the experiments in (b) and (a)? I expect it to be faster than both.</p></li>
+</ol>
 
 
 </section>
