@@ -13,7 +13,7 @@ and in the second part you will create a local `spark` instance on your computer
 on a distributed computing cluster. 
 
 You will need to download up to three data files for this lab, which are available via shared links in a google drive folder. The first is a dataset of taxi trips that took
-place in 2024. This file is 3GB in size so if your computer doesn't have a large amount of RAM (at least 16GB), consider using the smaller alternative (but be clear which one you
+place in 2024. This zipped archive is 600MB in size so if your computer doesn't have a large amount of RAM (at least 8GB), consider using the smaller alternative (but be clear which one you
 are using when you complete your assignment): 
 
 1. [Click here to download 2024 Taxi Rides](https://drive.google.com/file/d/11dVIFwE9zTFCzd7OagMVHUMC6Ib9pOMd/view?usp=drive_link)
@@ -46,9 +46,11 @@ as the original data.frame. Hint: `lubridate` has a variety of functions for wor
 **Problem 2: Shuffles and Skew in Spark**
 
 Overview: For this problem you have three choices:
- 1. Sign up for an account on my Azure Databricks workspace- I will add your CUNY email. (5 extra credit points for this option). If you choose this option you will need to be
+
+ 1. Sign up for an account on my Azure Databricks workspace- I have added your CUNY email. (5 extra credit points for this option). If you choose this option you will need to be
 mindful that other classmates are sharing the virtual cluster that I have created. I will create a separate document on the ground rules for sharing this cluster. I don't anticipate 
-it to be that difficult but this should be a gentle introduction to working on a shared machine.
+it to be that difficult but this should be a gentle introduction to working on a shared machine. Sign up link: [https://azure.microsoft.com/en-us/free/students/](https://azure.microsoft.com/en-us/free/students/). Once you sign in you should be able to access my workspace here: [https://azure.microsoft.com/en-us/free/students/](https://azure.microsoft.com/en-us/free/students/) .
+Follow the code vignette to see how to use this cluster.
  2. Create your own Azure Databricks workspace and load the file I suggested- this requires a lot of work but gives you the most experience and also some Azure credits. If you go this route I can help you but substantially more computer savvy is required. (5 extra credit points for this option)
  3. Use a local spark instance on your computer- This will make benchmarking much less useful.  
 
@@ -56,7 +58,7 @@ If you perform options 1 or 2 you should perform the assignment in a databricks 
 in addition to this qmd file (which can then just contain the solution to problem 1).
 
 (a). Partitioning and shuffles. In your databricks notebook load (and install if necessary) the libraries you plan to use, and create a spark instance. 
-Then create a spark dataframe by reading the parquet files at `/mnt/myblob/taxi_data_2024_200p_date/`. Write code in a single pipeline that creates a logical plan to 
+Then create a spark dataframe by reading the parquet files at `/mnt/myblob/taxi_data_2024_200p_date/`. Write code in a single pipeline that creates a transformation to 
 filter the dataset to only include taxi rides which satisfy the following two conditions:
   
 - The value of the `trip_duration` variable is greater than `mean(trip_duration) + 3*sd(trip_duration)` where the mean and standard deviation are calculated over all trips with 
@@ -65,8 +67,8 @@ the same `PULocationID` and `DOLocationID` (this is like an extreme outlier in t
 same values of `PULocationID` and `hour`.
 
 
- This will involve combining group_by and mutate twice. Use `explain()` on this plan and determine
-the number of times that the word `exchange` occurs in the physical plan. You can use this code to better format the output of explain:
+ This will involve combining group_by and mutate twice. Use `explain()` on this transformation and determine
+the number of times that the word `exchange` occurs in the transformation. You can use this code to better format the output of `explain`:
 
 ```{r}
 #| echo: true
@@ -76,14 +78,15 @@ plan_variable |> spark_dataframe() |> invoke("queryExecution") |> invoke("toStri
 
 ```
 
-Then use `microbenchmark` to execute the plan (using `times=1` up to `times=5` depending on your patience
+Then use `microbenchmark` to perform an action that executes the transformation (using `times=1` up to `times=5` depending on your patience
 and the amount of users on the cluster (`microbenchmark(your_plan |> collect(), times=1)` for example). **DO NOT JUST RUN MICROBENCHMARK WITHOUT SETTING THE TIMES VARIABLE**. Use the spark UI or click on view on the tasks to and determine how
 much `shuffle read` and `shuffle write` were needed.
 
 (b) Your answer to part (a) should have identified a substantial amount of shuffle read and write. You should be able to reduce those close to 0 for this problem with an appropriate
-repartitioning. Of the three variables you are aggregating over (`PULocationID`, `DOLocationID`, and `hour`) is there one where repartitioning should minimize shuffles most? If you are unsure, you may experiment with repartitioning by all 3. For the variable you selected, use `sdf_repartition` to repartition the original dataset by that variable (for this problem, set `partitions=15` in your call to `sdf_repartition`. Cache the result of this repartitioning in a new DataFrame using `compute`. Create a new plan using the same code as in part (a), but using your repartitioned dataset in the first step. If you use `explain` on this plan you should see no instances of the word `exchange` (you can alternatively use `str_count` to make sure). Use
-`microbenchmark` to determine the execution time for this plan and use the UI/view to determine the shuffle memory use. How did each compare to part (a)? You should see that there are fewer
-steps in this plan, but that the execution time might not be faster. This is partially due to the fact that our cluster only has 2 executor nodes, so communication costs are smaller than
+repartitioning. Of the three variables you are aggregating over (`PULocationID`, `DOLocationID`, and `hour`) is there one where repartitioning should minimize shuffles most? 
+If you are unsure, you may experiment with repartitioning by all 3. For the variable you selected, use `sdf_repartition` to repartition the original dataset by that variable (for this problem, set `partitions=15` in your call to `sdf_repartition`. Cache the result of this repartitioning in a new DataFrame using `compute`. Create a new plan using the same code as in part (a), but using your repartitioned dataset in the first step. If you use `explain` on this transformation you should see no instances of the word `exchange` (you can alternatively use `str_count` to make sure). Use
+`microbenchmark` to determine the execution time for this action and use the UI/view to determine the shuffle memory use. How did each compare to part (a)? You should see that there are fewer
+steps in this transformation, but that the execution time of the corresponding action might not be faster. This is partially due to the fact that our cluster only has 2 executor nodes, so communication costs are smaller than
 on a big cluster.
 
 (c) In part (b) we choose 15 as the number of partitions. Partitions can impact the execution speed in several ways. One such way is something called `partition skew`. Each partition
@@ -92,5 +95,5 @@ overall speed of the process can be limited by the size of the largest partition
 You can observe this skew by using the function `mutate(partition_id = spark_partition_id())` and then 
 using `count`. Do this for the DataFrame used in problem (b), and observe the size of the largest partition. Next create a DataFrame by repartitoning on the same variable in part (b) but
 with a larger number of partitions and cache it (253 is the maximum number you should consider for this problem). Then look at the count of trips by partition for DataFrame and compare to the 15 partition DataFrame. How much has the size of the largest partition 
-decreased by? Experiment with a few different values of partitions, and also observe how long the list of counts is (spark sometimes combines unneeded partitions automatically). Pick a value of partitions where the maximum partition size is small and uUse `microbenchmark` to determine the execution speed of this plan. Is it slower or faster than in the experiments in (b) and (a)? I expect it to be faster than both.
+decreased by? Experiment with a few different values of partitions, and also observe how long the list of counts is (spark sometimes combines unneeded partitions automatically). Pick a value of partitions where the maximum partition size is small and uUse `microbenchmark` to determine the execution speed of this action. Is it slower or faster than in the experiments in (b) and (a)? I expect it to be faster than both.
 
