@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="George I. Hagstrom">
-<meta name="dcterms.date" content="2025-12-04">
-<meta name="description" content="Click here for a video walkthrough of starting a Azure account and getting setup on the Databricks Cluster">
+<meta name="dcterms.date" content="2025-12-05">
+<meta name="description" content="Click here for two videos, one focusing on loading data and graphs, the other on data wrangling using sparklyr">
 
-<title>Getting Started with Azure and Databricks – DATA 607 Fall 2025</title>
+<title>Sparklyr coding vignettes – DATA 607 Fall 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4705,12 +4705,12 @@ vertical-align: -.125em;
 <script type="text/javascript" src="../fullcalendar-lib/main.js"></script>
 
 
-<meta property="og:title" content="Getting Started with Azure and Databricks – DATA 607 Fall 2025">
-<meta property="og:description" content="Click here for a video walkthrough of starting a Azure account and getting setup on the Databricks Cluster">
-<meta property="og:image" content="https://georgehagstrom.github.io/DATA607Fall2025/posts/Databricks_Logo.png">
+<meta property="og:title" content="Sparklyr coding vignettes – DATA 607 Fall 2025">
+<meta property="og:description" content="Click here for two videos, one focusing on loading data and graphs, the other on data wrangling using sparklyr">
+<meta property="og:image" content="https://georgehagstrom.github.io/DATA607Fall2025/posts/sparklyr.png">
 <meta property="og:site_name" content="DATA 607 Fall 2025">
-<meta property="og:image:height" content="630">
-<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="277">
+<meta property="og:image:width" content="240">
 </head>
 
 <body class="nav-sidebar docked fullcontent">
@@ -4722,7 +4722,7 @@ vertical-align: -.125em;
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Getting Started with Azure and Databricks</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Sparklyr coding vignettes</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -4973,12 +4973,12 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Getting Started with Azure and Databricks</h1>
+<h1 class="title">Sparklyr coding vignettes</h1>
 </div>
 
 <div>
   <div class="description">
-    Click here for a video walkthrough of starting a Azure account and getting setup on the Databricks Cluster
+    Click here for two videos, one focusing on loading data and graphs, the other on data wrangling using sparklyr
   </div>
 </div>
 
@@ -4995,7 +4995,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 4, 2025</p>
+      <p class="date">December 5, 2025</p>
     </div>
   </div>
   
@@ -5007,8 +5007,12 @@ vertical-align: -.125em;
 </header>
 
 
-<p>In this coding vignette I go through the process of starting an azure databricks account and configuring it to use our workspace. I then show how to start the computer cluster we will use for this week’s homework, how to check on its status, how to start a databricks notebook, how to load and install libraries, how to see if others are using the cluster, and how to terminate the cluster when you are done (if no one else is using it).</p>
-<p><a href="https://youtu.be/WZKy0sh_rJE">Click here to watch the video</a></p>
+<p>I have uploaded two coding vignette videos. Both are connected to a shared databricks notebook in our Azure databricks workspace. All of you should have the ability to run the workspace (I didn’t allow for editing but you can replicate it to experiment). Find that notebook here (there are two versions, the original which I made editable and a “live” version which is just executable):</p>
+<p><a href="https://adb-1038705933423847.7.azuredatabricks.net/editor/notebooks/3535491683417303?o=1038705933423847">Editable Notebook</a> <a href="https://adb-1038705933423847.7.azuredatabricks.net/editor/notebooks/2835310148136576?o=1038705933423847">Executable Notebook</a></p>
+<p>The first video focuses on loading data and shows the code for mounting the blob storage object where the data is stored. I believe this is not going to be necessary to use but just in case I have shared it. In the first video I also talk about how to make plots, which is much trickier on a spark cluster than on a regular computer. To facilitate this, I go through some examples with the <a href="https://edgararuiz.github.io/dbplot/">dbplot package</a>.</p>
+<p><a href="https://youtu.be/e3P0XQkPEeo">Click here to watch the video</a></p>
+<p>In the second video, I go through some examples of using <code>group_by</code> and <code>summarize</code> on a dataframe in spark, using the <code>microbenchmark</code> package to compare performance and the spark UI and the transformation plans to understand when shuffles and broadcast joins are occurring. We look specifically at two types of aggregation operations, window functions and regular functions, and observe the different behaviors they cause.</p>
+<p><a href="https://youtu.be/uEtSMOtcykI">Click here to watch the video</a></p>
 
 
 
@@ -5591,7 +5595,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
        
-    <div class="toc-actions"><ul><li><a href="https://github.com/georgehagstrom/DATA607Fall2025/edit/main/posts/2025-12-04-azure-databricks-vignette.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/georgehagstrom/DATA607Fall2025/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/georgehagstrom/DATA607Fall2025/edit/main/posts/2025-12-05-Sparklyr-Vignettes.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/georgehagstrom/DATA607Fall2025/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
