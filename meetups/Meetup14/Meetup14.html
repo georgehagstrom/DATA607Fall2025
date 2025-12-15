@@ -404,6 +404,53 @@ George I. Hagstrom
 </div>
 
 </section>
+<section id="why-distributed-computing" class="slide level2">
+<h2>Why distributed computing?</h2>
+<p>Answer: For the same reason you wouldn’t have one person build the NYC subway</p>
+<ul>
+<li>Many problems cannot be solved by a single processor/computer
+<ul>
+<li>Limited by processing power</li>
+<li>Limited by memory</li>
+</ul></li>
+<li>Enormous applications:
+<ul>
+<li>Invented for physical sciences</li>
+<li>Big Data, AI, Machine Learning, etc etc</li>
+</ul></li>
+</ul>
+</section>
+<section id="what-is-distributed-computing" class="slide level2">
+<h2>What is Distributed Computing</h2>
+<p>Serial computing: single task at a time: <img data-src="serial.png" alt="llnl-hpc"></p>
+</section>
+<section id="what-is-distributed-computing-1" class="slide level2">
+<h2>What is Distributed Computing</h2>
+<ul>
+<li>Parallel or distributed Computing: divide tasks among compute units:</li>
+</ul>
+
+<img data-src="parrallel.png" class="r-stretch quarto-figure-center"><p class="caption">llnl-hpc</p></section>
+<section id="distributed-computing-paradigms-shared-memory" class="slide level2">
+<h2>Distributed Computing Paradigms: Shared Memory</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="uma.png"></p>
+<figcaption>llnl-hpc</figcaption>
+</figure>
+</div>
+<p>Distributed Computing Paradigms: Cluster</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="numa.png"></p>
+<figcaption>llnl-hpc</figcaption>
+</figure>
+</div>
+</section>
+<section id="distributed-computing-paradigms-distributed" class="slide level2">
+<h2>Distributed Computing Paradigms: Distributed</h2>
+
+<img data-src="distributed.png" class="r-stretch quarto-figure-center"><p class="caption">llnl-hpc</p></section>
 <section id="apache-spark-architecture" class="slide level2">
 <h2>Apache Spark Architecture</h2>
 <ul>
@@ -476,7 +523,7 @@ $config$sparklyr.shell.name
 
 
 $state
-&lt;environment: 0x5bf181625798&gt;
+&lt;environment: 0x5b287be0d258&gt;
 
 $extensions
 $extensions$jars
@@ -540,10 +587,10 @@ can read    "yes"
 can write   "yes"             
 
 $output_file
-[1] "/tmp/RtmpiCemw0/fileb561543f444ef_spark.log"
+[1] "/tmp/Rtmp1in5GI/fileb336a3a05ec9_spark.log"
 
 $sessionId
-[1] 24972
+[1] 57263
 
 $home_version
 [1] "3.3"
@@ -592,7 +639,7 @@ attr(,"class")
 <span id="cb5-2"><a></a></span>
 <span id="cb5-3"><a></a>taxi_spark</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># Source:   table&lt;`nyc_taxi_2024_9359d2e6_c32d_4ea0_a7cb_e3ffc91a55c7`&gt; [?? x 19]
+<pre><code># Source:   table&lt;`nyc_taxi_2024_d43caf28_9287_40e5_a087_c6b7bf9d304d`&gt; [?? x 19]
 # Database: spark_connection
    VendorID tpep_pickup_datetime tpep_dropoff_datetime passenger_count
       &lt;int&gt; &lt;dttm&gt;               &lt;dttm&gt;                          &lt;dbl&gt;
@@ -658,7 +705,7 @@ attr(,"class")
  8               3   1041428         4.01       21.8    3.81 
  9               8       190         2.84       77.0   11.3  
 10               2   4350662         4.23       22.2    4.06 
-11               4    683405         4.21       24.2    3.85 </code></pre>
+# ℹ more rows</code></pre>
 </div>
 </div>
 </section>
